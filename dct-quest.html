@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DCT 晉升地圖</title>
+<title>DCT 晉升闖關系統 🍄</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -29,7 +29,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .hero-desc{font-size:11px;color:#4A7A9A;line-height:1.8;margin-bottom:16px;}
 .hero-stats{display:flex;justify-content:center;gap:9px;}
 .hs{background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);border-radius:14px;padding:8px 16px;text-align:center;}
-.hs-n{font-size:20px;font-weight:900;color:#2290D4;}
+.hs-n{font-size:14px;font-weight:900;color:#2290D4;line-height:1.2;}
 .hs-l{font-size:9px;color:#5A9ABB;margin-top:1px;}
 
 /* ── STAGE BOX ── */
@@ -63,16 +63,16 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 /* ── LEVEL SCROLL ── */
 .lv-scroll{display:flex;gap:9px;padding:0 18px;overflow-x:auto;margin-bottom:16px;scrollbar-width:none;}
 .lv-scroll::-webkit-scrollbar{display:none;}
-.lv-card{flex-shrink:0;width:96px;background:#fff;border:2px solid #C0E4F8;border-radius:18px;padding:12px 6px;text-align:center;cursor:pointer;transition:all .2s;position:relative;box-shadow:0 2px 10px rgba(55,165,230,.06);}
+.lv-card{flex-shrink:0;width:90px;background:#fff;border:2px solid #C0E4F8;border-radius:18px;padding:12px 6px 10px;text-align:center;cursor:pointer;transition:all .2s;position:relative;box-shadow:0 2px 10px rgba(55,165,230,.06);}
 .lv-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(55,165,230,.15);}
 .lv-card.active{border-color:#37A5E6;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);box-shadow:0 4px 18px rgba(55,165,230,.22);}
 .lv-card.lk{opacity:.38;cursor:not-allowed;}
 .lv-card.lk:hover{transform:none;}
 .lv-em{font-size:26px;margin-bottom:5px;}
 .lv-nm{font-size:9px;font-weight:700;color:#37A5E6;margin-bottom:3px;line-height:1.3;}
-.lv-pg{height:3px;background:#EEF8FE;border-radius:999px;overflow:hidden;margin-top:3px;}
+.lv-pg{height:4px;background:#EEF8FE;border-radius:999px;overflow:hidden;margin-top:4px;}
 .lv-pf{height:100%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;}
-.lv-pt{font-size:8px;color:#90C8E8;margin-top:2px;}
+.lv-pt{font-size:8px;color:#90C8E8;margin-top:3px;}
 .lv-lock{position:absolute;top:5px;right:7px;font-size:11px;opacity:.5;}
 .lv-done-badge{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#37A5E6,#2290D4);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:900;box-shadow:0 2px 6px rgba(55,165,230,.3);}
 
@@ -328,10 +328,28 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       </div>
     </div>
 
-    <div class="wc-label">輸入你的名字，開始你的旅程</div>
+    <div class="wc-label">✦ 你的名字</div>
     <input class="wc-input" id="wc-name" type="text" placeholder="例如：小安、Annie…" maxlength="10" oninput="onNameInput()" onkeydown="onNameKey(event)">
-    <button class="wc-btn" id="wc-btn" onclick="startWithName()">🌸 開始我的旅程</button>
-    <div class="wc-note">名字會儲存在你的裝置上，下次打開會自動記住你</div>
+
+    <div class="wc-label" style="margin-top:4px;">📅 加入 DCT 的日期</div>
+    <input class="wc-input" id="wc-date" type="date" style="margin-bottom:14px;">
+
+    <div class="wc-label" style="margin-top:4px;">🎯 今年目標級別</div>
+    <select class="wc-input" id="wc-goal" style="margin-bottom:14px;cursor:pointer;">
+      <option value="">選擇目標級別</option>
+      <option value="實習加盟">🌿 實習加盟</option>
+      <option value="三級零售">⭐ 三級零售</option>
+      <option value="三級輔導">💫 三級輔導</option>
+      <option value="二級輔導">🌙 二級輔導</option>
+      <option value="一級輔導">🌟 一級輔導</option>
+      <option value="皇家">👑 皇家</option>
+    </select>
+
+    <div class="wc-label" style="margin-top:4px;">💰 月淨利目標（元）</div>
+    <input class="wc-input" id="wc-income" type="number" placeholder="例如：30000" style="margin-bottom:14px;">
+
+    <button class="wc-btn" id="wc-btn" onclick="startWithName()">🌸 開始闖關！</button>
+    <div class="wc-note">以上設定儲存在你的裝置上，之後可以修改</div>
   </div>
 </div>
 
@@ -342,41 +360,41 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       <div class="tb-name" id="tb-name">我的晉升地圖</div>
       <div style="display:flex;align-items:center;gap:5px;">
         <div class="tb-sub" id="lv-tag">愛用客 · 階段 1</div>
-        <span onclick="editName()" style="font-size:11px;cursor:pointer;opacity:.6;padding:1px 5px;border-radius:5px;background:rgba(255,255,255,.4);">✏️</span>
+        <span onclick="editName()" style="font-size:10px;cursor:pointer;background:rgba(255,255,255,.5);border-radius:999px;padding:3px 8px;color:#1A5A80;font-weight:700;border:1px solid rgba(255,255,255,.7);">⚙️ 設定</span>
       </div>
     </div>
   </div>
-  <div class="tb-r">
+  <div class="tb-r" style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;">
     <div class="xp-pill">⭐ <span id="tot-xp">0</span> 星</div>
+    <div style="font-size:9px;color:#4A90B8;background:rgba(255,255,255,.4);border-radius:999px;padding:2px 8px;">💰 月標 <span id="income-display">未設定</span></div>
   </div>
 </div>
 
 <div class="wrap">
   <div class="hero">
-    <div class="hero-badge">✦ DCT 晉升地圖</div>
-    <div class="hero-title" id="hero-title">每一步都算數<br>你比昨天更強了</div>
-    <div class="hero-desc">完成每個檢核，解鎖下一個階段<br>從愛用客到皇家，一步一步來</div>
+    <div class="hero-badge">🍄 DCT 晉升闖關系統</div>
+    <div class="hero-title" id="hero-title">每一關都算數 ⭐<br>你比昨天更強了 🏰</div>
+    <div class="hero-desc">🎯 完成每個關卡，解鎖下一個階段<br>🌟 從愛用客到皇家，一步一步闖關！</div>
     <div class="hero-stats">
-      <div class="hs"><div class="hs-n" id="s-done">0</div><div class="hs-l">已完成</div></div>
-      <div class="hs"><div class="hs-n" id="s-tot">0</div><div class="hs-l">總項目</div></div>
-      <div class="hs"><div class="hs-n" id="s-pct">0%</div><div class="hs-l">完成率</div></div>
+      <div class="hs"><div class="hs-n" id="s-done" style="font-size:13px;font-weight:900;">🌱</div><div class="hs-l">🎮 目前級別</div></div>
+      <div class="hs"><div class="hs-n" id="s-tot" style="font-size:13px;">--</div><div class="hs-l">💰 月目標</div></div>
+      <div class="hs"><div class="hs-n" id="s-pct" style="font-size:11px;">設定中</div><div class="hs-l">🎯 年度目標</div></div>
     </div>
   </div>
   <div class="stage-box">
     <div class="sb-title">
-      <span>✦ 晉升進度</span>
+      <span>⭐ 闖關進度</span>
       <span class="sb-sub" id="stage-sub">0 / 7 階段完成</span>
     </div>
-    <div class="stages-row" id="stages-row"></div>
     <div class="xp-bar-wrap">
       <div class="xp-row">
-        <div class="xp-lbl">⭐ 本階段完成項目</div>
+        <div class="xp-lbl">🍄 本關卡進度</div>
         <div class="xp-num"><span id="cx">0</span> / <span id="mx">0</span> 項</div>
       </div>
       <div class="xp-bar"><div class="xp-fill" id="xf" style="width:0%"></div></div>
     </div>
   </div>
-  <div class="sec-lbl"><div class="sl-line"></div><div class="sl-txt">選擇階段</div><div class="sl-line r"></div></div>
+  <div class="sec-lbl"><div class="sl-line"></div><div class="sl-txt">🗺️ 選擇關卡</div><div class="sl-line r"></div></div>
   <div class="lv-scroll" id="lv-scroll"></div>
   <div id="stage-info-wrap"></div>
 </div>
@@ -409,7 +427,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 </div>
 
 <div class="bnt">
-  <div class="bni on" id="nav-map" onclick="switchPage('map')"><div class="bni-ic">🗺️</div><div class="bni-lb">地圖</div></div>
+  <div class="bni on" id="nav-map" onclick="switchPage('map')"><div class="bni-ic">🗺️</div><div class="bni-lb">闖關</div></div>
   <div class="bni" id="nav-achievement" onclick="switchPage('achievement')"><div class="bni-ic">🏆</div><div class="bni-lb">成就</div></div>
   <div class="bni" id="nav-course" onclick="switchPage('course')"><div class="bni-ic">📖</div><div class="bni-lb">課程</div></div>
 </div>
@@ -417,6 +435,9 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 <script>
 const SK = 'dct_v4';
 const NK = 'dct_name_v1';
+const DK = 'dct_date_v1';
+const GK = 'dct_goal_v1';
+const IK = 'dct_income_v1';
 
 let userName = '';
 
@@ -431,8 +452,8 @@ function applyName(name){
   userName = name;
   document.getElementById('tb-name').textContent = name ? name+'的晉升地圖' : '我的晉升地圖';
   document.getElementById('hero-title').innerHTML = name
-    ? `<span style="color:#37A5E6">${name}</span>，每一步都算數<br>你比昨天更強了`
-    : '每一步都算數<br>你比昨天更強了';
+    ? `<span style="color:#37A5E6">${name}</span>，每一關都算數 ⭐<br>你比昨天更強了 🏰`
+    : '每一關都算數 ⭐<br>你比昨天更強了 🏰';
 }
 
 function editName(){
@@ -440,6 +461,18 @@ function editName(){
   const inp = document.getElementById('wc-name');
   inp.value = userName || '';
   document.getElementById('wc-btn').disabled = inp.value.trim().length === 0;
+  // Restore saved values
+  const dateInp = document.getElementById('wc-date');
+  if(dateInp) dateInp.value = localStorage.getItem(DK) || '';
+  const goalSel = document.getElementById('wc-goal');
+  if(goalSel) goalSel.value = localStorage.getItem(GK) || '';
+  const incomeInp = document.getElementById('wc-income');
+  if(incomeInp) incomeInp.value = localStorage.getItem(IK) || '';
+  // Change title to settings mode
+  const titleEl = document.getElementById('wc-main-title');
+  if(titleEl) titleEl.textContent = '⚙️ 個人設定';
+  const btnEl = document.getElementById('wc-btn');
+  if(btnEl) btnEl.textContent = '✅ 儲存設定';
   wc.style.animation='';
   wc.style.display='flex';
   setTimeout(()=>inp.focus(),100);
@@ -450,9 +483,21 @@ function startWithName(){
   if(!input) return;
   saveName(input);
   applyName(input);
+  const dateVal = document.getElementById('wc-date')?.value;
+  if(dateVal) localStorage.setItem(DK, dateVal);
+  const goalVal = document.getElementById('wc-goal')?.value;
+  if(goalVal) localStorage.setItem(GK, goalVal);
+  const incomeVal = document.getElementById('wc-income')?.value;
+  if(incomeVal) localStorage.setItem(IK, incomeVal);
   const wc = document.getElementById('welcome');
+  // Reset title back to default
+  const titleEl = document.getElementById('wc-main-title');
+  if(titleEl) titleEl.textContent = 'DCT 晉升闖關系統';
+  const btnEl = document.getElementById('wc-btn');
+  if(btnEl) btnEl.textContent = '🌸 開始闖關！';
   wc.style.animation='fadeOut .3s ease forwards';
   setTimeout(()=>wc.style.display='none', 300);
+  rHdr();
 }
 // Listen for input changes to enable/disable button
 function onNameInput(){
@@ -471,6 +516,10 @@ const saved = loadName();
 if(saved){
   applyName(saved);
   document.getElementById('welcome').style.display='none';
+  // Restore income display
+  const income = localStorage.getItem(IK);
+  const incomeEl = document.getElementById('income-display');
+  if(incomeEl && income) incomeEl.textContent = '$'+Number(income).toLocaleString();
 }
 
 const STAGES = [
@@ -686,7 +735,7 @@ function done(li,id){ return !!P[k(li,id)]; }
 function mk(li,id){ P[k(li,id)]=true; save(); }
 function um(li,id){ delete P[k(li,id)]; save(); }
 function ulk(li,q){ return !q.ul||done(li,q.ul); }
-function ndone(li){ return LV[li].qs.filter(q=>done(li,q.id)).length; }
+function ndone(li){ const st=CHECKLISTS[li]; if(!st) return 0; return st.sections.reduce((s,sec)=>s+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0); }
 function totDone(){ let d=0; CHECKLISTS.forEach(st=>st.sections.forEach(sec=>{ d+=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length; })); return d; }
 function totQ(){ let t=0; CHECKLISTS.forEach(st=>st.sections.forEach(sec=>{ t+=sec.items.length; })); return t; }
 function totXP(){
@@ -704,7 +753,7 @@ function totXP(){
   });
   return x;
 }
-function stagesDone(){ return LV.filter((_,i)=>ndone(i)===LV[i].qs.length).length; }
+function stagesDone(){ return CHECKLISTS.filter((st,i)=>{ const t=st.sections.reduce((s,sec)=>s+sec.items.length,0); return t>0&&ndone(i)===t; }).length; }
 
 function randEnc(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 
@@ -716,10 +765,32 @@ function rHdr(){
     ckTotal+=sec.items.length;
     ckDone+=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;
   }));
-  document.getElementById('s-done').textContent=ckDone;
-  document.getElementById('s-tot').textContent=ckTotal;
-  document.getElementById('s-pct').textContent=ckTotal?Math.round(ckDone/ckTotal*100)+'%':'0%';
-  document.getElementById('tot-xp').textContent=tx;
+  // Current level name
+  const curLevelName = CHECKLISTS[ci]?.stageName || '愛用客';
+  document.getElementById('s-done').textContent = STAGES[ci]?.emoji + ' ' + curLevelName;
+
+  // Monthly income goal
+  const income2 = localStorage.getItem(IK);
+  if(income2){
+    const num = Number(income2);
+    document.getElementById('s-tot').textContent = num >= 10000
+      ? (num/10000).toFixed(num%10000===0?0:1) + '萬'
+      : '$' + num.toLocaleString();
+  } else {
+    document.getElementById('s-tot').textContent = '未設定';
+  }
+
+  // Annual goal + monthly income
+  const goal = localStorage.getItem(GK);
+  const income = localStorage.getItem(IK);
+  const goalTxt = goal || '未設定';
+  const incomeTxt = income ? '$'+Number(income).toLocaleString() : '未設定';
+  document.getElementById('s-pct').textContent = goalTxt;
+  document.getElementById('tot-xp').textContent = tx;
+
+  // Update monthly income display in topbar pill
+  const incomeEl = document.getElementById('income-display');
+  if(incomeEl) incomeEl.textContent = incomeTxt;
   const ckStage = CHECKLISTS[ci];
   const stageName = ckStage ? ckStage.stageName : '愛用客';
   document.getElementById('lv-tag').textContent=stageName+' · 階段 '+(ci+1);
@@ -943,7 +1014,7 @@ function compQ(li, id, name, xp, enc, e){
   const prevXP = totXP();
   mk(li,id); oq=null; rAll();
   const newXP = totXP();
-  const d=ndone(li), t=LV[li].qs.length, all=d===t;
+  const stg=CHECKLISTS[li]; const t=stg?stg.sections.reduce((s,sec)=>s+sec.items.length,0):0; const d=ndone(li), all=t>0&&d===t;
   const st=d>=t*.75?3:d>=t*.4?2:1;
   confetti();
 
@@ -1019,7 +1090,7 @@ function closeOvl(){ document.getElementById('ovl').style.display='none'; }
 function setLv(i){ ci=i; cc='全部'; oq=null; sicOpen=true; retailFocus=null; rAll(); }
 function setCat(c){ cc=c; oq=null; rTabs(); rQuests(); }
 function tog(qk){ oq=oq===qk?null:qk; rQuests(); }
-function rAll(){ rHdr(); rStages(); rLvNav(); renderStageInfo(); }
+function rAll(){ rHdr(); rLvNav(); renderStageInfo(); }
 
 
 // ── PAGE SWITCHING ────────────────────────────────────────────────
@@ -1180,7 +1251,7 @@ function renderAchievements(){
   if(!grid || !msList) return;
 
   grid.innerHTML = ACHIEVEMENTS.map(a=>{
-    const unlocked = ndone(a.stageIdx) === LV[a.stageIdx].qs.length;
+    const unlocked = (()=>{ const st=CHECKLISTS[a.stageIdx]; if(!st) return false; const t=st.sections.reduce((s,sec)=>s+sec.items.length,0); return t>0&&ndone(a.stageIdx)===t; })();
     return `<div class="ach-item${unlocked?' unlocked':' locked'}">
       <div class="ach-em">${a.em}</div>
       <div class="ach-name">${a.name}</div>
@@ -1465,7 +1536,7 @@ const UPGRADE_INFO = [
    note:'沒有招商權，零售獲利四大技能全掌握'},
   {stageId:3,name:'三級輔導',em:'💫',
    threshold:{label:'晉升門檻',amount:'不須首次備貨',monthly:'月補貨 12,000元以上'},
-   conditions:['新晉升不須首次備貨金額','兩個月補貨金額12,000元以上','4位實習 或 2位三級零售+2位實習'],
+   conditions:['新晉升不須首次備貨金額','兩個月補貨金額12,000元以上','4位實習 或 2位三級零售+2位實習','⚠️ 前往公司官方群組記事本報名輔導督導課程'],
    note:'有招商權，開始帶夥伴一起成長'},
   {stageId:4,name:'二級輔導',em:'🌙',
    threshold:{label:'晉升門檻',amount:'單筆 50,000元',monthly:'兩月補貨 40,000元以上'},
@@ -1563,7 +1634,7 @@ function renderUpgrade(){
   const curStageIdx = ci; // current level in quest map
 
   el.innerHTML = UPGRADE_INFO.map((u,i)=>{
-    const isDone = ndone(i) === LV[i]?.qs?.length;
+    const isDone = (()=>{ const st=CHECKLISTS[i]; if(!st) return false; const t=st.sections.reduce((s,sec)=>s+sec.items.length,0); return t>0&&ndone(i)===t; })();
     const isCur = i === curStageIdx;
     const isLocked = i > curStageIdx + 1;
     const statusClass = isDone ? 'upg-hd-done' : isCur ? 'upg-hd-cur' : 'upg-hd-locked';
@@ -1603,6 +1674,13 @@ function toggleUpgCard(id){
 // ── STAGE INFO CARD (integrated checklist + upgrade) ─────────────
 const openSicSections = {};
 let sicOpen = true;
+let retailFocus = null;
+
+function setRetailFocus(id){
+  retailFocus = id;
+  renderStageInfo();
+}
+
 function toggleSic(){
   sicOpen = !sicOpen;
   document.getElementById('sic-body')?.classList.toggle('open', sicOpen);
@@ -1754,62 +1832,7 @@ function renderStageInfo(){
 
 
 
-function toggleSic(){
-  sicOpen = !sicOpen;
-  document.getElementById('sic-body')?.classList.toggle('open', sicOpen);
-  document.getElementById('sic-arr')?.classList.toggle('open', sicOpen);
-}
 
-function toggleSicCkItem(secId, itemIdx){
-  const key = secId+'_'+itemIdx;
-  const prevXP = totXP();
-  ckData[key] = !ckData[key];
-  saveCkData();
-  const newXP = totXP();
-  rHdr();
-  renderStageInfo();
-  renderAchievements();
-  if(ckData[key]){
-    const milestone = checkMilestone(prevXP, newXP);
-    if(milestone){ setTimeout(()=>showMilestone(milestone, newXP), 300); return; }
-    const totalItems = CHECKLISTS.reduce((s,st)=>s+st.sections.reduce((ss,sec)=>ss+sec.items.length,0),0);
-    const doneItems = CHECKLISTS.reduce((s,st)=>s+st.sections.reduce((ss,sec)=>ss+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0),0);
-    if(doneItems===totalItems){ setTimeout(()=>showMilestone(ALL_DONE_MILESTONE, newXP), 300); }
-  }
-}
-
-function confetti(){
-  const cols=['#37A5E6','#A7D1F3','#DBF6FF','#2290D4','#FFD700','#fff'];
-  for(let i=0;i<30;i++){
-    const e=document.createElement('div'); e.className='cf';
-    e.style.cssText=`left:${Math.random()*100}vw;background:${cols[Math.floor(Math.random()*cols.length)]};width:${5+Math.random()*7}px;height:${5+Math.random()*7}px;border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${1.2+Math.random()*1.4}s;animation-delay:${Math.random()*.4}s;`;
-    document.body.appendChild(e); setTimeout(()=>e.remove(),2800);
-  }
-}
-
-function showMilestone(m, totalXP){
-  const gradients = {'🌱':'linear-gradient(135deg,#6DBF8A,#3A9A60)','⭐':'linear-gradient(135deg,#F0C040,#D4960A)','📱':'linear-gradient(135deg,#6A8FEE,#2952CC)','💰':'linear-gradient(135deg,#5DBF9A,#1A8A6A)','🤝':'linear-gradient(135deg,#A06AEE,#6030CC)','💫':'linear-gradient(135deg,#37A5E6,#1A70B0)','👑':'linear-gradient(135deg,#E8A020,#B87010)'};
-  const grad = gradients[m.icon] || 'linear-gradient(135deg,#A7D1F3,#2290D4)';
-  document.getElementById('ovl-content').innerHTML=`
-    <div class="ms-card">
-      <div class="ms-card-top" style="background:${grad}">
-        <div class="ms-icon-wrap">${m.icon}</div>
-        <div class="ms-badge-label">DCT 成就解鎖</div>
-        <div class="ms-card-title">${m.name||m.title}</div>
-        <div class="ms-card-sub">累積 ${totalXP} 顆星星</div>
-      </div>
-      <div class="ms-card-body">
-        <div class="ms-stars-row"><div class="ms-star-big">⭐</div><div class="ms-star-count">× ${totalXP}</div><div class="ms-star-big">⭐</div></div>
-        <div class="ms-msg">${(m.msg||'').replace(/\n/g,'<br>')}</div>
-        <div class="ms-quote-box"><div class="ms-quote-txt">${(m.quote||'').replace(/\n/g,'<br>')}</div></div>
-        ${m.tag?`<div class="ms-tag">${m.tag}</div>`:''}
-        <div style="font-size:10px;color:#90C0E0;text-align:center;margin-bottom:10px;">📸 截圖這個畫面存起來吧！</div>
-        <button class="ms-btn-save" onclick="closeOvl()" style="width:100%;">繼續加油 ✨</button>
-      </div>
-    </div>`;
-  confetti(); confetti();
-  document.getElementById('ovl').style.display='flex';
-}
 
 function checkMilestone(prevXP, newXP){
   for(const m of MILESTONES){ if(prevXP < m.stars && newXP >= m.stars) return m; }
@@ -1817,7 +1840,7 @@ function checkMilestone(prevXP, newXP){
 }
 
 function showCert(li){
-  const stage=STAGES[li], lv=CHECKLISTS[li];
+  const stage=STAGES[li];
   const now=new Date();
   const dateStr=now.getFullYear()+'年'+(now.getMonth()+1)+'月'+now.getDate()+'日';
   const certQuotes = ['「成為產品最好的見證者，你的故事就是最強的銷售工具。」','「每一次開口，都是在練習成為更好的自己。」','「服務好一個人，他會幫你帶來更多人。」','「你的成長速度，決定你能帶多少人一起成長。」','「團隊的高度，取決於你願意成為多高的人。」','「真正的領導者，是讓每個人都覺得自己很重要。」','「皇家不是終點，是你開始影響更多人生命的起點。」'];
@@ -1859,8 +1882,8 @@ function switchPage(p){
 }
 
 function setLv(i){ ci=i; cc='全部'; oq=null; sicOpen=true; retailFocus=null; rAll(); }
-function setCat(c){ cc=c; oq=null; rAll(); }
-function rAll(){ rHdr(); rStages(); rLvNav(); renderStageInfo(); }
+function setCat(c){ cc=c; oq=null; }
+function rAll(){ rHdr(); rLvNav(); renderStageInfo(); }
 
 loadCkData(); load(); rAll();
 </script>
