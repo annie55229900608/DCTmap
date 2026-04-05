@@ -224,8 +224,8 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     <div class="wc-title">歡迎加入 DCT</div>
     <div class="wc-desc">輸入你的名字<br>開始你專屬的晉升闖關之旅！</div>
     <div class="wc-label">你的名字</div>
-    <input class="wc-input" id="wc-name" type="text" placeholder="例如：小安、Annie…" maxlength="10">
-    <button class="wc-btn" id="wc-btn" onclick="startWithName()" disabled>開始我的旅程 ✦</button>
+    <input class="wc-input" id="wc-name" type="text" placeholder="例如：小安、Annie…" maxlength="10" oninput="onNameInput()" onkeydown="onNameKey(event)">
+    <button class="wc-btn" id="wc-btn" onclick="startWithName()">開始我的旅程 ✦</button>
     <div class="wc-note">名字會儲存在你的裝置上<br>下次打開會自動記住你</div>
   </div>
 </div>
@@ -328,6 +328,8 @@ function editName(){
   wc.style.display='flex';
   setTimeout(()=>inp.focus(),100);
 }
+
+function startWithName(){
   const input = document.getElementById('wc-name').value.trim();
   if(!input) return;
   saveName(input);
@@ -336,30 +338,24 @@ function editName(){
   wc.style.animation='fadeOut .3s ease forwards';
   setTimeout(()=>wc.style.display='none', 300);
 }
-
 // Listen for input changes to enable/disable button
-document.addEventListener('DOMContentLoaded', ()=>{
-  const inp = document.getElementById('wc-name');
-  const btn = document.getElementById('wc-btn');
-  inp.addEventListener('input', ()=>{
-    btn.disabled = inp.value.trim().length === 0;
-  });
-  inp.addEventListener('keydown', (e)=>{
-    if(e.key==='Enter' && inp.value.trim()) startWithName();
-  });
-
-  // Check if name already saved
-  const saved = loadName();
-  if(saved){
-    applyName(saved);
-    document.getElementById('welcome').style.display='none';
+function onNameInput(){
+  const v = document.getElementById('wc-name').value.trim();
+  document.getElementById('wc-btn').disabled = v.length === 0;
+}
+function onNameKey(e){
+  if(e.key==='Enter'){
+    const v = document.getElementById('wc-name').value.trim();
+    if(v) startWithName();
   }
-});
+}
 
-// Add fadeOut animation
-const styleEl = document.createElement('style');
-styleEl.textContent = '@keyframes fadeOut{from{opacity:1}to{opacity:0}}';
-document.head.appendChild(styleEl);
+// Init on load
+const saved = loadName();
+if(saved){
+  applyName(saved);
+  document.getElementById('welcome').style.display='none';
+}
 
 const STAGES = [
   { emoji:'🌱', name:'愛用客',    short:'愛用客' },
