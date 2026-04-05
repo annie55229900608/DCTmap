@@ -65,9 +65,9 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .lv-scroll::-webkit-scrollbar{display:none;}
 .lv-card{flex-shrink:0;width:90px;background:#fff;border:2px solid #C0E4F8;border-radius:18px;padding:12px 6px 10px;text-align:center;cursor:pointer;transition:all .2s;position:relative;box-shadow:0 2px 10px rgba(55,165,230,.06);}
 .lv-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(55,165,230,.15);}
+.lv-card.lk{opacity:.4;}
 .lv-card.active{border-color:#37A5E6;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);box-shadow:0 4px 18px rgba(55,165,230,.22);}
-.lv-card.lk{opacity:.38;cursor:not-allowed;}
-.lv-card.lk:hover{transform:none;}
+
 .lv-em{font-size:26px;margin-bottom:5px;}
 .lv-nm{font-size:9px;font-weight:700;color:#37A5E6;margin-bottom:3px;line-height:1.3;}
 .lv-pg{height:4px;background:#EEF8FE;border-radius:999px;overflow:hidden;margin-top:4px;}
@@ -203,7 +203,8 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .ach-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .ach-item{background:#fff;border:2px solid #E0F0F8;border-radius:16px;padding:16px 12px;text-align:center;transition:all .2s;}
 .ach-item.unlocked{border-color:#A7D1F3;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);}
-.ach-item.locked{opacity:.4;}
+.ach-item.locked{opacity:.5;}
+.ach-item.locked .ach-em{opacity:.4;}
 .ach-em{font-size:32px;margin-bottom:6px;}
 .ach-name{font-size:11px;font-weight:700;color:#1A5A80;margin-bottom:3px;}
 .ach-desc{font-size:9px;color:#5A9ABB;line-height:1.5;}
@@ -852,8 +853,7 @@ function rLvNav(){
     })();
     const all=t>0&&d===t;
     const lv=STAGES[i];
-    return `<div class="lv-card${i===ci?' active':''}${lk?' lk':''}" onclick="${lk?'':'setLv('+i+')'}">
-      ${lk?'<div class="lv-lock">🔒</div>':''}
+    return `<div class="lv-card${i===ci?' active':''}${lk?' lk':''}" onclick="setLv(${i})">
       ${all?'<div class="lv-done-badge">✓</div>':''}
       <div class="lv-em">${ck.em}</div>
       <div class="lv-nm">${ck.stageName}</div>
@@ -1087,6 +1087,13 @@ function showCert(li){
 
 function undoQ(li, id, e){ e.stopPropagation(); um(li,id); oq=null; rAll(); }
 function closeOvl(){ document.getElementById('ovl').style.display='none'; }
+function stageComplete(i){
+  const st=CHECKLISTS[i]; if(!st) return false;
+  const t=st.sections.reduce((a,s)=>a+s.items.length,0);
+  const d=st.sections.reduce((a,s)=>a+s.items.filter((_,j)=>ckData[s.id+'_'+j]).length,0);
+  return t>0&&d===t;
+}
+
 function setLv(i){ ci=i; cc='全部'; oq=null; sicOpen=true; retailFocus=null; rAll(); }
 function setCat(c){ cc=c; oq=null; rTabs(); rQuests(); }
 function tog(qk){ oq=oq===qk?null:qk; rQuests(); }
@@ -1733,6 +1740,7 @@ function renderStageInfo(){
     s + sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length, 0) : 0;
   const ckTotalAll = ckStage ? ckStage.sections.reduce((s,sec)=>s+sec.items.length, 0) : 0;
   const allDone = ckTotalAll > 0 && ckTotalDone === ckTotalAll;
+  const lk = ci > 0 && !stageComplete(ci-1);
 
   // Threshold badge HTML
   const thresholdHTML = upg?.threshold ? `
@@ -1879,6 +1887,13 @@ function switchPage(p){
   if(p==='achievement') renderAchievements();
   if(p==='course') renderCourses();
   window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function stageComplete(i){
+  const st=CHECKLISTS[i]; if(!st) return false;
+  const t=st.sections.reduce((a,s)=>a+s.items.length,0);
+  const d=st.sections.reduce((a,s)=>a+s.items.filter((_,j)=>ckData[s.id+'_'+j]).length,0);
+  return t>0&&d===t;
 }
 
 function setLv(i){ ci=i; cc='全部'; oq=null; sicOpen=true; retailFocus=null; rAll(); }
