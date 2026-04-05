@@ -195,18 +195,50 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .ms-star-chip{display:flex;align-items:center;gap:4px;background:#EEF8FE;border:1.5px solid #A7D1F3;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:900;color:#2290D4;}
 .ms-quote{font-size:11px;color:#37A5E6;font-style:italic;text-align:center;line-height:1.75;padding:9px 12px;background:#EEF8FE;border-radius:10px;margin-bottom:16px;border-left:3px solid #A7D1F3;}
 .ms-btn{width:100%;padding:11px;border-radius:13px;background:linear-gradient(135deg,#A7D1F3,#DBF6FF);color:#1A5A80;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:inherit;letter-spacing:.05em;box-shadow:0 3px 10px rgba(55,165,230,.2);}
+/* ── WELCOME SCREEN ── */
+.welcome{position:fixed;inset:0;background:#EEF8FE;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;}
+.welcome-box{background:#fff;border-radius:28px;padding:36px 28px;text-align:center;max-width:320px;width:100%;box-shadow:0 12px 40px rgba(55,165,230,.15);}
+.wc-icon{font-size:52px;margin-bottom:12px;display:block;animation:bo 1.5s ease infinite alternate;}
+.wc-title{font-size:20px;font-weight:900;color:#1A5A80;margin-bottom:6px;}
+.wc-desc{font-size:12px;color:#5A9ABB;line-height:1.8;margin-bottom:24px;}
+.wc-label{font-size:11px;font-weight:700;color:#37A5E6;letter-spacing:.08em;margin-bottom:8px;text-align:left;}
+.wc-input{width:100%;padding:13px 16px;border-radius:14px;border:2px solid #A7D1F3;font-size:16px;font-family:inherit;color:#1A5A80;background:#EEF8FE;outline:none;letter-spacing:.05em;transition:border-color .2s;margin-bottom:16px;}
+.wc-input:focus{border-color:#37A5E6;background:#fff;}
+.wc-input::placeholder{color:#A7C8E0;}
+.wc-btn{width:100%;padding:13px;border-radius:14px;background:linear-gradient(135deg,#A7D1F3,#DBF6FF);color:#1A5A80;font-size:14px;font-weight:900;border:none;cursor:pointer;font-family:inherit;letter-spacing:.08em;box-shadow:0 4px 14px rgba(55,165,230,.2);transition:all .2s;}
+.wc-btn:hover{transform:translateY(-1px);}
+.wc-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+.wc-note{font-size:10px;color:#90C0E0;margin-top:12px;line-height:1.6;}
+
+/* ── CONFETTI ── */
 .cf{position:fixed;pointer-events:none;z-index:1000;border-radius:2px;animation:cff linear forwards;}
 @keyframes cff{0%{transform:translateY(-10px) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
 </style>
 </head>
 <body>
 
+<!-- WELCOME SCREEN -->
+<div class="welcome" id="welcome">
+  <div class="welcome-box">
+    <span class="wc-icon">🌟</span>
+    <div class="wc-title">歡迎加入 DCT</div>
+    <div class="wc-desc">輸入你的名字<br>開始你專屬的晉升闖關之旅！</div>
+    <div class="wc-label">你的名字</div>
+    <input class="wc-input" id="wc-name" type="text" placeholder="例如：小安、Annie…" maxlength="10">
+    <button class="wc-btn" id="wc-btn" onclick="startWithName()" disabled>開始我的旅程 ✦</button>
+    <div class="wc-note">名字會儲存在你的裝置上<br>下次打開會自動記住你</div>
+  </div>
+</div>
+
 <div class="topbar">
   <div class="tb-l">
     <div class="tb-av">🌟</div>
     <div>
-      <div class="tb-name">我的晉升地圖</div>
-      <div class="tb-sub" id="lv-tag">愛用客 · 階段 1</div>
+      <div class="tb-name" id="tb-name">我的晉升地圖</div>
+      <div style="display:flex;align-items:center;gap:5px;">
+        <div class="tb-sub" id="lv-tag">愛用客 · 階段 1</div>
+        <span onclick="editName()" style="font-size:11px;cursor:pointer;opacity:.6;padding:1px 4px;border-radius:5px;background:rgba(255,255,255,.3);">✏️</span>
+      </div>
     </div>
   </div>
   <div class="tb-r">
@@ -217,7 +249,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 <div class="wrap">
   <div class="hero">
     <div class="hero-badge">✦ DCT 晉升地圖</div>
-    <div class="hero-title">每一步都算數<br>你比昨天更強了</div>
+    <div class="hero-title" id="hero-title">每一步都算數<br>你比昨天更強了</div>
     <div class="hero-desc">完成每個關卡，解鎖下一個階段<br>從愛用客到皇家，一步一步來</div>
     <div class="hero-stats">
       <div class="hs"><div class="hs-n" id="s-done">0</div><div class="hs-l">已完成</div></div>
@@ -268,6 +300,66 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 
 <script>
 const SK = 'dct_v4';
+const NK = 'dct_name_v1';
+
+let userName = '';
+
+function loadName(){
+  return localStorage.getItem(NK) || '';
+}
+function saveName(n){
+  localStorage.setItem(NK, n);
+}
+
+function applyName(name){
+  userName = name;
+  document.getElementById('tb-name').textContent = name ? name+'的晉升地圖' : '我的晉升地圖';
+  document.getElementById('hero-title').innerHTML = name
+    ? `<span style="color:#37A5E6">${name}</span>，每一步都算數<br>你比昨天更強了`
+    : '每一步都算數<br>你比昨天更強了';
+}
+
+function editName(){
+  const wc = document.getElementById('welcome');
+  const inp = document.getElementById('wc-name');
+  inp.value = userName || '';
+  document.getElementById('wc-btn').disabled = inp.value.trim().length === 0;
+  wc.style.animation='';
+  wc.style.display='flex';
+  setTimeout(()=>inp.focus(),100);
+}
+  const input = document.getElementById('wc-name').value.trim();
+  if(!input) return;
+  saveName(input);
+  applyName(input);
+  const wc = document.getElementById('welcome');
+  wc.style.animation='fadeOut .3s ease forwards';
+  setTimeout(()=>wc.style.display='none', 300);
+}
+
+// Listen for input changes to enable/disable button
+document.addEventListener('DOMContentLoaded', ()=>{
+  const inp = document.getElementById('wc-name');
+  const btn = document.getElementById('wc-btn');
+  inp.addEventListener('input', ()=>{
+    btn.disabled = inp.value.trim().length === 0;
+  });
+  inp.addEventListener('keydown', (e)=>{
+    if(e.key==='Enter' && inp.value.trim()) startWithName();
+  });
+
+  // Check if name already saved
+  const saved = loadName();
+  if(saved){
+    applyName(saved);
+    document.getElementById('welcome').style.display='none';
+  }
+});
+
+// Add fadeOut animation
+const styleEl = document.createElement('style');
+styleEl.textContent = '@keyframes fadeOut{from{opacity:1}to{opacity:0}}';
+document.head.appendChild(styleEl);
 
 const STAGES = [
   { emoji:'🌱', name:'愛用客',    short:'愛用客' },
@@ -669,7 +761,7 @@ function showCert(li){
   const now=new Date();
   const dateStr=now.getFullYear()+'年'+(now.getMonth()+1)+'月'+now.getDate()+'日';
   const msgs=[
-    `你完成了「${stage.name}」階段的所有關卡。`,
+    `${userName ? userName+'，你' : '你'}完成了「${stage.name}」階段的所有關卡。`,
     `這不是一件容易的事，但你做到了。`,
     `把這張獎狀截圖存起來，它是你努力過的證明。`,
   ];
@@ -679,7 +771,7 @@ function showCert(li){
       <div class="cert-top">
         <span class="cert-badge-icon">${stage.emoji}</span>
         <div class="cert-stage-name">DCT 晉升認證</div>
-        <div class="cert-title">${stage.name}<br>階段完成</div>
+        <div class="cert-title">${userName ? userName+'<br>' : ''}${stage.name}<br>階段完成</div>
         <div class="cert-subtitle">第 ${li+1} 階段 · 共 7 階段</div>
       </div>
       <div class="cert-body">
