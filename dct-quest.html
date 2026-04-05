@@ -15,11 +15,11 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 /* ── TOPBAR ── */
 .topbar{background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(55,165,230,.15);position:sticky;top:0;z-index:100;}
 .tb-l{display:flex;align-items:center;gap:10px;}
-.tb-av{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.5);border:2px solid rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;font-size:17px;}
+.tb-av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.5);border:2px solid rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;font-size:20px;}
 .tb-name{font-size:13px;font-weight:700;color:#1A5A80;}
 .tb-sub{font-size:10px;color:#4A90B8;margin-top:1px;}
 .tb-r{display:flex;align-items:center;gap:6px;}
-.xp-pill{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);border-radius:999px;padding:4px 11px;font-size:11px;font-weight:700;color:#2290D4;}
+.xp-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.7);border:1.5px solid rgba(255,255,255,.9);border-radius:999px;padding:5px 13px;font-size:12px;font-weight:700;color:#1A7AB8;box-shadow:0 2px 8px rgba(55,165,230,.15);}
 
 /* ── HERO ── */
 .hero{background:linear-gradient(160deg,#DBF6FF,#A7D1F3);padding:22px 18px 24px;text-align:center;position:relative;overflow:hidden;}
@@ -28,22 +28,22 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .hero-title{font-size:20px;font-weight:900;color:#1A5A80;line-height:1.35;margin-bottom:5px;}
 .hero-desc{font-size:11px;color:#4A7A9A;line-height:1.8;margin-bottom:16px;}
 .hero-stats{display:flex;justify-content:center;gap:9px;}
-.hs{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.75);border-radius:13px;padding:7px 15px;text-align:center;}
-.hs-n{font-size:19px;font-weight:900;color:#2290D4;}
+.hs{background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);border-radius:14px;padding:8px 16px;text-align:center;}
+.hs-n{font-size:20px;font-weight:900;color:#2290D4;}
 .hs-l{font-size:9px;color:#5A9ABB;margin-top:1px;}
 
-/* ── STAGE STARS ── */
+/* ── STAGE BOX ── */
 .stage-box{background:#fff;margin:0 14px;border-radius:0 0 18px 18px;padding:16px 16px 14px;box-shadow:0 4px 20px rgba(55,165,230,.08);margin-bottom:20px;}
 .sb-title{font-size:10px;font-weight:700;color:#2290D4;letter-spacing:.1em;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
 .sb-sub{font-size:10px;color:#90C0E0;font-weight:400;}
 .stages-row{display:flex;justify-content:space-between;gap:3px;}
 .stage-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;}
-.stage-star{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;border:1.5px solid #C0E4F8;background:#EEF8FE;transition:all .3s;position:relative;}
+.stage-star{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:18px;border:1.5px solid #C0E4F8;background:#EEF8FE;transition:all .3s;position:relative;}
 .stage-star.done{background:linear-gradient(135deg,#EEF8FE,#C0E4F8);border-color:#37A5E6;box-shadow:0 2px 8px rgba(55,165,230,.2);}
 .stage-star.current{background:linear-gradient(135deg,#37A5E6,#2290D4);border-color:#2290D4;box-shadow:0 3px 12px rgba(55,165,230,.35);}
 .stage-star.current .ss-icon{filter:brightness(10);}
 .stage-star.locked{opacity:.4;}
-.ss-icon{font-size:16px;}
+.ss-icon{font-size:17px;}
 .stage-lbl{font-size:8px;color:#90C0E0;text-align:center;line-height:1.3;font-weight:500;}
 .stage-item.done-lbl .stage-lbl{color:#2290D4;font-weight:700;}
 .stage-item.cur-lbl .stage-lbl{color:#1A7AB8;font-weight:900;}
@@ -51,7 +51,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .xp-row{display:flex;justify-content:space-between;margin-bottom:5px;}
 .xp-lbl{font-size:10px;font-weight:700;color:#37A5E6;}
 .xp-num{font-size:10px;color:#90C8E8;}
-.xp-bar{height:7px;background:#EEF8FE;border-radius:999px;overflow:hidden;border:1px solid #C0E4F8;}
+.xp-bar{height:8px;background:#EEF8FE;border-radius:999px;overflow:hidden;border:1px solid #C0E4F8;}
 .xp-fill{height:100%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;transition:width .6s cubic-bezier(.34,1.56,.64,1);}
 
 /* ── SECTION LABEL ── */
@@ -61,112 +61,190 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .sl-txt{font-size:10px;font-weight:700;color:#37A5E6;letter-spacing:.12em;white-space:nowrap;}
 
 /* ── LEVEL SCROLL ── */
-.lv-scroll{display:flex;gap:9px;padding:0 18px;overflow-x:auto;margin-bottom:22px;scrollbar-width:none;}
+.lv-scroll{display:flex;gap:9px;padding:0 18px;overflow-x:auto;margin-bottom:16px;scrollbar-width:none;}
 .lv-scroll::-webkit-scrollbar{display:none;}
-.lv-card{flex-shrink:0;width:92px;background:#fff;border:2px solid #C0E4F8;border-radius:16px;padding:11px 6px;text-align:center;cursor:pointer;transition:all .2s;position:relative;box-shadow:0 2px 10px rgba(55,165,230,.06);}
-.lv-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(55,165,230,.13);}
-.lv-card.active{border-color:#37A5E6;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);box-shadow:0 4px 18px rgba(55,165,230,.2);}
+.lv-card{flex-shrink:0;width:96px;background:#fff;border:2px solid #C0E4F8;border-radius:18px;padding:12px 6px;text-align:center;cursor:pointer;transition:all .2s;position:relative;box-shadow:0 2px 10px rgba(55,165,230,.06);}
+.lv-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(55,165,230,.15);}
+.lv-card.active{border-color:#37A5E6;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);box-shadow:0 4px 18px rgba(55,165,230,.22);}
 .lv-card.lk{opacity:.38;cursor:not-allowed;}
 .lv-card.lk:hover{transform:none;}
-.lv-em{font-size:24px;margin-bottom:5px;}
+.lv-em{font-size:26px;margin-bottom:5px;}
 .lv-nm{font-size:9px;font-weight:700;color:#37A5E6;margin-bottom:3px;line-height:1.3;}
 .lv-pg{height:3px;background:#EEF8FE;border-radius:999px;overflow:hidden;margin-top:3px;}
 .lv-pf{height:100%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;}
 .lv-pt{font-size:8px;color:#90C8E8;margin-top:2px;}
-.lv-lock{position:absolute;top:5px;right:7px;font-size:10px;opacity:.5;}
+.lv-lock{position:absolute;top:5px;right:7px;font-size:11px;opacity:.5;}
 .lv-done-badge{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#37A5E6,#2290D4);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:900;box-shadow:0 2px 6px rgba(55,165,230,.3);}
+
+/* ── STAGE INFO CARD ── */
+.stage-info-card{background:#fff;border-radius:18px;margin:0 14px 12px;overflow:hidden;box-shadow:0 2px 12px rgba(55,165,230,.08);}
+.sic-top{background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:13px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
+.sic-left{display:flex;align-items:center;gap:9px;}
+.sic-em{font-size:20px;}
+.sic-name{font-size:12px;font-weight:700;color:#1A5A80;}
+.sic-sub{font-size:10px;color:#4A7A9A;margin-top:1px;}
+.sic-arr{font-size:10px;color:#4A7A9A;width:22px;height:22px;background:rgba(255,255,255,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s;}
+.sic-arr.open{transform:rotate(180deg);}
+.sic-body{display:none;padding:14px 16px;}
+.sic-body.open{display:block;}
+.sic-upg-title{font-size:9px;font-weight:700;color:#37A5E6;letter-spacing:.1em;margin-bottom:8px;}
+.sic-cond{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:#3A6A8A;line-height:1.6;margin-bottom:5px;padding:6px 10px;background:#EEF8FE;border-radius:9px;}
+.sic-cond-dot{width:6px;height:6px;border-radius:50%;background:#37A5E6;flex-shrink:0;margin-top:5px;}
+.sic-note{font-size:10px;color:#2290D4;font-style:italic;margin:6px 0 12px;padding:7px 11px;background:#F0FBFF;border-radius:8px;border-left:3px solid #A7D1F3;}
+.sic-divider{height:1px;background:linear-gradient(90deg,#A7D1F3,transparent);margin:10px 0 12px;}
+.sic-ck-title{font-size:9px;font-weight:700;color:#37A5E6;letter-spacing:.1em;margin-bottom:10px;}
+.sic-ck-section{margin-bottom:12px;}
+.sic-ck-sec-hd{display:flex;align-items:center;gap:7px;padding:8px 11px;background:linear-gradient(135deg,#EEF8FE,#F5FCFF);border-radius:10px;margin-bottom:6px;}
+.sic-ck-sec-em{font-size:15px;}
+.sic-ck-sec-title{font-size:11px;font-weight:700;color:#1A5A80;flex:1;}
+.sic-ck-sec-prog{font-size:9px;color:#37A5E6;font-weight:700;background:rgba(255,255,255,.8);padding:2px 8px;border-radius:999px;border:1px solid #C0E4F8;}
+.sic-ck-items{display:flex;flex-direction:column;gap:5px;}
+.sic-ck-target{font-size:10px;color:#2290D4;padding:5px 10px;background:#EEF8FE;border-radius:8px;border-left:3px solid #A7D1F3;margin-bottom:5px;font-weight:500;}
+.sic-ck-item-row{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;border-radius:12px;background:#F8FCFF;border:1.5px solid #E0F0F8;cursor:pointer;transition:all .15s;}
+.sic-ck-item-row:hover{border-color:#A7D1F3;background:#EEF8FE;}
+.sic-ck-item-row.checked{background:linear-gradient(135deg,#EEF8FE,#E8F6FF);border-color:#A7D1F3;}
+.sic-ck-box-sq{width:20px;height:20px;border-radius:6px;border:2px solid #A7D1F3;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;background:#fff;transition:all .2s;}
+.sic-ck-item-row.checked .sic-ck-box-sq{background:linear-gradient(135deg,#37A5E6,#2290D4);border-color:#2290D4;box-shadow:0 2px 6px rgba(55,165,230,.3);}
+.sic-ck-v2{width:9px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);opacity:0;transition:opacity .2s;}
+.sic-ck-item-row.checked .sic-ck-v2{opacity:1;}
+.sic-ck-item-main{flex:1;display:flex;align-items:flex-start;flex-wrap:wrap;gap:5px;}
+.sic-ck-txt{font-size:11px;color:#3A6A8A;line-height:1.65;flex:1;min-width:100px;}
+.sic-ck-item-row.checked .sic-ck-txt{color:#1A7AB8;}
+.course-link-btn{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:999px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1px solid #A7D1F3;color:#2290D4;font-size:9px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;box-shadow:0 1px 4px rgba(55,165,230,.15);}
+.course-link-btn:hover{background:#DBF6FF;border-color:#37A5E6;}
 
 /* ── QUEST AREA ── */
 .qa{padding:0 14px;}
 .qa-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 2px;}
-.qa-title{font-size:15px;font-weight:900;color:#1A4A6A;}
-.qa-cnt{background:#EEF8FE;border:1px solid #A7D1F3;border-radius:999px;padding:2px 10px;font-size:10px;font-weight:700;color:#37A5E6;}
-.cat-row{display:flex;gap:5px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none;}
+.qa-title{font-size:16px;font-weight:900;color:#1A4A6A;}
+.qa-cnt{background:#EEF8FE;border:1.5px solid #A7D1F3;border-radius:999px;padding:3px 12px;font-size:10px;font-weight:700;color:#37A5E6;}
+.cat-row{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none;}
 .cat-row::-webkit-scrollbar{display:none;}
-.cat-btn{flex-shrink:0;padding:5px 12px;border-radius:999px;font-size:10px;font-weight:500;border:1.5px solid #C0E4F8;background:#fff;color:#90C0E0;cursor:pointer;transition:all .15s;font-family:inherit;letter-spacing:.05em;}
+.cat-btn{flex-shrink:0;padding:6px 14px;border-radius:999px;font-size:10px;font-weight:600;border:1.5px solid #C0E4F8;background:#fff;color:#90C0E0;cursor:pointer;transition:all .15s;font-family:inherit;}
 .cat-btn:hover{border-color:#A7D1F3;color:#37A5E6;}
-.cat-btn.on{background:linear-gradient(135deg,#A7D1F3,#DBF6FF);border-color:#A7D1F3;color:#1A5A80;box-shadow:0 2px 8px rgba(55,165,230,.15);}
+.cat-btn.on{background:linear-gradient(135deg,#37A5E6,#2290D4);border-color:transparent;color:#fff;box-shadow:0 3px 10px rgba(55,165,230,.3);}
 
 /* ── QUEST CARD ── */
-.qc{background:#fff;border:2px solid #E8EEFF;border-radius:18px;margin-bottom:9px;overflow:hidden;transition:all .2s;box-shadow:0 2px 10px rgba(55,165,230,.04);}
-.qc:hover{box-shadow:0 4px 18px rgba(55,165,230,.1);}
-.qc.done{border-color:#A7D1F3;background:linear-gradient(135deg,#F5F8FF,#EEF8FE);}
-.qc.lkq{opacity:.42;pointer-events:none;}
-.qc.open{border-color:#A7D1F3;}
-.qc-hd{display:flex;align-items:center;gap:11px;padding:13px 14px;cursor:pointer;}
-.qc-ico{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.qc{background:#fff;border:2px solid #DCF0FC;border-radius:20px;margin-bottom:10px;overflow:hidden;transition:all .2s;box-shadow:0 2px 12px rgba(55,165,230,.06);}
+.qc:hover{box-shadow:0 4px 18px rgba(55,165,230,.12);}
+.qc.done{border-color:#A7D1F3;background:linear-gradient(135deg,#F5FBFF,#EEF8FE);}
+.qc.lkq{opacity:.4;pointer-events:none;}
+.qc.open{border-color:#37A5E6;}
+.qc-hd{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;}
+.qc-ico{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
 .ik{background:linear-gradient(135deg,#EEF8FE,#C8EEFF);}
 .ia{background:linear-gradient(135deg,#EEFFF8,#C8F0E8);}
 .im{background:linear-gradient(135deg,#FFFAEE,#FFEEC8);}
 .ic{background:linear-gradient(135deg,#F8EEFF,#E8D0FF);}
 .qc-body{flex:1;min-width:0;}
-.qc-name{font-size:12px;font-weight:700;color:#1A4A6A;margin-bottom:3px;}
+.qc-name{font-size:13px;font-weight:700;color:#1A4A6A;margin-bottom:4px;}
 .qc-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
-.qtag{font-size:8px;padding:2px 7px;border-radius:999px;font-weight:700;}
+.qtag{font-size:9px;padding:2px 8px;border-radius:999px;font-weight:700;}
 .tk{background:#EEF6FF;color:#3A7ACC;}
 .ta{background:#EEFFF4;color:#2A8A50;}
 .tm{background:#FFFAEE;color:#B87820;}
 .tc{background:#F8EEFF;color:#7A3ACC;}
-.qxp{font-size:8px;color:#90C8E8;font-weight:700;}
-.qc-ck{width:26px;height:26px;border-radius:50%;border:2px solid #C0E4F8;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;background:#fff;}
-.qc.done .qc-ck{background:linear-gradient(135deg,#37A5E6,#2290D4);border-color:transparent;box-shadow:0 2px 6px rgba(55,165,230,.28);}
-.ckv{width:10px;height:7px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);opacity:0;transition:opacity .2s;}
+.qxp{font-size:9px;color:#90C8E8;font-weight:700;}
+.qc-ck{width:28px;height:28px;border-radius:50%;border:2px solid #C0E4F8;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;background:#fff;}
+.qc.done .qc-ck{background:linear-gradient(135deg,#37A5E6,#2290D4);border-color:transparent;box-shadow:0 2px 8px rgba(55,165,230,.3);}
+.ckv{width:11px;height:7px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);opacity:0;transition:opacity .2s;}
 .qc.done .ckv{opacity:1;}
-
-/* ── QUEST DETAIL ── */
-.qc-det{border-top:1.5px dashed #C0E4F8;padding:13px 14px 15px;animation:sd .2s ease;}
-.qc.done .qc-det{border-top-color:#A7D1F3;}
+.qc-det{border-top:1.5px dashed #C0E4F8;padding:14px 16px 16px;animation:sd .2s ease;}
 @keyframes sd{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
-.qd-desc{font-size:11px;color:#4A7A9A;line-height:1.8;margin-bottom:11px;}
+.qd-desc{font-size:11px;color:#4A7A9A;line-height:1.8;margin-bottom:12px;}
 .qd-cll{margin-bottom:13px;}
 .qd-cl-lbl{font-size:9px;font-weight:700;color:#37A5E6;letter-spacing:.08em;margin-bottom:7px;}
-.qd-cli{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:#3A6A8A;line-height:1.6;padding:4px 0;border-bottom:1px solid #F0F4FF;}
+.qd-cli{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:#3A6A8A;line-height:1.6;padding:5px 0;border-bottom:1px solid #EEF8FE;}
 .qd-cli:last-child{border-bottom:none;}
 .qd-cli-dot{width:5px;height:5px;border-radius:50%;background:#A7D1F3;flex-shrink:0;margin-top:6px;}
-.qd-rw{display:flex;align-items:center;gap:5px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1px solid #A7D1F3;border-radius:9px;padding:7px 11px;margin-bottom:12px;font-size:10px;color:#2290D4;font-weight:700;}
-.qd-enc{font-size:11px;color:#37A5E6;font-style:italic;line-height:1.7;margin-bottom:11px;padding:8px 11px;background:#F5F8FF;border-left:3px solid #37A5E6;border-radius:0 8px 8px 0;}
-.qd-btn{width:100%;padding:11px;border-radius:13px;font-size:12px;font-weight:700;border:none;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.05em;}
-.qdb-ok{background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;box-shadow:0 3px 12px rgba(55,165,230,.3);}
-.qdb-ok:hover{transform:translateY(-1px);box-shadow:0 5px 18px rgba(55,165,230,.4);}
-.qdb-un{background:#EEF8FE;border:1.5px solid #C0E4F8;color:#5A90BB;}
-.qdb-lk{background:#F5F5F8;color:#B0BAD0;cursor:not-allowed;}
-.qd-link{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;border-radius:11px;background:#EEF8FE;border:1.5px solid #A7D1F3;color:#2290D4;font-size:12px;font-weight:700;text-decoration:none;margin-bottom:10px;letter-spacing:.05em;transition:all .2s;}
+.qd-rw{display:flex;align-items:center;gap:5px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1px solid #A7D1F3;border-radius:10px;padding:7px 11px;margin-bottom:12px;font-size:10px;color:#2290D4;font-weight:700;}
+.qd-enc{font-size:11px;color:#37A5E6;font-style:italic;line-height:1.7;margin-bottom:11px;padding:8px 12px;background:#F5FBFF;border-left:3px solid #37A5E6;border-radius:0 8px 8px 0;}
+.qd-btn{width:100%;padding:12px;border-radius:999px;font-size:12px;font-weight:700;border:none;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.05em;}
+.qdb-ok{background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;box-shadow:0 4px 14px rgba(55,165,230,.35);}
+.qdb-ok:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(55,165,230,.45);}
+.qdb-un{background:#EEF8FE;border:1.5px solid #A7D1F3;color:#2290D4;}
+.qdb-lk{background:#F0F4F8;color:#B0C8D8;cursor:not-allowed;}
+.qd-link{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;border-radius:999px;background:#EEF8FE;border:1.5px solid #A7D1F3;color:#2290D4;font-size:11px;font-weight:700;text-decoration:none;margin-bottom:10px;transition:all .2s;}
 .qd-link:hover{background:#DBF6FF;border-color:#37A5E6;}
 
 /* ── BOTTOM NAV ── */
-.bnt{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;background:#fff;border-top:1.5px solid #E4ECFF;padding:8px 0;display:flex;justify-content:space-around;z-index:100;box-shadow:0 -4px 18px rgba(55,165,230,.07);}
-.bni{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 14px;border-radius:11px;transition:all .15s;}
+.bnt{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;background:#fff;border-top:1.5px solid #DCF0FC;padding:8px 0;display:flex;justify-content:space-around;z-index:100;box-shadow:0 -4px 18px rgba(55,165,230,.08);}
+.bni{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 16px;border-radius:12px;transition:all .15s;}
 .bni.on{background:#EEF8FE;}
-.bni-ic{font-size:19px;}
+.bni-ic{font-size:20px;}
 .bni-lb{font-size:9px;color:#9AB0D0;font-weight:500;letter-spacing:.05em;}
 .bni.on .bni-lb{color:#37A5E6;font-weight:700;}
 
-/* ── OVERLAY ── */
-.ovl{position:fixed;inset:0;background:rgba(10,20,60,.55);display:flex;align-items:center;justify-content:center;z-index:999;animation:fi .2s ease;padding:20px;}
-@keyframes fi{from{opacity:0}to{opacity:1}}
+/* ── PAGES ── */
+.page-section{display:none;max-width:460px;margin:0 auto;padding:16px 14px 110px;}
+.page-section.active{display:block;}
+.page-top{background:linear-gradient(160deg,#DBF6FF,#A7D1F3);padding:20px 18px 18px;text-align:center;margin:-16px -14px 20px;}
+.page-top-title{font-size:18px;font-weight:900;color:#1A5A80;margin-bottom:4px;}
+.page-top-sub{font-size:11px;color:#4A7A9A;}
+.course-chapter{background:#fff;border-radius:16px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 10px rgba(55,165,230,.06);}
+.course-ch-hd{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border-bottom:1px solid #C0E4F8;}
+.course-ch-em{font-size:20px;flex-shrink:0;}
+.course-ch-title{font-size:13px;font-weight:700;color:#1A5A80;flex:1;}
+.course-ch-count{font-size:10px;color:#5A9ABB;background:rgba(255,255,255,.7);padding:2px 8px;border-radius:999px;}
+.course-ch-arr{font-size:12px;color:#90C0D8;transition:transform .2s;}
+.course-ch-arr.open{transform:rotate(180deg);}
+.course-links{display:none;padding:10px 12px;flex-direction:column;gap:7px;}
+.course-links.open{display:flex;}
+.course-link{display:flex;align-items:center;gap:9px;padding:10px 12px;border-radius:12px;background:#F5FBFF;border:1px solid #C0E4F8;text-decoration:none;transition:all .15s;}
+.course-link:hover{background:#EEF8FE;border-color:#A7D1F3;}
+.cl-icon{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.cl-yt{background:linear-gradient(135deg,#FFE8E8,#FFCCD0);}
+.cl-nt{background:linear-gradient(135deg,#E8F0FF,#C8D8F8);}
+.cl-gd{background:linear-gradient(135deg,#E8FFEE,#C8F0D4);}
+.cl-body{flex:1;min-width:0;}
+.cl-title{font-size:11px;font-weight:700;color:#1A5A80;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cl-sub{font-size:9px;color:#5A9ABB;}
+.cl-arr{font-size:11px;color:#A7D1F3;}
+.ach-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ach-item{background:#fff;border:2px solid #E0F0F8;border-radius:16px;padding:16px 12px;text-align:center;transition:all .2s;}
+.ach-item.unlocked{border-color:#A7D1F3;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);}
+.ach-item.locked{opacity:.4;}
+.ach-em{font-size:32px;margin-bottom:6px;}
+.ach-name{font-size:11px;font-weight:700;color:#1A5A80;margin-bottom:3px;}
+.ach-desc{font-size:9px;color:#5A9ABB;line-height:1.5;}
+.ach-badge{font-size:8px;padding:2px 8px;border-radius:999px;margin-top:5px;display:inline-block;}
+.ach-badge.unlocked{background:#A7D1F3;color:#1A5A80;}
+.ach-badge.locked{background:#E0E8F0;color:#90A8C0;}
+.ms-display{background:#fff;border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:0 2px 10px rgba(55,165,230,.06);}
+.ms-d-title{font-size:10px;font-weight:700;color:#37A5E6;letter-spacing:.1em;margin-bottom:12px;}
+.ms-d-row{display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid #EEF8FE;}
+.ms-d-row:last-child{border-bottom:none;}
+.ms-d-icon{font-size:22px;width:36px;text-align:center;}
+.ms-d-body{flex:1;}
+.ms-d-name{font-size:11px;font-weight:700;color:#1A5A80;}
+.ms-d-num{font-size:9px;color:#5A9ABB;}
+.ms-d-check{font-size:14px;}
 
-/* ── QUEST COMPLETE POPUP ── */
-.pop-quest{background:#fff;border-radius:24px;padding:26px 22px;text-align:center;max-width:300px;width:100%;box-shadow:0 20px 60px rgba(55,165,230,.25);animation:pi .35s cubic-bezier(.34,1.56,.64,1);}
+/* ── OVERLAY ── */
+.ovl{position:fixed;inset:0;background:rgba(10,30,60,.55);display:flex;align-items:center;justify-content:center;z-index:999;animation:fi .2s ease;padding:20px;}
+@keyframes fi{from{opacity:0}to{opacity:1}}
 @keyframes pi{from{opacity:0;transform:scale(.65)}to{opacity:1;transform:scale(1)}}
-.pq-em{font-size:48px;display:block;margin-bottom:6px;animation:bo 1s ease infinite alternate;}
 @keyframes bo{from{transform:translateY(0)}to{transform:translateY(-7px)}}
+@keyframes sp{0%{transform:scale(0)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
+
+/* ── QUEST POPUP ── */
+.pop-quest{background:#fff;border-radius:24px;padding:26px 22px;text-align:center;max-width:300px;width:100%;box-shadow:0 20px 60px rgba(55,165,230,.25);animation:pi .35s cubic-bezier(.34,1.56,.64,1);}
+.pq-em{font-size:48px;display:block;margin-bottom:6px;animation:bo 1s ease infinite alternate;}
 .pq-stars{display:flex;justify-content:center;gap:5px;margin-bottom:11px;}
 .pqs{font-size:22px;}
 .pqs.lit{animation:sp .4s ease;}
-@keyframes sp{0%{transform:scale(0)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
 .pq-title{font-size:16px;font-weight:900;color:#1A4A6A;margin-bottom:5px;}
-.pq-enc{font-size:11px;color:#4A7A9A;line-height:1.75;margin-bottom:8px;padding:0 4px;}
+.pq-enc{font-size:11px;color:#4A7A9A;line-height:1.75;margin-bottom:8px;}
 .pq-xp{display:inline-flex;align-items:center;gap:4px;background:#EEF8FE;border:1px solid #A7D1F3;border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700;color:#2290D4;margin-bottom:14px;}
-.pq-btn{width:100%;padding:11px;border-radius:13px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(55,165,230,.32);transition:all .2s;font-family:inherit;letter-spacing:.05em;}
-.pq-btn:hover{transform:translateY(-1px);}
+.pq-btn{width:100%;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(55,165,230,.32);font-family:inherit;}
 
 /* ── CERTIFICATE ── */
-.cert{background:#fff;border-radius:24px;padding:0;max-width:340px;width:100%;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .4s cubic-bezier(.34,1.56,.64,1);overflow:hidden;}
+.cert{background:#fff;border-radius:24px;max-width:340px;width:100%;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .4s cubic-bezier(.34,1.56,.64,1);overflow:hidden;}
 .cert-top{background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:28px 24px 22px;text-align:center;position:relative;overflow:hidden;}
 .cert-top::before{content:'◆';position:absolute;left:10px;top:8px;font-size:50px;color:rgba(255,255,255,.3);}
 .cert-top::after{content:'◆';position:absolute;right:10px;bottom:8px;font-size:36px;color:rgba(255,255,255,.3);}
 .cert-badge-icon{font-size:52px;display:block;margin-bottom:8px;animation:bo 1.2s ease infinite alternate;}
-.cert-stage-name{font-size:11px;letter-spacing:.2em;color:#4A7A9A;margin-bottom:6px;text-transform:uppercase;}
+.cert-stage-name{font-size:11px;letter-spacing:.2em;color:#4A7A9A;margin-bottom:6px;}
 .cert-title{font-size:18px;font-weight:900;color:#1A5A80;line-height:1.35;margin-bottom:4px;}
 .cert-subtitle{font-size:10px;color:#5A9ABB;letter-spacing:.08em;}
 .cert-body{padding:20px 22px 22px;}
@@ -175,44 +253,51 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .cert-seal-line.r{background:linear-gradient(90deg,#A7D1F3,transparent);}
 .cert-seal-txt{font-size:9px;color:#90C0E0;letter-spacing:.12em;font-weight:700;}
 .cert-msg{font-size:12px;color:#2A5A7A;line-height:1.85;text-align:center;margin-bottom:16px;}
-.cert-msg strong{color:#2290D4;font-weight:700;}
 .cert-quote{font-size:11px;color:#37A5E6;font-style:italic;line-height:1.75;text-align:center;padding:10px 14px;background:#EEF8FE;border-radius:10px;margin-bottom:16px;border-left:3px solid #37A5E6;}
-.cert-meta{display:flex;justify-content:space-between;font-size:9px;color:#9AB0D0;margin-bottom:16px;padding:0 2px;}
+.cert-meta{display:flex;justify-content:space-between;font-size:9px;color:#9AB0D0;margin-bottom:16px;}
 .cert-btns{display:flex;gap:8px;}
-.cert-btn-save{flex:1;padding:10px;border-radius:12px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;letter-spacing:.05em;box-shadow:0 3px 10px rgba(55,165,230,.28);}
-.cert-btn-next{flex:1;padding:10px;border-radius:12px;background:#EEF8FE;border:1.5px solid #A7D1F3;color:#37A5E6;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:.05em;}
+.cert-btn-save{flex:1;padding:11px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;box-shadow:0 4px 12px rgba(55,165,230,.28);}
+.cert-btn-next{flex:1;padding:11px;border-radius:999px;background:#EEF8FE;border:1.5px solid #A7D1F3;color:#37A5E6;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
 
-/* ── MILESTONE CARD ── */
-.milestone-card{background:#fff;border-radius:24px;padding:0;max-width:300px;width:100%;box-shadow:0 20px 60px rgba(55,165,230,.2);animation:pi .4s cubic-bezier(.34,1.56,.64,1);overflow:hidden;}
-.ms-top{background:linear-gradient(135deg,#DBF6FF,#A7D1F3);padding:26px 20px 18px;text-align:center;position:relative;}
-.ms-top::after{content:'★';position:absolute;right:14px;top:10px;font-size:48px;color:rgba(255,255,255,.35);}
-.ms-icon{font-size:50px;display:block;margin-bottom:6px;animation:bo 1s ease infinite alternate;}
-.ms-title{font-size:18px;font-weight:900;color:#1A5A80;margin-bottom:4px;}
-.ms-sub{font-size:11px;color:#4A7A9A;letter-spacing:.06em;}
-.ms-body{padding:20px 20px 22px;}
-.ms-msg{font-size:12px;color:#3A6A8A;line-height:1.85;text-align:center;margin-bottom:14px;}
-.ms-stars{display:flex;justify-content:center;gap:4px;margin-bottom:14px;}
-.ms-star-chip{display:flex;align-items:center;gap:4px;background:#EEF8FE;border:1.5px solid #A7D1F3;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:900;color:#2290D4;}
-.ms-quote{font-size:11px;color:#37A5E6;font-style:italic;text-align:center;line-height:1.75;padding:9px 12px;background:#EEF8FE;border-radius:10px;margin-bottom:16px;border-left:3px solid #A7D1F3;}
-.ms-btn{width:100%;padding:11px;border-radius:13px;background:linear-gradient(135deg,#A7D1F3,#DBF6FF);color:#1A5A80;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:inherit;letter-spacing:.05em;box-shadow:0 3px 10px rgba(55,165,230,.2);}
-/* ── WELCOME SCREEN ── */
-.welcome{position:fixed;inset:0;background:#EEF8FE;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;}
-.welcome-box{background:#fff;border-radius:28px;padding:36px 28px;text-align:center;max-width:320px;width:100%;box-shadow:0 12px 40px rgba(55,165,230,.15);}
-.wc-icon{font-size:52px;margin-bottom:12px;display:block;animation:bo 1.5s ease infinite alternate;}
+/* ── MILESTONE ── */
+.ms-card{background:#fff;border-radius:28px;max-width:320px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .4s cubic-bezier(.34,1.56,.64,1);}
+.ms-card-top{padding:28px 20px 20px;text-align:center;position:relative;overflow:hidden;}
+.ms-card-top::before{content:'✦';position:absolute;left:12px;top:10px;font-size:40px;color:rgba(255,255,255,.2);}
+.ms-card-top::after{content:'✦';position:absolute;right:12px;bottom:10px;font-size:28px;color:rgba(255,255,255,.2);}
+.ms-icon-wrap{width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:36px;animation:bo 1.2s ease infinite alternate;border:2px solid rgba(255,255,255,.35);}
+.ms-badge-label{font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,.7);margin-bottom:4px;}
+.ms-card-title{font-size:19px;font-weight:900;color:#fff;margin-bottom:4px;line-height:1.3;}
+.ms-card-sub{font-size:10px;color:rgba(255,255,255,.75);}
+.ms-card-body{padding:18px 20px 20px;}
+.ms-stars-row{display:flex;justify-content:center;align-items:center;gap:6px;margin-bottom:14px;}
+.ms-star-big{font-size:28px;}
+.ms-star-count{background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1.5px solid #A7D1F3;border-radius:999px;padding:5px 16px;font-size:14px;font-weight:900;color:#1A5A80;}
+.ms-msg{font-size:12px;color:#3A6A8A;line-height:1.85;text-align:center;margin-bottom:12px;}
+.ms-quote-box{background:linear-gradient(135deg,#EEF8FE,#F0FBFF);border-radius:12px;padding:11px 14px;margin-bottom:12px;border-left:3px solid #37A5E6;}
+.ms-quote-txt{font-size:11px;color:#2290D4;font-style:italic;line-height:1.75;text-align:center;}
+.ms-tag{font-size:9px;color:#90C0E0;text-align:center;margin-bottom:14px;}
+.ms-btns{display:flex;gap:8px;}
+.ms-btn-save{flex:1;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(55,165,230,.3);}
+.ms-btn-close{flex:1;padding:12px;border-radius:999px;background:#EEF8FE;border:1.5px solid #A7D1F3;color:#2290D4;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
+
+/* ── WELCOME ── */
+.welcome{position:fixed;inset:0;background:#EEF8FE;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
+.welcome-box{background:#fff;border-radius:28px;padding:28px 22px;text-align:center;max-width:320px;width:100%;box-shadow:0 12px 40px rgba(55,165,230,.15);}
+.wc-icon{font-size:48px;margin-bottom:10px;display:block;animation:bo 1.5s ease infinite alternate;}
 .wc-title{font-size:20px;font-weight:900;color:#1A5A80;margin-bottom:6px;}
-.wc-desc{font-size:12px;color:#5A9ABB;line-height:1.8;margin-bottom:24px;}
+.wc-desc{font-size:11px;color:#5A9ABB;line-height:1.7;margin-bottom:16px;}
 .wc-label{font-size:11px;font-weight:700;color:#37A5E6;letter-spacing:.08em;margin-bottom:8px;text-align:left;}
-.wc-input{width:100%;padding:13px 16px;border-radius:14px;border:2px solid #A7D1F3;font-size:16px;font-family:inherit;color:#1A5A80;background:#EEF8FE;outline:none;letter-spacing:.05em;transition:border-color .2s;margin-bottom:16px;}
+.wc-input{width:100%;padding:13px 16px;border-radius:999px;border:2px solid #A7D1F3;font-size:15px;font-family:inherit;color:#1A5A80;background:#EEF8FE;outline:none;transition:border-color .2s;margin-bottom:14px;}
 .wc-input:focus{border-color:#37A5E6;background:#fff;}
 .wc-input::placeholder{color:#A7C8E0;}
-.wc-btn{width:100%;padding:13px;border-radius:14px;background:linear-gradient(135deg,#A7D1F3,#DBF6FF);color:#1A5A80;font-size:14px;font-weight:900;border:none;cursor:pointer;font-family:inherit;letter-spacing:.08em;box-shadow:0 4px 14px rgba(55,165,230,.2);transition:all .2s;}
-.wc-btn:hover{transform:translateY(-1px);}
-.wc-btn:disabled{opacity:.4;cursor:not-allowed;transform:none;}
-.wc-note{font-size:10px;color:#90C0E0;margin-top:12px;line-height:1.6;}
+.wc-btn{width:100%;padding:14px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:14px;font-weight:900;border:none;cursor:pointer;font-family:inherit;box-shadow:0 6px 18px rgba(55,165,230,.35);transition:all .2s;}
+.wc-btn:hover{transform:translateY(-2px);}
+.wc-note{font-size:10px;color:#90C0E0;margin-top:10px;line-height:1.6;}
 
 /* ── CONFETTI ── */
 .cf{position:fixed;pointer-events:none;z-index:1000;border-radius:2px;animation:cff linear forwards;}
 @keyframes cff{0%{transform:translateY(-10px) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
+@keyframes fadeOut{from{opacity:1}to{opacity:0}}
 </style>
 </head>
 <body>
@@ -221,12 +306,27 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 <div class="welcome" id="welcome">
   <div class="welcome-box">
     <span class="wc-icon">🌟</span>
-    <div class="wc-title">歡迎加入 DCT</div>
-    <div class="wc-desc">輸入你的名字<br>開始你專屬的晉升闖關之旅！</div>
+    <div class="wc-title">歡迎加入 DCT 🌸</div>
+    <div class="wc-desc">輸入你的名字，開始你專屬的晉升旅程！</div>
+    <div style="background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border-radius:14px;padding:12px 14px;margin-bottom:16px;text-align:left;">
+      <div style="font-size:10px;font-weight:700;color:#2290D4;letter-spacing:.08em;margin-bottom:7px;">⭐ 星星能幹嘛？</div>
+      <div style="font-size:11px;color:#3A6A8A;line-height:1.85;">
+        每完成一個檢核項目就能累積星星<br>
+        集滿特定數量，解鎖 <strong style="color:#1A5A80;">DCT 專屬認證獎狀</strong><br>
+        可以截圖存起來，也可以分享給上家 📸<br><br>
+        <span style="color:#37A5E6;font-weight:700;">50顆</span> 🌱 DCT 種子夥伴<br>
+        <span style="color:#37A5E6;font-weight:700;">100顆</span> ⭐ DCT 零售認證<br>
+        <span style="color:#37A5E6;font-weight:700;">150顆</span> 📱 DCT 引流認證<br>
+        <span style="color:#37A5E6;font-weight:700;">200顆</span> 💰 DCT 銷售認證<br>
+        <span style="color:#37A5E6;font-weight:700;">250顆</span> 🤝 DCT 招商先鋒<br>
+        <span style="color:#37A5E6;font-weight:700;">300顆</span> 💫 DCT 輔導之星<br>
+        <span style="color:#37A5E6;font-weight:700;">全部完成</span> 👑 DCT 皇家候選人
+      </div>
+    </div>
     <div class="wc-label">你的名字</div>
     <input class="wc-input" id="wc-name" type="text" placeholder="例如：小安、Annie…" maxlength="10" oninput="onNameInput()" onkeydown="onNameKey(event)">
-    <button class="wc-btn" id="wc-btn" onclick="startWithName()">開始我的旅程 ✦</button>
-    <div class="wc-note">名字會儲存在你的裝置上<br>下次打開會自動記住你</div>
+    <button class="wc-btn" id="wc-btn" onclick="startWithName()">🌸 開始我的旅程</button>
+    <div class="wc-note">名字會儲存在你的裝置上，下次打開會自動記住你</div>
   </div>
 </div>
 
@@ -237,7 +337,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       <div class="tb-name" id="tb-name">我的晉升地圖</div>
       <div style="display:flex;align-items:center;gap:5px;">
         <div class="tb-sub" id="lv-tag">愛用客 · 階段 1</div>
-        <span onclick="editName()" style="font-size:11px;cursor:pointer;opacity:.6;padding:1px 4px;border-radius:5px;background:rgba(255,255,255,.3);">✏️</span>
+        <span onclick="editName()" style="font-size:11px;cursor:pointer;opacity:.6;padding:1px 5px;border-radius:5px;background:rgba(255,255,255,.4);">✏️</span>
       </div>
     </div>
   </div>
@@ -250,15 +350,13 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   <div class="hero">
     <div class="hero-badge">✦ DCT 晉升地圖</div>
     <div class="hero-title" id="hero-title">每一步都算數<br>你比昨天更強了</div>
-    <div class="hero-desc">完成每個關卡，解鎖下一個階段<br>從愛用客到皇家，一步一步來</div>
+    <div class="hero-desc">完成每個檢核，解鎖下一個階段<br>從愛用客到皇家，一步一步來</div>
     <div class="hero-stats">
       <div class="hs"><div class="hs-n" id="s-done">0</div><div class="hs-l">已完成</div></div>
-      <div class="hs"><div class="hs-n" id="s-tot">0</div><div class="hs-l">總關卡</div></div>
+      <div class="hs"><div class="hs-n" id="s-tot">0</div><div class="hs-l">總項目</div></div>
       <div class="hs"><div class="hs-n" id="s-pct">0%</div><div class="hs-l">完成率</div></div>
     </div>
   </div>
-
-  <!-- STAGE PROGRESS -->
   <div class="stage-box">
     <div class="sb-title">
       <span>✦ 晉升進度</span>
@@ -267,35 +365,48 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     <div class="stages-row" id="stages-row"></div>
     <div class="xp-bar-wrap">
       <div class="xp-row">
-        <div class="xp-lbl">當前章節進度</div>
-        <div class="xp-num"><span id="cx">0</span> / <span id="mx">100</span> ⭐</div>
+        <div class="xp-lbl">⭐ 本階段完成項目</div>
+        <div class="xp-num"><span id="cx">0</span> / <span id="mx">0</span> 項</div>
       </div>
       <div class="xp-bar"><div class="xp-fill" id="xf" style="width:0%"></div></div>
     </div>
   </div>
-
   <div class="sec-lbl"><div class="sl-line"></div><div class="sl-txt">選擇階段</div><div class="sl-line r"></div></div>
   <div class="lv-scroll" id="lv-scroll"></div>
+  <div id="stage-info-wrap"></div>
+</div>
 
-  <div class="qa">
-    <div class="qa-hd">
-      <div class="qa-title" id="qa-title">關卡列表</div>
-      <div class="qa-cnt" id="qa-cnt">0/0</div>
-    </div>
-    <div class="cat-row" id="cat-row"></div>
-    <div id="qlist"></div>
+<!-- ACHIEVEMENT PAGE -->
+<div class="page-section" id="page-achievement">
+  <div class="page-top">
+    <div class="page-top-title">🏆 我的成就</div>
+    <div class="page-top-sub">完成階段解鎖專屬徽章</div>
   </div>
+  <div class="ms-display">
+    <div class="ms-d-title">✦ 星星里程碑</div>
+    <div id="ms-display-list"></div>
+  </div>
+  <div class="ach-grid" id="ach-grid"></div>
 </div>
 
-<div class="bnt">
-  <div class="bni on"><div class="bni-ic">🗺️</div><div class="bni-lb">地圖</div></div>
-  <div class="bni"><div class="bni-ic">🏆</div><div class="bni-lb">成就</div></div>
-  <div class="bni"><div class="bni-ic">👯</div><div class="bni-lb">夥伴</div></div>
-  <div class="bni"><div class="bni-ic">📖</div><div class="bni-lb">課程</div></div>
+<!-- COURSE PAGE -->
+<div class="page-section" id="page-course">
+  <div class="page-top">
+    <div class="page-top-title">📖 新人必上課程</div>
+    <div class="page-top-sub">每一堂上完都要交作業給上家</div>
+  </div>
+  <div id="course-list"></div>
 </div>
+
 
 <div class="ovl" id="ovl" style="display:none">
   <div id="ovl-content"></div>
+</div>
+
+<div class="bnt">
+  <div class="bni on" id="nav-map" onclick="switchPage('map')"><div class="bni-ic">🗺️</div><div class="bni-lb">地圖</div></div>
+  <div class="bni" id="nav-achievement" onclick="switchPage('achievement')"><div class="bni-ic">🏆</div><div class="bni-lb">成就</div></div>
+  <div class="bni" id="nav-course" onclick="switchPage('course')"><div class="bni-ic">📖</div><div class="bni-lb">課程</div></div>
 </div>
 
 <script>
@@ -573,32 +684,72 @@ function ulk(li,q){ return !q.ul||done(li,q.ul); }
 function ndone(li){ return LV[li].qs.filter(q=>done(li,q.id)).length; }
 function totDone(){ let d=0; LV.forEach((_,i)=>d+=ndone(i)); return d; }
 function totQ(){ let t=0; LV.forEach(lv=>t+=lv.qs.length); return t; }
-function totXP(){ let x=0; LV.forEach((lv,i)=>lv.qs.forEach(q=>{ if(done(i,q.id))x+=q.xp; })); return x; }
+function totXP(){
+  let x=0;
+  // XP from checklist items
+  CHECKLISTS.forEach(stage=>{
+    stage.sections.forEach(sec=>{
+      sec.items.forEach((item,i)=>{
+        if(ckData[sec.id+'_'+i]){
+          const hasCourse = typeof item==='object' && item.course;
+          x += hasCourse ? 3 : 2;
+        }
+      });
+    });
+  });
+  return x;
+}
 function stagesDone(){ return LV.filter((_,i)=>ndone(i)===LV[i].qs.length).length; }
 
 function randEnc(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 
 function rHdr(){
   const td=totDone(), tq=totQ(), tx=totXP();
-  document.getElementById('s-done').textContent=td;
-  document.getElementById('s-tot').textContent=tq;
-  document.getElementById('s-pct').textContent=tq?Math.round(td/tq*100)+'%':'0%';
+  // Use checklist stats
+  let ckDone=0, ckTotal=0;
+  CHECKLISTS.forEach(st=>st.sections.forEach(sec=>{
+    ckTotal+=sec.items.length;
+    ckDone+=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;
+  }));
+  document.getElementById('s-done').textContent=ckDone;
+  document.getElementById('s-tot').textContent=ckTotal;
+  document.getElementById('s-pct').textContent=ckTotal?Math.round(ckDone/ckTotal*100)+'%':'0%';
   document.getElementById('tot-xp').textContent=tx;
-  const lv=LV[ci];
-  document.getElementById('lv-tag').textContent=lv.name+' · 階段 '+(ci+1);
-  const lxp=lv.qs.reduce((s,q)=>done(ci,q.id)?s+q.xp:s,0);
-  document.getElementById('cx').textContent=lxp;
-  document.getElementById('mx').textContent=lv.xpMax;
-  document.getElementById('xf').style.width=Math.min(100,Math.round(lxp/lv.xpMax*100))+'%';
+  const ckStage = CHECKLISTS[ci];
+  const stageName = ckStage ? ckStage.stageName : '愛用客';
+  document.getElementById('lv-tag').textContent=stageName+' · 階段 '+(ci+1);
+  let stageDone=0, stageTotal=0;
+  if(ckStage) ckStage.sections.forEach(sec=>{
+    stageTotal+=sec.items.length;
+    stageDone+=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;
+  });
+  document.getElementById('cx').textContent=stageDone;
+  document.getElementById('mx').textContent=stageTotal;
+  document.getElementById('xf').style.width=stageTotal?Math.min(100,Math.round(stageDone/stageTotal*100))+'%':'0%';
   const sd=stagesDone();
-  document.getElementById('stage-sub').textContent=sd+' / 7 階段完成';
+  const sdCk=CHECKLISTS.filter((_,i)=>{
+    const st=CHECKLISTS[i];
+    const t=st.sections.reduce((s,sec)=>s+sec.items.length,0);
+    const d=st.sections.reduce((s,sec)=>s+sec.items.filter((_,j)=>ckData[sec.id+'_'+j]).length,0);
+    return t>0&&d===t;
+  }).length;
+  document.getElementById('stage-sub').textContent=sdCk+' / 7 階段完成';
 }
 
 function rStages(){
   document.getElementById('stages-row').innerHTML=STAGES.map((s,i)=>{
-    const all=ndone(i)===LV[i].qs.length;
+    const ckSt=CHECKLISTS[i];
+    const total=ckSt?ckSt.sections.reduce((s,sec)=>s+sec.items.length,0):0;
+    const done=ckSt?ckSt.sections.reduce((s,sec)=>s+sec.items.filter((_,j)=>ckData[sec.id+'_'+j]).length,0):0;
+    const all=total>0&&done===total;
     const isCur=i===ci;
-    const lk=i>0&&!( ndone(i-1)===LV[i-1].qs.length );
+    const lk=i>0&&(()=>{
+      const prev=CHECKLISTS[i-1];
+      if(!prev) return false;
+      const pt=prev.sections.reduce((s,sec)=>s+sec.items.length,0);
+      const pd=prev.sections.reduce((s,sec)=>s+sec.items.filter((_,j)=>ckData[sec.id+'_'+j]).length,0);
+      return pd<pt;
+    })();
     let cls='stage-star';
     if(all) cls+=' done';
     else if(isCur) cls+=' current';
@@ -614,13 +765,22 @@ function rStages(){
 }
 
 function rLvNav(){
-  document.getElementById('lv-scroll').innerHTML=LV.map((lv,i)=>{
-    const d=ndone(i), t=lv.qs.length, p=Math.round(d/t*100);
-    const lk=i>0&&ndone(i-1)<LV[i-1].qs.length, all=d===t;
+  document.getElementById('lv-scroll').innerHTML=CHECKLISTS.map((ck,i)=>{
+    const t=ck.sections.reduce((s,sec)=>s+sec.items.length,0);
+    const d=ck.sections.reduce((s,sec)=>s+sec.items.filter((_,j)=>ckData[sec.id+'_'+j]).length,0);
+    const p=t?Math.round(d/t*100):0;
+    const lk=i>0&&(()=>{
+      const prev=CHECKLISTS[i-1];
+      const pt=prev.sections.reduce((s,sec)=>s+sec.items.length,0);
+      const pd=prev.sections.reduce((s,sec)=>s+sec.items.filter((_,j)=>ckData[sec.id+'_'+j]).length,0);
+      return pd<pt;
+    })();
+    const all=t>0&&d===t;
+    const lv=STAGES[i];
     return `<div class="lv-card${i===ci?' active':''}${lk?' lk':''}" onclick="${lk?'':'setLv('+i+')'}">
       ${lk?'<div class="lv-lock">🔒</div>':''}
       ${all?'<div class="lv-done-badge">✓</div>':''}
-      <div class="lv-em">${lv.em}</div>
+      <div class="lv-em">${lv.emoji}</div>
       <div class="lv-nm">${lv.name}</div>
       <div class="lv-pg"><div class="lv-pf" style="width:${p}%"></div></div>
       <div class="lv-pt">${d}/${t}</div>
@@ -687,11 +847,45 @@ function confetti(){
 }
 
 const MILESTONES = [
-  {stars:50,  icon:'🌟', title:'50顆星！閃閃發光', msg:'你已經累積了50顆星星！\n這代表你完成了很多關卡，\n每一顆星都是你努力的痕跡。', quote:'「開始了，就不要停。停下來的代價比繼續更大。」'},
-  {stars:100, icon:'💫', title:'100顆星！勢不可擋', msg:'100顆星星！\n很多人在這裡早就放棄了，\n但你還在，這就是你和別人的差距。', quote:'「你以為自己在原地踏步，\n其實你每天都在累積你看不見的能量。」'},
-  {stars:150, icon:'✨', title:'150顆星！你是傳奇', msg:'150顆星！\n你已經走了很長的路了。\n繼續走，最好的還在前面。', quote:'「三年後你會感謝現在沒有放棄的自己。」'},
-  {stars:200, icon:'👑', title:'200顆星！皇家之路', msg:'200顆星！\n你幾乎走完了整個旅程。\n皇家的那一天，不遠了。', quote:'「不是因為容易才堅持，\n是因為值得才繼續。」'},
+  {stars:50,  icon:'🌱', name:'DCT 種子夥伴',
+   title:'DCT 種子夥伴 🌱',
+   msg:'你已經累積了 50 顆星！\n代表你在學習、在行動、在成長。\n每一顆星都是你真實努力過的痕跡。',
+   quote:'「開始了，就不要停。\n停下來的代價比繼續更大。」',
+   tag:'#DCT種子夥伴 #婕樂纖 #DCT裂變系統'},
+  {stars:100, icon:'⭐', name:'DCT 零售認證',
+   title:'DCT 零售認證 ⭐',
+   msg:'100 顆星！\n你已經掌握了產品知識和使用見證。\n這是你成為零售達人最重要的基礎。',
+   quote:'「你自己就是最有說服力的見證，\n說真實的故事，比任何話術都有力量。」',
+   tag:'#DCT零售認證 #婕樂纖 #DCT裂變系統'},
+  {stars:150, icon:'📱', name:'DCT 引流認證',
+   title:'DCT 引流認證 📱',
+   msg:'150 顆星！\n你的版面和引流都在跑了。\n持續發內容，觀眾會找到你的。',
+   quote:'「版面是你的名片，\n每一則限動都是你和陌生人建立連結的機會。」',
+   tag:'#DCT引流認證 #婕樂纖 #DCT裂變系統'},
+  {stars:200, icon:'💰', name:'DCT 銷售認證',
+   title:'DCT 銷售認證 💰',
+   msg:'200 顆星！\n你已經在成交、在服務客戶了。\n銷售不是推銷，是真心幫助對方解決問題。',
+   quote:'「成交的那一刻，\n是你幫助了一個人改變生活的開始。」',
+   tag:'#DCT銷售認證 #婕樂纖 #DCT裂變系統'},
+  {stars:250, icon:'🤝', name:'DCT 招商先鋒',
+   title:'DCT 招商先鋒 🤝',
+   msg:'250 顆星！\n你已經開始帶夥伴了。\n你的成長，現在可以影響更多人。',
+   quote:'「最好的事業，\n是讓你身邊的人也因為你而變得更好。」',
+   tag:'#DCT招商先鋒 #婕樂纖 #DCT裂變系統'},
+  {stars:300, icon:'💫', name:'DCT 輔導之星',
+   title:'DCT 輔導之星 💫',
+   msg:'300 顆星！\n你不只在做生意，\n你在帶領一群人走向更好的生活。',
+   quote:'「能讓別人成功的人，\n自己才會真正成功。」',
+   tag:'#DCT輔導之星 #婕樂纖 #DCT裂變系統'},
 ];
+
+const ALL_DONE_MILESTONE = {
+  icon:'👑', name:'DCT 皇家候選人',
+  title:'DCT 皇家候選人 👑',
+  msg:'你完成了所有的檢核項目！\n這條路你沒有放棄，\n皇家的那一天，就在不遠處。',
+  quote:'「不是因為容易才堅持，\n是因為值得才繼續。\n你，值得這一切。」',
+  tag:'#DCT皇家候選人 #婕樂纖 #DCT裂變系統'
+};
 
 function checkMilestone(prevXP, newXP){
   for(const m of MILESTONES){
@@ -701,23 +895,46 @@ function checkMilestone(prevXP, newXP){
 }
 
 function showMilestone(m, totalXP){
+  const gradients = {
+    '🌱': 'linear-gradient(135deg,#6DBF8A,#3A9A60)',
+    '⭐': 'linear-gradient(135deg,#F0C040,#D4960A)',
+    '📱': 'linear-gradient(135deg,#6A8FEE,#2952CC)',
+    '💰': 'linear-gradient(135deg,#5DBF9A,#1A8A6A)',
+    '🤝': 'linear-gradient(135deg,#A06AEE,#6030CC)',
+    '💫': 'linear-gradient(135deg,#37A5E6,#1A70B0)',
+    '👑': 'linear-gradient(135deg,#E8A020,#B87010)',
+  };
+  const grad = gradients[m.icon] || 'linear-gradient(135deg,#A7D1F3,#2290D4)';
+
   document.getElementById('ovl-content').innerHTML=`
-    <div class="milestone-card">
-      <div class="ms-top">
-        <span class="ms-icon">${m.icon}</span>
-        <div class="ms-title">${m.title}</div>
-        <div class="ms-sub">累積星星里程碑</div>
+    <div class="ms-card">
+      <div class="ms-card-top" style="background:${grad}">
+        <div class="ms-icon-wrap">${m.icon}</div>
+        <div class="ms-badge-label">DCT 成就解鎖</div>
+        <div class="ms-card-title">${m.name||m.title}</div>
+        <div class="ms-card-sub">累積 ${totalXP} 顆星星</div>
       </div>
-      <div class="ms-body">
-        <div class="ms-stars"><div class="ms-star-chip">⭐ ${totalXP} 顆星星</div></div>
-        <div class="ms-msg">${m.msg.replace(/\n/g,'<br>')}</div>
-        <div class="ms-quote">${m.quote}</div>
-        <button class="ms-btn" onclick="closeOvl()">繼續前進，我做得到 ✦</button>
+      <div class="ms-card-body">
+        <div class="ms-stars-row">
+          <div class="ms-star-big">⭐</div>
+          <div class="ms-star-count">× ${totalXP}</div>
+          <div class="ms-star-big">⭐</div>
+        </div>
+        <div class="ms-msg">${(m.msg||'').replace(/\n/g,'<br>')}</div>
+        <div class="ms-quote-box">
+          <div class="ms-quote-txt">${(m.quote||'').replace(/\n/g,'<br>')}</div>
+        </div>
+        ${m.tag?`<div class="ms-tag">${m.tag}</div>`:''}
+        <div class="ms-btns">
+          <button class="ms-btn-save" onclick="closeOvl()">📸 截圖存起來</button>
+          <button class="ms-btn-close" onclick="closeOvl()">繼續加油 ✨</button>
+        </div>
       </div>
     </div>`;
   confetti(); confetti();
   document.getElementById('ovl').style.display='flex';
 }
+
 
 function compQ(li, id, name, xp, enc, e){
   e.stopPropagation();
@@ -783,7 +1000,7 @@ function showCert(li){
           <span>DCT 晉升地圖</span>
         </div>
         <div class="cert-btns">
-          <button class="cert-btn-save" onclick="closeOvl()">截圖存起來 📸</button>
+          <button class="cert-btn-save" onclick="closeOvl()">📸 截圖存起來</button>
           ${nextLv
             ? `<button class="cert-btn-next" onclick="closeOvl();setLv(${li+1})">前往${nextLv.name} →</button>`
             : `<button class="cert-btn-next" onclick="closeOvl()">感謝這段旅程 🙏</button>`
@@ -797,14 +1014,764 @@ function showCert(li){
 
 function undoQ(li, id, e){ e.stopPropagation(); um(li,id); oq=null; rAll(); }
 function closeOvl(){ document.getElementById('ovl').style.display='none'; }
-function setLv(i){ ci=i; cc='全部'; oq=null; rAll(); }
+function setLv(i){ ci=i; cc='全部'; oq=null; sicOpen=false; rAll(); }
 function setCat(c){ cc=c; oq=null; rTabs(); rQuests(); }
 function tog(qk){ oq=oq===qk?null:qk; rQuests(); }
-function rAll(){ rHdr(); rStages(); rLvNav(); rTabs(); rQuests(); }
+function rAll(){ rHdr(); rStages(); rLvNav(); renderStageInfo(); }
 
+
+// ── PAGE SWITCHING ────────────────────────────────────────────────
+let curPage = 'map';
+
+function switchPage(p){
+  curPage = p;
+  document.querySelector('.wrap').style.display = p==='map'?'block':'none';
+  document.querySelectorAll('.page-section').forEach(el=>el.classList.remove('active'));
+  if(p!=='map') document.getElementById('page-'+p)?.classList.add('active');
+  document.querySelectorAll('.bni').forEach(el=>el.classList.remove('on'));
+  document.getElementById('nav-'+p)?.classList.add('on');
+  if(p==='achievement') renderAchievements();
+  if(p==='course') renderCourses();
+  if(p==='checklist') renderChecklist();
+  if(p==='upgrade') renderUpgrade();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── COURSE DATA ───────────────────────────────────────────────────
+const COURSES = [
+  {
+    id:'c1', title:'基礎課程', em:'🌟',
+    links:[
+      {type:'yt',title:'新人Day1 @惠誼',url:'https://youtu.be/1g_daerd81U'},
+      {type:'yt',title:'個人形象魅力 @丙鈞',url:'https://youtu.be/8mQdgzNC6FA'},
+      {type:'yt',title:'99%精準的新人銷售技巧 VIP價格、零售、優惠價 @凝凝',url:'https://www.youtube.com/watch?v=90152gSAO6w'},
+      {type:'yt',title:'20250226進階群會議 產品知識大補帖 @惠誼',url:'https://youtu.be/doaT4DiXGJ4'},
+      {type:'yt',title:'20241220打造自己魔術曲線圖 @丙鈞',url:'https://youtu.be/cVtwIjAvNQE'},
+    ]
+  },
+  {
+    id:'c2', title:'版面打造、引流', em:'📱',
+    links:[
+      {type:'yt',title:'引爆IG社群力 @毛妮芭',url:'https://www.youtube.com/watch?v=9MvrbRM-zjM'},
+      {type:'yt',title:'短視頻速成班「第三期·基礎剪輯」@惠誼、Ming',url:'https://www.youtube.com/watch?v=VElTABXDVCc'},
+      {type:'yt',title:'20241228全方位引流 @惠誼',url:'https://youtu.be/YczqRbFOF6o'},
+      {type:'yt',title:'20251008精準雙軌定位力 @Ruby',url:'https://youtu.be/S4GfSuX72Lo'},
+      {type:'yt',title:'20241023單支影片變現10萬的關鍵 @Ruby',url:'https://youtu.be/aTnc2xL8S5M'},
+    ]
+  },
+  {
+    id:'c3', title:'限動', em:'✨',
+    links:[
+      {type:'yt',title:'20240402「100%掌握限動開賣三關鍵？如何避免療效法規」',url:'https://www.youtube.com/watch?v=--8zGzbB6KU'},
+      {type:'yt',title:'新手開賣影片怎麼拍？@惠誼',url:'https://www.youtube.com/watch?v=pXn2YleuKZI'},
+      {type:'yt',title:'20250924限動美感全攻略 @珮珮',url:'https://youtu.be/yJcL18HgAXI'},
+      {type:'yt',title:'20250420惠誼直屬「限動影響力 日常怎麼發」',url:'https://youtu.be/laIGVjOVzJE'},
+      {type:'yt',title:'20260202福袋爆賣50組 @惠誼',url:'https://youtu.be/sp62qW2aiQQ'},
+      {type:'yt',title:'20241229限動沒靈感怎麼辦？@小可',url:'https://youtu.be/zEn-oCuw3uE'},
+    ]
+  },
+  {
+    id:'c4', title:'銷售', em:'💰',
+    links:[
+      {type:'yt',title:'20241222銷售動人心 @惠誼',url:'https://youtu.be/Bm3YQl4_gDg'},
+      {type:'yt',title:'新人必學！絕對成交七步驟 @惠云',url:'https://www.youtube.com/watch?v=6LTTkjoBNsU'},
+      {type:'yt',title:'20260128美肌福袋報賣四步驟 @皇家瑜萍',url:'https://youtu.be/gZhtB_iWpS4'},
+      {type:'yt',title:'20260128纖體福袋變現全攻略 @皇家珮珮',url:'https://youtu.be/az9bgsEk8XM'},
+      {type:'yt',title:'20250910「大健康系列到底怎麼爆？」妮',url:'https://youtu.be/dMr_NPRzAw0'},
+    ]
+  },
+  {
+    id:'c5', title:'售後', em:'💝',
+    links:[
+      {type:'yt',title:'20241230售後最暖心 @惠誼',url:'https://youtu.be/CW2fSYu6Bjk'},
+    ]
+  },
+  {
+    id:'c6', title:'心態', em:'💛',
+    links:[
+      {type:'yt',title:'20241213心態穩經營就穩 @丙鈞',url:'https://youtu.be/t51aRb6wh1Q'},
+      {type:'yt',title:'20241213搞定新人90%在經營上遇到的問題 @子晴',url:'https://youtu.be/tsCoAXN8x6s'},
+      {type:'yt',title:'20260320心態啟航（上）@木白',url:'https://youtu.be/2V0pR59_AsI'},
+      {type:'yt',title:'20260331能量續航 @惠誼',url:'https://youtu.be/uAE5axNqafU'},
+    ]
+  },
+  {
+    id:'c7', title:'拓展輔導督導必看', em:'🚀',
+    links:[
+      {type:'yt',title:'20250913新人第三堂「開啟第二口袋收入」@丙鈞',url:'https://youtu.be/LHgcVrVkmSE'},
+      {type:'yt',title:'20240508「如何善用16大優勢 每月多招商五位」',url:'https://www.youtube.com/watch?v=QqQ_2htHz0c'},
+      {type:'yt',title:'麥爾專業車體貼膜—嘉義 讓你收入翻倍三關鍵',url:'https://www.youtube.com/watch?v=fT0S31de_D0'},
+    ]
+  },
+  {
+    id:'c8', title:'DCT系統4.0 輔導督導必看資料', em:'📋',
+    links:[
+      {type:'nt',title:'美肌使用方法、注意事項',url:'https://www.notion.so/31abbada9af3802d9e60e50b50ac66c3'},
+      {type:'nt',title:'纖體吃法、飲食、纖體班',url:'https://www.notion.so/31b306c06b7d80ed88ebf77e9a18afe7'},
+      {type:'nt',title:'新輔導督導要怎麼開始',url:'https://www.notion.so/312306c06b7d80078f8debb07160b219'},
+      {type:'nt',title:'帶夥伴入加盟的SOP',url:'https://www.notion.so/SOP-312b58d2c79e806596f0c44d8f562f8a'},
+      {type:'nt',title:'Day1 新人第一天',url:'https://www.notion.so/Day1-312339f987098091b133ef6b34eef80f'},
+      {type:'nt',title:'新人開賣第一天怎麼發限動',url:'https://www.notion.so/06286b5c397e447b8723b2e8c12d73e7'},
+      {type:'nt',title:'限動美感',url:'https://www.notion.so/312bbada9af3802a9b7bd97282819374'},
+      {type:'nt',title:'銷售QA寶典',url:'https://www.notion.so/QA-312306c06b7d805593e6c783a5c7aaf6'},
+      {type:'nt',title:'引流建議',url:'https://www.notion.so/312b0938dcdb80bf8023fe8c364af7dc'},
+      {type:'nt',title:'FABEQ一句話成交',url:'https://www.notion.so/FABEQ-312b58d2c79e8018b2cef9d7a9ed53f9'},
+      {type:'nt',title:'銷售SOP',url:'https://www.notion.so/SOP-312b58d2c79e803590bcf61e08d4daf5'},
+      {type:'nt',title:'關於魔術曲線圖如何製作',url:'https://www.notion.so/3121c0dd9cb480318d33e93b42a166a9'},
+      {type:'nt',title:'售後怎麼做？',url:'https://www.notion.so/3121c0dd9cb4806d9c2cfb53c47f48f8'},
+      {type:'nt',title:'經營必備App（短語鍵盤、待辦提醒、快速做筆記）',url:'https://www.notion.so/App-31c8fcb6b75d80c99c60dc721e2a742b'},
+      {type:'gd',title:'經營相關資料 - Google Drive',url:'https://drive.google.com/drive/folders/1Olk-O2FDnFLHcsRCD-qOkVfzx25-UcTr'},
+      {type:'gd',title:'DCT產品圖庫 - Google Drive',url:'https://drive.google.com/drive/folders/1AbliMVQR3SnYxREowaLP0vws6pDz3Byv'},
+    ]
+  },
+];
+
+const openChapters = {};
+
+function renderCourses(){
+  const el = document.getElementById('course-list');
+  if(!el) return;
+  el.innerHTML = COURSES.map(ch=>`
+    <div class="course-chapter">
+      <div class="course-ch-hd" onclick="toggleChapter('${ch.id}')">
+        <div class="course-ch-em">${ch.em}</div>
+        <div class="course-ch-title">${ch.title}</div>
+        <div class="course-ch-count">${ch.links.length}</div>
+        <div class="course-ch-arr${openChapters[ch.id]?' open':''}" id="arr-${ch.id}">▼</div>
+      </div>
+      <div class="course-links${openChapters[ch.id]?' open':''}" id="links-${ch.id}">
+        ${ch.links.map(l=>`
+          <a class="course-link" href="${l.url}" target="_blank">
+            <div class="cl-icon cl-${l.type}">${l.type==='yt'?'▶':l.type==='nt'?'📝':'📁'}</div>
+            <div class="cl-body">
+              <div class="cl-title">${l.title}</div>
+              <div class="cl-sub">${l.type==='yt'?'YouTube影片':l.type==='nt'?'Notion文件':'Google Drive'}</div>
+            </div>
+            <div class="cl-arr">→</div>
+          </a>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function toggleChapter(id){
+  openChapters[id] = !openChapters[id];
+  const links = document.getElementById('links-'+id);
+  const arr = document.getElementById('arr-'+id);
+  if(links) links.classList.toggle('open', openChapters[id]);
+  if(arr) arr.classList.toggle('open', openChapters[id]);
+}
+
+// ── ACHIEVEMENTS ─────────────────────────────────────────────────
+const ACHIEVEMENTS = [
+  {em:'🌱',name:'踏出第一步',desc:'完成愛用客階段',stageIdx:0},
+  {em:'🌿',name:'展翅飛翔',desc:'完成實習加盟階段',stageIdx:1},
+  {em:'⭐',name:'零售達人',desc:'完成三級零售階段',stageIdx:2},
+  {em:'💫',name:'輔導新星',desc:'完成三級輔導階段',stageIdx:3},
+  {em:'🌙',name:'成長加速',desc:'完成二級輔導階段',stageIdx:4},
+  {em:'🌟',name:'領導核心',desc:'完成一級輔導階段',stageIdx:5},
+  {em:'👑',name:'皇家榮耀',desc:'完成皇家階段',stageIdx:6},
+];
+
+function renderAchievements(){
+  const grid = document.getElementById('ach-grid');
+  const msList = document.getElementById('ms-display-list');
+  if(!grid || !msList) return;
+
+  grid.innerHTML = ACHIEVEMENTS.map(a=>{
+    const unlocked = ndone(a.stageIdx) === LV[a.stageIdx].qs.length;
+    return `<div class="ach-item${unlocked?' unlocked':' locked'}">
+      <div class="ach-em">${a.em}</div>
+      <div class="ach-name">${a.name}</div>
+      <div class="ach-desc">${a.desc}</div>
+      <div class="ach-badge ${unlocked?'unlocked':'locked'}">${unlocked?'✓ 已解鎖':'🔒 未解鎖'}</div>
+    </div>`;
+  }).join('');
+
+  const tx = totXP();
+  msList.innerHTML = MILESTONES.map(m=>`
+    <div class="ms-d-row">
+      <div class="ms-d-icon">${m.icon}</div>
+      <div class="ms-d-body">
+        <div class="ms-d-name">${m.title}</div>
+        <div class="ms-d-num">累積 ${m.stars} 顆星星</div>
+      </div>
+      <div class="ms-d-check">${tx>=m.stars?'✅':'⬜'}</div>
+    </div>`).join('');
+}
+
+
+// ── CHECKLIST DATA ────────────────────────────────────────────────
+const CHECKLISTS = [
+  {
+    stageId:0, stageName:'愛用客', em:'🌱',
+    sections:[
+      { id:'c0_product', em:'💊', title:'產品了解 & 基礎建立',
+        target:'能清楚說明3款產品的功效',
+        items:[
+          {text:'了解婕樂纖核心產品線及適合族群'},
+          {text:'能說出每款產品的主要成分與功效'},
+          {text:'知道正確的使用順序和時間'},
+          {text:'自己有使用並有親身感受與改變'},
+          {text:'了解DCT系統4.0說明與團規', course:{title:'DCT系統4.0說明&團規更新',url:'https://youtu.be/RaqKArQoVB0'}},
+          {text:'看完新人Day1課程', course:{title:'新人Day1 @惠誼',url:'https://youtu.be/1g_daerd81U'}},
+          {text:'看完個人形象魅力課程', course:{title:'個人形象魅力 @丙鈞',url:'https://youtu.be/8mQdgzNC6FA'}},
+          {text:'看完新人銷售技巧課程', course:{title:'99%精準的新人銷售技巧 @凝凝',url:'https://www.youtube.com/watch?v=90152gSAO6w'}},
+          {text:'看完產品知識大補帖', course:{title:'20250226進階群會議 產品知識大補帖 @惠誼',url:'https://youtu.be/doaT4DiXGJ4'}},
+          {text:'看完打造魔術曲線圖課程', course:{title:'20241220打造自己魔術曲線圖 @丙鈞',url:'https://youtu.be/cVtwIjAvNQE'}},
+        ]
+      },
+      { id:'c0_use', em:'📅', title:'使用體驗 & 見證建立',
+        target:'完成14天使用紀錄，建立自己的故事',
+        items:[
+          {text:'連續使用產品14天以上'},
+          {text:'記錄身體的變化和感受（文字或照片）'},
+          {text:'拍攝纖體系列BA前後對比照'},
+          {text:'拍攝美肌系列BA前後對比照'},
+          {text:'寫下自己的使用心得見證，能用自己的話說出來'},
+        ]
+      },
+      { id:'c0_mindset', em:'💛', title:'心態建立',
+        target:'建立正確的創業心態',
+        items:[
+          {text:'看完心態穩經營就穩課程', course:{title:'20241213心態穩經營就穩 @丙鈞',url:'https://youtu.be/t51aRb6wh1Q'}},
+          {text:'看完搞定新人90%遇到的問題', course:{title:'20241213搞定新人90%在經營上遇到的問題 @子晴',url:'https://youtu.be/tsCoAXN8x6s'}},
+          {text:'了解自己加入DCT最深層的原因'},
+          {text:'設定加入後第一個月的目標'},
+        ]
+      },
+    ]
+  },
+  {
+    stageId:1, stageName:'實習加盟', em:'🌿',
+    sections:[
+      { id:'c1_ba', em:'📸', title:'BA & 見證',
+        target:'BA很重要，這是你最強的銷售工具',
+        items:[
+          {text:'纖體系列BA完整記錄（前後變化清楚）'},
+          {text:'美肌系列BA完整記錄（前後變化清楚）'},
+          {text:'能用自己的見證故事自然介紹產品'},
+          {text:'了解全產品線適合哪些客群與使用方法', course:{title:'美肌使用方法、注意事項',url:'https://www.notion.so/31abbada9af3802d9e60e50b50ac66c3'}},
+          {text:'了解纖體吃法與飲食搭配', course:{title:'纖體吃法、飲食、纖體班',url:'https://www.notion.so/31b306c06b7d80ed88ebf77e9a18afe7'}},
+        ]
+      },
+      { id:'c1_page', em:'📱', title:'版面建立',
+        target:'讓人一眼看出你是誰、你分享什麼',
+        items:[
+          {text:'頭貼、簡介、名字調整完成'},
+          {text:'版面風格一致、整齊、有特色'},
+          {text:'精選動態整齊不過於商業'},
+          {text:'限動每日都有5-10篇（生活：產品＝5:4）'},
+          {text:'看完引爆IG社群力課程', course:{title:'引爆IG社群力 @毛妮芭',url:'https://www.youtube.com/watch?v=9MvrbRM-zjM'}},
+          {text:'看完全方位引流課程', course:{title:'20241228全方位引流 @惠誼',url:'https://youtu.be/YczqRbFOF6o'}},
+          {text:'看完精準雙軌定位力課程', course:{title:'20251008精準雙軌定位力 @Ruby',url:'https://youtu.be/S4GfSuX72Lo'}},
+          {text:'看完單支影片變現課程', course:{title:'20241023單支影片變現10萬的關鍵 @Ruby',url:'https://youtu.be/aTnc2xL8S5M'}},
+        ]
+      },
+      { id:'c1_flow', em:'📣', title:'引流執行',
+        target:'每個月增加粉絲至少50-200名',
+        items:[
+          {text:'確定自己的定位（是誰、分享什麼）'},
+          {text:'明確想吸引的客群是誰'},
+          {text:'同時經營至少兩個平台'},
+          {text:'每週至少發2-3篇貼文或連續短片'},
+          {text:'每日與陌生人互動至少15-20位（愛心、留言、限動、聊天）'},
+          {text:'看完短視頻速成班課程', course:{title:'短視頻速成班「第三期·基礎剪輯」@惠誼、Ming',url:'https://www.youtube.com/watch?v=VElTABXDVCc'}},
+        ]
+      },
+      { id:'c1_recruit', em:'👥', title:'招商準備',
+        target:'能自然介紹事業機會',
+        items:[
+          {text:'看完新人第三堂開啟第二口袋收入', course:{title:'20250913新人第三堂「開啟第二口袋收入」@丙鈞',url:'https://youtu.be/LHgcVrVkmSE'}},
+          {text:'了解帶夥伴入加盟的SOP流程', course:{title:'帶夥伴入加盟的SOP',url:'https://www.notion.so/SOP-312b58d2c79e806596f0c44d8f562f8a'}},
+          {text:'了解如何善用16大優勢每月多招商', course:{title:'20240508「如何善用16大優勢 每月多招商五位」',url:'https://www.youtube.com/watch?v=QqQ_2htHz0c'}},
+          {text:'看完Day1新人第一天流程', course:{title:'Day1 新人第一天',url:'https://www.notion.so/Day1-312339f987098091b133ef6b34eef80f'}},
+        ]
+      },
+      { id:'c1_mindset', em:'💛', title:'心態',
+        target:'建立長期經營的穩定心態',
+        items:[
+          {text:'看完心態啟航課程', course:{title:'20260320心態啟航（上）@木白',url:'https://youtu.be/2V0pR59_AsI'}},
+          {text:'面對拒絕能記錄並學習，不放棄'},
+          {text:'設定實習加盟第一個月的目標'},
+          {text:'有固定與上家報告進度的習慣'},
+        ]
+      },
+    ]
+  },
+  {
+    stageId:2, stageName:'三級零售', em:'⭐',
+    sections:[
+      { id:'c2_ba', em:'📸', title:'BA & 見證',
+        target:'BA很重要，這是你最強的銷售工具',
+        items:[
+          {text:'纖體系列BA完整記錄（前後變化清楚）'},
+          {text:'美肌系列BA完整記錄（前後變化清楚）'},
+          {text:'有3位以上客戶見證可以分享'},
+          {text:'見證內容真實自然，能說出客人的故事'},
+        ]
+      },
+      { id:'c2_page', em:'📱', title:'版面 & 限動',
+        target:'每週3-5人詢問產品',
+        items:[
+          {text:'版面風格一致整齊有特色，讓人感到信任'},
+          {text:'限動每日5-10篇，生活感與產品比例平衡'},
+          {text:'發文自身使用感受✓、自身BA反饋✓、熱銷證實✓'},
+          {text:'看完新手開賣影片怎麼拍', course:{title:'新手開賣影片怎麼拍？@惠誼',url:'https://www.youtube.com/watch?v=pXn2YleuKZI'}},
+          {text:'看完限動開賣三關鍵課程', course:{title:'20240402「100%掌握限動開賣三關鍵」',url:'https://www.youtube.com/watch?v=--8zGzbB6KU'}},
+          {text:'看完限動美感全攻略', course:{title:'20250924限動美感全攻略 @珮珮',url:'https://youtu.be/yJcL18HgAXI'}},
+          {text:'看完日常怎麼發課程', course:{title:'20250420惠誼直屬「限動影響力 日常怎麼發」',url:'https://youtu.be/laIGVjOVzJE'}},
+          {text:'看完限動沒靈感怎麼辦', course:{title:'20241229限動沒靈感怎麼辦？@小可',url:'https://youtu.be/zEn-oCuw3uE'}},
+          {text:'看完限動美感資源', course:{title:'限動美感',url:'https://www.notion.so/312bbada9af3802a9b7bd97282819374'}},
+        ]
+      },
+      { id:'c2_sales', em:'🤝', title:'銷售',
+        target:'成交率80%以上',
+        items:[
+          {text:'了解全產品適合誰、作用、如何搭配'},
+          {text:'銷售過程：聊天諮詢有溫度、找出需求、觀察痛點'},
+          {text:'講自身或客人故事、設身處地、推薦產品與搭配組合'},
+          {text:'傳過兩次與客人對話給上家看'},
+          {text:'看完銷售動人心課程', course:{title:'20241222銷售動人心 @惠誼',url:'https://youtu.be/Bm3YQl4_gDg'}},
+          {text:'看完絕對成交七步驟', course:{title:'新人必學！絕對成交七步驟 @惠云',url:'https://www.youtube.com/watch?v=6LTTkjoBNsU'}},
+          {text:'看完美肌福袋報賣四步驟', course:{title:'20260128美肌福袋報賣四步驟 @皇家瑜萍',url:'https://youtu.be/gZhtB_iWpS4'}},
+          {text:'看完纖體福袋變現全攻略', course:{title:'20260128纖體福袋變現全攻略 @皇家珮珮',url:'https://youtu.be/az9bgsEk8XM'}},
+          {text:'看完大健康系列怎麼爆', course:{title:'20250910「大健康系列到底怎麼爆？」妮',url:'https://youtu.be/dMr_NPRzAw0'}},
+          {text:'看完銷售QA寶典', course:{title:'銷售QA寶典',url:'https://www.notion.so/QA-312306c06b7d805593e6c783a5c7aaf6'}},
+          {text:'了解FABEQ一句話成交', course:{title:'FABEQ一句話成交',url:'https://www.notion.so/FABEQ-312b58d2c79e8018b2cef9d7a9ed53f9'}},
+          {text:'了解銷售SOP流程', course:{title:'銷售SOP',url:'https://www.notion.so/SOP-312b58d2c79e803590bcf61e08d4daf5'}},
+          {text:'了解引流建議', course:{title:'引流建議',url:'https://www.notion.so/312b0938dcdb80bf8023fe8c364af7dc'}},
+        ]
+      },
+      { id:'c2_after', em:'💝', title:'售後',
+        target:'回購率70%以上',
+        items:[
+          {text:'收到產品第一天告知吃法'},
+          {text:'第三天關心使用狀況'},
+          {text:'第七天關心'},
+          {text:'之後每兩週關心一次'},
+          {text:'會幫客人做產品+飲食搭配', course:{title:'纖體吃法、飲食、纖體班',url:'https://www.notion.so/31b306c06b7d80ed88ebf77e9a18afe7'}},
+          {text:'主動關心使用狀況，給予溫心服務感'},
+          {text:'看完售後最暖心課程', course:{title:'20241230售後最暖心 @惠誼',url:'https://youtu.be/CW2fSYu6Bjk'}},
+          {text:'了解售後怎麼做', course:{title:'售後怎麼做？',url:'https://www.notion.so/3121c0dd9cb4806d9c2cfb53c47f48f8'}},
+        ]
+      },
+      { id:'c2_mindset', em:'💛', title:'心態',
+        target:'穩定持續，不因拒絕而放棄',
+        items:[
+          {text:'看完能量續航課程', course:{title:'20260331能量續航 @惠誼',url:'https://youtu.be/uAE5axNqafU'}},
+          {text:'每月淨利達10000元以上'},
+          {text:'建立穩定的回購客群（10位以上）'},
+          {text:'傳過兩次與客人對話截圖給上家'},
+        ]
+      },
+    ]
+  },
+  {
+    stageId:3, stageName:'三級輔導', em:'💫',
+    sections:[
+      { id:'c3_retail', em:'⭐', title:'零售基礎穩固',
+        target:'個人零售月淨利穩定25000元以上',
+        items:[
+          {text:'個人零售月淨利達25000元以上'},
+          {text:'有穩定的10位以上回購客戶'},
+          {text:'成交率維持80%以上'},
+          {text:'客戶回購率70%以上'},
+          {text:'了解魔術曲線圖如何製作', course:{title:'關於魔術曲線圖如何製作',url:'https://www.notion.so/3121c0dd9cb480318d33e93b42a166a9'}},
+        ]
+      },
+      { id:'c3_recruit', em:'👥', title:'招商 & 輔導新人',
+        target:'能帶入4位實習或2位三級+2位實習',
+        items:[
+          {text:'能自然介紹事業機會給朋友'},
+          {text:'已成功帶入至少1位實習加盟'},
+          {text:'了解帶夥伴入加盟的SOP', course:{title:'帶夥伴入加盟的SOP',url:'https://www.notion.so/SOP-312b58d2c79e806596f0c44d8f562f8a'}},
+          {text:'能對下家做零售獲利四大技能指導'},
+          {text:'看完如何善用16大優勢課程', course:{title:'20240508「如何善用16大優勢 每月多招商五位」',url:'https://www.youtube.com/watch?v=QqQ_2htHz0c'}},
+          {text:'看完麥爾車體貼膜收入翻倍三關鍵', course:{title:'麥爾專業車體貼膜 讓你收入翻倍三關鍵',url:'https://www.youtube.com/watch?v=fT0S31de_D0'}},
+        ]
+      },
+      { id:'c3_guide', em:'🌱', title:'輔導新人',
+        target:'能協助新人度過第一個月',
+        items:[
+          {text:'完成新人Day1入職流程', course:{title:'Day1 新人第一天',url:'https://www.notion.so/Day1-312339f987098091b133ef6b34eef80f'}},
+          {text:'了解新輔導督導要怎麼開始', course:{title:'新輔導督導要怎麼開始',url:'https://www.notion.so/312306c06b7d80078f8debb07160b219'}},
+          {text:'協助新人建立IG版面，了解新人開賣第一天限動', course:{title:'新人開賣第一天怎麼發限動',url:'https://www.notion.so/06286b5c397e447b8723b2e8c12d73e7'}},
+          {text:'每週至少與夥伴確認一次進度'},
+          {text:'有耐心回應夥伴的問題'},
+        ]
+      },
+      { id:'c3_mindset', em:'💛', title:'心態',
+        target:'長期陪伴，穩定是最強的力量',
+        items:[
+          {text:'看完新人第三堂開啟第二口袋收入', course:{title:'20250913新人第三堂「開啟第二口袋收入」@丙鈞',url:'https://youtu.be/LHgcVrVkmSE'}},
+          {text:'清楚自己為什麼帶人'},
+          {text:'面對夥伴挫折能穩定陪伴'},
+          {text:'有固定與上家報告進度的習慣'},
+        ]
+      },
+    ]
+  },
+  {
+    stageId:4, stageName:'二級輔導', em:'🌙',
+    sections:[
+      { id:'c4_condition', em:'📋', title:'晉升條件達成',
+        target:'單筆叫貨5萬 / 兩月累積4萬',
+        items:[
+          {text:'單筆叫貨金額達5萬元'},
+          {text:'兩個月累積補貨金額4萬元以上'},
+          {text:'個人零售業績持續穩定'},
+          {text:'已有至少1位夥伴達到三級零售'},
+        ]
+      },
+      { id:'c4_team', em:'👥', title:'團隊建立',
+        target:'拓展4位實習或2位三級零售',
+        items:[
+          {text:'團隊人數達到晉升要求'},
+          {text:'能持續招商拓展新夥伴'},
+          {text:'能協助下家夥伴持續拓展'},
+          {text:'有固定的團隊會議機制'},
+        ]
+      },
+      { id:'c4_leader', em:'🌟', title:'領導能力',
+        target:'帶出會自主運作的團隊',
+        items:[
+          {text:'了解不同夥伴的動力來源'},
+          {text:'能激勵低潮期的夥伴'},
+          {text:'夥伴之間有互相支持的氛圍'},
+          {text:'處理過至少一次團隊問題'},
+        ]
+      },
+    ]
+  },
+  {
+    stageId:5, stageName:'一級輔導', em:'🌟',
+    sections:[
+      { id:'c5_condition', em:'📋', title:'晉升條件達成',
+        target:'單筆叫貨15萬 / 兩月累積12萬 / 5人以上',
+        items:[
+          {text:'單筆叫貨金額達15萬元'},
+          {text:'兩個月累積補貨金額12萬元以上'},
+          {text:'團隊人數5人以上'},
+          {text:'單一品牌專注經營'},
+        ]
+      },
+      { id:'c5_system', em:'⚙️', title:'系統化複製',
+        target:'成功方法可以被複製',
+        items:[
+          {text:'整理出自己的核心成功要素'},
+          {text:'設計可複製的輔導SOP'},
+          {text:'至少一位夥伴成功複製你的方法'},
+          {text:'建立品牌形象與個人影響力'},
+        ]
+      },
+      { id:'c5_promote', em:'🚀', title:'推動夥伴晉升',
+        target:'帶出二級輔導夥伴',
+        items:[
+          {text:'有至少1位夥伴達到二級輔導'},
+          {text:'持續陪伴夥伴的晉升過程'},
+          {text:'定期舉辦團隊分享活動'},
+        ]
+      },
+    ]
+  },
+  {
+    stageId:6, stageName:'皇家', em:'👑',
+    sections:[
+      { id:'c6_condition', em:'📋', title:'晉升條件達成',
+        target:'單筆叫貨35萬 / 兩月累積30萬 / 25人以上',
+        items:[
+          {text:'單筆叫貨金額達35萬元'},
+          {text:'兩個月累積補貨金額30萬元以上'},
+          {text:'團隊人數25人以上'},
+          {text:'單一品牌長期深耕'},
+        ]
+      },
+      { id:'c6_legacy', em:'🌍', title:'傳承 & 影響力',
+        target:'成為DCT精神的傳承者',
+        items:[
+          {text:'完整整理自己從愛用客到皇家的旅程故事'},
+          {text:'每月至少鼓勵一位在低潮的夥伴'},
+          {text:'參與或舉辦至少一次大型分享活動'},
+          {text:'通過皇家審核（親身經歷調適性領導）'},
+        ]
+      },
+    ]
+  },
+];
+
+
+const UPGRADE_INFO = [
+  {
+    stageId: 0, name: '愛用客', em: '🌱',
+    conditions: ['開始使用婕樂纖產品','建立個人使用見證'],
+    quota: null, monthly: null,
+    note: '從使用者開始，成為自己最好的見證'
+  },
+  {
+    stageId: 1, name: '實習加盟', em: '🌿',
+    conditions: ['新加盟：6,800元（6,600首次備貨款+200元創業包）','兩個月補貨金額6,000元以上'],
+    quota: '6,800', monthly: '6,000',
+    note: '沒有招商權，專注在零售獲利'
+  },
+  {
+    stageId: 2, name: '三級零售', em: '⭐',
+    conditions: ['新加盟：19,800元（19,600首次備貨款+200元創業包）','兩個月補貨金額12,000元以上'],
+    quota: '19,800', monthly: '12,000',
+    note: '沒有招商權，零售獲利四大技能全掌握'
+  },
+  {
+    stageId: 3, name: '三級輔導', em: '💫',
+    conditions: ['新晉升三級輔導督導不須首次備貨金額','兩個月的補貨金額也是12,000元以上','能招到4位實習 or 2位三級零售+2位實習'],
+    quota: '0', monthly: '12,000',
+    note: '有招商權，開始帶夥伴一起成長'
+  },
+  {
+    stageId: 4, name: '二級輔導', em: '🌙',
+    conditions: ['單筆叫貨金額：50,000元','晉升首次備貨款：68,000元（原68,000）','兩個月累積補貨金額40,000元以上'],
+    quota: '50,000', monthly: '40,000',
+    note: '兩個月能補貨4萬就可以升級'
+  },
+  {
+    stageId: 5, name: '一級輔導', em: '🌟',
+    conditions: ['單筆叫貨金額：150,000元','兩個月累積補貨金額120,000元以上','團隊人數5人以上','單一品牌'],
+    quota: '150,000', monthly: '120,000',
+    note: '送審條件：補貨達標 + 團隊5人 + 單一品牌'
+  },
+  {
+    stageId: 6, name: '皇家', em: '👑',
+    conditions: ['單筆叫貨金額：350,000元','兩個月累積補貨金額300,000元以上','團隊人數25人以上','單一品牌'],
+    quota: '350,000', monthly: '300,000',
+    note: '送審條件：補貨達標 + 團隊25人 + 單一品牌'
+  },
+];
+
+// ── CHECKLIST LOGIC ───────────────────────────────────────────────
+const CK_KEY = 'dct_checklist_v1';
+const UPG_KEY = 'dct_upgrade_v1';
+let ckData = {};
+let upgData = {};
+let curCkStage = 0;
+const openCkSections = {};
+
+function loadCkData(){
+  try{ ckData = JSON.parse(localStorage.getItem(CK_KEY)||'{}'); }catch(e){ ckData={}; }
+  try{ upgData = JSON.parse(localStorage.getItem(UPG_KEY)||'{}'); }catch(e){ upgData={}; }
+}
+function saveCkData(){ localStorage.setItem(CK_KEY, JSON.stringify(ckData)); }
+function saveUpgData(){ localStorage.setItem(UPG_KEY, JSON.stringify(upgData)); }
+
+function toggleCkItem(secId, itemIdx){
+  const key = secId+'_'+itemIdx;
+  ckData[key] = !ckData[key];
+  saveCkData();
+  renderChecklistContent();
+}
+
+function getCkProgress(sec){
+  const done = sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;
+  return {done, total:sec.items.length};
+}
+
+function renderChecklist(){
+  const tabs = document.getElementById('ck-tabs');
+  if(!tabs) return;
+  tabs.innerHTML = CHECKLISTS.map((c,i)=>
+    `<button class="ck-stage-tab${i===curCkStage?' on':''}" onclick="setCkStage(${i})">${c.em} ${c.stageName}</button>`
+  ).join('');
+  renderChecklistContent();
+}
+
+function renderChecklistContent(){
+  const el = document.getElementById('ck-content');
+  if(!el) return;
+  const stage = CHECKLISTS[curCkStage];
+  el.innerHTML = stage.sections.map(sec=>{
+    const {done,total} = getCkProgress(sec);
+    const isOpen = openCkSections[sec.id];
+    return `<div class="ck-section">
+      <div class="ck-sec-hd" onclick="toggleCkSection('${sec.id}')">
+        <div class="ck-sec-em">${sec.em}</div>
+        <div class="ck-sec-title">${sec.title}</div>
+        <div class="ck-sec-progress">${done}/${total}</div>
+        <div class="ck-sec-arr${isOpen?' open':''}" id="ckarr-${sec.id}">▼</div>
+      </div>
+      <div class="ck-items${isOpen?' open':''}" id="ckitems-${sec.id}">
+        <div class="ck-target">🎯 目標：${sec.target}</div>
+        ${sec.items.map((item,i)=>{
+          const checked = !!ckData[sec.id+'_'+i];
+          return `<div class="ck-item${checked?' checked':''}" onclick="toggleCkItem('${sec.id}',${i})">
+            <div class="ck-item-box"><div class="ck-item-check"></div></div>
+            <div class="ck-item-text">${item}</div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleCkSection(id){
+  openCkSections[id] = !openCkSections[id];
+  renderChecklistContent();
+}
+
+function setCkStage(i){
+  curCkStage = i;
+  renderChecklist();
+}
+
+// ── UPGRADE LOGIC ─────────────────────────────────────────────────
+function renderUpgrade(){
+  const el = document.getElementById('upg-list');
+  if(!el) return;
+  const curStageIdx = ci; // current level in quest map
+
+  el.innerHTML = UPGRADE_INFO.map((u,i)=>{
+    const isDone = ndone(i) === LV[i]?.qs?.length;
+    const isCur = i === curStageIdx;
+    const isLocked = i > curStageIdx + 1;
+    const statusClass = isDone ? 'upg-hd-done' : isCur ? 'upg-hd-cur' : 'upg-hd-locked';
+    const badgeClass = isDone ? 'upg-badge-done' : isCur ? 'upg-badge-cur' : 'upg-badge-locked';
+    const badgeTxt = isDone ? '✓ 已達成' : isCur ? '▶ 進行中' : '🔒 未解鎖';
+
+    
+
+    return `<div class="upg-card">
+      <div class="upg-hd ${statusClass}" onclick="toggleUpgCard('upg-detail-${i}')">
+        <div class="upg-em">${u.em}</div>
+        <div class="upg-body">
+          <div class="upg-name">${u.name}</div>
+          <div class="upg-sub">${u.note}</div>
+        </div>
+        <div class="upg-badge ${badgeClass}">${badgeTxt}</div>
+      </div>
+      <div class="upg-detail" id="upg-detail-${i}" style="display:none">
+        <div class="upg-cond-title">✦ 晉升條件</div>
+        ${u.conditions.map(c=>`<div class="upg-cond"><div class="upg-cond-dot"></div>${c}</div>`).join('')}
+
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleUpgCard(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = el.style.display==='none' ? 'block' : 'none';
+}
+
+
+
+
+
+// ── STAGE INFO CARD (integrated checklist + upgrade) ─────────────
+const openSicSections = {};
+let sicOpen = true;
+
+function toggleSic(){
+  sicOpen = !sicOpen;
+  document.getElementById('sic-body')?.classList.toggle('open', sicOpen);
+  document.getElementById('sic-arr')?.classList.toggle('open', sicOpen);
+}
+
+function toggleSicCkSec(id){
+  openSicSections[id] = !openSicSections[id];
+  const items = document.getElementById('sic-ck-items-'+id);
+  const arr = document.getElementById('sic-ck-arr-'+id);
+  if(items) items.classList.toggle('open', openSicSections[id]);
+  if(arr) arr.classList.toggle('open', openSicSections[id]);
+}
+
+function toggleSicCkItem(secId, itemIdx){
+  const key = secId+'_'+itemIdx;
+  const prevXP = totXP();
+  ckData[key] = !ckData[key];
+  saveCkData();
+  const newXP = totXP();
+  rHdr();
+  renderStageInfo();
+  renderAchievements();
+
+  // Check milestone
+  if(ckData[key]){
+    const milestone = checkMilestone(prevXP, newXP);
+    if(milestone){
+      setTimeout(()=>showMilestone(milestone, newXP), 300);
+      return;
+    }
+    // Check if ALL items done
+    const totalItems = CHECKLISTS.reduce((s,st)=>s+st.sections.reduce((ss,sec)=>ss+sec.items.length,0),0);
+    const doneItems = CHECKLISTS.reduce((s,st)=>s+st.sections.reduce((ss,sec)=>
+      ss+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0),0);
+    if(doneItems===totalItems){
+      setTimeout(()=>showMilestone(ALL_DONE_MILESTONE, newXP), 300);
+    }
+  }
+}
+
+function renderStageInfo(){
+  const wrap = document.getElementById('stage-info-wrap');
+  if(!wrap) return;
+  const upg = UPGRADE_INFO[ci];
+  const ckStage = CHECKLISTS[ci];
+
+  // Build checklist HTML
+  const ckHTML = ckStage ? ckStage.sections.map(sec=>{
+    const done = sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;
+    const total = sec.items.length;
+    return `<div class="sic-ck-section">
+      <div class="sic-ck-sec-hd" style="cursor:default;">
+        <div class="sic-ck-sec-em">${sec.em}</div>
+        <div class="sic-ck-sec-title">${sec.title}</div>
+        <div class="sic-ck-sec-prog">${done}/${total}</div>
+      </div>
+      <div class="sic-ck-items open">
+        <div class="sic-ck-target">🎯 ${sec.target}</div>
+        ${sec.items.map((item,i)=>{
+          const checked = !!ckData[sec.id+'_'+i];
+          const txt = typeof item==='object' ? item.text : item;
+          const course = typeof item==='object' ? item.course : null;
+          return `<div class="sic-ck-item-row${checked?' checked':''}" onclick="toggleSicCkItem('${sec.id}',${i})">
+            <div class="sic-ck-box-sq"><div class="sic-ck-v2"></div></div>
+            <div class="sic-ck-item-main">
+              <span class="sic-ck-txt">${txt}</span>${course ? `<a class="course-link-btn" href="${course.url}" target="_blank" onclick="event.stopPropagation()">▶ 看課程</a>` : ''}
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  }).join('') : '';
+
+  // Total checklist progress for this stage
+  const ckTotalDone = ckStage ? ckStage.sections.reduce((s,sec)=>
+    s + sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length, 0) : 0;
+  const ckTotalAll = ckStage ? ckStage.sections.reduce((s,sec)=>s+sec.items.length, 0) : 0;
+
+  wrap.innerHTML = `<div class="stage-info-card">
+    <div class="sic-top" onclick="toggleSic()">
+      <div class="sic-left">
+        <div class="sic-em">${upg?.em||''}</div>
+        <div>
+          <div class="sic-name">${upg?.name||''} · 晉升條件 & 檢核表</div>
+          <div class="sic-sub">檢核 ${ckTotalDone}/${ckTotalAll} 項完成</div>
+        </div>
+      </div>
+      <div class="sic-arr${sicOpen?' open':''}" id="sic-arr">▼</div>
+    </div>
+    <div class="sic-body${sicOpen?' open':''}" id="sic-body">
+      ${upg?.conditions?.length ? `
+      <div class="sic-upg-title">✦ 晉升門檻</div>
+      ${upg.conditions.map(c=>`<div class="sic-cond"><div class="sic-cond-dot"></div>${c}</div>`).join('')}
+      <div class="sic-note">${upg.note}</div>
+      <div class="sic-divider"></div>` : ''}
+      ${ckHTML ? `<div class="sic-ck-title">✦ 本階段檢核表</div>${ckHTML}` : ''}
+    </div>
+  </div>`;
+}
+
+loadCkData();
 load(); rAll();
 </script>
 </body>
 </html>
-HTMLEOF
-echo "done"
+
+</html>
