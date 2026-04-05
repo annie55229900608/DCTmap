@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DCT 新人冒險地圖 ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans TC',sans-serif;background:#FFF0F8;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#f9c8e0 1px,transparent 1px);background-size:28px 28px;opacity:.3;pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:460px;margin:0 auto;padding-bottom:100px;}
+.topbar{background:linear-gradient(135deg,#FF6EB4,#FF9BD2);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 16px rgba(255,110,180,.3);position:sticky;top:0;z-index:100;}
+.tb-left{display:flex;align-items:center;gap:9px;}
+.tb-av{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.tb-name{font-size:13px;font-weight:700;color:#fff;}
+.tb-sub{font-size:10px;color:rgba(255,255,255,.8);}
+.coin{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;color:#fff;}
+.hero{background:linear-gradient(160deg,#FFB3D9,#FF6EB4);padding:22px 18px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:'✦';position:absolute;right:16px;top:12px;font-size:56px;color:rgba(255,255,255,.1);}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:3px 12px;font-size:10px;color:#fff;margin-bottom:8px;}
+.hero-title{font-size:20px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:5px;}
+.hero-desc{font-size:11px;color:rgba(255,255,255,.85);line-height:1.65;margin-bottom:14px;}
+.hero-stats{display:flex;justify-content:center;gap:10px;}
+.hs{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:7px 14px;text-align:center;}
+.hs-n{font-size:18px;font-weight:900;color:#fff;}
+.hs-l{font-size:9px;color:rgba(255,255,255,.8);}
+.xp-box{background:#fff;margin:0 14px;border-radius:0 0 16px 16px;padding:12px 14px;box-shadow:0 4px 18px rgba(255,110,180,.1);margin-bottom:18px;}
+.xp-row{display:flex;justify-content:space-between;margin-bottom:6px;}
+.xp-lbl{font-size:10px;font-weight:700;color:#FF6EB4;}
+.xp-num{font-size:10px;color:#C090B0;}
+.xp-bar{height:8px;background:#FFE4F2;border-radius:999px;overflow:hidden;border:1px solid #FFCCE8;}
+.xp-fill{height:100%;background:linear-gradient(90deg,#FF6EB4,#FFB3D9);border-radius:999px;transition:width .6s cubic-bezier(.34,1.56,.64,1);}
+.sec-lbl{display:flex;align-items:center;gap:8px;padding:0 18px;margin-bottom:10px;}
+.sl-line{flex:1;height:1px;background:linear-gradient(90deg,#FFB3D9,transparent);}
+.sl-line.r{background:linear-gradient(90deg,transparent,#FFB3D9);}
+.sl-txt{font-size:10px;font-weight:700;color:#FF6EB4;letter-spacing:.1em;white-space:nowrap;}
+.lv-scroll{display:flex;gap:9px;padding:0 18px;overflow-x:auto;margin-bottom:22px;scrollbar-width:none;}
+.lv-scroll::-webkit-scrollbar{display:none;}
+.lv-card{flex-shrink:0;width:90px;background:#fff;border:2px solid #FFD6EC;border-radius:16px;padding:10px 6px;text-align:center;cursor:pointer;transition:all .2s;position:relative;box-shadow:0 2px 10px rgba(255,110,180,.07);}
+.lv-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(255,110,180,.15);}
+.lv-card.active{border-color:#FF6EB4;background:linear-gradient(135deg,#FFF0F8,#FFE4F2);box-shadow:0 4px 18px rgba(255,110,180,.22);}
+.lv-card.lk{opacity:.4;cursor:not-allowed;}
+.lv-card.lk:hover{transform:none;}
+.lv-em{font-size:24px;margin-bottom:5px;}
+.lv-nm{font-size:10px;font-weight:700;color:#D4609A;margin-bottom:3px;}
+.lv-pg{height:3px;background:#FFE4F2;border-radius:999px;overflow:hidden;margin-top:3px;}
+.lv-pf{height:100%;background:linear-gradient(90deg,#FF6EB4,#FFB3D9);border-radius:999px;}
+.lv-pt{font-size:8px;color:#E0A0C0;margin-top:2px;}
+.lv-lock{position:absolute;top:5px;right:7px;font-size:10px;}
+.lv-done{position:absolute;top:-5px;right:-5px;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#A8E063,#56AB2F);display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:900;}
+.qa{padding:0 14px;}
+.qa-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 2px;}
+.qa-title{font-size:15px;font-weight:900;color:#2d1228;}
+.qa-cnt{background:#FFE4F2;border:1px solid #FFB3D9;border-radius:999px;padding:2px 9px;font-size:10px;font-weight:700;color:#D4609A;}
+.cat-row{display:flex;gap:5px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none;}
+.cat-row::-webkit-scrollbar{display:none;}
+.cat-btn{flex-shrink:0;display:flex;align-items:center;gap:3px;padding:5px 10px;border-radius:999px;font-size:10px;font-weight:500;border:1.5px solid #FFD6EC;background:#fff;color:#C090B0;cursor:pointer;transition:all .15s;}
+.cat-btn:hover{border-color:#FF9BD2;color:#FF6EB4;}
+.cat-btn.on{background:linear-gradient(135deg,#FF6EB4,#FF9BD2);border-color:transparent;color:#fff;box-shadow:0 2px 8px rgba(255,110,180,.28);}
+.qc{background:#fff;border:2px solid #FFE4F2;border-radius:18px;margin-bottom:9px;overflow:hidden;transition:all .2s;box-shadow:0 2px 10px rgba(255,110,180,.05);}
+.qc:hover{box-shadow:0 4px 18px rgba(255,110,180,.12);}
+.qc.done{border-color:#B8E090;background:linear-gradient(135deg,#F8FFF2,#F0FAE6);}
+.qc.lkq{opacity:.45;pointer-events:none;}
+.qc.open{border-color:#FF9BD2;}
+.qc-hd{display:flex;align-items:center;gap:11px;padding:12px 14px;cursor:pointer;}
+.qc-ico{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.ik{background:linear-gradient(135deg,#E8F4FD,#C8E6F8);}
+.ia{background:linear-gradient(135deg,#E8F8E8,#C8EFC8);}
+.im{background:linear-gradient(135deg,#FFF8E8,#FFE8B8);}
+.ic{background:linear-gradient(135deg,#FCE8F8,#F5C8EE);}
+.qc-body{flex:1;min-width:0;}
+.qc-name{font-size:12px;font-weight:700;color:#2d1228;margin-bottom:3px;}
+.qc-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
+.qtag{font-size:8px;padding:2px 6px;border-radius:999px;font-weight:700;}
+.tk{background:#E8F4FD;color:#4A90C4;}
+.ta{background:#E8F8E8;color:#4A9A4A;}
+.tm{background:#FFF0C8;color:#C4880A;}
+.tc{background:#FCE8F8;color:#C44A9A;}
+.qxp{font-size:8px;color:#E0A0C0;font-weight:700;}
+.qc-ck{width:26px;height:26px;border-radius:50%;border:2px solid #FFD6EC;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;background:#fff;}
+.qc.done .qc-ck{background:linear-gradient(135deg,#A8E063,#56AB2F);border-color:transparent;box-shadow:0 2px 6px rgba(86,171,47,.28);}
+.ckv{width:10px;height:7px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);opacity:0;transition:opacity .2s;}
+.qc.done .ckv{opacity:1;}
+.qc-det{border-top:1.5px dashed #FFD6EC;padding:12px 14px 14px;animation:sd .2s ease;}
+.qc.done .qc-det{border-top-color:#C8EFC8;}
+@keyframes sd{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+.qd-desc{font-size:11px;color:#A06080;line-height:1.75;margin-bottom:10px;}
+.qd-cll{margin-bottom:12px;}
+.qd-cl-lbl{font-size:9px;font-weight:700;color:#FF6EB4;letter-spacing:.06em;margin-bottom:6px;}
+.qd-cli{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:#8B5070;line-height:1.55;padding:4px 0;border-bottom:1px solid #FFF0F8;}
+.qd-cli:last-child{border-bottom:none;}
+.qd-rw{display:flex;align-items:center;gap:5px;background:linear-gradient(135deg,#FFF8E8,#FFE8C8);border:1px solid #FFD6A0;border-radius:9px;padding:6px 10px;margin-bottom:11px;font-size:10px;color:#B87820;font-weight:700;}
+.qd-btn{width:100%;padding:11px;border-radius:13px;font-size:12px;font-weight:700;border:none;cursor:pointer;transition:all .2s;font-family:'Noto Sans TC',sans-serif;}
+.qdb-ok{background:linear-gradient(135deg,#FF6EB4,#FF9BD2);color:#fff;box-shadow:0 3px 12px rgba(255,110,180,.32);}
+.qdb-ok:hover{transform:translateY(-1px);box-shadow:0 5px 18px rgba(255,110,180,.42);}
+.qdb-un{background:#FFF0F8;border:1.5px solid #FFD6EC;color:#D4609A;}
+.qdb-lk{background:#F5F5F5;color:#C0C0C0;cursor:not-allowed;}
+.ovl{position:fixed;inset:0;background:rgba(80,0,40,.48);display:flex;align-items:center;justify-content:center;z-index:999;animation:fi .2s ease;}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+.ovl-box{background:#fff;border-radius:26px;padding:26px 22px;text-align:center;max-width:290px;width:88%;box-shadow:0 20px 50px rgba(255,110,180,.28);animation:pi .35s cubic-bezier(.34,1.56,.64,1);}
+@keyframes pi{from{opacity:0;transform:scale(.65)}to{opacity:1;transform:scale(1)}}
+.ov-em{font-size:50px;display:block;margin-bottom:5px;animation:bo 1s ease infinite alternate;}
+@keyframes bo{from{transform:translateY(0)}to{transform:translateY(-7px)}}
+.ov-stars{display:flex;justify-content:center;gap:5px;margin-bottom:10px;}
+.ovs{font-size:24px;}
+.ovs.lit{animation:sp .4s ease;}
+@keyframes sp{0%{transform:scale(0)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
+.ov-title{font-size:17px;font-weight:900;color:#2d1228;margin-bottom:5px;}
+.ov-desc{font-size:11px;color:#A06080;line-height:1.65;margin-bottom:7px;}
+.ov-xp{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#FFF8E8,#FFE8C8);border:1px solid #FFD6A0;border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700;color:#C4880A;margin-bottom:14px;}
+.ov-btn{width:100%;padding:11px;border-radius:13px;background:linear-gradient(135deg,#FF6EB4,#FF9BD2);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(255,110,180,.38);transition:all .2s;font-family:'Noto Sans TC',sans-serif;}
+.ov-btn:hover{transform:translateY(-1px);}
+.cf{position:fixed;pointer-events:none;z-index:1000;border-radius:2px;animation:cff linear forwards;}
+@keyframes cff{0%{transform:translateY(-10px) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
+.bnt{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;background:#fff;border-top:1.5px solid #FFE4F2;padding:8px 0;display:flex;justify-content:space-around;z-index:100;box-shadow:0 -4px 18px rgba(255,110,180,.08);}
+.bni{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 14px;border-radius:11px;transition:all .15s;}
+.bni.on{background:#FFF0F8;}
+.bni-ic{font-size:19px;}
+.bni-lb{font-size:9px;color:#C090B0;font-weight:500;}
+.bni.on .bni-lb{color:#FF6EB4;font-weight:700;}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="tb-left">
+    <div class="tb-av">🌸</div>
+    <div><div class="tb-name">新人冒險家</div><div class="tb-sub" id="lv-tag">認識DCT · Lv.1</div></div>
+  </div>
+  <div class="coin">⭐ <span id="tot-xp">0</span></div>
+</div>
+<div class="wrap">
+  <div class="hero">
+    <div class="hero-badge">✨ DCT 新人冒險地圖</div>
+    <div class="hero-title">你的創業旅程<br>從這裡開始！</div>
+    <div class="hero-desc">每完成一關就往成功更近一步<br>解鎖關卡、累積能量、一起晉升！</div>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-n" id="s-done">0</div><div class="hs-l">已完成</div></div>
+      <div class="hs"><div class="hs-n" id="s-tot">0</div><div class="hs-l">總關卡</div></div>
+      <div class="hs"><div class="hs-n" id="s-pct">0%</div><div class="hs-l">完成率</div></div>
+    </div>
+  </div>
+  <div class="xp-box">
+    <div class="xp-row"><div class="xp-lbl">⚡ 冒險能量</div><div class="xp-num"><span id="cx">0</span> / <span id="mx">100</span> XP</div></div>
+    <div class="xp-bar"><div class="xp-fill" id="xf" style="width:0%"></div></div>
+  </div>
+  <div class="sec-lbl"><div class="sl-line"></div><div class="sl-txt">選擇章節</div><div class="sl-line r"></div></div>
+  <div class="lv-scroll" id="lv-scroll"></div>
+  <div class="qa">
+    <div class="qa-hd"><div class="qa-title" id="qa-title">🗺️ 關卡列表</div><div class="qa-cnt" id="qa-cnt">0/0</div></div>
+    <div class="cat-row" id="cat-row"></div>
+    <div id="qlist"></div>
+  </div>
+</div>
+<div class="bnt">
+  <div class="bni on"><div class="bni-ic">🗺️</div><div class="bni-lb">地圖</div></div>
+  <div class="bni"><div class="bni-ic">🏆</div><div class="bni-lb">成就</div></div>
+  <div class="bni"><div class="bni-ic">👯</div><div class="bni-lb">夥伴</div></div>
+  <div class="bni"><div class="bni-ic">📖</div><div class="bni-lb">課程</div></div>
+</div>
+<div class="ovl" id="ovl" style="display:none">
+  <div class="ovl-box">
+    <span class="ov-em" id="ov-em">🎉</span>
+    <div class="ov-stars" id="ov-stars"></div>
+    <div class="ov-title" id="ov-title"></div>
+    <div class="ov-desc" id="ov-desc"></div>
+    <div class="ov-xp" id="ov-xp">⭐ +10 XP</div>
+    <button class="ov-btn" id="ov-btn">繼續冒險 →</button>
+  </div>
+</div><script>
+const SK='dct_v3';
+const LV=[
+  {id:'l1',name:'認識DCT',em:'🌸',xpMax:60,cats:['全部','📖知識','✅行動','💛心態'],qs:[
+    {id:'a',cat:'📖知識',tp:'k',em:'🌟',name:'了解DCT裂變系統4.0',xp:15,ul:null,desc:'觀看系統說明影片，了解DCT的運作方式、晉升路徑和收入模式。這是你展開旅程最重要的第一步！',cl:['看完系統說明影片','了解各級別的晉升條件','知道收入的三個來源']},
+    {id:'b',cat:'📖知識',tp:'k',em:'💊',name:'認識婕樂纖核心產品',xp:15,ul:'a',desc:'深入了解主要產品的成分、功效與使用方式，能用自己的話說出產品特色。',cl:['認識至少3款核心產品','了解每款的主要成分','知道正確使用順序']},
+    {id:'c',cat:'✅行動',tp:'a',em:'📅',name:'完成14天使用打卡',xp:20,ul:'b',desc:'連續使用產品14天並記錄身體變化，你自己就是最好的見證者！',cl:['每天按時使用產品','記錄使用前後的感受','拍攝使用過程（可私下留存）']},
+    {id:'d',cat:'💛心態',tp:'m',em:'✍️',name:'建立「我是最好見證者」心態',xp:10,ul:'c',desc:'寫下你使用產品後最真實的心得，這段文字會成為你日後分享的核心力量。',cl:['寫下使用前的真實狀態','記錄14天後具體的改變','把這段心得截圖存好']},
+  ]},
+  {id:'l2',name:'IG經營',em:'📱',xpMax:75,cats:['全部','📖知識','✅行動','🎯挑戰'],qs:[
+    {id:'a',cat:'📖知識',tp:'k',em:'📊',name:'了解IG演算法與帳號定位',xp:15,ul:null,desc:'學習IG的運作邏輯，了解如何讓帳號被更多人看到，以及如何定位自己的帳號。',cl:['看完IG帳號定位教學影片','了解Reels、限動、貼文的差異','確定帳號核心主題']},
+    {id:'b',cat:'✅行動',tp:'a',em:'✨',name:'完成帳號版面大改造',xp:25,ul:'a',desc:'根據所學知識，把帳號改造成專業又吸引人的版面，讓第一眼看到就想追蹤！',cl:['更新大頭照與個人簡介','統一帳號的視覺風格','發佈第一支定位明確的Reels']},
+    {id:'c',cat:'✅行動',tp:'a',em:'📲',name:'連續7天發限動',xp:20,ul:'b',desc:'每天發10則以上限動，建立帳號活躍度，讓演算法記住你！',cl:['每天至少10則限動','加入互動貼圖（投票/問答）','記錄哪種內容互動率最高']},
+    {id:'d',cat:'🎯挑戰',tp:'c',em:'🚀',name:'第一支Reels破百觀看',xp:15,ul:'c',desc:'用學到的開頭三秒公式拍一支Reels，目標突破100次觀看！',cl:['用開頭三秒鉤子開場','影片長度控制在15-30秒','發布後觀看數破100']},
+  ]},
+  {id:'l3',name:'引流銷售',em:'💰',xpMax:80,cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],qs:[
+    {id:'a',cat:'📖知識',tp:'k',em:'💬',name:'學習引流話術與分享流程',xp:15,ul:null,desc:'從「分享生活」開始，而不是「銷售產品」。學會自然開口的3句話！',cl:['學會3句自然開場白','了解從分享到推薦的完整流程','練習到說出來不尷尬']},
+    {id:'b',cat:'✅行動',tp:'a',em:'📋',name:'列出100個潛在名單',xp:20,ul:'a',desc:'把你認識的所有人列出來，不要先判斷「他一定不會買」，名單就是資產！',cl:['列出至少50人的完整名單','標記關係親疏與接觸時機','分類：家人/朋友/同事/網友']},
+    {id:'c',cat:'💛心態',tp:'m',em:'💪',name:'建立「被拒絕是正常的」心態',xp:10,ul:'b',desc:'每個成功的夥伴都被拒絕過很多次，重要的是從每次對話中學習成長。',cl:['記錄一次被拒絕的真實經過','寫下你從中學到的一件事','和上家分享這次心得']},
+    {id:'d',cat:'🎯挑戰',tp:'c',em:'🤝',name:'完成第一次1對1分享',xp:25,ul:'c',desc:'邀請名單上一位朋友聊聊，不是為了賣東西，而是真心分享使用心得！',cl:['邀請一位朋友見面或視訊','完整分享你的使用見證','記錄哪些說法最有效']},
+    {id:'e',cat:'🎯挑戰',tp:'c',em:'💡',name:'回答朋友的3個質疑',xp:10,ul:'d',desc:'準備好常見問題的回答，當朋友有疑問時你能自信地回應！',cl:['整理出5個最常被問的問題','用自己的話練習回答（不背稿）','和夥伴角色扮演練習']},
+  ]},
+  {id:'l4',name:'售後服務',em:'🤗',xpMax:60,cats:['全部','📖知識','✅行動','🎯挑戰'],qs:[
+    {id:'a',cat:'📖知識',tp:'k',em:'💝',name:'了解客戶維護的重要性',xp:15,ul:null,desc:'學習如何讓客戶持續回購，以及如何從滿意客戶轉化為你的推薦來源。',cl:['了解客戶生命週期4個階段','學習3種跟進話術','知道如何把客戶變成夥伴']},
+    {id:'b',cat:'✅行動',tp:'a',em:'📊',name:'建立客戶追蹤表格',xp:20,ul:'a',desc:'用表格記錄每位客戶的購買記錄、使用狀況和回購時間，讓服務更精準！',cl:['建立客戶基本資料記錄','設定回購提醒時間','每週主動關心至少3位客戶']},
+    {id:'c',cat:'🎯挑戰',tp:'c',em:'🎯',name:'完成第一個月銷售目標',xp:25,ul:'b',desc:'根據你目前的狀況設定合理的月目標並全力完成它！',cl:['設定明確的月銷售目標','每週追蹤進度並調整策略','達標後分析3個成功關鍵']},
+  ]},
+  {id:'l5',name:'工具掌握',em:'🛠️',xpMax:50,cats:['全部','📖知識','✅行動'],qs:[
+    {id:'a',cat:'📖知識',tp:'k',em:'🎬',name:'下載並設定剪映',xp:10,ul:null,desc:'剪映是你最重要的剪片工具！學會基礎操作，讓你的影片更有質感。',cl:['下載並安裝剪映','了解基本剪輯功能','購買適合的會員方案']},
+    {id:'b',cat:'✅行動',tp:'a',em:'🎥',name:'完成第一支剪輯影片',xp:15,ul:'a',desc:'用剪映剪出你的第一支成品，不需要完美，先完成再完美！',cl:['剪完一支完整的影片','加入字幕與背景音樂','發給上家請求回饋']},
+    {id:'c',cat:'📖知識',tp:'k',em:'🛒',name:'架設賣貨便收款系統',xp:15,ul:'b',desc:'不要用蝦皮！賣貨便手續費更低。學會架設你的賣貨便頁面。',cl:['註冊並設定賣貨便帳號','上架至少一個商品','測試完整的購買流程']},
+    {id:'d',cat:'✅行動',tp:'a',em:'💡',name:'備齊拍攝基本設備',xp:10,ul:null,desc:'好的腳架和補光燈能讓你的影片質感大幅提升！',cl:['購入或借到穩固的腳架','準備補光燈（環形燈最推薦）','測試最佳拍攝角度']},
+  ]},
+  {id:'l6',name:'晉升準備',em:'👑',xpMax:80,cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],qs:[
+    {id:'a',cat:'📖知識',tp:'k',em:'📋',name:'了解晉升二級的完整條件',xp:15,ul:null,desc:'搞清楚晉升的每一個條件，制定你的衝刺計畫，清楚目標才能有效率達成！',cl:['了解業績門檻與時間限制','知道需要多少推薦人數','和上家確認目前的進度']},
+    {id:'b',cat:'💛心態',tp:'m',em:'🌱',name:'建立長期經營的心態',xp:10,ul:'a',desc:'這不是一份快速致富的工作，而是值得長期投入的事業，調整期待值才能走更遠。',cl:['寫下你加入DCT最深層的原因','設定3個月、6個月的目標','和上家分享你的長期規劃']},
+    {id:'c',cat:'✅行動',tp:'a',em:'🤝',name:'找到第一位有興趣的夥伴',xp:25,ul:'b',desc:'不是要你馬上「成交」，而是找到一位願意多了解的人，約好下次深入談話。',cl:['邀請對象聽完完整說明','耐心回答所有的問題','約定好後續跟進的明確時間']},
+    {id:'d',cat:'🎯挑戰',tp:'c',em:'🚀',name:'完成晉升前最終衝刺',xp:30,ul:'c',desc:'距離晉升只差最後一步！和上家一起制定衝刺計畫，全力以赴！',cl:['確認所有晉升條件的達成狀況','制定最後衝刺的行動計畫','完成並通知上家確認晉升']},
+  ]},
+];
+let P={},ci=0,cc='全部',oq=null;
+function load(){try{P=JSON.parse(localStorage.getItem(SK)||'{}');}catch(e){P={};}}
+function save(){localStorage.setItem(SK,JSON.stringify(P));}
+function k(li,id){return 'l'+li+'_'+id;}
+function done(li,id){return !!P[k(li,id)];}
+function mk(li,id){P[k(li,id)]=true;save();}
+function um(li,id){delete P[k(li,id)];save();}
+function ul(li,q){return !q.ul||done(li,q.ul);}
+function ndone(li){return LV[li].qs.filter(q=>done(li,q.id)).length;}
+function totDone(){let d=0;LV.forEach((_,i)=>d+=ndone(i));return d;}
+function totQ(){let t=0;LV.forEach(lv=>t+=lv.qs.length);return t;}
+function totXP(){let x=0;LV.forEach((lv,i)=>lv.qs.forEach(q=>{if(done(i,q.id))x+=q.xp;}));return x;}
+function rHdr(){
+  const td=totDone(),tq=totQ(),tx=totXP();
+  document.getElementById('s-done').textContent=td;
+  document.getElementById('s-tot').textContent=tq;
+  document.getElementById('s-pct').textContent=tq?Math.round(td/tq*100)+'%':'0%';
+  document.getElementById('tot-xp').textContent=tx;
+  const lv=LV[ci];
+  document.getElementById('lv-tag').textContent=lv.name+' · Lv.'+(ci+1);
+  const lxp=lv.qs.reduce((s,q)=>done(ci,q.id)?s+q.xp:s,0);
+  document.getElementById('cx').textContent=lxp;
+  document.getElementById('mx').textContent=lv.xpMax;
+  document.getElementById('xf').style.width=Math.min(100,Math.round(lxp/lv.xpMax*100))+'%';
+}
+function rLvNav(){
+  document.getElementById('lv-scroll').innerHTML=LV.map((lv,i)=>{
+    const d=ndone(i),t=lv.qs.length,p=Math.round(d/t*100);
+    const lk=i>0&&ndone(i-1)<LV[i-1].qs.length,all=d===t;
+    return `<div class="lv-card${i===ci?' active':''}${lk?' lk':''}" onclick="${lk?'':'setLv('+i+')'}">
+      ${lk?'<div class="lv-lock">🔒</div>':''}${all?'<div class="lv-done">✓</div>':''}
+      <div class="lv-em">${lv.em}</div><div class="lv-nm">${lv.name}</div>
+      <div class="lv-pg"><div class="lv-pf" style="width:${p}%"></div></div>
+      <div class="lv-pt">${d}/${t}</div></div>`;
+  }).join('');
+}
+function rTabs(){
+  document.getElementById('cat-row').innerHTML=LV[ci].cats.map(c=>
+    `<div class="cat-btn${cc===c?' on':''}" onclick="setCat('${c}')">${c}</div>`).join('');
+}
+function rQuests(){
+  const lv=LV[ci];let qs=lv.qs;
+  if(cc!=='全部')qs=qs.filter(q=>q.cat===cc);
+  const d=ndone(ci),t=lv.qs.length;
+  document.getElementById('qa-title').textContent=lv.em+' '+lv.name;
+  document.getElementById('qa-cnt').textContent=d+'/'+t;
+  const im={k:'ik',a:'ia',m:'im',c:'ic'},tm={k:'tk',a:'ta',m:'tm',c:'tc'},tn={k:'知識',a:'行動',m:'心態',c:'挑戰'};
+  document.getElementById('qlist').innerHTML=qs.map(q=>{
+    const qk=k(ci,q.id),d=done(ci,q.id),u=ul(ci,q),op=oq===qk;
+    return `<div class="qc${d?' done':''}${!u?' lkq':''}${op?' open':''}" id="qc-${qk}">
+      <div class="qc-hd" onclick="tog('${qk}')">
+        <div class="qc-ico ${im[q.tp]}">${q.em}</div>
+        <div class="qc-body">
+          <div class="qc-name">${q.name}</div>
+          <div class="qc-meta">
+            <span class="qtag ${tm[q.tp]}">${tn[q.tp]}</span>
+            <span class="qxp">⭐+${q.xp}XP</span>
+            ${!u?'<span class="qxp">🔒先完成前一關</span>':''}
+            ${d?'<span class="qxp" style="color:#639922">✓已完成</span>':''}
+          </div>
+        </div>
+        <div class="qc-ck"><div class="ckv"></div></div>
+      </div>
+      ${op?`<div class="qc-det">
+        <div class="qd-desc">${q.desc}</div>
+        <div class="qd-cll"><div class="qd-cl-lbl">✦ 完成這關你需要</div>
+          ${(q.cl||[]).map(c=>`<div class="qd-cli"><span>🌸</span>${c}</div>`).join('')}
+        </div>
+        <div class="qd-rw">🏆 完成獎勵：+${q.xp} 冒險能量 XP</div>
+        ${u?d?`<button class="qd-btn qdb-un" onclick="undo(${ci},'${q.id}',event)">取消完成</button>`
+            :`<button class="qd-btn qdb-ok" onclick="comp(${ci},'${q.id}','${q.name}',${q.xp},event)">✨ 完成這一關！</button>`
+          :`<button class="qd-btn qdb-lk" disabled>🔒 先解鎖前一關</button>`}
+      </div>`:''}
+    </div>`;
+  }).join('');
+}
+function confetti(){
+  const cols=['#FF6EB4','#FFB3D9','#A8E063','#FFE66D','#74C0FC'];
+  for(let i=0;i<26;i++){
+    const e=document.createElement('div');e.className='cf';
+    e.style.cssText=`left:${Math.random()*100}vw;background:${cols[Math.floor(Math.random()*cols.length)]};width:${6+Math.random()*6}px;height:${6+Math.random()*6}px;border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${1.2+Math.random()*1.2}s;animation-delay:${Math.random()*.3}s;`;
+    document.body.appendChild(e);setTimeout(()=>e.remove(),2600);
+  }
+}
+function comp(li,id,name,xp,e){
+  e.stopPropagation();mk(li,id);oq=null;rAll();
+  const d=ndone(li),t=LV[li].qs.length,all=d===t,st=d>=t*.75?3:d>=t*.4?2:1;
+  confetti();
+  document.getElementById('ov-em').textContent=all?'🎊':'✨';
+  document.getElementById('ov-stars').innerHTML=[1,2,3].map(i=>`<span class="ovs${i<=st?' lit':''}">★</span>`).join('');
+  document.getElementById('ov-title').textContent=all?'「'+LV[li].name+'」全破關！':'「'+name+'」完成！';
+  document.getElementById('ov-desc').textContent=all?'太厲害了！完成所有挑戰，準備好迎接下一個冒險了嗎？':'做得好！繼續挑戰剩下的關卡吧！';
+  document.getElementById('ov-xp').textContent='⭐ +'+xp+' XP';
+  const btn=document.getElementById('ov-btn');
+  if(all&&li<LV.length-1){btn.textContent='前往下一章節 🚀';btn.onclick=()=>{closeOv();setLv(li+1);};}
+  else{btn.textContent='繼續冒險 →';btn.onclick=closeOv;}
+  document.getElementById('ovl').style.display='flex';
+}
+function undo(li,id,e){e.stopPropagation();um(li,id);oq=null;rAll();}
+function closeOv(){document.getElementById('ovl').style.display='none';}
+function setLv(i){ci=i;cc='全部';oq=null;rAll();}
+function setCat(c){cc=c;oq=null;rTabs();rQuests();}
+function tog(qk){oq=oq===qk?null:qk;rQuests();}
+function rAll(){rHdr();rLvNav();rTabs();rQuests();}
+load();rAll();
+</script>
+</body>
+</html>
