@@ -3,260 +3,558 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DCT 新人冒險地圖 ✨</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<title>DCT 晉升地圖</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Noto Sans TC',sans-serif;background:#FFF0F8;min-height:100vh;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#f9c8e0 1px,transparent 1px);background-size:28px 28px;opacity:.3;pointer-events:none;z-index:0;}
-.wrap{position:relative;z-index:1;max-width:460px;margin:0 auto;padding-bottom:100px;}
-.topbar{background:linear-gradient(135deg,#FF6EB4,#FF9BD2);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 16px rgba(255,110,180,.3);position:sticky;top:0;z-index:100;}
-.tb-left{display:flex;align-items:center;gap:9px;}
-.tb-av{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:18px;}
-.tb-name{font-size:13px;font-weight:700;color:#fff;}
-.tb-sub{font-size:10px;color:rgba(255,255,255,.8);}
-.coin{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;color:#fff;}
-.hero{background:linear-gradient(160deg,#FFB3D9,#FF6EB4);padding:22px 18px 24px;text-align:center;position:relative;overflow:hidden;}
-.hero::after{content:'✦';position:absolute;right:16px;top:12px;font-size:56px;color:rgba(255,255,255,.1);}
-.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:3px 12px;font-size:10px;color:#fff;margin-bottom:8px;}
-.hero-title{font-size:20px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:5px;}
-.hero-desc{font-size:11px;color:rgba(255,255,255,.85);line-height:1.65;margin-bottom:14px;}
-.hero-stats{display:flex;justify-content:center;gap:10px;}
-.hs{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:7px 14px;text-align:center;}
-.hs-n{font-size:18px;font-weight:900;color:#fff;}
-.hs-l{font-size:9px;color:rgba(255,255,255,.8);}
-.xp-box{background:#fff;margin:0 14px;border-radius:0 0 16px 16px;padding:12px 14px;box-shadow:0 4px 18px rgba(255,110,180,.1);margin-bottom:18px;}
-.xp-row{display:flex;justify-content:space-between;margin-bottom:6px;}
-.xp-lbl{font-size:10px;font-weight:700;color:#FF6EB4;}
-.xp-num{font-size:10px;color:#C090B0;}
-.xp-bar{height:8px;background:#FFE4F2;border-radius:999px;overflow:hidden;border:1px solid #FFCCE8;}
-.xp-fill{height:100%;background:linear-gradient(90deg,#FF6EB4,#FFB3D9);border-radius:999px;transition:width .6s cubic-bezier(.34,1.56,.64,1);}
-.sec-lbl{display:flex;align-items:center;gap:8px;padding:0 18px;margin-bottom:10px;}
-.sl-line{flex:1;height:1px;background:linear-gradient(90deg,#FFB3D9,transparent);}
-.sl-line.r{background:linear-gradient(90deg,transparent,#FFB3D9);}
-.sl-txt{font-size:10px;font-weight:700;color:#FF6EB4;letter-spacing:.1em;white-space:nowrap;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans TC',sans-serif;background:#EEF8FE;min-height:100vh;overflow-x:hidden;letter-spacing:1px;}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#A7D1F3 1px,transparent 1px);background-size:30px 30px;opacity:.22;pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:460px;margin:0 auto;padding-bottom:110px;}
+
+/* ── TOPBAR ── */
+.topbar{background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(55,165,230,.15);position:sticky;top:0;z-index:100;}
+.tb-l{display:flex;align-items:center;gap:10px;}
+.tb-av{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.5);border:2px solid rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;font-size:17px;}
+.tb-name{font-size:13px;font-weight:700;color:#1A5A80;}
+.tb-sub{font-size:10px;color:#4A90B8;margin-top:1px;}
+.tb-r{display:flex;align-items:center;gap:6px;}
+.xp-pill{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);border-radius:999px;padding:4px 11px;font-size:11px;font-weight:700;color:#2290D4;}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(160deg,#DBF6FF,#A7D1F3);padding:22px 18px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:'◆';position:absolute;right:14px;top:10px;font-size:60px;color:rgba(255,255,255,.4);}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:3px 13px;font-size:10px;color:#2290D4;margin-bottom:9px;}
+.hero-title{font-size:20px;font-weight:900;color:#1A5A80;line-height:1.35;margin-bottom:5px;}
+.hero-desc{font-size:11px;color:#4A7A9A;line-height:1.8;margin-bottom:16px;}
+.hero-stats{display:flex;justify-content:center;gap:9px;}
+.hs{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.75);border-radius:13px;padding:7px 15px;text-align:center;}
+.hs-n{font-size:19px;font-weight:900;color:#2290D4;}
+.hs-l{font-size:9px;color:#5A9ABB;margin-top:1px;}
+
+/* ── STAGE STARS ── */
+.stage-box{background:#fff;margin:0 14px;border-radius:0 0 18px 18px;padding:16px 16px 14px;box-shadow:0 4px 20px rgba(55,165,230,.08);margin-bottom:20px;}
+.sb-title{font-size:10px;font-weight:700;color:#2290D4;letter-spacing:.1em;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
+.sb-sub{font-size:10px;color:#90C0E0;font-weight:400;}
+.stages-row{display:flex;justify-content:space-between;gap:3px;}
+.stage-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;}
+.stage-star{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;border:1.5px solid #C0E4F8;background:#EEF8FE;transition:all .3s;position:relative;}
+.stage-star.done{background:linear-gradient(135deg,#EEF8FE,#C0E4F8);border-color:#37A5E6;box-shadow:0 2px 8px rgba(55,165,230,.2);}
+.stage-star.current{background:linear-gradient(135deg,#37A5E6,#2290D4);border-color:#2290D4;box-shadow:0 3px 12px rgba(55,165,230,.35);}
+.stage-star.current .ss-icon{filter:brightness(10);}
+.stage-star.locked{opacity:.4;}
+.ss-icon{font-size:16px;}
+.stage-lbl{font-size:8px;color:#90C0E0;text-align:center;line-height:1.3;font-weight:500;}
+.stage-item.done-lbl .stage-lbl{color:#2290D4;font-weight:700;}
+.stage-item.cur-lbl .stage-lbl{color:#1A7AB8;font-weight:900;}
+.xp-bar-wrap{margin-top:10px;}
+.xp-row{display:flex;justify-content:space-between;margin-bottom:5px;}
+.xp-lbl{font-size:10px;font-weight:700;color:#37A5E6;}
+.xp-num{font-size:10px;color:#90C8E8;}
+.xp-bar{height:7px;background:#EEF8FE;border-radius:999px;overflow:hidden;border:1px solid #C0E4F8;}
+.xp-fill{height:100%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;transition:width .6s cubic-bezier(.34,1.56,.64,1);}
+
+/* ── SECTION LABEL ── */
+.sec-lbl{display:flex;align-items:center;gap:8px;padding:0 18px;margin-bottom:11px;}
+.sl-line{flex:1;height:1px;background:linear-gradient(90deg,#A7D1F3,transparent);}
+.sl-line.r{background:linear-gradient(90deg,transparent,#A7D1F3);}
+.sl-txt{font-size:10px;font-weight:700;color:#37A5E6;letter-spacing:.12em;white-space:nowrap;}
+
+/* ── LEVEL SCROLL ── */
 .lv-scroll{display:flex;gap:9px;padding:0 18px;overflow-x:auto;margin-bottom:22px;scrollbar-width:none;}
 .lv-scroll::-webkit-scrollbar{display:none;}
-.lv-card{flex-shrink:0;width:90px;background:#fff;border:2px solid #FFD6EC;border-radius:16px;padding:10px 6px;text-align:center;cursor:pointer;transition:all .2s;position:relative;box-shadow:0 2px 10px rgba(255,110,180,.07);}
-.lv-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(255,110,180,.15);}
-.lv-card.active{border-color:#FF6EB4;background:linear-gradient(135deg,#FFF0F8,#FFE4F2);box-shadow:0 4px 18px rgba(255,110,180,.22);}
-.lv-card.lk{opacity:.4;cursor:not-allowed;}
+.lv-card{flex-shrink:0;width:92px;background:#fff;border:2px solid #C0E4F8;border-radius:16px;padding:11px 6px;text-align:center;cursor:pointer;transition:all .2s;position:relative;box-shadow:0 2px 10px rgba(55,165,230,.06);}
+.lv-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(55,165,230,.13);}
+.lv-card.active{border-color:#37A5E6;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);box-shadow:0 4px 18px rgba(55,165,230,.2);}
+.lv-card.lk{opacity:.38;cursor:not-allowed;}
 .lv-card.lk:hover{transform:none;}
 .lv-em{font-size:24px;margin-bottom:5px;}
-.lv-nm{font-size:10px;font-weight:700;color:#D4609A;margin-bottom:3px;}
-.lv-pg{height:3px;background:#FFE4F2;border-radius:999px;overflow:hidden;margin-top:3px;}
-.lv-pf{height:100%;background:linear-gradient(90deg,#FF6EB4,#FFB3D9);border-radius:999px;}
-.lv-pt{font-size:8px;color:#E0A0C0;margin-top:2px;}
-.lv-lock{position:absolute;top:5px;right:7px;font-size:10px;}
-.lv-done{position:absolute;top:-5px;right:-5px;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#A8E063,#56AB2F);display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:900;}
+.lv-nm{font-size:9px;font-weight:700;color:#37A5E6;margin-bottom:3px;line-height:1.3;}
+.lv-pg{height:3px;background:#EEF8FE;border-radius:999px;overflow:hidden;margin-top:3px;}
+.lv-pf{height:100%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;}
+.lv-pt{font-size:8px;color:#90C8E8;margin-top:2px;}
+.lv-lock{position:absolute;top:5px;right:7px;font-size:10px;opacity:.5;}
+.lv-done-badge{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#37A5E6,#2290D4);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:900;box-shadow:0 2px 6px rgba(55,165,230,.3);}
+
+/* ── QUEST AREA ── */
 .qa{padding:0 14px;}
 .qa-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 2px;}
-.qa-title{font-size:15px;font-weight:900;color:#2d1228;}
-.qa-cnt{background:#FFE4F2;border:1px solid #FFB3D9;border-radius:999px;padding:2px 9px;font-size:10px;font-weight:700;color:#D4609A;}
+.qa-title{font-size:15px;font-weight:900;color:#1A4A6A;}
+.qa-cnt{background:#EEF8FE;border:1px solid #A7D1F3;border-radius:999px;padding:2px 10px;font-size:10px;font-weight:700;color:#37A5E6;}
 .cat-row{display:flex;gap:5px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none;}
 .cat-row::-webkit-scrollbar{display:none;}
-.cat-btn{flex-shrink:0;display:flex;align-items:center;gap:3px;padding:5px 10px;border-radius:999px;font-size:10px;font-weight:500;border:1.5px solid #FFD6EC;background:#fff;color:#C090B0;cursor:pointer;transition:all .15s;}
-.cat-btn:hover{border-color:#FF9BD2;color:#FF6EB4;}
-.cat-btn.on{background:linear-gradient(135deg,#FF6EB4,#FF9BD2);border-color:transparent;color:#fff;box-shadow:0 2px 8px rgba(255,110,180,.28);}
-.qc{background:#fff;border:2px solid #FFE4F2;border-radius:18px;margin-bottom:9px;overflow:hidden;transition:all .2s;box-shadow:0 2px 10px rgba(255,110,180,.05);}
-.qc:hover{box-shadow:0 4px 18px rgba(255,110,180,.12);}
-.qc.done{border-color:#B8E090;background:linear-gradient(135deg,#F8FFF2,#F0FAE6);}
-.qc.lkq{opacity:.45;pointer-events:none;}
-.qc.open{border-color:#FF9BD2;}
-.qc-hd{display:flex;align-items:center;gap:11px;padding:12px 14px;cursor:pointer;}
+.cat-btn{flex-shrink:0;padding:5px 12px;border-radius:999px;font-size:10px;font-weight:500;border:1.5px solid #C0E4F8;background:#fff;color:#90C0E0;cursor:pointer;transition:all .15s;font-family:inherit;letter-spacing:.05em;}
+.cat-btn:hover{border-color:#A7D1F3;color:#37A5E6;}
+.cat-btn.on{background:linear-gradient(135deg,#A7D1F3,#DBF6FF);border-color:#A7D1F3;color:#1A5A80;box-shadow:0 2px 8px rgba(55,165,230,.15);}
+
+/* ── QUEST CARD ── */
+.qc{background:#fff;border:2px solid #E8EEFF;border-radius:18px;margin-bottom:9px;overflow:hidden;transition:all .2s;box-shadow:0 2px 10px rgba(55,165,230,.04);}
+.qc:hover{box-shadow:0 4px 18px rgba(55,165,230,.1);}
+.qc.done{border-color:#A7D1F3;background:linear-gradient(135deg,#F5F8FF,#EEF8FE);}
+.qc.lkq{opacity:.42;pointer-events:none;}
+.qc.open{border-color:#A7D1F3;}
+.qc-hd{display:flex;align-items:center;gap:11px;padding:13px 14px;cursor:pointer;}
 .qc-ico{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
-.ik{background:linear-gradient(135deg,#E8F4FD,#C8E6F8);}
-.ia{background:linear-gradient(135deg,#E8F8E8,#C8EFC8);}
-.im{background:linear-gradient(135deg,#FFF8E8,#FFE8B8);}
-.ic{background:linear-gradient(135deg,#FCE8F8,#F5C8EE);}
+.ik{background:linear-gradient(135deg,#EEF8FE,#C8EEFF);}
+.ia{background:linear-gradient(135deg,#EEFFF8,#C8F0E8);}
+.im{background:linear-gradient(135deg,#FFFAEE,#FFEEC8);}
+.ic{background:linear-gradient(135deg,#F8EEFF,#E8D0FF);}
 .qc-body{flex:1;min-width:0;}
-.qc-name{font-size:12px;font-weight:700;color:#2d1228;margin-bottom:3px;}
+.qc-name{font-size:12px;font-weight:700;color:#1A4A6A;margin-bottom:3px;}
 .qc-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
-.qtag{font-size:8px;padding:2px 6px;border-radius:999px;font-weight:700;}
-.tk{background:#E8F4FD;color:#4A90C4;}
-.ta{background:#E8F8E8;color:#4A9A4A;}
-.tm{background:#FFF0C8;color:#C4880A;}
-.tc{background:#FCE8F8;color:#C44A9A;}
-.qxp{font-size:8px;color:#E0A0C0;font-weight:700;}
-.qc-ck{width:26px;height:26px;border-radius:50%;border:2px solid #FFD6EC;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;background:#fff;}
-.qc.done .qc-ck{background:linear-gradient(135deg,#A8E063,#56AB2F);border-color:transparent;box-shadow:0 2px 6px rgba(86,171,47,.28);}
+.qtag{font-size:8px;padding:2px 7px;border-radius:999px;font-weight:700;}
+.tk{background:#EEF6FF;color:#3A7ACC;}
+.ta{background:#EEFFF4;color:#2A8A50;}
+.tm{background:#FFFAEE;color:#B87820;}
+.tc{background:#F8EEFF;color:#7A3ACC;}
+.qxp{font-size:8px;color:#90C8E8;font-weight:700;}
+.qc-ck{width:26px;height:26px;border-radius:50%;border:2px solid #C0E4F8;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;background:#fff;}
+.qc.done .qc-ck{background:linear-gradient(135deg,#37A5E6,#2290D4);border-color:transparent;box-shadow:0 2px 6px rgba(55,165,230,.28);}
 .ckv{width:10px;height:7px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);opacity:0;transition:opacity .2s;}
 .qc.done .ckv{opacity:1;}
-.qc-det{border-top:1.5px dashed #FFD6EC;padding:12px 14px 14px;animation:sd .2s ease;}
-.qc.done .qc-det{border-top-color:#C8EFC8;}
+
+/* ── QUEST DETAIL ── */
+.qc-det{border-top:1.5px dashed #C0E4F8;padding:13px 14px 15px;animation:sd .2s ease;}
+.qc.done .qc-det{border-top-color:#A7D1F3;}
 @keyframes sd{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
-.qd-desc{font-size:11px;color:#A06080;line-height:1.75;margin-bottom:10px;}
-.qd-cll{margin-bottom:12px;}
-.qd-cl-lbl{font-size:9px;font-weight:700;color:#FF6EB4;letter-spacing:.06em;margin-bottom:6px;}
-.qd-cli{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:#8B5070;line-height:1.55;padding:4px 0;border-bottom:1px solid #FFF0F8;}
+.qd-desc{font-size:11px;color:#4A7A9A;line-height:1.8;margin-bottom:11px;}
+.qd-cll{margin-bottom:13px;}
+.qd-cl-lbl{font-size:9px;font-weight:700;color:#37A5E6;letter-spacing:.08em;margin-bottom:7px;}
+.qd-cli{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:#3A6A8A;line-height:1.6;padding:4px 0;border-bottom:1px solid #F0F4FF;}
 .qd-cli:last-child{border-bottom:none;}
-.qd-rw{display:flex;align-items:center;gap:5px;background:linear-gradient(135deg,#FFF8E8,#FFE8C8);border:1px solid #FFD6A0;border-radius:9px;padding:6px 10px;margin-bottom:11px;font-size:10px;color:#B87820;font-weight:700;}
-.qd-btn{width:100%;padding:11px;border-radius:13px;font-size:12px;font-weight:700;border:none;cursor:pointer;transition:all .2s;font-family:'Noto Sans TC',sans-serif;}
-.qdb-ok{background:linear-gradient(135deg,#FF6EB4,#FF9BD2);color:#fff;box-shadow:0 3px 12px rgba(255,110,180,.32);}
-.qdb-ok:hover{transform:translateY(-1px);box-shadow:0 5px 18px rgba(255,110,180,.42);}
-.qdb-un{background:#FFF0F8;border:1.5px solid #FFD6EC;color:#D4609A;}
-.qdb-lk{background:#F5F5F5;color:#C0C0C0;cursor:not-allowed;}
-.ovl{position:fixed;inset:0;background:rgba(80,0,40,.48);display:flex;align-items:center;justify-content:center;z-index:999;animation:fi .2s ease;}
+.qd-cli-dot{width:5px;height:5px;border-radius:50%;background:#A7D1F3;flex-shrink:0;margin-top:6px;}
+.qd-rw{display:flex;align-items:center;gap:5px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1px solid #A7D1F3;border-radius:9px;padding:7px 11px;margin-bottom:12px;font-size:10px;color:#2290D4;font-weight:700;}
+.qd-enc{font-size:11px;color:#37A5E6;font-style:italic;line-height:1.7;margin-bottom:11px;padding:8px 11px;background:#F5F8FF;border-left:3px solid #37A5E6;border-radius:0 8px 8px 0;}
+.qd-btn{width:100%;padding:11px;border-radius:13px;font-size:12px;font-weight:700;border:none;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.05em;}
+.qdb-ok{background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;box-shadow:0 3px 12px rgba(55,165,230,.3);}
+.qdb-ok:hover{transform:translateY(-1px);box-shadow:0 5px 18px rgba(55,165,230,.4);}
+.qdb-un{background:#EEF8FE;border:1.5px solid #C0E4F8;color:#5A90BB;}
+.qdb-lk{background:#F5F5F8;color:#B0BAD0;cursor:not-allowed;}
+.qd-link{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;border-radius:11px;background:#EEF8FE;border:1.5px solid #A7D1F3;color:#2290D4;font-size:12px;font-weight:700;text-decoration:none;margin-bottom:10px;letter-spacing:.05em;transition:all .2s;}
+.qd-link:hover{background:#DBF6FF;border-color:#37A5E6;}
+
+/* ── BOTTOM NAV ── */
+.bnt{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;background:#fff;border-top:1.5px solid #E4ECFF;padding:8px 0;display:flex;justify-content:space-around;z-index:100;box-shadow:0 -4px 18px rgba(55,165,230,.07);}
+.bni{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 14px;border-radius:11px;transition:all .15s;}
+.bni.on{background:#EEF8FE;}
+.bni-ic{font-size:19px;}
+.bni-lb{font-size:9px;color:#9AB0D0;font-weight:500;letter-spacing:.05em;}
+.bni.on .bni-lb{color:#37A5E6;font-weight:700;}
+
+/* ── OVERLAY ── */
+.ovl{position:fixed;inset:0;background:rgba(10,20,60,.55);display:flex;align-items:center;justify-content:center;z-index:999;animation:fi .2s ease;padding:20px;}
 @keyframes fi{from{opacity:0}to{opacity:1}}
-.ovl-box{background:#fff;border-radius:26px;padding:26px 22px;text-align:center;max-width:290px;width:88%;box-shadow:0 20px 50px rgba(255,110,180,.28);animation:pi .35s cubic-bezier(.34,1.56,.64,1);}
+
+/* ── QUEST COMPLETE POPUP ── */
+.pop-quest{background:#fff;border-radius:24px;padding:26px 22px;text-align:center;max-width:300px;width:100%;box-shadow:0 20px 60px rgba(55,165,230,.25);animation:pi .35s cubic-bezier(.34,1.56,.64,1);}
 @keyframes pi{from{opacity:0;transform:scale(.65)}to{opacity:1;transform:scale(1)}}
-.ov-em{font-size:50px;display:block;margin-bottom:5px;animation:bo 1s ease infinite alternate;}
+.pq-em{font-size:48px;display:block;margin-bottom:6px;animation:bo 1s ease infinite alternate;}
 @keyframes bo{from{transform:translateY(0)}to{transform:translateY(-7px)}}
-.ov-stars{display:flex;justify-content:center;gap:5px;margin-bottom:10px;}
-.ovs{font-size:24px;}
-.ovs.lit{animation:sp .4s ease;}
+.pq-stars{display:flex;justify-content:center;gap:5px;margin-bottom:11px;}
+.pqs{font-size:22px;}
+.pqs.lit{animation:sp .4s ease;}
 @keyframes sp{0%{transform:scale(0)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
-.ov-title{font-size:17px;font-weight:900;color:#2d1228;margin-bottom:5px;}
-.ov-desc{font-size:11px;color:#A06080;line-height:1.65;margin-bottom:7px;}
-.ov-xp{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#FFF8E8,#FFE8C8);border:1px solid #FFD6A0;border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700;color:#C4880A;margin-bottom:14px;}
-.ov-btn{width:100%;padding:11px;border-radius:13px;background:linear-gradient(135deg,#FF6EB4,#FF9BD2);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(255,110,180,.38);transition:all .2s;font-family:'Noto Sans TC',sans-serif;}
-.ov-btn:hover{transform:translateY(-1px);}
+.pq-title{font-size:16px;font-weight:900;color:#1A4A6A;margin-bottom:5px;}
+.pq-enc{font-size:11px;color:#4A7A9A;line-height:1.75;margin-bottom:8px;padding:0 4px;}
+.pq-xp{display:inline-flex;align-items:center;gap:4px;background:#EEF8FE;border:1px solid #A7D1F3;border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700;color:#2290D4;margin-bottom:14px;}
+.pq-btn{width:100%;padding:11px;border-radius:13px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(55,165,230,.32);transition:all .2s;font-family:inherit;letter-spacing:.05em;}
+.pq-btn:hover{transform:translateY(-1px);}
+
+/* ── CERTIFICATE ── */
+.cert{background:#fff;border-radius:24px;padding:0;max-width:340px;width:100%;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .4s cubic-bezier(.34,1.56,.64,1);overflow:hidden;}
+.cert-top{background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:28px 24px 22px;text-align:center;position:relative;overflow:hidden;}
+.cert-top::before{content:'◆';position:absolute;left:10px;top:8px;font-size:50px;color:rgba(255,255,255,.3);}
+.cert-top::after{content:'◆';position:absolute;right:10px;bottom:8px;font-size:36px;color:rgba(255,255,255,.3);}
+.cert-badge-icon{font-size:52px;display:block;margin-bottom:8px;animation:bo 1.2s ease infinite alternate;}
+.cert-stage-name{font-size:11px;letter-spacing:.2em;color:#4A7A9A;margin-bottom:6px;text-transform:uppercase;}
+.cert-title{font-size:18px;font-weight:900;color:#1A5A80;line-height:1.35;margin-bottom:4px;}
+.cert-subtitle{font-size:10px;color:#5A9ABB;letter-spacing:.08em;}
+.cert-body{padding:20px 22px 22px;}
+.cert-seal{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px;}
+.cert-seal-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,#A7D1F3);}
+.cert-seal-line.r{background:linear-gradient(90deg,#A7D1F3,transparent);}
+.cert-seal-txt{font-size:9px;color:#90C0E0;letter-spacing:.12em;font-weight:700;}
+.cert-msg{font-size:12px;color:#2A5A7A;line-height:1.85;text-align:center;margin-bottom:16px;}
+.cert-msg strong{color:#2290D4;font-weight:700;}
+.cert-quote{font-size:11px;color:#37A5E6;font-style:italic;line-height:1.75;text-align:center;padding:10px 14px;background:#EEF8FE;border-radius:10px;margin-bottom:16px;border-left:3px solid #37A5E6;}
+.cert-meta{display:flex;justify-content:space-between;font-size:9px;color:#9AB0D0;margin-bottom:16px;padding:0 2px;}
+.cert-btns{display:flex;gap:8px;}
+.cert-btn-save{flex:1;padding:10px;border-radius:12px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;letter-spacing:.05em;box-shadow:0 3px 10px rgba(55,165,230,.28);}
+.cert-btn-next{flex:1;padding:10px;border-radius:12px;background:#EEF8FE;border:1.5px solid #A7D1F3;color:#37A5E6;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:.05em;}
+
+/* ── MILESTONE CARD ── */
+.milestone-card{background:#fff;border-radius:24px;padding:0;max-width:300px;width:100%;box-shadow:0 20px 60px rgba(55,165,230,.2);animation:pi .4s cubic-bezier(.34,1.56,.64,1);overflow:hidden;}
+.ms-top{background:linear-gradient(135deg,#DBF6FF,#A7D1F3);padding:26px 20px 18px;text-align:center;position:relative;}
+.ms-top::after{content:'★';position:absolute;right:14px;top:10px;font-size:48px;color:rgba(255,255,255,.35);}
+.ms-icon{font-size:50px;display:block;margin-bottom:6px;animation:bo 1s ease infinite alternate;}
+.ms-title{font-size:18px;font-weight:900;color:#1A5A80;margin-bottom:4px;}
+.ms-sub{font-size:11px;color:#4A7A9A;letter-spacing:.06em;}
+.ms-body{padding:20px 20px 22px;}
+.ms-msg{font-size:12px;color:#3A6A8A;line-height:1.85;text-align:center;margin-bottom:14px;}
+.ms-stars{display:flex;justify-content:center;gap:4px;margin-bottom:14px;}
+.ms-star-chip{display:flex;align-items:center;gap:4px;background:#EEF8FE;border:1.5px solid #A7D1F3;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:900;color:#2290D4;}
+.ms-quote{font-size:11px;color:#37A5E6;font-style:italic;text-align:center;line-height:1.75;padding:9px 12px;background:#EEF8FE;border-radius:10px;margin-bottom:16px;border-left:3px solid #A7D1F3;}
+.ms-btn{width:100%;padding:11px;border-radius:13px;background:linear-gradient(135deg,#A7D1F3,#DBF6FF);color:#1A5A80;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:inherit;letter-spacing:.05em;box-shadow:0 3px 10px rgba(55,165,230,.2);}
 .cf{position:fixed;pointer-events:none;z-index:1000;border-radius:2px;animation:cff linear forwards;}
 @keyframes cff{0%{transform:translateY(-10px) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
-.bnt{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;background:#fff;border-top:1.5px solid #FFE4F2;padding:8px 0;display:flex;justify-content:space-around;z-index:100;box-shadow:0 -4px 18px rgba(255,110,180,.08);}
-.bni{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 14px;border-radius:11px;transition:all .15s;}
-.bni.on{background:#FFF0F8;}
-.bni-ic{font-size:19px;}
-.bni-lb{font-size:9px;color:#C090B0;font-weight:500;}
-.bni.on .bni-lb{color:#FF6EB4;font-weight:700;}
 </style>
 </head>
 <body>
+
 <div class="topbar">
-  <div class="tb-left">
-    <div class="tb-av">🌸</div>
-    <div><div class="tb-name">新人冒險家</div><div class="tb-sub" id="lv-tag">認識DCT · Lv.1</div></div>
+  <div class="tb-l">
+    <div class="tb-av">🌟</div>
+    <div>
+      <div class="tb-name">我的晉升地圖</div>
+      <div class="tb-sub" id="lv-tag">愛用客 · 階段 1</div>
+    </div>
   </div>
-  <div class="coin">⭐ <span id="tot-xp">0</span></div>
+  <div class="tb-r">
+    <div class="xp-pill">⭐ <span id="tot-xp">0</span> 星</div>
+  </div>
 </div>
+
 <div class="wrap">
   <div class="hero">
-    <div class="hero-badge">✨ DCT 新人冒險地圖</div>
-    <div class="hero-title">你的創業旅程<br>從這裡開始！</div>
-    <div class="hero-desc">每完成一關就往成功更近一步<br>解鎖關卡、累積能量、一起晉升！</div>
+    <div class="hero-badge">✦ DCT 晉升地圖</div>
+    <div class="hero-title">每一步都算數<br>你比昨天更強了</div>
+    <div class="hero-desc">完成每個關卡，解鎖下一個階段<br>從愛用客到皇家，一步一步來</div>
     <div class="hero-stats">
       <div class="hs"><div class="hs-n" id="s-done">0</div><div class="hs-l">已完成</div></div>
       <div class="hs"><div class="hs-n" id="s-tot">0</div><div class="hs-l">總關卡</div></div>
       <div class="hs"><div class="hs-n" id="s-pct">0%</div><div class="hs-l">完成率</div></div>
     </div>
   </div>
-  <div class="xp-box">
-    <div class="xp-row"><div class="xp-lbl">⚡ 冒險能量</div><div class="xp-num"><span id="cx">0</span> / <span id="mx">100</span> XP</div></div>
-    <div class="xp-bar"><div class="xp-fill" id="xf" style="width:0%"></div></div>
+
+  <!-- STAGE PROGRESS -->
+  <div class="stage-box">
+    <div class="sb-title">
+      <span>✦ 晉升進度</span>
+      <span class="sb-sub" id="stage-sub">0 / 7 階段完成</span>
+    </div>
+    <div class="stages-row" id="stages-row"></div>
+    <div class="xp-bar-wrap">
+      <div class="xp-row">
+        <div class="xp-lbl">當前章節進度</div>
+        <div class="xp-num"><span id="cx">0</span> / <span id="mx">100</span> ⭐</div>
+      </div>
+      <div class="xp-bar"><div class="xp-fill" id="xf" style="width:0%"></div></div>
+    </div>
   </div>
-  <div class="sec-lbl"><div class="sl-line"></div><div class="sl-txt">選擇章節</div><div class="sl-line r"></div></div>
+
+  <div class="sec-lbl"><div class="sl-line"></div><div class="sl-txt">選擇階段</div><div class="sl-line r"></div></div>
   <div class="lv-scroll" id="lv-scroll"></div>
+
   <div class="qa">
-    <div class="qa-hd"><div class="qa-title" id="qa-title">🗺️ 關卡列表</div><div class="qa-cnt" id="qa-cnt">0/0</div></div>
+    <div class="qa-hd">
+      <div class="qa-title" id="qa-title">關卡列表</div>
+      <div class="qa-cnt" id="qa-cnt">0/0</div>
+    </div>
     <div class="cat-row" id="cat-row"></div>
     <div id="qlist"></div>
   </div>
 </div>
+
 <div class="bnt">
   <div class="bni on"><div class="bni-ic">🗺️</div><div class="bni-lb">地圖</div></div>
   <div class="bni"><div class="bni-ic">🏆</div><div class="bni-lb">成就</div></div>
   <div class="bni"><div class="bni-ic">👯</div><div class="bni-lb">夥伴</div></div>
   <div class="bni"><div class="bni-ic">📖</div><div class="bni-lb">課程</div></div>
 </div>
+
 <div class="ovl" id="ovl" style="display:none">
-  <div class="ovl-box">
-    <span class="ov-em" id="ov-em">🎉</span>
-    <div class="ov-stars" id="ov-stars"></div>
-    <div class="ov-title" id="ov-title"></div>
-    <div class="ov-desc" id="ov-desc"></div>
-    <div class="ov-xp" id="ov-xp">⭐ +10 XP</div>
-    <button class="ov-btn" id="ov-btn">繼續冒險 →</button>
-  </div>
+  <div id="ovl-content"></div>
 </div>
+
 <script>
-const SK='dct_v3';
-const LV=[
-  {id:'l1',name:'認識DCT',em:'🌸',xpMax:60,cats:['全部','📖知識','✅行動','💛心態'],qs:[
-    {id:'a',cat:'📖知識',tp:'k',em:'🌟',name:'了解DCT裂變系統4.0',xp:15,ul:null,desc:'觀看系統說明影片，了解DCT的運作方式、晉升路徑和收入模式。這是你展開旅程最重要的第一步！',cl:['看完系統說明影片','了解各級別的晉升條件','知道收入的三個來源']},
-    {id:'b',cat:'📖知識',tp:'k',em:'💊',name:'認識婕樂纖核心產品',xp:15,ul:'a',desc:'深入了解主要產品的成分、功效與使用方式，能用自己的話說出產品特色。',cl:['認識至少3款核心產品','了解每款的主要成分','知道正確使用順序']},
-    {id:'c',cat:'✅行動',tp:'a',em:'📅',name:'完成14天使用打卡',xp:20,ul:'b',desc:'連續使用產品14天並記錄身體變化，你自己就是最好的見證者！',cl:['每天按時使用產品','記錄使用前後的感受','拍攝使用過程（可私下留存）']},
-    {id:'d',cat:'💛心態',tp:'m',em:'✍️',name:'建立「我是最好見證者」心態',xp:10,ul:'c',desc:'寫下你使用產品後最真實的心得，這段文字會成為你日後分享的核心力量。',cl:['寫下使用前的真實狀態','記錄14天後具體的改變','把這段心得截圖存好']},
-  ]},
-  {id:'l2',name:'IG經營',em:'📱',xpMax:75,cats:['全部','📖知識','✅行動','🎯挑戰'],qs:[
-    {id:'a',cat:'📖知識',tp:'k',em:'📊',name:'了解IG演算法與帳號定位',xp:15,ul:null,desc:'學習IG的運作邏輯，了解如何讓帳號被更多人看到，以及如何定位自己的帳號。',cl:['看完IG帳號定位教學影片','了解Reels、限動、貼文的差異','確定帳號核心主題']},
-    {id:'b',cat:'✅行動',tp:'a',em:'✨',name:'完成帳號版面大改造',xp:25,ul:'a',desc:'根據所學知識，把帳號改造成專業又吸引人的版面，讓第一眼看到就想追蹤！',cl:['更新大頭照與個人簡介','統一帳號的視覺風格','發佈第一支定位明確的Reels']},
-    {id:'c',cat:'✅行動',tp:'a',em:'📲',name:'連續7天發限動',xp:20,ul:'b',desc:'每天發10則以上限動，建立帳號活躍度，讓演算法記住你！',cl:['每天至少10則限動','加入互動貼圖（投票/問答）','記錄哪種內容互動率最高']},
-    {id:'d',cat:'🎯挑戰',tp:'c',em:'🚀',name:'第一支Reels破百觀看',xp:15,ul:'c',desc:'用學到的開頭三秒公式拍一支Reels，目標突破100次觀看！',cl:['用開頭三秒鉤子開場','影片長度控制在15-30秒','發布後觀看數破100']},
-  ]},
-  {id:'l3',name:'引流銷售',em:'💰',xpMax:80,cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],qs:[
-    {id:'a',cat:'📖知識',tp:'k',em:'💬',name:'學習引流話術與分享流程',xp:15,ul:null,desc:'從「分享生活」開始，而不是「銷售產品」。學會自然開口的3句話！',cl:['學會3句自然開場白','了解從分享到推薦的完整流程','練習到說出來不尷尬']},
-    {id:'b',cat:'✅行動',tp:'a',em:'📋',name:'列出100個潛在名單',xp:20,ul:'a',desc:'把你認識的所有人列出來，不要先判斷「他一定不會買」，名單就是資產！',cl:['列出至少50人的完整名單','標記關係親疏與接觸時機','分類：家人/朋友/同事/網友']},
-    {id:'c',cat:'💛心態',tp:'m',em:'💪',name:'建立「被拒絕是正常的」心態',xp:10,ul:'b',desc:'每個成功的夥伴都被拒絕過很多次，重要的是從每次對話中學習成長。',cl:['記錄一次被拒絕的真實經過','寫下你從中學到的一件事','和上家分享這次心得']},
-    {id:'d',cat:'🎯挑戰',tp:'c',em:'🤝',name:'完成第一次1對1分享',xp:25,ul:'c',desc:'邀請名單上一位朋友聊聊，不是為了賣東西，而是真心分享使用心得！',cl:['邀請一位朋友見面或視訊','完整分享你的使用見證','記錄哪些說法最有效']},
-    {id:'e',cat:'🎯挑戰',tp:'c',em:'💡',name:'回答朋友的3個質疑',xp:10,ul:'d',desc:'準備好常見問題的回答，當朋友有疑問時你能自信地回應！',cl:['整理出5個最常被問的問題','用自己的話練習回答（不背稿）','和夥伴角色扮演練習']},
-  ]},
-  {id:'l4',name:'售後服務',em:'🤗',xpMax:60,cats:['全部','📖知識','✅行動','🎯挑戰'],qs:[
-    {id:'a',cat:'📖知識',tp:'k',em:'💝',name:'了解客戶維護的重要性',xp:15,ul:null,desc:'學習如何讓客戶持續回購，以及如何從滿意客戶轉化為你的推薦來源。',cl:['了解客戶生命週期4個階段','學習3種跟進話術','知道如何把客戶變成夥伴']},
-    {id:'b',cat:'✅行動',tp:'a',em:'📊',name:'建立客戶追蹤表格',xp:20,ul:'a',desc:'用表格記錄每位客戶的購買記錄、使用狀況和回購時間，讓服務更精準！',cl:['建立客戶基本資料記錄','設定回購提醒時間','每週主動關心至少3位客戶']},
-    {id:'c',cat:'🎯挑戰',tp:'c',em:'🎯',name:'完成第一個月銷售目標',xp:25,ul:'b',desc:'根據你目前的狀況設定合理的月目標並全力完成它！',cl:['設定明確的月銷售目標','每週追蹤進度並調整策略','達標後分析3個成功關鍵']},
-  ]},
-  {id:'l5',name:'工具掌握',em:'🛠️',xpMax:50,cats:['全部','📖知識','✅行動'],qs:[
-    {id:'a',cat:'📖知識',tp:'k',em:'🎬',name:'下載並設定剪映',xp:10,ul:null,desc:'剪映是你最重要的剪片工具！學會基礎操作，讓你的影片更有質感。',cl:['下載並安裝剪映','了解基本剪輯功能','購買適合的會員方案']},
-    {id:'b',cat:'✅行動',tp:'a',em:'🎥',name:'完成第一支剪輯影片',xp:15,ul:'a',desc:'用剪映剪出你的第一支成品，不需要完美，先完成再完美！',cl:['剪完一支完整的影片','加入字幕與背景音樂','發給上家請求回饋']},
-    {id:'c',cat:'📖知識',tp:'k',em:'🛒',name:'架設賣貨便收款系統',xp:15,ul:'b',desc:'不要用蝦皮！賣貨便手續費更低。學會架設你的賣貨便頁面。',cl:['註冊並設定賣貨便帳號','上架至少一個商品','測試完整的購買流程']},
-    {id:'d',cat:'✅行動',tp:'a',em:'💡',name:'備齊拍攝基本設備',xp:10,ul:null,desc:'好的腳架和補光燈能讓你的影片質感大幅提升！',cl:['購入或借到穩固的腳架','準備補光燈（環形燈最推薦）','測試最佳拍攝角度']},
-  ]},
-  {id:'l6',name:'晉升準備',em:'👑',xpMax:80,cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],qs:[
-    {id:'a',cat:'📖知識',tp:'k',em:'📋',name:'了解晉升二級的完整條件',xp:15,ul:null,desc:'搞清楚晉升的每一個條件，制定你的衝刺計畫，清楚目標才能有效率達成！',cl:['了解業績門檻與時間限制','知道需要多少推薦人數','和上家確認目前的進度']},
-    {id:'b',cat:'💛心態',tp:'m',em:'🌱',name:'建立長期經營的心態',xp:10,ul:'a',desc:'這不是一份快速致富的工作，而是值得長期投入的事業，調整期待值才能走更遠。',cl:['寫下你加入DCT最深層的原因','設定3個月、6個月的目標','和上家分享你的長期規劃']},
-    {id:'c',cat:'✅行動',tp:'a',em:'🤝',name:'找到第一位有興趣的夥伴',xp:25,ul:'b',desc:'不是要你馬上「成交」，而是找到一位願意多了解的人，約好下次深入談話。',cl:['邀請對象聽完完整說明','耐心回答所有的問題','約定好後續跟進的明確時間']},
-    {id:'d',cat:'🎯挑戰',tp:'c',em:'🚀',name:'完成晉升前最終衝刺',xp:30,ul:'c',desc:'距離晉升只差最後一步！和上家一起制定衝刺計畫，全力以赴！',cl:['確認所有晉升條件的達成狀況','制定最後衝刺的行動計畫','完成並通知上家確認晉升']},
-  ]},
+const SK = 'dct_v4';
+
+const STAGES = [
+  { emoji:'🌱', name:'愛用客',    short:'愛用客' },
+  { emoji:'🌿', name:'實習加盟',  short:'實習' },
+  { emoji:'⭐', name:'三級零售',  short:'三級零售' },
+  { emoji:'💫', name:'三級輔導',  short:'三級輔導' },
+  { emoji:'🌙', name:'二級輔導',  short:'二級輔導' },
+  { emoji:'🌟', name:'一級輔導',  short:'一級輔導' },
+  { emoji:'👑', name:'皇家',      short:'皇家' },
 ];
-let P={},ci=0,cc='全部',oq=null;
-function load(){try{P=JSON.parse(localStorage.getItem(SK)||'{}');}catch(e){P={};}}
-function save(){localStorage.setItem(SK,JSON.stringify(P));}
-function k(li,id){return 'l'+li+'_'+id;}
-function done(li,id){return !!P[k(li,id)];}
-function mk(li,id){P[k(li,id)]=true;save();}
-function um(li,id){delete P[k(li,id)];save();}
-function ul(li,q){return !q.ul||done(li,q.ul);}
-function ndone(li){return LV[li].qs.filter(q=>done(li,q.id)).length;}
-function totDone(){let d=0;LV.forEach((_,i)=>d+=ndone(i));return d;}
-function totQ(){let t=0;LV.forEach(lv=>t+=lv.qs.length);return t;}
-function totXP(){let x=0;LV.forEach((lv,i)=>lv.qs.forEach(q=>{if(done(i,q.id))x+=q.xp;}));return x;}
+
+const ENCOURAGEMENTS = {
+  quest: [
+    '你做到了！每一小步都是真實的成長。',
+    '太棒了！這個習慣會讓你越來越強。',
+    '完成！記住這個感覺，繼續往前走。',
+    '做到了！你比你想的更有能力。',
+    '很好！堅持的人最後都會到達終點。',
+    '完成！成功是每天積累出來的。',
+    '你又往前一步了，繼續保持！',
+    '做得好！這就是你和以前不同的地方。',
+  ],
+  stage: [
+    '恭喜你完成這個階段！這條路你選對了，繼續走下去。',
+    '你做到了！很多人在這裡放棄，但你沒有。這就是差別。',
+    '階段完成！你已經不是剛開始的那個你了。',
+    '太厲害了！每一個完成都是你給自己最好的禮物。',
+    '你突破了！接下來的每一步，都站在更高的地方出發。',
+    '完成！你的努力沒有被浪費，它們都在為你的未來鋪路。',
+    '你到達了！從這裡看到的風景，只有堅持到這裡的人才能看見。',
+  ],
+};
+
+const LV = [
+  {
+    id:'l0', name:'愛用客', em:'🌱', xpMax:50,
+    cats:['全部','📖知識','✅行動','💛心態'],
+    cert_quote:'「成為產品最好的見證者，你的故事就是最強的銷售工具。」',
+    qs:[
+      {id:'a',cat:'📖知識',tp:'k',em:'🌟',name:'了解DCT系統與產品',xp:10,ul:null,
+       desc:'了解DCT的運作方式、婕樂纖核心產品，以及你選擇這份事業的意義。',
+       cl:['看完DCT系統說明影片','認識至少3款核心產品','了解晉升路徑與收入結構'],
+       enc:'知道「為什麼」，你才能在最難的時候撐下去。',
+       link:'https://www.youtube.com/watch?v=RaqKArQoVB0',linkTxt:'▶ 觀看 DCT 系統說明影片'},
+      {id:'b',cat:'✅行動',tp:'a',em:'📅',name:'完成14天使用打卡',xp:20,ul:'a',
+       desc:'連續使用產品14天，記錄你身體真實的變化，這是你未來分享的底氣。',
+       cl:['每天按時使用產品','記錄使用前後的感受','拍攝使用過程（可私下留存）'],
+       enc:'你自己就是最有說服力的見證，14天後你會感謝今天的自己。'},
+      {id:'c',cat:'💛心態',tp:'m',em:'✍️',name:'寫下你的使用見證',xp:10,ul:'b',
+       desc:'把你最真實的使用感受寫下來，這段話未來會成為你分享時最有力量的故事。',
+       cl:['寫下使用前的真實狀態','記錄14天後具體的改變','存好這段見證，未來用得到'],
+       enc:'真實的故事比任何話術都更打動人心。'},
+      {id:'d',cat:'✅行動',tp:'a',em:'💬',name:'分享給第一個人聽',xp:10,ul:'c',
+       desc:'把你的使用見證分享給一位你信任的朋友或家人，不是為了賣，而是真心分享。',
+       cl:['選擇一位信任的人分享','說出你真實的感受和改變','不強迫，只是分享'],
+       enc:'開口是最難的第一步，你跨出去了，後面就容易了。'},
+    ]
+  },
+  {
+    id:'l1', name:'實習加盟', em:'🌿', xpMax:70,
+    cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],
+    cert_quote:'「每一次開口，都是在練習成為更好的自己。」',
+    qs:[
+      {id:'a',cat:'📖知識',tp:'k',em:'📋',name:'了解加盟制度與晉升條件',xp:10,ul:null,
+       desc:'搞清楚實習加盟的所有條件，包括業績門檻、推薦人數，以及下一步晉升需要什麼。',
+       cl:['了解實習加盟的業績門檻','清楚推薦人數的要求','和上家確認你目前的進度'],
+       enc:'清楚目標才能有效率地前進，模糊只會讓你原地打轉。'},
+      {id:'b',cat:'📖知識',tp:'k',em:'💬',name:'學習自然分享的話術',xp:10,ul:'a',
+       desc:'從「分享生活」開始，而不是「推銷產品」。學會讓對方主動問你的3句話。',
+       cl:['學會3句自然開場白','了解從分享到推薦的流程','練習到說出來不覺得尷尬'],
+       enc:'不是在賣東西，是在分享讓你變好的東西，這個心態改變一切。'},
+      {id:'c',cat:'✅行動',tp:'a',em:'📋',name:'列出100個潛在名單',xp:15,ul:'b',
+       desc:'把你認識的所有人都列出來，不要先判斷「他一定不會」，讓名單說話。',
+       cl:['列出至少50人的名單','標記關係親疏與接觸時機','分類：家人/朋友/同事/網友'],
+       enc:'名單就是你最重要的資產，不要讓「自以為知道」限制你的可能。'},
+      {id:'d',cat:'💛心態',tp:'m',em:'💪',name:'建立面對拒絕的心態',xp:10,ul:'c',
+       desc:'每個成功的夥伴都被拒絕過很多次。拒絕不是終點，是篩選的過程。',
+       cl:['記錄一次被拒絕的真實經過','寫下你從中學到的事','和上家聊聊這次的感受'],
+       enc:'被拒絕說明你有在嘗試，沒有嘗試才是真正的失敗。'},
+      {id:'e',cat:'🎯挑戰',tp:'c',em:'🤝',name:'完成第一次1對1分享',xp:15,ul:'d',
+       desc:'邀請名單上一位朋友聊聊，不是為了成交，而是開口練習。結果不重要，開口才重要。',
+       cl:['邀請一位朋友見面或視訊','完整分享你的使用見證','記錄對話中哪些說法有效'],
+       enc:'第一次永遠最難，但你只要開口一次，下一次就輕鬆一點。'},
+      {id:'f',cat:'🎯挑戰',tp:'c',em:'💡',name:'準備好3個常見問題的回答',xp:10,ul:'e',
+       desc:'整理出朋友最常問的問題，用自己的話練習回答，不背稿，說自己的故事。',
+       cl:['列出5個最常被問的問題','用自己的話練習每個回答','和上家角色扮演練習一次'],
+       enc:'準備好了，你就不怕被問，甚至會期待被問。'},
+    ]
+  },
+  {
+    id:'l2', name:'三級零售', em:'⭐', xpMax:80,
+    cats:['全部','📖知識','✅行動','🎯挑戰'],
+    cert_quote:'「服務好一個人，他會幫你帶來更多人。」',
+    qs:[
+      {id:'a',cat:'📖知識',tp:'k',em:'💝',name:'學習客戶維護的方法',xp:15,ul:null,
+       desc:'了解如何讓客戶從「買一次」變成「每個月回購」，以及如何讓滿意的客戶介紹新客戶。',
+       cl:['了解客戶回購的心理','學習3種跟進話術','知道如何把客戶變成推薦者'],
+       enc:'留住一個客戶，比開發十個新客戶更有效率。'},
+      {id:'b',cat:'✅行動',tp:'a',em:'📊',name:'建立客戶記錄系統',xp:15,ul:'a',
+       desc:'用表格記錄每位客戶的購買記錄、使用狀況和下次聯繫時間，讓你的服務更精準。',
+       cl:['建立基本客戶資料記錄','設定每位客戶的回購提醒','每週主動關心至少3位客戶'],
+       enc:'用心記錄的人，才能提供讓人感動的服務。'},
+      {id:'c',cat:'✅行動',tp:'a',em:'📱',name:'打造你的IG帳號',xp:20,ul:'b',
+       desc:'把你的IG帳號定位清楚，讓陌生人第一眼就知道你是誰、你分享什麼。',
+       cl:['更新大頭照與個人簡介','確定帳號的核心主題','發佈第一支定位明確的內容'],
+       enc:'你的帳號是你的名片，讓它說出你想說的話。'},
+      {id:'d',cat:'🎯挑戰',tp:'c',em:'🎯',name:'完成第一個月銷售目標',xp:30,ul:'c',
+       desc:'和上家一起設定一個合理的月目標，每週追蹤進度，月底達成。',
+       cl:['設定明確的月銷售目標','每週追蹤進度並調整','達標後記錄3個成功關鍵'],
+       enc:'完成一個目標的感覺，會讓你更相信自己能完成下一個。'},
+    ]
+  },
+  {
+    id:'l3', name:'三級輔導', em:'💫', xpMax:90,
+    cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],
+    cert_quote:'「你的成長速度，決定你能帶多少人一起成長。」',
+    qs:[
+      {id:'a',cat:'📖知識',tp:'k',em:'👥',name:'了解輔導與領導的差異',xp:15,ul:null,
+       desc:'輔導不是管理，是陪伴。了解如何讓新人感受到被支持，而不是被監督。',
+       cl:['了解輔導者的角色與責任','學習如何給予有效的回饋','知道何時推一把、何時放手'],
+       enc:'最好的輔導者，是讓對方覺得「我自己做到的」。'},
+      {id:'b',cat:'✅行動',tp:'a',em:'📋',name:'建立你的新人輔導流程',xp:20,ul:'a',
+       desc:'整理出你自己走過的路，把它變成可以給新人參考的流程，讓他們少走彎路。',
+       cl:['整理你認為最重要的3個步驟','設計新人第一週的行動計畫','寫下你最想對新人說的一句話'],
+       enc:'把你學到的傳出去，是對這段旅程最好的致敬。'},
+      {id:'c',cat:'💛心態',tp:'m',em:'🌱',name:'建立長期陪伴的心態',xp:15,ul:'b',
+       desc:'你的夥伴不會每天都狀態好，輔導者需要有穩定的心態，才能成為別人的依靠。',
+       cl:['寫下你為什麼想帶人的原因','設定你對夥伴的長期承諾','和上家聊聊你的輔導目標'],
+       enc:'你穩定的時候，你的夥伴才敢跌倒。'},
+      {id:'d',cat:'🎯挑戰',tp:'c',em:'🤝',name:'輔導第一位新人度過第一個月',xp:40,ul:'c',
+       desc:'陪伴你的第一位夥伴完成新人第一個月，記錄你遇到的挑戰和你的應對方式。',
+       cl:['每週至少和夥伴確認一次進度','解決至少一次夥伴的卡關','月底做一次回顧和鼓勵'],
+       enc:'能讓別人成功的人，自己才會真的成功。'},
+    ]
+  },
+  {
+    id:'l4', name:'二級輔導', em:'🌙', xpMax:100,
+    cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],
+    cert_quote:'「團隊的高度，取決於你願意成為多高的人。」',
+    qs:[
+      {id:'a',cat:'📖知識',tp:'k',em:'📈',name:'學習團隊管理與激勵方法',xp:20,ul:null,
+       desc:'了解如何維持團隊的士氣，如何激勵不同類型的夥伴，以及如何處理衝突。',
+       cl:['了解不同夥伴的動力來源','學習3種激勵方式','知道如何處理夥伴之間的問題'],
+       enc:'好的領導者不是讓人服從，而是讓人想追隨。'},
+      {id:'b',cat:'✅行動',tp:'a',em:'📅',name:'建立團隊定期會議機制',xp:20,ul:'a',
+       desc:'設定固定的團隊聚會或線上會議，讓夥伴有歸屬感，也讓問題不會累積太久。',
+       cl:['設定每週/每月的固定時間','準備有主題的會議內容','建立夥伴互相分享的空間'],
+       enc:'固定的連結，是團隊不散的原因。'},
+      {id:'c',cat:'💛心態',tp:'m',em:'🧘',name:'建立面對挫折的復原能力',xp:20,ul:'b',
+       desc:'帶團隊的路上一定會有挫折。這一關要你建立讓自己快速復原的方法。',
+       cl:['列出你在這條路上最大的恐懼','找出3個讓你快速恢復的方法','和上家分享你的心路歷程'],
+       enc:'跌倒不可怕，站起來的速度才決定你能走多遠。'},
+      {id:'d',cat:'🎯挑戰',tp:'c',em:'🚀',name:'帶出一位三級零售的夥伴',xp:40,ul:'c',
+       desc:'輔導你的夥伴完成三級零售的晉升，記錄你在過程中扮演的角色。',
+       cl:['確認夥伴的晉升條件與進度','在關鍵時刻給予具體支持','夥伴晉升後一起慶祝'],
+       enc:'你帶出去的每一個人，都是你對這份事業最好的回答。'},
+    ]
+  },
+  {
+    id:'l5', name:'一級輔導', em:'🌟', xpMax:110,
+    cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],
+    cert_quote:'「真正的領導者，是讓每個人都覺得自己很重要。」',
+    qs:[
+      {id:'a',cat:'📖知識',tp:'k',em:'🏛️',name:'學習組織架構與系統化複製',xp:20,ul:null,
+       desc:'了解如何把你的成功方法系統化，讓它可以被複製到更多夥伴身上。',
+       cl:['整理出你的核心成功要素','設計可複製的輔導SOP','讓至少一位夥伴成功複製'],
+       enc:'能被複製的成功，才是真正可持續的成功。'},
+      {id:'b',cat:'✅行動',tp:'a',em:'📣',name:'建立品牌形象與影響力',xp:25,ul:'a',
+       desc:'在社群上建立你作為領導者的形象，讓更多人因為你的內容而認識DCT。',
+       cl:['定期分享你的領導者視角','建立你的個人品牌關鍵字','至少影響3位陌生人了解DCT'],
+       enc:'你的影響力有多大，你能幫助的人就有多多。'},
+      {id:'c',cat:'💛心態',tp:'m',em:'💎',name:'建立永續經營的心態',xp:25,ul:'b',
+       desc:'一級輔導不是終點，是一個新的起點。建立讓你可以走10年的心態和習慣。',
+       cl:['寫下你5年後想成為的樣子','設計讓你持續成長的每日習慣','分享你的長期願景給你的夥伴'],
+       enc:'短期的努力改變結果，長期的堅持改變命運。'},
+      {id:'d',cat:'🎯挑戰',tp:'c',em:'👑',name:'帶出一位二級輔導的夥伴',xp:40,ul:'c',
+       desc:'這是你晉升到皇家前最重要的一步，陪伴一位夥伴完成二級輔導的晉升。',
+       cl:['確認夥伴的晉升條件','提供關鍵時刻的策略支持','完成後一起舉辦慶祝儀式'],
+       enc:'你能帶出什麼樣的人，就說明你是什麼樣的領導者。'},
+    ]
+  },
+  {
+    id:'l6', name:'皇家', em:'👑', xpMax:120,
+    cats:['全部','📖知識','✅行動','💛心態'],
+    cert_quote:'「皇家不是終點，是你開始影響更多人生命的起點。」',
+    qs:[
+      {id:'a',cat:'📖知識',tp:'k',em:'🌍',name:'了解皇家的責任與使命',xp:20,ul:null,
+       desc:'皇家代表的不只是成就，而是承諾。了解你作為皇家對團隊和品牌的責任。',
+       cl:['了解皇家的角色與象徵意義','確認你對夥伴的長期承諾','寫下你的皇家宣言'],
+       enc:'到達這裡的你，已經證明了自己。現在是為別人而活的時候。'},
+      {id:'b',cat:'✅行動',tp:'a',em:'🏆',name:'分享你的完整旅程故事',xp:30,ul:'a',
+       desc:'把你從愛用客到皇家的完整故事整理出來，這個故事會成為無數新人的力量。',
+       cl:['整理你的完整晉升旅程','記錄最難熬的時刻和你如何撐過去','把這個故事分享給至少10位夥伴'],
+       enc:'你走過的路，是別人最需要的地圖。'},
+      {id:'c',cat:'💛心態',tp:'m',em:'🌟',name:'成為DCT精神的傳承者',xp:30,ul:'b',
+       desc:'皇家的使命是讓更多人有機會改變自己的生命。你的存在本身就是最好的鼓勵。',
+       cl:['每個月至少鼓勵一位在低潮的夥伴','參與或舉辦至少一次分享會','讓你的故事持續影響新人'],
+       enc:'你不需要做什麼偉大的事，你只需要繼續做真實的自己。'},
+      {id:'d',cat:'✅行動',tp:'a',em:'👑',name:'完成皇家認證儀式',xp:40,ul:'c',
+       desc:'和你的上家、你的夥伴一起完成屬於你的皇家認證。這一刻值得被好好記錄。',
+       cl:['通知上家你已完成所有條件','安排認證儀式的時間和形式','把這一刻永久記錄下來'],
+       enc:'恭喜你。你做到了。'},
+    ]
+  },
+];
+
+let P={}, ci=0, cc='全部', oq=null;
+function load(){ try{ P=JSON.parse(localStorage.getItem(SK)||'{}'); }catch(e){ P={}; } }
+function save(){ localStorage.setItem(SK,JSON.stringify(P)); }
+function k(li,id){ return 'l'+li+'_'+id; }
+function done(li,id){ return !!P[k(li,id)]; }
+function mk(li,id){ P[k(li,id)]=true; save(); }
+function um(li,id){ delete P[k(li,id)]; save(); }
+function ulk(li,q){ return !q.ul||done(li,q.ul); }
+function ndone(li){ return LV[li].qs.filter(q=>done(li,q.id)).length; }
+function totDone(){ let d=0; LV.forEach((_,i)=>d+=ndone(i)); return d; }
+function totQ(){ let t=0; LV.forEach(lv=>t+=lv.qs.length); return t; }
+function totXP(){ let x=0; LV.forEach((lv,i)=>lv.qs.forEach(q=>{ if(done(i,q.id))x+=q.xp; })); return x; }
+function stagesDone(){ return LV.filter((_,i)=>ndone(i)===LV[i].qs.length).length; }
+
+function randEnc(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
 function rHdr(){
-  const td=totDone(),tq=totQ(),tx=totXP();
+  const td=totDone(), tq=totQ(), tx=totXP();
   document.getElementById('s-done').textContent=td;
   document.getElementById('s-tot').textContent=tq;
   document.getElementById('s-pct').textContent=tq?Math.round(td/tq*100)+'%':'0%';
   document.getElementById('tot-xp').textContent=tx;
   const lv=LV[ci];
-  document.getElementById('lv-tag').textContent=lv.name+' · Lv.'+(ci+1);
+  document.getElementById('lv-tag').textContent=lv.name+' · 階段 '+(ci+1);
   const lxp=lv.qs.reduce((s,q)=>done(ci,q.id)?s+q.xp:s,0);
   document.getElementById('cx').textContent=lxp;
   document.getElementById('mx').textContent=lv.xpMax;
   document.getElementById('xf').style.width=Math.min(100,Math.round(lxp/lv.xpMax*100))+'%';
+  const sd=stagesDone();
+  document.getElementById('stage-sub').textContent=sd+' / 7 階段完成';
 }
-function rLvNav(){
-  document.getElementById('lv-scroll').innerHTML=LV.map((lv,i)=>{
-    const d=ndone(i),t=lv.qs.length,p=Math.round(d/t*100);
-    const lk=i>0&&ndone(i-1)<LV[i-1].qs.length,all=d===t;
-    return `<div class="lv-card${i===ci?' active':''}${lk?' lk':''}" onclick="${lk?'':'setLv('+i+')'}">
-      ${lk?'<div class="lv-lock">🔒</div>':''}${all?'<div class="lv-done">✓</div>':''}
-      <div class="lv-em">${lv.em}</div><div class="lv-nm">${lv.name}</div>
-      <div class="lv-pg"><div class="lv-pf" style="width:${p}%"></div></div>
-      <div class="lv-pt">${d}/${t}</div></div>`;
+
+function rStages(){
+  document.getElementById('stages-row').innerHTML=STAGES.map((s,i)=>{
+    const all=ndone(i)===LV[i].qs.length;
+    const isCur=i===ci;
+    const lk=i>0&&!( ndone(i-1)===LV[i-1].qs.length );
+    let cls='stage-star';
+    if(all) cls+=' done';
+    else if(isCur) cls+=' current';
+    else if(lk) cls+=' locked';
+    let itemCls='stage-item';
+    if(all) itemCls+=' done-lbl';
+    else if(isCur) itemCls+=' cur-lbl';
+    return `<div class="${itemCls}" onclick="setLv(${i})">
+      <div class="${cls}"><span class="ss-icon">${s.emoji}</span></div>
+      <div class="stage-lbl">${s.short}</div>
+    </div>`;
   }).join('');
 }
+
+function rLvNav(){
+  document.getElementById('lv-scroll').innerHTML=LV.map((lv,i)=>{
+    const d=ndone(i), t=lv.qs.length, p=Math.round(d/t*100);
+    const lk=i>0&&ndone(i-1)<LV[i-1].qs.length, all=d===t;
+    return `<div class="lv-card${i===ci?' active':''}${lk?' lk':''}" onclick="${lk?'':'setLv('+i+')'}">
+      ${lk?'<div class="lv-lock">🔒</div>':''}
+      ${all?'<div class="lv-done-badge">✓</div>':''}
+      <div class="lv-em">${lv.em}</div>
+      <div class="lv-nm">${lv.name}</div>
+      <div class="lv-pg"><div class="lv-pf" style="width:${p}%"></div></div>
+      <div class="lv-pt">${d}/${t}</div>
+    </div>`;
+  }).join('');
+}
+
 function rTabs(){
   document.getElementById('cat-row').innerHTML=LV[ci].cats.map(c=>
-    `<div class="cat-btn${cc===c?' on':''}" onclick="setCat('${c}')">${c}</div>`).join('');
+    `<button class="cat-btn${cc===c?' on':''}" onclick="setCat('${c}')">${c}</button>`
+  ).join('');
 }
+
 function rQuests(){
-  const lv=LV[ci];let qs=lv.qs;
-  if(cc!=='全部')qs=qs.filter(q=>q.cat===cc);
-  const d=ndone(ci),t=lv.qs.length;
+  const lv=LV[ci]; let qs=lv.qs;
+  if(cc!=='全部') qs=qs.filter(q=>q.cat===cc);
+  const d=ndone(ci), t=lv.qs.length;
   document.getElementById('qa-title').textContent=lv.em+' '+lv.name;
   document.getElementById('qa-cnt').textContent=d+'/'+t;
-  const im={k:'ik',a:'ia',m:'im',c:'ic'},tm={k:'tk',a:'ta',m:'tm',c:'tc'},tn={k:'知識',a:'行動',m:'心態',c:'挑戰'};
+  const im={k:'ik',a:'ia',m:'im',c:'ic'}, tm={k:'tk',a:'ta',m:'tm',c:'tc'}, tn={k:'知識',a:'行動',m:'心態',c:'挑戰'};
   document.getElementById('qlist').innerHTML=qs.map(q=>{
-    const qk=k(ci,q.id),d=done(ci,q.id),u=ul(ci,q),op=oq===qk;
+    const qk=k(ci,q.id), d=done(ci,q.id), u=ulk(ci,q), op=oq===qk;
     return `<div class="qc${d?' done':''}${!u?' lkq':''}${op?' open':''}" id="qc-${qk}">
       <div class="qc-hd" onclick="tog('${qk}')">
         <div class="qc-ico ${im[q.tp]}">${q.em}</div>
@@ -264,55 +562,161 @@ function rQuests(){
           <div class="qc-name">${q.name}</div>
           <div class="qc-meta">
             <span class="qtag ${tm[q.tp]}">${tn[q.tp]}</span>
-            <span class="qxp">⭐+${q.xp}XP</span>
+            <span class="qxp">⭐+${q.xp}</span>
             ${!u?'<span class="qxp">🔒先完成前一關</span>':''}
-            ${d?'<span class="qxp" style="color:#639922">✓已完成</span>':''}
+            ${d?'<span class="qxp" style="color:#37A5E6">✓完成</span>':''}
           </div>
         </div>
         <div class="qc-ck"><div class="ckv"></div></div>
       </div>
       ${op?`<div class="qc-det">
         <div class="qd-desc">${q.desc}</div>
-        <div class="qd-cll"><div class="qd-cl-lbl">✦ 完成這關你需要</div>
-          ${(q.cl||[]).map(c=>`<div class="qd-cli"><span>🌸</span>${c}</div>`).join('')}
+        <div class="qd-cll">
+          <div class="qd-cl-lbl">✦ 完成這關你需要</div>
+          ${(q.cl||[]).map(c=>`<div class="qd-cli"><div class="qd-cli-dot"></div>${c}</div>`).join('')}
         </div>
-        <div class="qd-rw">🏆 完成獎勵：+${q.xp} 冒險能量 XP</div>
-        ${u?d?`<button class="qd-btn qdb-un" onclick="undo(${ci},'${q.id}',event)">取消完成</button>`
-            :`<button class="qd-btn qdb-ok" onclick="comp(${ci},'${q.id}','${q.name}',${q.xp},event)">✨ 完成這一關！</button>`
-          :`<button class="qd-btn qdb-lk" disabled>🔒 先解鎖前一關</button>`}
+        ${q.enc?`<div class="qd-enc">${q.enc}</div>`:''}
+        ${q.link?`<a class="qd-link" href="${q.link}" target="_blank">${q.linkTxt||'▶ 觀看影片'}</a>`:''}
+        <div class="qd-rw">🏅 完成獎勵：+${q.xp} 星星</div>
+        ${u
+          ? d
+            ? `<button class="qd-btn qdb-un" onclick="undoQ(${ci},'${q.id}',event)">取消完成</button>`
+            : `<button class="qd-btn qdb-ok" onclick="compQ(${ci},'${q.id}','${q.name}',${q.xp},'${(q.enc||'').replace(/'/g,"\\'")}',event)">完成這一關 ✓</button>`
+          : `<button class="qd-btn qdb-lk" disabled>🔒 先完成前一關</button>`
+        }
       </div>`:''}
     </div>`;
   }).join('');
 }
+
 function confetti(){
-  const cols=['#FF6EB4','#FFB3D9','#A8E063','#FFE66D','#74C0FC'];
-  for(let i=0;i<26;i++){
-    const e=document.createElement('div');e.className='cf';
-    e.style.cssText=`left:${Math.random()*100}vw;background:${cols[Math.floor(Math.random()*cols.length)]};width:${6+Math.random()*6}px;height:${6+Math.random()*6}px;border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${1.2+Math.random()*1.2}s;animation-delay:${Math.random()*.3}s;`;
-    document.body.appendChild(e);setTimeout(()=>e.remove(),2600);
+  const cols=['#37A5E6','#7AA0FF','#A0C0FF','#2290D4','#FFD700','#fff'];
+  for(let i=0;i<30;i++){
+    const e=document.createElement('div'); e.className='cf';
+    e.style.cssText=`left:${Math.random()*100}vw;background:${cols[Math.floor(Math.random()*cols.length)]};width:${5+Math.random()*7}px;height:${5+Math.random()*7}px;border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${1.2+Math.random()*1.4}s;animation-delay:${Math.random()*.4}s;`;
+    document.body.appendChild(e); setTimeout(()=>e.remove(),2800);
   }
 }
-function comp(li,id,name,xp,e){
-  e.stopPropagation();mk(li,id);oq=null;rAll();
-  const d=ndone(li),t=LV[li].qs.length,all=d===t,st=d>=t*.75?3:d>=t*.4?2:1;
-  confetti();
-  document.getElementById('ov-em').textContent=all?'🎊':'✨';
-  document.getElementById('ov-stars').innerHTML=[1,2,3].map(i=>`<span class="ovs${i<=st?' lit':''}">★</span>`).join('');
-  document.getElementById('ov-title').textContent=all?'「'+LV[li].name+'」全破關！':'「'+name+'」完成！';
-  document.getElementById('ov-desc').textContent=all?'太厲害了！完成所有挑戰，準備好迎接下一個冒險了嗎？':'做得好！繼續挑戰剩下的關卡吧！';
-  document.getElementById('ov-xp').textContent='⭐ +'+xp+' XP';
-  const btn=document.getElementById('ov-btn');
-  if(all&&li<LV.length-1){btn.textContent='前往下一章節 🚀';btn.onclick=()=>{closeOv();setLv(li+1);};}
-  else{btn.textContent='繼續冒險 →';btn.onclick=closeOv;}
+
+const MILESTONES = [
+  {stars:50,  icon:'🌟', title:'50顆星！閃閃發光', msg:'你已經累積了50顆星星！\n這代表你完成了很多關卡，\n每一顆星都是你努力的痕跡。', quote:'「開始了，就不要停。停下來的代價比繼續更大。」'},
+  {stars:100, icon:'💫', title:'100顆星！勢不可擋', msg:'100顆星星！\n很多人在這裡早就放棄了，\n但你還在，這就是你和別人的差距。', quote:'「你以為自己在原地踏步，\n其實你每天都在累積你看不見的能量。」'},
+  {stars:150, icon:'✨', title:'150顆星！你是傳奇', msg:'150顆星！\n你已經走了很長的路了。\n繼續走，最好的還在前面。', quote:'「三年後你會感謝現在沒有放棄的自己。」'},
+  {stars:200, icon:'👑', title:'200顆星！皇家之路', msg:'200顆星！\n你幾乎走完了整個旅程。\n皇家的那一天，不遠了。', quote:'「不是因為容易才堅持，\n是因為值得才繼續。」'},
+];
+
+function checkMilestone(prevXP, newXP){
+  for(const m of MILESTONES){
+    if(prevXP < m.stars && newXP >= m.stars) return m;
+  }
+  return null;
+}
+
+function showMilestone(m, totalXP){
+  document.getElementById('ovl-content').innerHTML=`
+    <div class="milestone-card">
+      <div class="ms-top">
+        <span class="ms-icon">${m.icon}</span>
+        <div class="ms-title">${m.title}</div>
+        <div class="ms-sub">累積星星里程碑</div>
+      </div>
+      <div class="ms-body">
+        <div class="ms-stars"><div class="ms-star-chip">⭐ ${totalXP} 顆星星</div></div>
+        <div class="ms-msg">${m.msg.replace(/\n/g,'<br>')}</div>
+        <div class="ms-quote">${m.quote}</div>
+        <button class="ms-btn" onclick="closeOvl()">繼續前進，我做得到 ✦</button>
+      </div>
+    </div>`;
+  confetti(); confetti();
   document.getElementById('ovl').style.display='flex';
 }
-function undo(li,id,e){e.stopPropagation();um(li,id);oq=null;rAll();}
-function closeOv(){document.getElementById('ovl').style.display='none';}
-function setLv(i){ci=i;cc='全部';oq=null;rAll();}
-function setCat(c){cc=c;oq=null;rTabs();rQuests();}
-function tog(qk){oq=oq===qk?null:qk;rQuests();}
-function rAll(){rHdr();rLvNav();rTabs();rQuests();}
-load();rAll();
+
+function compQ(li, id, name, xp, enc, e){
+  e.stopPropagation();
+  const prevXP = totXP();
+  mk(li,id); oq=null; rAll();
+  const newXP = totXP();
+  const d=ndone(li), t=LV[li].qs.length, all=d===t;
+  const st=d>=t*.75?3:d>=t*.4?2:1;
+  confetti();
+
+  const milestone = checkMilestone(prevXP, newXP);
+  if(milestone){
+    setTimeout(()=>showMilestone(milestone, newXP), 400);
+  } else if(all){
+    showCert(li);
+  } else {
+    const encTxt = enc || randEnc(ENCOURAGEMENTS.quest);
+    showQuestPop(name, xp, st, encTxt, li);
+  }
+}
+
+function showQuestPop(name, xp, st, enc, li){
+  document.getElementById('ovl-content').innerHTML=`
+    <div class="pop-quest">
+      <span class="pq-em">✨</span>
+      <div class="pq-stars">${[1,2,3].map(i=>`<span class="pqs${i<=st?' lit':''}">★</span>`).join('')}</div>
+      <div class="pq-title">「${name}」完成！</div>
+      <div class="pq-enc">${enc}</div>
+      <div class="pq-xp">⭐ +${xp} 星星</div>
+      <button class="pq-btn" onclick="closeOvl()">繼續前進 →</button>
+    </div>`;
+  document.getElementById('ovl').style.display='flex';
+}
+
+function showCert(li){
+  const lv=LV[li], stage=STAGES[li];
+  const now=new Date();
+  const dateStr=now.getFullYear()+'年'+(now.getMonth()+1)+'月'+now.getDate()+'日';
+  const msgs=[
+    `你完成了「${stage.name}」階段的所有關卡。`,
+    `這不是一件容易的事，但你做到了。`,
+    `把這張獎狀截圖存起來，它是你努力過的證明。`,
+  ];
+  const nextLv = li<LV.length-1 ? LV[li+1] : null;
+  document.getElementById('ovl-content').innerHTML=`
+    <div class="cert">
+      <div class="cert-top">
+        <span class="cert-badge-icon">${stage.emoji}</span>
+        <div class="cert-stage-name">DCT 晉升認證</div>
+        <div class="cert-title">${stage.name}<br>階段完成</div>
+        <div class="cert-subtitle">第 ${li+1} 階段 · 共 7 階段</div>
+      </div>
+      <div class="cert-body">
+        <div class="cert-seal">
+          <div class="cert-seal-line"></div>
+          <div class="cert-seal-txt">✦ CERTIFICATE ✦</div>
+          <div class="cert-seal-line r"></div>
+        </div>
+        <div class="cert-msg">${msgs.join('<br>')}</div>
+        <div class="cert-quote">${lv.cert_quote}</div>
+        <div class="cert-meta">
+          <span>完成日期：${dateStr}</span>
+          <span>DCT 晉升地圖</span>
+        </div>
+        <div class="cert-btns">
+          <button class="cert-btn-save" onclick="closeOvl()">截圖存起來 📸</button>
+          ${nextLv
+            ? `<button class="cert-btn-next" onclick="closeOvl();setLv(${li+1})">前往${nextLv.name} →</button>`
+            : `<button class="cert-btn-next" onclick="closeOvl()">感謝這段旅程 🙏</button>`
+          }
+        </div>
+      </div>
+    </div>`;
+  confetti(); confetti();
+  document.getElementById('ovl').style.display='flex';
+}
+
+function undoQ(li, id, e){ e.stopPropagation(); um(li,id); oq=null; rAll(); }
+function closeOvl(){ document.getElementById('ovl').style.display='none'; }
+function setLv(i){ ci=i; cc='全部'; oq=null; rAll(); }
+function setCat(c){ cc=c; oq=null; rTabs(); rQuests(); }
+function tog(qk){ oq=oq===qk?null:qk; rQuests(); }
+function rAll(){ rHdr(); rStages(); rLvNav(); rTabs(); rQuests(); }
+
+load(); rAll();
 </script>
 </body>
 </html>
+HTMLEOF
+echo "done"
