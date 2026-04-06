@@ -1023,7 +1023,6 @@ function showMilestone(m, totalXP){
           <div class="ms-quote-txt">${(m.quote||'').replace(/\n/g,'<br>')}</div>
         </div>
         ${m.tag?`<div class="ms-tag">${m.tag}</div>`:''}
-        <div style="font-size:10px;color:#90C0E0;text-align:center;margin-bottom:10px;">📸 截圖這個畫面存起來吧！</div>
         <button class="ms-btn-save" onclick="closeOvl()" style="width:100%;">繼續加油 ✨</button>
       </div>
     </div>`;
@@ -1072,7 +1071,6 @@ function showCert(li){
   const msgs=[
     `${userName ? userName+'，你' : '你'}完成了「${stage.name}」階段的所有關卡。`,
     `這不是一件容易的事，但你做到了。`,
-    `把這張獎狀截圖存起來，它是你努力過的證明。`,
   ];
   const nextLv = li<LV.length-1 ? LV[li+1] : null;
   document.getElementById('ovl-content').innerHTML=`
@@ -1096,7 +1094,7 @@ function showCert(li){
           <span>DCT 晉升地圖</span>
         </div>
         <div class="cert-btns">
-          <button class="cert-btn-save" onclick="closeOvl()">📸 截圖存起來</button>
+          
           ${nextLv
             ? `<button class="cert-btn-next" onclick="closeOvl();setLv(${li+1})">前往${nextLv.name} →</button>`
             : `<button class="cert-btn-next" onclick="closeOvl()">感謝這段旅程 🙏</button>`
@@ -1921,10 +1919,9 @@ function showCert(li){
       </div>
       <div class="cert-body">
         <div class="cert-seal"><div class="cert-seal-line"></div><div class="cert-seal-txt">✦ CERTIFICATE ✦</div><div class="cert-seal-line r"></div></div>
-        <div class="cert-msg">${userName?userName+'，你':'你'}完成了「${stage.name}」的所有檢核項目。<br>這不是一件容易的事，但你做到了。<br>把這張獎狀截圖存起來，它是你努力過的證明。</div>
+        <div class="cert-msg">${userName?userName+'，你':'你'}完成了「${stage.name}」的所有檢核項目。<br>這不是一件容易的事，但你做到了。</div>
         <div class="cert-quote">${certQuotes[ci]||''}</div>
         <div class="cert-meta"><span>完成日期：${dateStr}</span><span>DCT 晉升地圖</span></div>
-        <div style="font-size:10px;color:#90C0E0;text-align:center;margin-bottom:10px;">📸 截圖這張獎狀，傳給你的上家吧！</div>
         <div class="cert-btns">
           ${nextStage ? `<button class="cert-btn-next" onclick="closeOvl();setLv(${ci+1})" style="flex:1;">前往${nextStage.name} →</button>` : `<button class="cert-btn-next" onclick="closeOvl()" style="flex:1;">感謝這段旅程 🙏</button>`}
         </div>
