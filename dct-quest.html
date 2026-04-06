@@ -299,6 +299,21 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .cf{position:fixed;pointer-events:none;z-index:1000;border-radius:2px;animation:cff linear forwards;}
 @keyframes cff{0%{transform:translateY(-10px) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
 @keyframes fadeOut{from{opacity:1}to{opacity:0}}
+
+/* ── FLOATING XP ── */
+.xp-float{position:fixed;font-size:20px;font-weight:900;color:#FFD700;pointer-events:none;z-index:9999;text-shadow:0 0 12px rgba(255,200,0,.6);animation:xpfloat 1.3s cubic-bezier(.2,.8,.4,1) forwards;}
+@keyframes xpfloat{0%{opacity:0;transform:translateY(0) scale(.5);}15%{opacity:1;transform:translateY(-15px) scale(1.4);}80%{opacity:1;transform:translateY(-70px) scale(1);}100%{opacity:0;transform:translateY(-95px) scale(.8);}}
+
+/* ── MINI MILESTONE TOAST ── */
+.mini-toast{position:fixed;left:50%;transform:translateX(-50%);bottom:90px;z-index:9998;
+  background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;
+  border-radius:999px;padding:10px 22px;font-size:13px;font-weight:700;
+  box-shadow:0 6px 20px rgba(55,165,230,.4);
+  animation:toastpop .4s cubic-bezier(.34,1.56,.64,1) forwards;}
+.mini-toast.hide{animation:toasthide .35s ease forwards;}
+@keyframes toastpop{from{opacity:0;transform:translateX(-50%) translateY(20px) scale(.8);}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}}
+@keyframes toasthide{from{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}to{opacity:0;transform:translateX(-50%) translateY(10px) scale(.9);}}
+
 </style>
 </head>
 <body>
@@ -421,6 +436,15 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 </div>
 
 
+<!-- SYSTEM PAGE -->
+<div class="page-section" id="page-system">
+  <div class="page-top">
+    <div class="page-top-title">🛠️ DCT 系統工具</div>
+    <div class="page-top-sub">專屬 DCT 夥伴的經營工具</div>
+  </div>
+  <div id="system-list"></div>
+</div>
+
 <div class="ovl" id="ovl" style="display:none">
   <div id="ovl-content"></div>
 </div>
@@ -428,6 +452,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 <div class="bnt">
   <div class="bni on" id="nav-map" onclick="switchPage('map')"><div class="bni-ic">🗺️</div><div class="bni-lb">闖關</div></div>
   <div class="bni" id="nav-achievement" onclick="switchPage('achievement')"><div class="bni-ic">🏆</div><div class="bni-lb">成就</div></div>
+  <div class="bni" id="nav-system" onclick="switchPage('system')"><div class="bni-ic">🛠️</div><div class="bni-lb">系統</div></div>
   <div class="bni" id="nav-course" onclick="switchPage('course')"><div class="bni-ic">📖</div><div class="bni-lb">課程</div></div>
 </div>
 
@@ -1110,6 +1135,7 @@ function switchPage(p){
   document.getElementById('nav-'+p)?.classList.add('on');
   if(p==='achievement') renderAchievements();
   if(p==='course') renderCourses();
+  if(p==='system') renderSystem();
   if(p==='checklist') renderChecklist();
   if(p==='upgrade') renderUpgrade();
   window.scrollTo({top:0,behavior:'smooth'});
@@ -1560,11 +1586,25 @@ const UPGRADE_INFO = [
 
 // ── CHECKLIST LOGIC ───────────────────────────────────────────────
 const CK_KEY = 'dct_checklist_v1';
+const UP_KEY = 'dct_upgraded_v1';
 const UPG_KEY = 'dct_upgrade_v1';
 let ckData = {};
+let upgradedStages = {};
 let upgData = {};
 let curCkStage = 0;
 const openCkSections = {};
+
+function loadUpgraded(){ try{ upgradedStages=JSON.parse(localStorage.getItem(UP_KEY)||'{}'); }catch(e){ upgradedStages={}; } }
+function saveUpgraded(){ localStorage.setItem(UP_KEY, JSON.stringify(upgradedStages)); }
+
+function confirmUpgrade(stageIdx){
+  upgradedStages[stageIdx] = true;
+  saveUpgraded();
+  renderStageInfo();
+  renderAchievements();
+  // Show cert
+  showCert(stageIdx);
+}
 
 function loadCkData(){
   try{ ckData = JSON.parse(localStorage.getItem(CK_KEY)||'{}'); }catch(e){ ckData={}; }
@@ -1700,30 +1740,46 @@ function toggleSicCkSec(id){
   if(arr) arr.classList.toggle('open', openSicSections[id]);
 }
 
-function toggleSicCkItem(secId, itemIdx){
+function toggleSicCkItem(secId, itemIdx, evt){
   const key = secId+'_'+itemIdx;
   const prevXP = totXP();
+  // Compute stage done before
+  const ckStageNow = CHECKLISTS[ci];
+  const prevStageDone = ckStageNow ? ckStageNow.sections.reduce((a,s)=>a+s.items.filter((_,j)=>ckData[s.id+'_'+j]).length,0) : 0;
+  const stageTotal = ckStageNow ? ckStageNow.sections.reduce((a,s)=>a+s.items.length,0) : 0;
+
   ckData[key] = !ckData[key];
   saveCkData();
   const newXP = totXP();
+
+  // Show floating XP
+  if(ckData[key]){
+    const item = CHECKLISTS.flatMap(st=>st.sections).find(s=>s.id===secId)?.items[itemIdx];
+    const xpGain = (typeof item==='object' && item?.course) ? 3 : 2;
+    const clickedEl = evt?.currentTarget || evt?.target;
+    // Show multiple star floats for more impact
+    for(let s=0; s<xpGain; s++){
+      setTimeout(()=>showXPFloat(1, clickedEl, s), s*120);
+    }
+  }
+
   rHdr();
   renderStageInfo();
   renderAchievements();
 
-  // Check milestone
   if(ckData[key]){
+    // Check stage milestone
+    const newStageDone = ckStageNow ? ckStageNow.sections.reduce((a,s)=>a+s.items.filter((_,j)=>ckData[s.id+'_'+j]).length,0) : 0;
+    checkStageMilestone(ci, prevStageDone, newStageDone, stageTotal);
+
+    // Check global milestone
     const milestone = checkMilestone(prevXP, newXP);
-    if(milestone){
-      setTimeout(()=>showMilestone(milestone, newXP), 300);
-      return;
-    }
-    // Check if ALL items done
+    if(milestone){ setTimeout(()=>showMilestone(milestone, newXP), 300); return; }
+
+    // Check all done
     const totalItems = CHECKLISTS.reduce((s,st)=>s+st.sections.reduce((ss,sec)=>ss+sec.items.length,0),0);
-    const doneItems = CHECKLISTS.reduce((s,st)=>s+st.sections.reduce((ss,sec)=>
-      ss+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0),0);
-    if(doneItems===totalItems){
-      setTimeout(()=>showMilestone(ALL_DONE_MILESTONE, newXP), 300);
-    }
+    const doneItems = CHECKLISTS.reduce((s,st)=>s+st.sections.reduce((ss,sec)=>ss+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0),0);
+    if(doneItems===totalItems){ setTimeout(()=>showMilestone(ALL_DONE_MILESTONE, newXP), 300); }
   }
 }
 
@@ -1773,12 +1829,16 @@ function renderStageInfo(){
     </div>` : '';
 
   // Completion prompt
+  const alreadyUpgraded = !!upgradedStages[ci];
   const completionPrompt = allDone ? `
     <div style="background:linear-gradient(135deg,#37A5E6,#2290D4);border-radius:14px;padding:14px 16px;margin-bottom:14px;text-align:center;">
-      <div style="font-size:18px;margin-bottom:4px;">🎉</div>
-      <div style="font-size:13px;font-weight:900;color:#fff;margin-bottom:4px;">本階段全部完成！</div>
-      <div style="font-size:11px;color:rgba(255,255,255,.85);margin-bottom:10px;">你已經完成所有檢核項目，可以準備晉升了！</div>
-      <div style="font-size:10px;color:rgba(255,255,255,.75);background:rgba(255,255,255,.15);border-radius:8px;padding:6px 10px;">聯繫上家確認晉升資格 ✦</div>
+      <div style="font-size:18px;margin-bottom:4px;">${alreadyUpgraded?'🏆':'🎉'}</div>
+      <div style="font-size:13px;font-weight:900;color:#fff;margin-bottom:4px;">${alreadyUpgraded?'晉升已確認！':'本階段全部完成！'}</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.85);margin-bottom:10px;">${alreadyUpgraded?'你的獎狀已解鎖，到成就頁查看！':'所有檢核項目完成，確認晉升後解鎖專屬獎狀！'}</div>
+      ${alreadyUpgraded
+        ? '<div style="font-size:10px;color:rgba(255,255,255,.75);background:rgba(255,255,255,.15);border-radius:8px;padding:6px 10px;">✦ 繼續前往下一個階段 ✦</div>'
+        : '<button onclick="confirmUpgrade('+ci+')" style="width:100%;padding:10px;border-radius:999px;background:#fff;color:#2290D4;font-size:13px;font-weight:900;border:none;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.1);">🏆 確認已升級，解鎖獎狀！</button>'
+      }
     </div>` : '';
 
   // Build checklist - with retail focus filter
@@ -1799,7 +1859,7 @@ function renderStageInfo(){
             const checked = !!ckData[sec.id+'_'+i];
             const txt = typeof item==='object' ? item.text : item;
             const course = typeof item==='object' ? item.course : null;
-            return `<div class="sic-ck-item-row${checked?' checked':''}" onclick="toggleSicCkItem('${sec.id}',${i})">
+            return `<div class="sic-ck-item-row${checked?' checked':''}" onclick="toggleSicCkItem('${sec.id}',${i},event)">
               <div class="sic-ck-box-sq"><div class="sic-ck-v2"></div></div>
               <div class="sic-ck-item-main">
                 <span class="sic-ck-txt">${txt}</span>
@@ -1884,6 +1944,7 @@ function switchPage(p){
   document.getElementById('nav-'+p)?.classList.add('on');
   if(p==='achievement') renderAchievements();
   if(p==='course') renderCourses();
+  if(p==='system') renderSystem();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -1898,7 +1959,171 @@ function setLv(i){ ci=i; cc='全部'; oq=null; sicOpen=true; retailFocus=null; r
 function setCat(c){ cc=c; oq=null; }
 function rAll(){ rHdr(); rLvNav(); renderStageInfo(); }
 
-loadCkData(); load(); rAll();
+
+const SYSTEM_TOOLS = [
+  {
+    id:'money',
+    em:'💰',
+    title:'DCT Money',
+    subtitle:'淨利數據系統',
+    badge:'實習 ～ 二級輔導',
+    badgeColor:'#37A5E6',
+    url:'https://annie55229900608.github.io/dct-calculator/',
+    locked: false,
+    desc:'開單功能・數據追蹤・收入結構分析',
+    features:[
+      '選等級＋選銷售對象，系統自動帶入進貨成本與售價',
+      '額外運費／手續費直接輸入，自動從淨利扣除',
+      '內建 99 句激勵金句，每次開啟隨機顯示',
+      '每日、每月熱銷排行依銷售數量自動排序',
+      '系列業績佔比自動計算',
+      '可設定本月目標金額，進度條顯示達成率',
+    ]
+  },
+  {
+    id:'promax',
+    em:'👑',
+    title:'DCT Promax',
+    subtitle:'淨利數據系統',
+    badge:'一級輔導・皇家',
+    badgeColor:'#E8A020',
+    url:'#',
+    locked: true,
+    desc:'升到一級輔導後解鎖',
+    features:[]
+  },
+  {
+    id:'charm',
+    em:'✨',
+    title:'DCT 魅力定位測驗',
+    subtitle:'定位測驗 × 增粉寶典',
+    badge:'所有人適用',
+    badgeColor:'#A06AEE',
+    url:'https://annie55229900608.github.io/moon/',
+    locked: false,
+    desc:'17 道題，找出你的魅力定位、最適合的 Reels 與限動方向，並附上命名公式、漏斗策略、15則法則，讓你從「不知道發什麼」到「有方向、有系統」。',
+    features:[
+      '🎯 魅力定位測驗 — 找出你最自然的拍攝風格與內容方向',
+      '📱 Reels＋限動策略 — 選題、開頭三秒、注意事項全附',
+      '👑 IG 命名公式 — 好名字的三要素＋踩雷清單',
+      '📊 增粉寶典 — 社群漏斗、粉絲三階段、15則法則',
+    ]
+  },
+  {
+    id:'magic',
+    em:'📊',
+    title:'DCT 魔術曲線圖生成',
+    subtitle:'自動生成圖表・月增統計・資料永久保存',
+    badge:'所有人適用',
+    badgeColor:'#2A8A50',
+    url:'https://annie55229900608.github.io/dctmagic/',
+    locked: false,
+    desc:'粉絲成長，收入才會穩定不停滯！魔術曲線圖是淨利的前驅物。每個月覆盤更新給上家，整個月的狀態一目瞭然，鎖定目標固定輸出。',
+    features:[
+      '📊 衡量帳號活躍度 — 評估每個月新增影片的文數／內容效度',
+      '💡 認清步伐，正視問題 — 檢查影片是否有效？找上家討論、優化調整',
+    ]
+  },
+];
+
+const INSTALL_TIPS = [
+  {icon:'🍎', title:'iPhone / iPad', steps:['用 Safari 開啟連結','點下方「分享」按鈕（方塊＋箭頭）','選擇「加入主畫面」','確認名稱後點「新增」']},
+  {icon:'🤖', title:'Android', steps:['用 Chrome 開啟連結','點右上角三點選單','選擇「新增到主畫面」或「安裝應用程式」','確認後即可從桌面直接開啟']},
+];
+
+function renderSystem(){
+  const el = document.getElementById('system-list');
+  if(!el) return;
+
+  const toolsHTML = SYSTEM_TOOLS.map(t=>`
+    <div style="background:#fff;border-radius:18px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 12px rgba(55,165,230,.07);">
+      <div style="padding:16px 16px 14px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">${t.em}</div>
+          <div style="flex:1;">
+            <div style="font-size:14px;font-weight:900;color:#1A5A80;">${t.title}</div>
+            <div style="font-size:10px;color:#5A9ABB;margin-top:1px;">${t.subtitle}</div>
+          </div>
+          <div style="font-size:9px;font-weight:700;color:#fff;background:${t.badgeColor};padding:3px 9px;border-radius:999px;white-space:nowrap;">${t.badge}</div>
+        </div>
+        <div style="font-size:11px;color:#3A6A8A;line-height:1.7;margin-bottom:${t.features.length?'10px':'0'};">${t.desc}</div>
+        ${t.features.length ? '<div style="background:#EEF8FE;border-radius:10px;padding:10px 12px;margin-bottom:12px;">'
+          + t.features.map(f=>`<div style="font-size:10px;color:#3A6A8A;line-height:1.8;">· ${f}</div>`).join('')
+          + '</div>' : ''}
+        ${t.locked
+          ? `<div style="width:100%;padding:11px;border-radius:999px;background:#F0F4F8;color:#B0C8D8;font-size:12px;font-weight:700;text-align:center;">🔒 升到${t.badge.split('・')[0]}後解鎖</div>`
+          : `<a href="${t.url}" target="_blank" style="display:block;width:100%;padding:11px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;text-align:center;text-decoration:none;box-shadow:0 4px 12px rgba(55,165,230,.3);">開啟工具 →</a>`
+        }
+      </div>
+    </div>`).join('');
+
+  const installHTML = `
+    <div style="background:#fff;border-radius:18px;margin-bottom:12px;padding:16px;box-shadow:0 2px 12px rgba(55,165,230,.07);">
+      <div style="font-size:11px;font-weight:700;color:#37A5E6;letter-spacing:.1em;margin-bottom:12px;">📲 加到手機主畫面變成 App</div>
+      ${INSTALL_TIPS.map(tip=>`
+        <div style="margin-bottom:12px;">
+          <div style="font-size:12px;font-weight:700;color:#1A5A80;margin-bottom:6px;">${tip.icon} ${tip.title}</div>
+          ${tip.steps.map((s,i)=>`<div style="font-size:11px;color:#3A6A8A;line-height:1.8;display:flex;gap:6px;"><span style="color:#37A5E6;font-weight:700;flex-shrink:0;">${i+1}.</span>${s}</div>`).join('')}
+        </div>`).join('<div style="height:1px;background:#EEF8FE;margin:10px 0;"></div>')}
+    </div>
+    <div style="background:#FFF8EE;border:1px solid #FFDDA0;border-radius:14px;padding:13px 14px;margin-bottom:12px;">
+      <div style="font-size:10px;font-weight:700;color:#B87820;margin-bottom:7px;">⚠️ 注意事項</div>
+      <div style="font-size:10px;color:#7A5A20;line-height:1.85;">
+        · 所有資料儲存在當前裝置的瀏覽器，不會上傳雲端<br>
+        · 換手機、換瀏覽器或清除瀏覽器資料，所有紀錄將會消失<br>
+        · 不支援跨裝置同步<br>
+        · 建議固定使用同一台手機、同一個瀏覽器開啟
+      </div>
+    </div>`;
+
+  el.innerHTML = toolsHTML + installHTML;
+}
+
+
+function showXPFloat(xp, el, offset){
+  const rect = el ? el.getBoundingClientRect() : {left: window.innerWidth/2, top: window.innerHeight/3};
+  const div = document.createElement('div');
+  div.className = 'xp-float';
+  div.textContent = '+1 ⭐';
+  const spread = ((offset||0) - 1) * 30;
+  div.style.left = Math.max(10, Math.min(window.innerWidth-60, rect.left + rect.width/2 - 15 + spread)) + 'px';
+  div.style.top = Math.max(60, rect.top - 10) + 'px';
+  document.body.appendChild(div);
+  setTimeout(() => div.remove(), 1500);
+}
+
+let toastTimer = null;
+function showMiniToast(msg){
+  // Remove existing
+  document.querySelectorAll('.mini-toast').forEach(e => e.remove());
+  clearTimeout(toastTimer);
+  const div = document.createElement('div');
+  div.className = 'mini-toast';
+  div.textContent = msg;
+  document.body.appendChild(div);
+  toastTimer = setTimeout(() => {
+    div.classList.add('hide');
+    setTimeout(() => div.remove(), 400);
+  }, 2200);
+}
+
+function checkStageMilestone(stageIdx, prevDone, newDone, total){
+  const milestones = [
+    {pct:25, msg:'🔥 完成 25%！繼續衝！'},
+    {pct:50, msg:'⚡ 完成一半了！你超強的！'},
+    {pct:75, msg:'🚀 75% 完成！快到了！'},
+    {pct:100, msg:'🎉 本階段全部完成！可以晉升了！'},
+  ];
+  for(const m of milestones){
+    const threshold = Math.floor(total * m.pct / 100);
+    if(prevDone < threshold && newDone >= threshold){
+      showMiniToast(m.msg);
+      return;
+    }
+  }
+}
+
+loadCkData(); loadUpgraded(); load(); rAll();
 </script>
 </body>
 </html>
