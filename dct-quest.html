@@ -1281,7 +1281,7 @@ function renderAchievements(){
 
   grid.innerHTML = ACHIEVEMENTS.map(a=>{
     const unlocked = (()=>{ const st=CHECKLISTS[a.stageIdx]; if(!st) return false; const t=st.sections.reduce((s,sec)=>s+sec.items.length,0); return t>0&&ndone(a.stageIdx)===t; })();
-    return `<div class="ach-item${unlocked?' unlocked':' locked'}">
+    return `<div class="ach-item${unlocked?' unlocked':' locked'}" onclick="${unlocked?'showCert('+a.stageIdx+')':''}" style="${unlocked?'cursor:pointer;':''}">
       <div class="ach-em">${a.em}</div>
       <div class="ach-name">${a.name}</div>
       <div class="ach-desc">${a.desc}</div>
@@ -1290,8 +1290,8 @@ function renderAchievements(){
   }).join('');
 
   const tx = totXP();
-  msList.innerHTML = MILESTONES.map(m=>`
-    <div class="ms-d-row">
+  msList.innerHTML = MILESTONES.map((m,mi)=>`
+    <div class="ms-d-row" ${tx>=m.stars?'onclick="showMilestone(MILESTONES['+mi+'],totXP())" style="cursor:pointer;"':''}>
       <div class="ms-d-icon">${m.icon}</div>
       <div class="ms-d-body">
         <div class="ms-d-name">${m.title}</div>
