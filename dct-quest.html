@@ -22,18 +22,18 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .xp-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.7);border:1.5px solid rgba(255,255,255,.9);border-radius:999px;padding:5px 13px;font-size:12px;font-weight:700;color:#1A7AB8;box-shadow:0 2px 8px rgba(55,165,230,.15);}
 
 /* ── HERO ── */
-.hero{background:linear-gradient(160deg,#DBF6FF,#A7D1F3);padding:22px 18px 24px;text-align:center;position:relative;overflow:hidden;}
+.hero{background:linear-gradient(160deg,#DBF6FF,#A7D1F3);padding:28px 18px 30px;text-align:center;position:relative;overflow:hidden;}
 .hero::after{content:'◆';position:absolute;right:14px;top:10px;font-size:60px;color:rgba(255,255,255,.4);}
-.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:3px 13px;font-size:10px;color:#2290D4;margin-bottom:9px;}
-.hero-title{font-size:20px;font-weight:900;color:#1A5A80;line-height:1.35;margin-bottom:5px;}
-.hero-desc{font-size:11px;color:#4A7A9A;line-height:1.8;margin-bottom:16px;}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:3px 13px;font-size:10px;color:#2290D4;margin-bottom:14px;}
+.hero-title{font-size:20px;font-weight:900;color:#1A5A80;line-height:1.5;margin-bottom:10px;}
+.hero-desc{font-size:11px;color:#4A7A9A;line-height:2.2;margin-bottom:20px;}
 .hero-stats{display:flex;justify-content:center;gap:9px;}
 .hs{background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);border-radius:14px;padding:8px 16px;text-align:center;}
 .hs-n{font-size:14px;font-weight:900;color:#2290D4;line-height:1.2;}
 .hs-l{font-size:9px;color:#5A9ABB;margin-top:1px;}
 
 /* ── STAGE BOX ── */
-.stage-box{background:#fff;margin:0 14px;border-radius:0 0 18px 18px;padding:16px 16px 14px;box-shadow:0 4px 20px rgba(55,165,230,.08);margin-bottom:20px;}
+.stage-box{background:#fff;margin:0 14px;border-radius:0 0 18px 18px;padding:16px 16px 14px;box-shadow:0 4px 20px rgba(55,165,230,.08);margin-bottom:20px;overflow:visible;}
 .sb-title{font-size:10px;font-weight:700;color:#2290D4;letter-spacing:.1em;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
 .sb-sub{font-size:10px;color:#90C0E0;font-weight:400;}
 .stages-row{display:flex;justify-content:space-between;gap:3px;}
@@ -61,7 +61,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .sl-txt{font-size:10px;font-weight:700;color:#37A5E6;letter-spacing:.12em;white-space:nowrap;}
 
 /* ── LEVEL SCROLL ── */
-.lv-scroll{display:flex;gap:9px;padding:0 18px;overflow-x:auto;margin-top:32px;margin-bottom:16px;scrollbar-width:none;}
+.lv-scroll{display:flex;gap:9px;padding:4px 18px 8px;overflow-x:auto;margin-top:32px;margin-bottom:16px;scrollbar-width:none;}
 .lv-scroll::-webkit-scrollbar{display:none;}
 .lv-card{flex-shrink:0;width:90px;background:#fff;border:2px solid #C0E4F8;border-radius:18px;padding:12px 6px 10px;text-align:center;cursor:pointer;transition:all .2s;position:relative;box-shadow:0 2px 10px rgba(55,165,230,.06);}
 .lv-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(55,165,230,.15);}
@@ -378,9 +378,8 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       </div>
     </div>
   </div>
-  <div class="tb-r" style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;">
+  <div class="tb-r">
     <div class="xp-pill">⭐ <span id="tot-xp">0</span> 星</div>
-    <div style="font-size:9px;color:#4A90B8;background:rgba(255,255,255,.4);border-radius:999px;padding:2px 8px;">💰 月標 <span id="income-display">未設定</span></div>
   </div>
 </div>
 
@@ -388,7 +387,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   <div class="hero">
     <div class="hero-badge">🍄 DCT 晉升闖關系統</div>
     <div class="hero-title" id="hero-title">每一關都算數 ⭐<br>你比昨天更強了 🏰</div>
-    <div class="hero-desc">🎯 完成每個關卡，解鎖下一個階段<br>🌟 從愛用客到皇家，一步一步闖關！</div>
+    <div class="hero-desc">完成每個關卡，解鎖下一個階段<br>從愛用客到皇家，一步一步闖關！</div>
     <div class="hero-stats">
       <div class="hs"><div class="hs-n" id="s-done" style="font-size:13px;font-weight:900;">🌱</div><div class="hs-l">🎮 目前級別</div></div>
       <div class="hs"><div class="hs-n" id="s-tot" style="font-size:13px;">--</div><div class="hs-l">💰 月目標</div></div>
@@ -396,17 +395,13 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     </div>
   </div>
   <div class="stage-box">
-    <div class="sb-title">
-      <span>⭐ 闖關進度</span>
-      <span class="sb-sub" id="stage-sub">0 / 7 階段完成</span>
+    <div class="sb-title"><span>⭐ 闖關進度</span><span class="sb-sub" id="stage-sub">愛用客 → 皇家</span></div>
+    <div id="stage-prog-row" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;gap:4px;"></div>
+    <div class="xp-row">
+      <div class="xp-lbl">🍄 本關卡進度・<span id="cur-stage-name">愛用客</span></div>
+      <div class="xp-num"><span id="cx">0</span> / <span id="mx">0</span> 項</div>
     </div>
-    <div class="xp-bar-wrap">
-      <div class="xp-row">
-        <div class="xp-lbl">🍄 本關卡進度</div>
-        <div class="xp-num"><span id="cx">0</span> / <span id="mx">0</span> 項</div>
-      </div>
-      <div class="xp-bar"><div class="xp-fill" id="xf" style="width:0%"></div></div>
-    </div>
+    <div class="xp-bar"><div class="xp-fill" id="xf" style="width:0%"></div></div>
   </div>
   <div class="sec-lbl"><div class="sl-line"></div><div class="sl-txt">🗺️ 選擇關卡</div><div class="sl-line r"></div></div>
   <div class="lv-scroll" id="lv-scroll"></div>
@@ -450,10 +445,10 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 </div>
 
 <div class="bnt">
-  <div class="bni on" id="nav-map" onclick="switchPage('map')"><div class="bni-ic">🗺️</div><div class="bni-lb">闖關</div></div>
-  <div class="bni" id="nav-achievement" onclick="switchPage('achievement')"><div class="bni-ic">🏆</div><div class="bni-lb">成就</div></div>
-  <div class="bni" id="nav-system" onclick="switchPage('system')"><div class="bni-ic">🛠️</div><div class="bni-lb">系統</div></div>
-  <div class="bni" id="nav-course" onclick="switchPage('course')"><div class="bni-ic">📖</div><div class="bni-lb">課程</div></div>
+  <div class="bni on" id="nav-map" onclick="switchPage('map')"><div class="bni-ic">🎮</div><div class="bni-lb">闖關</div></div>
+  <div class="bni" id="nav-achievement" onclick="switchPage('achievement')"><div class="bni-ic">👑</div><div class="bni-lb">成就</div></div>
+  <div class="bni" id="nav-system" onclick="switchPage('system')"><div class="bni-ic">⚡</div><div class="bni-lb">系統</div></div>
+  <div class="bni" id="nav-course" onclick="switchPage('course')"><div class="bni-ic">🦋</div><div class="bni-lb">課程</div></div>
 </div>
 
 <script>
@@ -832,7 +827,10 @@ function rHdr(){
     const d=st.sections.reduce((s,sec)=>s+sec.items.filter((_,j)=>ckData[sec.id+'_'+j]).length,0);
     return t>0&&d===t;
   }).length;
-  document.getElementById('stage-sub').textContent=sdCk+' / 7 階段完成';
+  const stageNames=['愛用客','實習','三零售','三輔導','二輔導','一輔導','皇家'];
+  const doneNames=stageNames.slice(0,sdCk);
+  const nextName=sdCk<7?stageNames[sdCk]:'';
+  document.getElementById('stage-sub').textContent=sdCk===0?'尚未完成任何階段':sdCk===7?'全部完成 👑':doneNames.join('・')+(nextName?' → '+nextName:'');
 }
 
 function rStages(){
@@ -1881,7 +1879,6 @@ function renderStageInfo(){
       <div class="sic-arr${sicOpen?' open':''}" id="sic-arr">▼</div>
     </div>
     <div class="sic-body${sicOpen?' open':''}" id="sic-body">
-      ${completionPrompt}
       ${thresholdHTML}
       ${upg?.conditions?.length ? `
       <div class="sic-upg-title">✦ 晉升條件</div>
@@ -1890,6 +1887,7 @@ function renderStageInfo(){
       <div class="sic-divider"></div>` : ''}
       ${retailHTML}
       ${ckHTML ? `<div class="sic-ck-title">✦ 本階段檢核表</div>${ckHTML}` : ''}
+      ${completionPrompt}
     </div>
   </div>`;
 }
