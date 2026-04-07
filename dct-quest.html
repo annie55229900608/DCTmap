@@ -1270,6 +1270,8 @@ function toggleSic(){
 function setRetailFocus(id){ retailFocus=id; renderStageInfo(); }
 
 function toggleSicCkItem(secId,itemIdx,evt){
+  // If the click came from a link, let it navigate and don't toggle the checkbox
+  if(evt && evt.target && evt.target.closest('a')) return;
   const key=secId+'_'+itemIdx;
   const prevXP=totXP();
   const ckStageNow=CHECKLISTS[ci];
@@ -1368,7 +1370,7 @@ function renderStageInfo(){
               <div class="sic-ck-box-sq"><div class="sic-ck-v2"></div></div>
               <div class="sic-ck-item-main">
                 <span class="sic-ck-txt">${txt}</span>
-                ${course?`<a class="course-link-btn" href="${course.url}" target="_blank" onclick="event.stopPropagation()">▶ 看課程</a>`:''}
+                ${course?`<button class="course-link-btn" onclick="event.stopPropagation();window.open('${course.url}','_blank')">▶ 看課程</button>`:''}
               </div>
             </div>`;
           }).join('')}
@@ -1510,11 +1512,11 @@ function renderSystem(){
 
 // ── XP FLOAT & TOAST ─────────────────────────────────────────────
 function showXPFloat(xp, el, offset){
-  const rect=el?el.getBoundingClientRect():{left:window.innerWidth/2,top:window.innerHeight/3};
   const div=document.createElement('div'); div.className='xp-float'; div.textContent='+1 ⭐';
-  const spread=((offset||0)-1)*30;
-  div.style.left=Math.max(10,Math.min(window.innerWidth-60,rect.left+rect.width/2-15+spread))+'px';
-  div.style.top=Math.max(60,rect.top-10)+'px';
+  const spread=(offset||0)*22;
+  div.style.right=(16+spread)+'px';
+  div.style.top='52px';
+  div.style.left='auto';
   document.body.appendChild(div); setTimeout(()=>div.remove(),1500);
 }
 let toastTimer=null;
