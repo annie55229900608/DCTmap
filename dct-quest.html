@@ -803,7 +803,12 @@ function startWithName(){
   const btnEl = document.getElementById('wc-btn');
   if(btnEl) btnEl.textContent = '🌸 開始闖關！';
   wc.style.animation='fadeOut .3s ease forwards';
-  setTimeout(()=>wc.style.display='none', 300);
+  setTimeout(()=>{
+    wc.style.display='none';
+    window.scrollTo({top:0,left:0,behavior:'instant'});
+    document.documentElement.scrollTop=0;
+    document.body.scrollTop=0;
+  }, 300);
   rHdr();
 }
 function onNameInput(){
