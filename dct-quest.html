@@ -1396,10 +1396,19 @@ function stageComplete(i){
 }
 function randEnc(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 
+// 實際確認升級的等級（只有點「確認已升級」才算）
+function getActualLevel(){
+  for(let i = CHECKLISTS.length - 1; i >= 0; i--){
+    if(upgradedStages[i]) return Math.min(i + 1, STAGES.length - 1);
+  }
+  return 0;
+}
+
 function rHdr(){
   const tx=totXP();
-  const curLevelName = CHECKLISTS[ci]?.stageName || '愛用客';
-  document.getElementById('s-done').textContent = STAGES[ci]?.emoji + ' ' + curLevelName;
+  const actualLv = getActualLevel();
+  const actualStage = STAGES[actualLv];
+  document.getElementById('s-done').textContent = (actualStage?.emoji||'🌱') + ' ' + (actualStage?.name||'愛用客');
   const income2 = localStorage.getItem(IK);
   if(income2){
     const num = Number(income2);
@@ -1410,7 +1419,10 @@ function rHdr(){
   document.getElementById('tot-xp').textContent = tx;
   const ckStage = CHECKLISTS[ci];
   const stageName = ckStage ? ckStage.stageName : '愛用客';
-  document.getElementById('lv-tag').textContent=stageName+' · 階段 '+(ci+1);
+  const actualLvForTag = getActualLevel();
+  const actualTagName = STAGES[actualLvForTag]?.name || '愛用客';
+  const hasAnyUpgrade = Object.keys(upgradedStages).length > 0;
+  document.getElementById('lv-tag').textContent = actualTagName + (hasAnyUpgrade ? ' · ✓ 已升級' : ' · 目前級別');
   let stageDone=0, stageTotal=0;
   if(ckStage) ckStage.sections.forEach(sec=>{
     stageTotal+=sec.items.length;
