@@ -1854,9 +1854,24 @@ loadCkData(); loadUpgraded(); load(); rAll(); window.scrollTo(0,0);
   if(!sp) return;
   setTimeout(function(){
     sp.classList.add('out');
-    setTimeout(function(){ sp.style.display='none'; }, 700);
+    setTimeout(function(){
+      sp.style.display='none';
+      // 確保回到最頂端
+      window.scrollTo({top:0,left:0,behavior:'instant'});
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 700);
   }, 2300);
 })();
+
+// 確保每次載入都在最頂端
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    window.scrollTo({top:0,left:0,behavior:'instant'});
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, 100);
+});
 </script>
 </body>
 </html>
