@@ -79,16 +79,18 @@ body::after{
     radial-gradient(1.5px 1.5px at 72%  5%,rgba(255,230,100,.7)  0%,transparent 100%);
   animation:twinkle 4s ease-in-out infinite alternate;
 }
-@keyframes twinkle{0%{opacity:.5}40%{opacity:.85}70%{opacity:1}100%{opacity:.6}}50%{opacity:.95}100%{opacity:.65}}
+@keyframes twinkle{0%{opacity:.5}40%{opacity:.85}70%{opacity:1}100%{opacity:.6}}
 
 /* ── WHITE BUTTERFLIES ── */
+.bf-layer{
+  position:fixed;top:0;bottom:0;
+  left:50%;transform:translateX(-50%);
+  width:min(460px,100vw);
+  pointer-events:none;z-index:0;overflow:hidden;
+}
 .bg-bf{
-  position:fixed;pointer-events:none;z-index:0;
-  font-size:var(--bf-size,18px);
-  opacity:var(--bf-op,.25);
-  filter:brightness(10) saturate(0) drop-shadow(0 0 3px rgba(255,255,255,.6));
-  left:var(--bf-x);top:var(--bf-y);
-  transform:var(--bf-rot,rotate(0deg));
+  position:absolute;
+  filter:brightness(10) saturate(0);
 }
 .wrap{position:relative;z-index:1;max-width:460px;margin:0 auto;padding-bottom:110px;}
 /* cosmic ring decoration */
@@ -584,15 +586,15 @@ body::after{
 
 <!-- BACKGROUND BUTTERFLIES -->
 <div class="bf-layer">
-  <div class="bg-bf" style="--bf-x:80%;--bf-y:8vh; --bf-size:18px;--bf-op:.6">🦋</div>
-  <div class="bg-bf" style="--bf-x:6%; --bf-y:20vh;--bf-size:15px;--bf-op:.55">🦋</div>
-  <div class="bg-bf" style="--bf-x:70%;--bf-y:28vh;--bf-size:13px;--bf-op:.5">🦋</div>
-  <div class="bg-bf" style="--bf-x:30%;--bf-y:40vh;--bf-size:11px;--bf-op:.45">🦋</div>
-  <div class="bg-bf" style="--bf-x:85%;--bf-y:52vh;--bf-size:17px;--bf-op:.55">🦋</div>
-  <div class="bg-bf" style="--bf-x:15%;--bf-y:62vh;--bf-size:14px;--bf-op:.5">🦋</div>
-  <div class="bg-bf" style="--bf-x:55%;--bf-y:74vh;--bf-size:12px;--bf-op:.48">🦋</div>
-  <div class="bg-bf" style="--bf-x:78%;--bf-y:84vh;--bf-size:16px;--bf-op:.52">🦋</div>
-  <div class="bg-bf" style="--bf-x:40%;--bf-y:90vh;--bf-size:10px;--bf-op:.42">🦋</div>
+  <div class="bg-bf" style="right:12px;top:8vh; font-size:18px;opacity:.62">🦋</div>
+  <div class="bg-bf" style="left:14px; top:22vh;font-size:15px;opacity:.55">🦋</div>
+  <div class="bg-bf" style="right:30px;top:35vh;font-size:13px;opacity:.5">🦋</div>
+  <div class="bg-bf" style="left:28px; top:48vh;font-size:17px;opacity:.58">🦋</div>
+  <div class="bg-bf" style="right:18px;top:58vh;font-size:12px;opacity:.5">🦋</div>
+  <div class="bg-bf" style="left:50px; top:68vh;font-size:14px;opacity:.52">🦋</div>
+  <div class="bg-bf" style="right:40px;top:76vh;font-size:16px;opacity:.55">🦋</div>
+  <div class="bg-bf" style="left:20px; top:84vh;font-size:11px;opacity:.45">🦋</div>
+  <div class="bg-bf" style="right:22px;top:90vh;font-size:13px;opacity:.48">🦋</div>
 </div>
 
 <!-- WELCOME SCREEN -->
