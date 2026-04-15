@@ -945,44 +945,43 @@ function confetti(){
 }
 
 const MILESTONES = [
-  {stars:50,  icon:'🌱', name:'DCT 種子夥伴',
-   title:'DCT 種子夥伴 🌱',
-   msg:'你已經累積了 50 顆星！\n代表你在學習、在行動、在成長。\n每一顆星都是你真實努力過的痕跡。',
+  {stars:50, icon:'🌱', name:'種下第一顆種子',
+   title:'種下第一顆種子 🌱',
+   msg:'50 顆星！\n你選擇開始，\n這就是最勇敢的一步。',
    quote:'「開始了，就不要停。\n停下來的代價比繼續更大。」',
    tag:'#DCT種子夥伴 #婕樂纖 #DCT裂變系統'},
-  {stars:100, icon:'⭐', name:'DCT 零售認證',
-   title:'DCT 零售認證 ⭐',
-   msg:'100 顆星！\n你已經掌握了產品知識和使用見證。\n這是你成為零售達人最重要的基礎。',
+  {stars:100, icon:'🌿', name:'發芽了',
+   title:'發芽了 🌿',
+   msg:'100 顆星！\n每天的小行動，\n正在悄悄改變你的生命軌跡。',
    quote:'「你自己就是最有說服力的見證，\n說真實的故事，比任何話術都有力量。」',
-   tag:'#DCT零售認證 #婕樂纖 #DCT裂變系統'},
-  {stars:150, icon:'📱', name:'DCT 引流認證',
-   title:'DCT 引流認證 📱',
-   msg:'150 顆星！\n你的版面和引流都在跑了。\n持續發內容，觀眾會找到你的。',
-   quote:'「版面是你的名片，\n每一則限動都是你和陌生人建立連結的機會。」',
-   tag:'#DCT引流認證 #婕樂纖 #DCT裂變系統'},
-  {stars:200, icon:'💰', name:'DCT 銷售認證',
-   title:'DCT 銷售認證 💰',
-   msg:'200 顆星！\n你已經在成交、在服務客戶了。\n銷售不是推銷，是真心幫助對方解決問題。',
+   tag:'#DCT實習夥伴 #婕樂纖 #DCT裂變系統'},
+  {stars:200, icon:'✨', name:'開始閃光',
+   title:'開始閃光 ✨',
+   msg:'200 顆星！\n你不只是用戶，\n你已經是一個會賣東西的人了。',
    quote:'「成交的那一刻，\n是你幫助了一個人改變生活的開始。」',
-   tag:'#DCT銷售認證 #婕樂纖 #DCT裂變系統'},
-  {stars:250, icon:'🤝', name:'DCT 招商先鋒',
-   title:'DCT 招商先鋒 🤝',
-   msg:'250 顆星！\n你已經開始帶夥伴了。\n你的成長，現在可以影響更多人。',
-   quote:'「最好的事業，\n是讓你身邊的人也因為你而變得更好。」',
-   tag:'#DCT招商先鋒 #婕樂纖 #DCT裂變系統'},
-  {stars:300, icon:'💫', name:'DCT 輔導之星',
-   title:'DCT 輔導之星 💫',
-   msg:'300 顆星！\n你不只在做生意，\n你在帶領一群人走向更好的生活。',
-   quote:'「能讓別人成功的人，\n自己才會真正成功。」',
-   tag:'#DCT輔導之星 #婕樂纖 #DCT裂變系統'},
+   tag:'#DCT三級零售 #婕樂纖 #DCT裂變系統'},
+  {stars:270, icon:'💫', name:'開始帶人',
+   title:'開始帶人 💫',
+   msg:'270 顆星！\n你走過的路，\n現在成為別人的地圖。',
+   quote:'「播種跟收割本來就不在同季節，\n你的付出，終將開花。」',
+   tag:'#DCT三級輔導 #婕樂纖 #DCT裂變系統'},
+  {stars:325, icon:'🌙', name:'夜空中最亮的那顆',
+   title:'夜空中最亮的那顆 🌙',
+   msg:'325 顆星！\n很多人在這裡停下來，\n但你繼續走了。',
+   quote:'「跌倒不可怕，\n站起來的速度才決定你能走多遠。」',
+   tag:'#DCT二級輔導 #婕樂纖 #DCT裂變系統'},
+  {stars:400, icon:'🌟', name:'成為別人眼中的光',
+   title:'成為別人眼中的光 🌟',
+   msg:'400 顆星！\n你已經是一個\n真正的領導者了。',
+   quote:'「真正的領導者，\n是讓每個人都覺得自己很重要。」',
+   tag:'#DCT一級輔導 #婕樂纖 #DCT裂變系統'},
 ];
-
 const ALL_DONE_MILESTONE = {
-  icon:'👑', name:'DCT 皇家候選人',
-  title:'DCT 皇家候選人 👑',
-  msg:'你完成了所有的檢核項目！\n這條路你沒有放棄，\n皇家的那一天，就在不遠處。',
+  icon:'👑', name:'夢想成真',
+  title:'夢想成真 👑',
+  msg:'你完成了所有的檢核項目！\n這條路你沒有放棄，\nDream Come True。',
   quote:'「不是因為容易才堅持，\n是因為值得才繼續。\n你，值得這一切。」',
-  tag:'#DCT皇家候選人 #婕樂纖 #DCT裂變系統'
+  tag:'#DCT皇家 #婕樂纖 #DCT裂變系統'
 };
 
 function checkMilestone(prevXP, newXP){
@@ -1795,6 +1794,69 @@ const openCkSections = {};
 function loadUpgraded(){ try{ upgradedStages=JSON.parse(localStorage.getItem(UP_KEY)||'{}'); }catch(e){ upgradedStages={}; } }
 function saveUpgraded(){ localStorage.setItem(UP_KEY, JSON.stringify(upgradedStages)); }
 
+
+function showAnalysis(){
+  const ckStage = CHECKLISTS[ci];
+  if(!ckStage) return;
+
+  // Gather unchecked items by section
+  const unchecked = [];
+  ckStage.sections.filter(sec=>!sec.id.endsWith('_condition')).forEach(sec=>{
+    const missing = sec.items.filter((_,i)=>!ckData[sec.id+'_'+i]);
+    if(missing.length > 0){
+      unchecked.push({section: sec.title, items: missing, total: sec.items.length, done: sec.items.length - missing.length});
+    }
+  });
+
+  const totalItems = ckStage.sections.filter(s=>!s.id.endsWith('_condition')).reduce((a,s)=>a+s.items.length,0);
+  const doneItems = ckStage.sections.filter(s=>!s.id.endsWith('_condition')).reduce((a,s)=>a+s.items.filter((_,i)=>ckData[s.id+'_'+i]).length,0);
+  const pct = totalItems ? Math.round(doneItems/totalItems*100) : 0;
+
+  // Stage-specific advice
+  const advice = {
+    0: '先把產品用起來！有感受才有故事，有故事才有說服力。',
+    1: '每日限動是基礎！先養成習慣，再追求品質。',
+    2: '銷售靠的是關係！多傳對話記錄給上家，快速修正話術。',
+    3: '招商從分享開始！不是賣加盟，是分享你的改變。',
+    4: '帶人靠的是陪伴！每1~2週主動跟進夥伴狀況。',
+    5: '影響力從輸出開始！每日動態散發價值，讓更多人看見你。',
+    6: '傳承是最好的成就！讓你的故事持續影響更多新人。',
+  };
+
+  const tipHtml = unchecked.length === 0
+    ? '<div style="text-align:center;padding:16px 0;"><div style="font-size:32px;margin-bottom:8px;">🎉</div><div style="font-size:14px;font-weight:900;color:#37A5E6;">本階段全部完成！</div><div style="font-size:11px;color:#5A9ABB;margin-top:4px;">你已經做到了，可以準備晉升！</div></div>'
+    : unchecked.map(s=>`
+      <div style="margin-bottom:12px;">
+        <div style="font-size:10px;font-weight:700;color:#37A5E6;margin-bottom:6px;">📌 ${s.section} · 已完成 ${s.done}/${s.total}</div>
+        ${s.items.slice(0,3).map(item=>{
+          const txt = typeof item==='object' ? item.text : item;
+          return '<div style="font-size:11px;color:#3A6A8A;padding:5px 10px;background:#EEF8FE;border-radius:8px;border-left:3px solid #A7D1F3;margin-bottom:4px;">· '+txt+'</div>';
+        }).join('')}
+        ${s.items.length > 3 ? '<div style="font-size:10px;color:#90C0E0;padding:3px 10px;">...還有 '+(s.items.length-3)+' 項</div>' : ''}
+      </div>`).join('');
+
+  document.getElementById('ovl-content').innerHTML = `
+    <div style="background:#fff;border-radius:24px;max-width:340px;width:100%;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .35s cubic-bezier(.34,1.56,.64,1);">
+      <div style="background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:20px 20px 16px;border-radius:24px 24px 0 0;position:sticky;top:0;">
+        <div style="font-size:16px;font-weight:900;color:#1A5A80;margin-bottom:4px;">🔍 ${ckStage.stageName} 進度分析</div>
+        <div style="font-size:11px;color:#4A7A9A;">完成度 ${pct}%・還有 ${totalItems-doneItems} 項未完成</div>
+        <div style="height:6px;background:rgba(255,255,255,.4);border-radius:999px;margin-top:8px;overflow:hidden;">
+          <div style="height:100%;width:${pct}%;background:#fff;border-radius:999px;transition:width .6s;"></div>
+        </div>
+      </div>
+      <div style="padding:16px 18px;">
+        <div style="background:linear-gradient(135deg,#EEF8FE,#F0FBFF);border-radius:12px;padding:12px 14px;margin-bottom:16px;border-left:3px solid #37A5E6;">
+          <div style="font-size:10px;font-weight:700;color:#37A5E6;margin-bottom:4px;">💡 給你的建議</div>
+          <div style="font-size:12px;color:#2A5A7A;line-height:1.7;">${advice[ci]||''}</div>
+        </div>
+        ${unchecked.length > 0 ? '<div style="font-size:10px;font-weight:700;color:#1A5A80;letter-spacing:.1em;margin-bottom:10px;">✦ 還需要完成的項目</div>' : ''}
+        ${tipHtml}
+        <button onclick="closeOvl()" style="width:100%;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:inherit;margin-top:8px;">繼續努力 💪</button>
+      </div>
+    </div>`;
+  document.getElementById('ovl').style.display='flex';
+}
+
 function confirmUpgrade(stageIdx){
   upgradedStages[stageIdx] = true;
   saveUpgraded();
@@ -2099,7 +2161,7 @@ function renderStageInfo(){
       <div class="sic-divider"></div>` : ''}
       ${CHECKLISTS[ci]?.locked_content && !upgradedStages[ci-1]
         ? '<div style="text-align:center;padding:24px 0;"><div style="font-size:28px;margin-bottom:8px;">🔒</div><div style="font-size:13px;font-weight:700;color:#5A9ABB;">完成並確認升級「'+(CHECKLISTS[ci-1]?.stageName||'')+'」</div><div style="font-size:11px;color:#90C0E0;margin-top:4px;">才能解鎖此階段的課程與檢核內容</div></div>'
-        : retailHTML + (ckHTML ? '<div class="sic-ck-title">✦ 本階段檢核表</div>'+ckHTML : '') + completionPrompt
+        : retailHTML + (ckHTML ? '<div class="sic-ck-title">✦ 本階段檢核表</div>'+ckHTML+'<button onclick="showAnalysis()" style="width:100%;margin-top:12px;padding:11px;border-radius:999px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1.5px solid #A7D1F3;color:#2290D4;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">🔍 分析我的進度</button>' : '') + completionPrompt
       }
     </div>
   </div>`;
