@@ -1795,67 +1795,120 @@ function loadUpgraded(){ try{ upgradedStages=JSON.parse(localStorage.getItem(UP_
 function saveUpgraded(){ localStorage.setItem(UP_KEY, JSON.stringify(upgradedStages)); }
 
 
+
 function showAnalysis(){
   const ckStage = CHECKLISTS[ci];
   if(!ckStage) return;
 
-  // Gather unchecked items by section
+  const sections = ckStage.sections.filter(sec=>!sec.id.endsWith('_condition'));
+  const totalItems = sections.reduce((a,s)=>a+s.items.length,0);
+  const doneItems = sections.reduce((a,s)=>a+s.items.filter((_,i)=>ckData[s.id+'_'+i]).length,0);
+  const pct = totalItems ? Math.round(doneItems/totalItems*100) : 0;
+
+  // Stage-specific tips per section type
+  const HOW_TO = {
+    // 愛用客
+    'c0_product': '每天照時間表使用產品，用手機記錄每天的感受變化，哪裡有感覺就寫下來。',
+    'c0_exec': '馬上追蹤 DCT IG，私訊上家你的帳號，把BA照片備份到跟上家共用的記事本。',
+    // 實習
+    'c1_mindset': '找一個安靜的時間把課程看完，看完後傳心得給上家，討論自己的三個月目標。',
+    'c1_flow': '先看課程，然後去觀察3個你喜歡的帳號，分析他們怎麼引流，模仿他們的方式。',
+    'c1_page': '今天就把大頭照、名字、簡介改好，改完截圖傳給上家確認，不要等「完美」再發。',
+    'c1_sales': '看完課程後，馬上和上家練習一次角色扮演，把話術說出口，說了才會進步。',
+    'c1_after': '製作一個追蹤表，每位客人的購買日期、第幾天要關心，設定手機提醒。',
+    'c1_publish': '今天就開始！第一天不用完美，拍一張你用產品的照片發出去就算開始了。',
+    'c1_exec': '把這些事項一個一個加進你的日程表，每天固定時間執行，養成習慣比做好更重要。',
+    // 三級零售
+    'c2_flow': '先選一個平台專心經營，每週固定3天發影片，內容就從你的使用感受開始說起。',
+    'c2_page': '靈感庫先下載存好，每次想不到發什麼就去翻，照著起承轉合結構拍就對了。',
+    'c2_sales': '把銷售SOP打印出來貼在桌前，每次和客人聊天前先看一遍，熟了就自然了。',
+    'c2_after': '現在就把所有客人建一個聯繫清單，設好提醒，第一次的售後最重要！',
+    'c2_other': '把經營必備App下載好，DCT Money今天就開始記帳，哪怕只有一筆也要記。',
+    'c2_coach': '傳訊息給上家約時間！約線下見面拍片，一次可以解決很多問題。',
+    'c2_mindset': '遇到問題第一個找上家！不要預設他很忙，你越問越有錢，不問就原地踏步。',
+    'c2_exec': '把這個清單截圖，每天早上對照執行，有問題的地方馬上問上家。',
+    // 三級輔導
+    'c3_flow': '課程看完後試著拍一支定位影片，說清楚你是誰、你分享什麼，傳給上家看。',
+    'c3_retail_review': '把四大循環的數據整理給上家看，哪個環節成交率低就重點加強那個。',
+    'c3_guide': '⚠️ 先去公司官方群組記事本報名輔導督導課程，這是考取資格的必要步驟！',
+    'c3_recruit_post': '今天就開始發第一天的招商文！分享你當初為什麼加入，真實就好，不要寫廣告。',
+    'c3_mindset': '每天早上看一句心態提醒，心態動搖時馬上找上家聊，不要一個人悶著。',
+    'c3_exec': '把月復盤排進每月最後一天的行程，用DCT Money整理當月數據，傳給上家討論。',
+    // 二級輔導
+    'c4_recruit': '先把「99個招商常見問題」看完，遇到新問題就往那裡找答案，找不到再問上家。',
+    'c4_team': '帶人的關鍵是陪伴，每1~2週主動跟進每個夥伴，發現他們卡關就立刻約談。',
+    'c4_thinking': '把「黃金圈法則」看完，想清楚你為什麼要帶人、你的團隊使命是什麼。',
+    'c4_exec': '建立一個夥伴追蹤表，每個人的進度、最後聯繫時間全部記在上面，不靠記憶。',
+    // 一級輔導
+    'c5_course': '把「100%皇家翻倍培育力」看完，這是突破瓶頸的關鍵，看完和上家討論。',
+    'c5_system': '把自己的成功步驟寫成一份SOP文件，讓夥伴照著做就能複製你的成果。',
+    'c5_skills': '每個月至少辦一場團隊聚會，以身作則是最強的領導方式，你做什麼夥伴就學什麼。',
+    'c5_exec': '目標拆成每週任務，引流/限動/招商每天定時完成，用月復盤追蹤是否達標。',
+    // 皇家
+    'c6_course': '把「皇家晉升心態」課程看完，準備好迎接更大的責任和使命。',
+    'c6_legacy': '把你從愛用客到現在的故事寫下來，這個故事是你最強的招商和激勵工具。',
+    'c6_exec': '每天帶動態影響夥伴，你的每一則輸出都在複製你的成功到整個團隊。',
+  };
+
+  const stageAdvice = {
+    0: '先把產品用起來！有感受才有故事，有故事才有說服力。今天就開始記錄。',
+    1: '每日限動是基礎！先養成習慣，哪怕拍得不好也要發，熟練了品質自然提升。',
+    2: '銷售靠的是關係！多傳對話記錄給上家，快速修正話術，比自己摸索快10倍。',
+    3: '招商從分享開始！不是在賣加盟，是分享你的改變，真實的故事最有說服力。',
+    4: '帶人靠的是陪伴！每1~2週主動跟進夥伴，發現問題比等他來找你更重要。',
+    5: '影響力從輸出開始！每日動態散發價值，讓更多人看見你，粉絲數才會成長。',
+    6: '傳承是最好的成就！把你的故事整理好，讓它成為無數新人的力量。',
+  };
+
   const unchecked = [];
-  ckStage.sections.filter(sec=>!sec.id.endsWith('_condition')).forEach(sec=>{
-    const missing = sec.items.filter((_,i)=>!ckData[sec.id+'_'+i]);
+  sections.forEach(sec=>{
+    const missing = sec.items.map((item,i)=>({item,i})).filter(({i})=>!ckData[sec.id+'_'+i]);
     if(missing.length > 0){
-      unchecked.push({section: sec.title, items: missing, total: sec.items.length, done: sec.items.length - missing.length});
+      unchecked.push({sec, missing, done: sec.items.length - missing.length});
     }
   });
 
-  const totalItems = ckStage.sections.filter(s=>!s.id.endsWith('_condition')).reduce((a,s)=>a+s.items.length,0);
-  const doneItems = ckStage.sections.filter(s=>!s.id.endsWith('_condition')).reduce((a,s)=>a+s.items.filter((_,i)=>ckData[s.id+'_'+i]).length,0);
-  const pct = totalItems ? Math.round(doneItems/totalItems*100) : 0;
-
-  // Stage-specific advice
-  const advice = {
-    0: '先把產品用起來！有感受才有故事，有故事才有說服力。',
-    1: '每日限動是基礎！先養成習慣，再追求品質。',
-    2: '銷售靠的是關係！多傳對話記錄給上家，快速修正話術。',
-    3: '招商從分享開始！不是賣加盟，是分享你的改變。',
-    4: '帶人靠的是陪伴！每1~2週主動跟進夥伴狀況。',
-    5: '影響力從輸出開始！每日動態散發價值，讓更多人看見你。',
-    6: '傳承是最好的成就！讓你的故事持續影響更多新人。',
-  };
-
   const tipHtml = unchecked.length === 0
-    ? '<div style="text-align:center;padding:16px 0;"><div style="font-size:32px;margin-bottom:8px;">🎉</div><div style="font-size:14px;font-weight:900;color:#37A5E6;">本階段全部完成！</div><div style="font-size:11px;color:#5A9ABB;margin-top:4px;">你已經做到了，可以準備晉升！</div></div>'
-    : unchecked.map(s=>`
-      <div style="margin-bottom:12px;">
-        <div style="font-size:10px;font-weight:700;color:#37A5E6;margin-bottom:6px;">📌 ${s.section} · 已完成 ${s.done}/${s.total}</div>
-        ${s.items.slice(0,3).map(item=>{
+    ? '<div style="text-align:center;padding:16px 0;"><div style="font-size:32px;margin-bottom:8px;">🎉</div><div style="font-size:14px;font-weight:900;color:#37A5E6;">本階段全部完成！</div><div style="font-size:11px;color:#5A9ABB;margin-top:6px;">你已經做到了，可以準備晉升！</div></div>'
+    : unchecked.map(({sec, missing, done})=>{
+        const howTo = HOW_TO[sec.id] || '把這個部分的項目一項一項完成，有問題馬上問上家！';
+        const items = missing.slice(0,3).map(({item})=>{
           const txt = typeof item==='object' ? item.text : item;
-          return '<div style="font-size:11px;color:#3A6A8A;padding:5px 10px;background:#EEF8FE;border-radius:8px;border-left:3px solid #A7D1F3;margin-bottom:4px;">· '+txt+'</div>';
-        }).join('')}
-        ${s.items.length > 3 ? '<div style="font-size:10px;color:#90C0E0;padding:3px 10px;">...還有 '+(s.items.length-3)+' 項</div>' : ''}
-      </div>`).join('');
+          return '<div style="display:flex;align-items:flex-start;gap:6px;font-size:11px;color:#3A6A8A;padding:4px 0;">'
+            +'<span style="color:#A7D1F3;flex-shrink:0;">·</span>'+txt+'</div>';
+        }).join('');
+        const more = missing.length > 3 ? '<div style="font-size:10px;color:#90C0E0;margin-top:2px;">還有 '+(missing.length-3)+' 項未完成</div>' : '';
+        return '<div style="margin-bottom:14px;background:#F8FCFF;border-radius:12px;padding:12px 14px;border:1.5px solid #E0F0F8;">'
+          +'<div style="font-size:11px;font-weight:700;color:#1A5A80;margin-bottom:4px;">📌 '+sec.title+' · '+done+'/'+sec.items.length+'</div>'
+          +items+more
+          +'<div style="background:linear-gradient(135deg,#EEF8FE,#F0FBFF);border-radius:8px;padding:8px 10px;margin-top:8px;border-left:3px solid #37A5E6;">'
+          +'<div style="font-size:9px;font-weight:700;color:#37A5E6;margin-bottom:3px;">💡 怎麼做</div>'
+          +'<div style="font-size:11px;color:#2A5A7A;line-height:1.7;">'+howTo+'</div>'
+          +'</div></div>';
+      }).join('');
 
   document.getElementById('ovl-content').innerHTML = `
-    <div style="background:#fff;border-radius:24px;max-width:340px;width:100%;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .35s cubic-bezier(.34,1.56,.64,1);">
-      <div style="background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:20px 20px 16px;border-radius:24px 24px 0 0;position:sticky;top:0;">
-        <div style="font-size:16px;font-weight:900;color:#1A5A80;margin-bottom:4px;">🔍 ${ckStage.stageName} 進度分析</div>
+    <div style="background:#fff;border-radius:24px;max-width:340px;width:100%;max-height:82vh;overflow-y:auto;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .35s cubic-bezier(.34,1.56,.64,1);">
+      <div style="background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:18px 20px 14px;border-radius:24px 24px 0 0;position:sticky;top:0;z-index:1;">
+        <div style="font-size:16px;font-weight:900;color:#1A5A80;margin-bottom:3px;">🔍 ${ckStage.stageName} 進度分析</div>
         <div style="font-size:11px;color:#4A7A9A;">完成度 ${pct}%・還有 ${totalItems-doneItems} 項未完成</div>
         <div style="height:6px;background:rgba(255,255,255,.4);border-radius:999px;margin-top:8px;overflow:hidden;">
-          <div style="height:100%;width:${pct}%;background:#fff;border-radius:999px;transition:width .6s;"></div>
+          <div style="height:100%;width:${pct}%;background:#fff;border-radius:999px;"></div>
         </div>
       </div>
-      <div style="padding:16px 18px;">
-        <div style="background:linear-gradient(135deg,#EEF8FE,#F0FBFF);border-radius:12px;padding:12px 14px;margin-bottom:16px;border-left:3px solid #37A5E6;">
-          <div style="font-size:10px;font-weight:700;color:#37A5E6;margin-bottom:4px;">💡 給你的建議</div>
-          <div style="font-size:12px;color:#2A5A7A;line-height:1.7;">${advice[ci]||''}</div>
+      <div style="padding:14px 16px;">
+        <div style="background:linear-gradient(135deg,#EEF8FE,#F0FBFF);border-radius:12px;padding:11px 14px;margin-bottom:14px;border-left:3px solid #37A5E6;">
+          <div style="font-size:10px;font-weight:700;color:#37A5E6;margin-bottom:4px;">🎯 目前最重要的事</div>
+          <div style="font-size:12px;color:#2A5A7A;line-height:1.7;">${stageAdvice[ci]||''}</div>
         </div>
-        ${unchecked.length > 0 ? '<div style="font-size:10px;font-weight:700;color:#1A5A80;letter-spacing:.1em;margin-bottom:10px;">✦ 還需要完成的項目</div>' : ''}
+        ${unchecked.length > 0 ? '<div style="font-size:10px;font-weight:700;color:#1A5A80;letter-spacing:.08em;margin-bottom:10px;">✦ 未完成項目 & 怎麼做</div>' : ''}
         ${tipHtml}
-        <button onclick="closeOvl()" style="width:100%;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:inherit;margin-top:8px;">繼續努力 💪</button>
+        <button onclick="closeOvl()" style="width:100%;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:inherit;margin-top:4px;box-shadow:0 4px 12px rgba(55,165,230,.3);">繼續努力 💪</button>
       </div>
     </div>`;
   document.getElementById('ovl').style.display='flex';
 }
+
 
 function confirmUpgrade(stageIdx){
   upgradedStages[stageIdx] = true;
