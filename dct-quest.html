@@ -406,6 +406,8 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     <div class="xp-bar"><div class="xp-fill" id="xf" style="width:0%"></div></div>
   </div>
   <div class="sec-lbl"><div class="sl-line"></div><div class="sl-txt">🗺️ 選擇關卡</div><div class="sl-line r"></div></div>
+  <div id="daily-checkin"></div>
+  <div id="weekly-rate"></div>
   <div class="lv-scroll" id="lv-scroll"></div>
   <div id="stage-info-wrap"></div>
 </div>
@@ -2681,7 +2683,213 @@ function checkStageMilestone(stageIdx, prevDone, newDone, total){
   }
 }
 
-loadCkData(); loadUpgraded(); load(); rAll();
+
+// ── DAILY CHECK-IN ────────────────────────────────────────────────
+const DC_KEY = 'dct_daily_v1';
+const STREAK_KEY = 'dct_streak_v1';
+
+function getTodayKey(){
+  const d = new Date();
+  return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+}
+
+function loadDailyData(){
+  try{ return JSON.parse(localStorage.getItem(DC_KEY)||'{}'); }catch(e){ return {}; }
+}
+function saveDailyData(data){ localStorage.setItem(DC_KEY, JSON.stringify(data)); }
+function loadStreak(){
+  try{ return JSON.parse(localStorage.getItem(STREAK_KEY)||'{"streak":0,"lastDate":""}'); }catch(e){ return {streak:0,lastDate:''}; }
+}
+function saveStreak(s){ localStorage.setItem(STREAK_KEY, JSON.stringify(s)); }
+
+function getYesterdayKey(){
+  const d = new Date(); d.setDate(d.getDate()-1);
+  return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+}
+
+function updateStreak(todayKey){
+  const s = loadStreak();
+  if(s.lastDate === todayKey) return s.streak;
+  if(s.lastDate === getYesterdayKey()){
+    s.streak = (s.streak||0) + 1;
+  } else {
+    s.streak = 1;
+  }
+  s.lastDate = todayKey;
+  saveStreak(s);
+  return s.streak;
+}
+
+const DAILY_ITEMS = [
+  {id:'story', em:'📱', text:'今天發了五則限動'},
+  {id:'reel',  em:'🎬', text:'今天剪片/發貼文了'},
+  {id:'coach', em:'💬', text:'今天已找上家'},
+  {id:'course', em:'📚', text:'今天看了課程'},
+];
+
+const STREAK_CARDS = [
+  {days:1,  em:'🌱', title:'第一天！', msg:'踏出第一步最難，你做到了！'},
+  {days:3,  em:'🔥', title:'連續3天！', msg:'習慣正在形成，繼續保持！'},
+  {days:7,  em:'⭐', title:'連續一週！', msg:'整整一週！你比90%的人更有執行力。'},
+  {days:14, em:'💫', title:'連續兩週！', msg:'兩週了！這不是運氣，是紀律。'},
+  {days:21, em:'🌟', title:'連續21天！', msg:'21天！習慣已經養成，這就是你的新日常。'},
+  {days:30, em:'👑', title:'連續一個月！', msg:'整整30天！你已經是最強的那1%了。'},
+  {days:60, em:'💎', title:'連續兩個月！', msg:'60天！你的成功不是偶然，是每天選擇堅持。'},
+  {days:100,em:'🏆', title:'連續100天！', msg:'100天！Dream Come True 正在發生。'},
+];
+
+function getStreakCard(streak){
+  let card = null;
+  for(const c of STREAK_CARDS){
+    if(streak >= c.days) card = c;
+  }
+  return card;
+}
+
+function toggleDailyItem(id){
+  const today = getTodayKey();
+  const data = loadDailyData();
+  if(!data[today]) data[today] = {};
+  data[today][id] = !data[today][id];
+  saveDailyData(data);
+
+  // Check if all done today
+  const todayData = data[today];
+  const allDone = DAILY_ITEMS.every(item => todayData[item.id]);
+
+  if(allDone){
+    const streak = updateStreak(today);
+    const card = getStreakCard(streak);
+    if(card) setTimeout(()=>showStreakCard(streak, card), 300);
+  }
+
+  renderDailyCheckin();
+  renderWeeklyRate();
+}
+
+function showStreakCard(streak, card){
+  confetti(); confetti();
+  document.getElementById('ovl-content').innerHTML = `
+    <div style="background:#fff;border-radius:28px;max-width:300px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .4s cubic-bezier(.34,1.56,.64,1);">
+      <div style="background:linear-gradient(135deg,#37A5E6,#2290D4);padding:28px 20px 22px;text-align:center;position:relative;">
+        <div style="font-size:56px;margin-bottom:8px;animation:bo 1.2s ease infinite alternate;">${card.em}</div>
+        <div style="font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.7);margin-bottom:4px;">連續打卡</div>
+        <div style="font-size:22px;font-weight:900;color:#fff;margin-bottom:2px;">${card.title}</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.8);">已連續 ${streak} 天！</div>
+      </div>
+      <div style="padding:20px 22px 22px;">
+        <div style="font-size:13px;color:#2A5A7A;line-height:1.8;text-align:center;margin-bottom:14px;">${card.msg}</div>
+        <div style="display:flex;justify-content:center;gap:4px;margin-bottom:16px;">
+          ${Array.from({length:Math.min(streak,7)},(_,i)=>'<div style="width:10px;height:10px;border-radius:50%;background:'+(i<streak?'#37A5E6':'#EEF8FE')+';"></div>').join('')+(streak>7?'<div style="font-size:10px;color:#90C0E0;">+&#43;'+(streak-7)+'</div>':'')}
+        </div>
+        <button onclick="closeOvl()" style="width:100%;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:inherit;">繼續加油 🔥</button>
+      </div>
+    </div>`;
+  document.getElementById('ovl').style.display='flex';
+}
+
+function renderDailyCheckin(){
+  const el = document.getElementById('daily-checkin');
+  if(!el) return;
+  const today = getTodayKey();
+  const data = loadDailyData();
+  const todayData = data[today] || {};
+  const streak = loadStreak();
+  const allDone = DAILY_ITEMS.every(item => todayData[item.id]);
+  const doneCount = DAILY_ITEMS.filter(item => todayData[item.id]).length;
+
+  el.innerHTML = `
+    <div style="background:#fff;border-radius:18px;margin:0 14px 12px;box-shadow:0 2px 12px rgba(55,165,230,.08);overflow:hidden;">
+      <div style="background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-size:18px;">☀️</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:#1A5A80;">每日打卡</div>
+            <div style="font-size:10px;color:#4A7A9A;">今日 ${doneCount}/${DAILY_ITEMS.length} 完成</div>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:11px;font-weight:700;color:#2290D4;background:rgba(255,255,255,.7);border-radius:999px;padding:3px 10px;">🔥 連續 ${streak.streak||0} 天</div>
+        </div>
+      </div>
+      <div style="padding:12px 14px;">
+        ${DAILY_ITEMS.map(item=>{
+          const checked = !!todayData[item.id];
+          return `<div onclick="toggleDailyItem('${item.id}')" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;background:${checked?'linear-gradient(135deg,#EEF8FE,#E8F6FF)':'#F8FCFF'};border:1.5px solid ${checked?'#A7D1F3':'#E0F0F8'};cursor:pointer;margin-bottom:6px;transition:all .15s;">
+            <div style="width:22px;height:22px;border-radius:7px;border:2px solid ${checked?'#2290D4':'#A7D1F3'};background:${checked?'linear-gradient(135deg,#37A5E6,#2290D4)':'#fff'};display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;">
+              ${checked?'<div style="width:9px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);"></div>':''}
+            </div>
+            <span style="font-size:18px;">${item.em}</span>
+            <span style="font-size:12px;color:${checked?'#1A7AB8':'#3A6A8A'};font-weight:${checked?'700':'400'};">${item.text}</span>
+            ${checked?'<span style="margin-left:auto;font-size:11px;color:#37A5E6;">✓</span>':''}
+          </div>`;
+        }).join('')}
+        ${allDone?`<div style="text-align:center;padding:6px 0;font-size:12px;color:#37A5E6;font-weight:700;">🎉 今天全部完成！明天繼續！</div>`:''}
+      </div>
+    </div>`;
+}
+
+function renderWeeklyRate(){
+  const el = document.getElementById('weekly-rate');
+  if(!el) return;
+
+  // Calculate this week's checklist progress
+  // Count items checked this week vs total expected
+  // Use daily checkin data for the week
+  const today = new Date();
+  const days = [];
+  for(let i=6; i>=0; i--){
+    const d = new Date(today);
+    d.setDate(d.getDate()-i);
+    days.push(d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate());
+  }
+
+  const data = loadDailyData();
+  const totalPossible = DAILY_ITEMS.length * 7;
+  let totalDone = 0;
+  const dayStats = days.map(day=>{
+    const dayData = data[day]||{};
+    const done = DAILY_ITEMS.filter(item=>dayData[item.id]).length;
+    totalDone += done;
+    return {day, done, total:DAILY_ITEMS.length};
+  });
+
+  const pct = totalPossible > 0 ? Math.round(totalDone/totalPossible*100) : 0;
+  const dayNames = ['一','二','三','四','五','六','日'];
+  const todayIdx = (today.getDay()+6)%7; // Mon=0
+
+  el.innerHTML = `
+    <div style="background:#fff;border-radius:18px;margin:0 14px 12px;padding:14px 16px;box-shadow:0 2px 12px rgba(55,165,230,.08);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <div style="display:flex;align-items:center;gap:7px;">
+          <span style="font-size:16px;">📊</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:#1A5A80;">本週執行率</div>
+            <div style="font-size:10px;color:#5A9ABB;">每日打卡完成度</div>
+          </div>
+        </div>
+        <div style="font-size:22px;font-weight:900;color:${pct>=80?'#37A5E6':pct>=50?'#F0C040':'#E07050'};">${pct}%</div>
+      </div>
+      <div style="display:flex;gap:4px;justify-content:space-between;margin-bottom:10px;">
+        ${dayStats.map((s,i)=>{
+          const p = s.total>0?Math.round(s.done/s.total*100):0;
+          const isToday = i===todayIdx;
+          return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;">
+            <div style="width:100%;height:40px;background:#EEF8FE;border-radius:6px;overflow:hidden;position:relative;">
+              <div style="position:absolute;bottom:0;width:100%;height:${p}%;background:${isToday?'linear-gradient(135deg,#37A5E6,#2290D4)':'linear-gradient(135deg,#A7D1F3,#C0E4F8)'};border-radius:4px;transition:height .5s;"></div>
+            </div>
+            <div style="font-size:8px;color:${isToday?'#1A7AB8':'#90C0E0'};font-weight:${isToday?'700':'400'};">週${dayNames[i]}</div>
+          </div>`;
+        }).join('')}
+      </div>
+      <div style="height:6px;background:#EEF8FE;border-radius:999px;overflow:hidden;">
+        <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;transition:width .6s;"></div>
+      </div>
+      <div style="font-size:10px;color:#90C0E0;margin-top:6px;text-align:right;">${dayStats.filter(s=>s.done===s.total).length} / 7 天全部完成</div>
+    </div>`;
+}
+
+loadCkData(); loadUpgraded(); load(); rAll(); renderDailyCheckin(); renderWeeklyRate();
 </script>
 </body>
 </html>
