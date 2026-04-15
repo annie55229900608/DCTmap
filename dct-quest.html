@@ -2122,6 +2122,14 @@ function showAnalysis(){
 }
 
 
+
+function confirmReview(stageIdx){
+  upgradedStages['review_'+stageIdx] = true;
+  saveUpgraded();
+  renderStageInfo();
+  renderAchievements();
+}
+
 function confirmUpgrade(stageIdx){
   upgradedStages[stageIdx] = true;
   saveUpgraded();
@@ -2358,7 +2366,7 @@ function renderStageInfo(){
     </div>` : '';
 
   // Completion prompt
-  const alreadyUpgraded = !!upgradedStages[ci];
+  const alreadyUpgraded = !!(upgradedStages[ci] || upgradedStages['review_'+ci]);
   const completionPrompt = allDone ? `
     <div style="background:linear-gradient(135deg,#37A5E6,#2290D4);border-radius:14px;padding:14px 16px;margin-bottom:14px;text-align:center;">
       <div style="font-size:18px;margin-bottom:4px;">${alreadyUpgraded?'🏆':'🎉'}</div>
@@ -2366,7 +2374,9 @@ function renderStageInfo(){
       <div style="font-size:11px;color:rgba(255,255,255,.85);margin-bottom:10px;">${alreadyUpgraded?'你的獎狀已解鎖，到成就頁查看！':'所有檢核項目完成，確認晉升後解鎖專屬獎狀！'}</div>
       ${alreadyUpgraded
         ? '<div style="font-size:10px;color:rgba(255,255,255,.75);background:rgba(255,255,255,.15);border-radius:8px;padding:6px 10px;">✦ 繼續前往下一個階段 ✦</div>'
-        : '<button onclick="confirmUpgrade('+ci+')" style="width:100%;padding:10px;border-radius:999px;background:#fff;color:#2290D4;font-size:13px;font-weight:900;border:none;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.1);">🏆 確認已升級，解鎖獎狀！</button>'
+        : (ci===5||ci===6)
+          ? '<button onclick="confirmReview('+ci+')" style="width:100%;padding:10px;border-radius:999px;background:#fff;color:#2290D4;font-size:13px;font-weight:900;border:none;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.1);">📋 確認已送審，解鎖下階段！</button>'
+          : '<button onclick="confirmUpgrade('+ci+')" style="width:100%;padding:10px;border-radius:999px;background:#fff;color:#2290D4;font-size:13px;font-weight:900;border:none;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.1);">🏆 確認已升級，解鎖獎狀！</button>'
       }
     </div>` : '';
 
@@ -2424,8 +2434,11 @@ function renderStageInfo(){
       ${upg.conditions.map(c=>`<div class="sic-cond"><div class="sic-cond-dot"></div>${c}</div>`).join('')}
       <div class="sic-note">${upg.note}</div>
       <div class="sic-divider"></div>` : ''}
-      ${CHECKLISTS[ci]?.locked_content && !upgradedStages[ci-1]
-        ? '<div style="text-align:center;padding:24px 0;"><div style="font-size:28px;margin-bottom:8px;">🔒</div><div style="font-size:13px;font-weight:700;color:#5A9ABB;">完成並確認升級「'+(CHECKLISTS[ci-1]?.stageName||'')+'」</div><div style="font-size:11px;color:#90C0E0;margin-top:4px;">才能解鎖此階段的課程與檢核內容</div></div>'
+      ${CHECKLISTS[ci]?.locked_content && !upgradedStages['review_'+ci]
+        ? '<div style="text-align:center;padding:24px 0;"><div style="font-size:28px;margin-bottom:8px;">🔒</div>'
+          +(ci===5?'<div style="font-size:13px;font-weight:700;color:#5A9ABB;">完成並確認送審「一級審核」才解鎖</div>':'')
+          +(ci===6?'<div style="font-size:13px;font-weight:700;color:#5A9ABB;">完成並確認送審「皇家審核」才解鎖</div>':'')
+          +'<div style="font-size:11px;color:#90C0E0;margin-top:4px;">達到門檻後由上家協助送審</div></div>'
         : retailHTML + (ckHTML ? '<div class="sic-ck-title">✦ 本階段檢核表</div>'+ckHTML+'<button onclick="showAnalysis()" style="width:100%;margin-top:12px;padding:11px;border-radius:999px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1.5px solid #A7D1F3;color:#2290D4;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">🔍 分析我的進度</button>' : '') + completionPrompt
       }
     </div>
