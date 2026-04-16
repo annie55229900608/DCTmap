@@ -15,26 +15,27 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .wrap{position:relative;z-index:1;max-width:460px;margin:0 auto;padding-bottom:110px;}
 .topbar{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.12);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
 .tb-l{display:flex;align-items:center;gap:10px;}
-.tb-av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.5);border:2px solid rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;font-size:20px;}
+.tb-av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:20px;}
 .tb-name{font-size:13px;font-weight:700;color:#fff;}
 .tb-sub{font-size:10px;color:rgba(200,230,255,.7);margin-top:1px;}
 .tb-r{display:flex;align-items:center;gap:6px;}
 .xp-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 13px;font-size:12px;font-weight:700;color:#fff;}
 .hero{background:rgba(255,255,255,.06);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1);padding:28px 18px 30px;text-align:center;position:relative;overflow:hidden;}
 .hero::after{content:'';}
-.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:3px 13px;font-size:10px;color:rgba(200,230,255,.9);margin-bottom:14px;}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:3px 13px;font-size:10px;color:#fff;margin-bottom:14px;}
 .hero-title{font-size:20px;font-weight:900;color:#fff;line-height:1.5;margin-bottom:10px;text-shadow:0 2px 16px rgba(30,80,180,.5);}
-.hero-desc{font-size:11px;color:rgba(200,230,255,.8);line-height:2.2;margin-bottom:20px;}
-.hs{flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:8px 6px;text-align:center;}
+.hero-title .hero-name{color:#7FCFFF;text-shadow:0 0 20px rgba(120,200,255,.6);}
+.hero-desc{font-size:11px;color:rgba(235,248,255,.98);line-height:2.2;margin-bottom:20px;}
+.hs{flex:1;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.5);border-radius:14px;padding:8px 6px;text-align:center;}
 .hs-n{font-size:14px;font-weight:900;color:#fff;line-height:1.2;}
-.hs-l{font-size:9px;color:rgba(200,230,255,.65);margin-top:1px;}
+.hs-l{font-size:9px;color:rgba(220,240,255,.92);margin-top:1px;}
 .hero-stats{display:flex;justify-content:center;gap:8px;width:100%;}
 .stage-box{background:rgba(255,255,255,.07);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.11);margin:0 14px;border-radius:0 0 18px 18px;padding:16px 16px 14px;margin-bottom:20px;overflow:visible;}
-.sb-title{font-size:10px;font-weight:700;color:rgba(200,230,255,.9);letter-spacing:.1em;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
-.sb-sub{font-size:10px;color:rgba(180,215,255,.55);font-weight:400;}
+.sb-title{font-size:10px;font-weight:700;color:#fff;letter-spacing:.1em;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
+.sb-sub{font-size:10px;color:rgba(215,235,255,.9);font-weight:400;}
 .xp-row{display:flex;justify-content:space-between;margin-bottom:5px;}
-.xp-lbl{font-size:10px;font-weight:700;color:rgba(180,220,255,.9);}
-.xp-num{font-size:10px;color:rgba(180,215,255,.6);}
+.xp-lbl{font-size:10px;font-weight:700;color:rgba(230,245,255,.97);}
+.xp-num{font-size:10px;color:rgba(220,240,255,.9);}
 .xp-bar{height:8px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;border:none;}
 .xp-fill{height:100%;background:linear-gradient(90deg,#4A9FE8,#A7D1F3);border-radius:999px;transition:width .6s cubic-bezier(.34,1.56,.64,1);}
 .sec-lbl{display:flex;align-items:center;gap:8px;padding:0 18px;margin-bottom:11px;}
@@ -43,8 +44,8 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .sl-txt{font-size:10px;font-weight:700;color:rgba(200,230,255,.7);letter-spacing:.12em;white-space:nowrap;}
 .lv-scroll{display:flex;gap:9px;padding:4px 18px 8px;overflow-x:auto;margin-top:32px;margin-bottom:16px;scrollbar-width:none;}
 .lv-scroll::-webkit-scrollbar{display:none;}
-.lv-card{flex-shrink:0;width:90px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:12px 6px 10px;text-align:center;cursor:pointer;transition:all .2s;position:relative;}
-.lv-card:hover{transform:translateY(-2px);background:rgba(255,255,255,.14);}
+.lv-card{flex-shrink:0;width:90px;background:rgba(255,255,255,.38);border:2px solid rgba(255,255,255,.75);border-radius:18px;padding:12px 6px 10px;text-align:center;cursor:pointer;transition:all .2s;position:relative;}
+.lv-card:hover{transform:translateY(-2px);background:rgba(255,255,255,.42);}
 .lv-card.lk{opacity:.4;}
 .lv-card.active{border-color:rgba(100,180,255,.6);background:rgba(100,180,255,.18);box-shadow:0 4px 18px rgba(60,140,255,.25);}
 .lv-em{font-size:26px;margin-bottom:5px;}
@@ -53,7 +54,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .lv-pf{height:100%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;}
 .lv-pt{font-size:8px;color:rgba(180,215,255,.6);margin-top:3px;}
 .lv-done-badge{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#37A5E6,#2290D4);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:900;}
-.stage-info-card{background:rgba(8,20,55,.75);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(100,160,255,.2);border-radius:18px;margin:0 14px 12px;overflow:hidden;}
+.stage-info-card{background:rgba(30,75,170,.4);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(100,160,255,.2);border-radius:18px;margin:0 14px 12px;overflow:hidden;}
 .sic-top{background:rgba(255,255,255,.05);padding:13px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.08);}
 .sic-left{display:flex;align-items:center;gap:9px;}
 .sic-em{font-size:20px;}
@@ -61,7 +62,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .sic-sub{font-size:10px;color:rgba(200,230,255,.6);margin-top:1px;}
 .sic-arr{font-size:10px;color:rgba(200,230,255,.65);width:22px;height:22px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s;}
 .sic-arr.open{transform:rotate(180deg);}
-.sic-body{display:none;padding:16px 16px 20px;background:rgba(5,15,45,.6);}
+.sic-body{display:none;padding:16px 16px 20px;background:rgba(25,60,140,.3);}
 .sic-body.open{display:block;}
 .sic-upg-title{font-size:9px;font-weight:700;color:rgba(180,220,255,.9);letter-spacing:.1em;margin-bottom:8px;}
 .sic-cond{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:rgba(200,230,255,.85);line-height:1.6;margin-bottom:5px;padding:6px 10px;background:rgba(255,255,255,.06);border-radius:9px;}
@@ -76,17 +77,17 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .sic-ck-sec-prog{font-size:9px;color:rgba(180,220,255,.9);font-weight:700;background:rgba(255,255,255,.1);padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.15);}
 .sic-ck-items{display:flex;flex-direction:column;gap:5px;}
 .sic-ck-target{font-size:10px;color:#7AC8F0;padding:5px 10px;background:rgba(74,159,232,.1);border-radius:8px;border-left:3px solid rgba(74,159,232,.4);margin-bottom:5px;font-weight:500;}
-.sic-ck-item-row{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;border-radius:12px;background:rgba(10,30,70,.6);border:1px solid rgba(100,160,255,.2);cursor:pointer;transition:all .15s;}
-.sic-ck-item-row:hover{border-color:rgba(100,180,255,.4);background:rgba(20,50,100,.7);}
-.sic-ck-item-row.checked{background:rgba(30,80,180,.5);border-color:rgba(100,180,255,.5);}
-.sic-ck-box-sq{width:20px;height:20px;border-radius:6px;border:1.5px solid rgba(100,160,255,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;background:rgba(10,30,80,.5);transition:all .2s;}
+.sic-ck-item-row{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;border-radius:12px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.42);cursor:pointer;transition:all .15s;}
+.sic-ck-item-row:hover{border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.20);}
+.sic-ck-item-row.checked{background:rgba(100,180,255,.25);border-color:rgba(100,200,255,.55);}
+.sic-ck-box-sq{width:20px;height:20px;border-radius:6px;border:1.5px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;background:rgba(255,255,255,.1);transition:all .2s;}
 .sic-ck-item-row.checked .sic-ck-box-sq{background:linear-gradient(135deg,#37A5E6,#2290D4);border-color:#2290D4;box-shadow:0 2px 6px rgba(55,165,230,.3);}
 .sic-ck-v2{width:9px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);opacity:0;transition:opacity .2s;}
 .sic-ck-item-row.checked .sic-ck-v2{opacity:1;}
 .sic-ck-item-main{flex:1;display:flex;align-items:flex-start;flex-wrap:wrap;gap:5px;}
-.sic-ck-txt{font-size:11px;color:rgba(230,245,255,.95);line-height:1.65;flex:1;min-width:100px;}
+.sic-ck-txt{font-size:11px;color:#fff;line-height:1.65;flex:1;min-width:100px;}
 .sic-ck-item-row.checked .sic-ck-txt{color:#fff;font-weight:600;}
-.course-link-btn{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:999px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1px solid #A7D1F3;color:#2290D4;font-size:9px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+.course-link-btn{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:999px;background:rgba(100,180,255,.2);border:1px solid rgba(100,180,255,.4);color:rgba(180,220,255,.95);font-size:9px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;}
 .bnt{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;background:rgba(20,50,110,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.1);padding:8px 0;display:flex;justify-content:space-around;z-index:100;}
 .bni{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 16px;border-radius:12px;transition:all .15s;}
 .bni.on{background:rgba(74,159,232,.18);}
@@ -115,7 +116,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .cl-gd{background:linear-gradient(135deg,#E8FFEE,#C8F0D4);}
 .cl-body{flex:1;min-width:0;}
 .cl-title{font-size:11px;font-weight:700;color:#fff;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.cl-sub{font-size:9px;color:rgba(180,215,255,.6);}
+.cl-sub{font-size:9px;color:rgba(220,240,255,.9);}
 .cl-arr{font-size:11px;color:#A7D1F3;}
 .ach-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .ach-item{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px 12px;text-align:center;transition:all .2s;}
@@ -127,22 +128,22 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .ach-desc{font-size:9px;color:rgba(180,215,255,.7);line-height:1.5;}
 .ach-badge{font-size:8px;padding:2px 8px;border-radius:999px;margin-top:5px;display:inline-block;}
 .ach-badge.unlocked{background:rgba(74,159,232,.3);color:#fff;}
-.ach-badge.locked{background:rgba(255,255,255,.1);color:rgba(180,215,255,.6);}
+.ach-badge.locked{background:rgba(255,255,255,.1);color:rgba(220,240,255,.9);}
 .ms-display{background:rgba(255,255,255,.07);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px;margin-bottom:12px;}
 .ms-d-title{font-size:10px;font-weight:700;color:rgba(180,220,255,.9);letter-spacing:.1em;margin-bottom:12px;}
-.ms-d-row{display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid #EEF8FE;}
+.ms-d-row{display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08);}
 .ms-d-row:last-child{border-bottom:none;}
 .ms-d-icon{font-size:22px;width:36px;text-align:center;}
 .ms-d-body{flex:1;}
 .ms-d-name{font-size:11px;font-weight:700;color:#fff;}
-.ms-d-num{font-size:9px;color:rgba(180,215,255,.6);}
+.ms-d-num{font-size:9px;color:rgba(220,240,255,.9);}
 .ms-d-check{font-size:14px;}
-.ovl{position:fixed;inset:0;background:rgba(10,30,60,.55);display:flex;align-items:center;justify-content:center;z-index:999;animation:fi .2s ease;padding:20px;}
+.ovl{position:fixed;inset:0;background:rgba(10,30,60,.65);display:flex;align-items:center;justify-content:center;z-index:999;animation:fi .2s ease;padding:20px;}
 @keyframes fi{from{opacity:0}to{opacity:1}}
 @keyframes pi{from{opacity:0;transform:scale(.65)}to{opacity:1;transform:scale(1)}}
 @keyframes bo{from{transform:translateY(0)}to{transform:translateY(-7px)}}
 @keyframes sp{0%{transform:scale(0)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
-.pop-quest{background:linear-gradient(180deg,#1E4A8A 0%,#0D2A5A 100%);border:1px solid rgba(100,180,255,.25);border-radius:24px;padding:26px 22px;text-align:center;max-width:300px;width:100%;box-shadow:0 20px 60px rgba(20,60,180,.4);animation:pi .35s cubic-bezier(.34,1.56,.64,1);}
+.pop-quest{background:linear-gradient(180deg,#1E4A8A 0%,#0D2A5A 100%);border:1px solid rgba(100,180,255,.25);border-radius:24px;padding:26px 22px;text-align:center;max-width:300px;width:100%;box-shadow:0 20px 60px rgba(20,60,180,.4);animation:pi .35s cubic-bezier(.34,1.56,.64,1);position:relative;}
 .pq-em{font-size:48px;display:block;margin-bottom:6px;animation:bo 1s ease infinite alternate;}
 .pq-stars{display:flex;justify-content:center;gap:5px;margin-bottom:11px;}
 .pqs{font-size:22px;filter:drop-shadow(0 0 6px rgba(255,220,80,.6));}
@@ -161,8 +162,8 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .cert-subtitle{font-size:10px;color:rgba(180,220,255,.7);letter-spacing:.08em;}
 .cert-body{padding:20px 22px 22px;}
 .cert-seal{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px;}
-.cert-seal-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,#A7D1F3);}
-.cert-seal-line.r{background:linear-gradient(90deg,#A7D1F3,transparent);}
+.cert-seal-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(100,180,255,.4));}
+.cert-seal-line.r{background:linear-gradient(90deg,rgba(100,180,255,.4),transparent);}
 .cert-seal-txt{font-size:9px;color:rgba(180,220,255,.7);letter-spacing:.12em;font-weight:700;}
 .cert-msg{font-size:12px;color:rgba(200,230,255,.88);line-height:1.85;text-align:center;margin-bottom:16px;}
 .cert-quote{font-size:11px;color:rgba(180,220,255,.9);font-style:italic;line-height:1.75;text-align:center;padding:10px 14px;background:rgba(100,180,255,.1);border-radius:10px;margin-bottom:16px;border-left:3px solid rgba(100,180,255,.5);}
@@ -174,7 +175,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .ms-card-top{padding:28px 20px 20px;text-align:center;position:relative;overflow:hidden;}
 .ms-card-top::before{content:'✦';position:absolute;left:12px;top:10px;font-size:40px;color:rgba(200,230,255,.3);text-shadow:0 0 20px rgba(100,180,255,.6);}
 .ms-card-top::after{content:'✦';position:absolute;right:12px;bottom:10px;font-size:28px;color:rgba(200,230,255,.25);text-shadow:0 0 16px rgba(100,180,255,.5);}
-.ms-icon-wrap{width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:36px;animation:bo 1.2s ease infinite alternate;border:2px solid rgba(255,255,255,.35);}
+.ms-icon-wrap{width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:36px;animation:bo 1.2s ease infinite alternate;border:2px solid rgba(255,255,255,.3);}
 .ms-badge-label{font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,.7);margin-bottom:4px;}
 .ms-card-title{font-size:19px;font-weight:900;color:#fff;margin-bottom:4px;line-height:1.3;text-shadow:0 2px 16px rgba(80,160,255,.5);}
 .ms-card-sub{font-size:10px;color:rgba(255,255,255,.75);}
@@ -191,9 +192,10 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .ms-btn-close{flex:1;padding:12px;border-radius:999px;background:rgba(255,255,255,.1);border:1.5px solid rgba(100,180,255,.35);color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
 .welcome{position:fixed;inset:0;background:linear-gradient(180deg,#1a3a6a 0%,#0d2245 55%,#081530 100%);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
 .welcome-box{background:#fff;border-radius:28px;padding:20px 18px;text-align:center;max-width:320px;width:100%;box-shadow:0 12px 40px rgba(55,165,230,.15);}
+.wc-title{font-size:22px;font-weight:900;color:#1A5A80;margin-bottom:4px;}
 .wc-icon{font-size:36px;margin-bottom:6px;display:block;animation:bo 1.5s ease infinite alternate;}
 .wc-label{font-size:11px;font-weight:700;color:#37A5E6;letter-spacing:.08em;margin-bottom:8px;text-align:left;}
-.wc-input{width:100%;padding:13px 16px;border-radius:999px;border:2px solid #A7D1F3;font-size:15px;font-family:inherit;color:#1A5A80;background:#EEF8FE;outline:none;transition:border-color .2s;margin-bottom:14px;}
+.wc-input{width:100%;padding:13px 16px;border-radius:999px;border:2px solid #A7D1F3;font-size:15px;font-family:inherit;color:#0A1E3A;background:#EEF8FE;outline:none;transition:border-color .2s;margin-bottom:14px;}
 .wc-input:focus{border-color:#37A5E6;background:#fff;}
 .wc-input::placeholder{color:#A7C8E0;}
 .wc-btn{width:100%;padding:14px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:14px;font-weight:900;border:none;cursor:pointer;font-family:inherit;box-shadow:0 6px 18px rgba(55,165,230,.35);transition:all .2s;}
@@ -208,134 +210,69 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .mini-toast.hide{animation:toasthide .35s ease forwards;}
 @keyframes toastpop{from{opacity:0;transform:translateX(-50%) translateY(20px) scale(.8);}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}}
 @keyframes toasthide{from{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}to{opacity:0;transform:translateX(-50%) translateY(10px) scale(.9);}}
-
 /* ── SPLASH SCREEN ── */
 @keyframes sp-flutter{0%{transform:scaleX(1) rotate(-2deg);}50%{transform:scaleX(.88) rotate(1deg);}100%{transform:scaleX(1) rotate(-1deg);}}
 @keyframes splash-fade{from{opacity:1;}to{opacity:0;pointer-events:none;}}
 @keyframes bfL{0%{transform:translate(0,0) rotate(-8deg);}100%{transform:translate(-10px,-22px) rotate(8deg);}}
 @keyframes bfR{0%{transform:translate(0,0) rotate(8deg);}100%{transform:translate(10px,-18px) rotate(-8deg);}}
 </style>
-</head>
 <body>
 
 <!-- App 全域星空背景 -->
-<div style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;">
+<div style="position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden;">
   <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="3" result="blur"/>
-        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-      <filter id="glow2">
-        <feGaussianBlur stdDeviation="5" result="blur"/>
-        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
+      <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="glow2"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     </defs>
-
-    <!-- 螢光框線 - 頂部弧形 -->
     <path d="M-20,180 Q120,80 260,120 Q380,155 440,100" stroke="rgba(100,200,255,0.45)" stroke-width="1" fill="none" filter="url(#glow)"/>
     <path d="M-20,185 Q120,85 260,125 Q380,160 440,105" stroke="rgba(140,220,255,0.22)" stroke-width="3" fill="none" filter="url(#glow2)"/>
-
-    <!-- 螢光框線 - 中部斜線 -->
     <path d="M0,380 Q180,320 360,400 Q420,420 460,380" stroke="rgba(100,200,255,0.38)" stroke-width="1" fill="none" filter="url(#glow)"/>
-    <path d="M0,385 Q180,325 360,405 Q420,425 460,385" stroke="rgba(140,210,255,0.06)" stroke-width="3" fill="none" filter="url(#glow2)"/>
-
-    <!-- 螢光框線 - 底部弧形 -->
     <path d="M-10,620 Q100,570 220,600 Q340,630 460,580" stroke="rgba(100,200,255,0.32)" stroke-width="1" fill="none" filter="url(#glow)"/>
-
-    <!-- 左側垂直光線 -->
     <line x1="18" y1="100" x2="18" y2="520" stroke="rgba(120,200,255,0.35)" stroke-width="1" filter="url(#glow)"/>
     <line x1="18" y1="100" x2="18" y2="520" stroke="rgba(120,200,255,0.15)" stroke-width="4" filter="url(#glow2)"/>
-
-    <!-- 右側垂直光線 -->
     <line x1="442" y1="150" x2="442" y2="600" stroke="rgba(120,200,255,0.35)" stroke-width="1" filter="url(#glow)"/>
     <line x1="442" y1="150" x2="442" y2="600" stroke="rgba(120,200,255,0.15)" stroke-width="4" filter="url(#glow2)"/>
-
-    <!-- 角落光點 -->
-    <circle cx="18"  cy="100" r="3" fill="rgba(150,220,255,0.85)" filter="url(#glow2)"/>
+    <circle cx="18" cy="100" r="3" fill="rgba(150,220,255,0.85)" filter="url(#glow2)"/>
     <circle cx="442" cy="150" r="3" fill="rgba(150,220,255,0.85)" filter="url(#glow2)"/>
-    <circle cx="18"  cy="520" r="3" fill="rgba(150,220,255,0.75)" filter="url(#glow2)"/>
+    <circle cx="18" cy="520" r="3" fill="rgba(150,220,255,0.75)" filter="url(#glow2)"/>
     <circle cx="442" cy="600" r="3" fill="rgba(150,220,255,0.75)" filter="url(#glow2)"/>
-
-  </svg>
-</div>
-
-    <!-- 大星點 -->
-    <circle cx="42"  cy="88"  r="1.5" fill="white" opacity="0.55"/>
-    <circle cx="318" cy="52"  r="1.8" fill="white" opacity="0.6"/>
+    <circle cx="42" cy="88" r="1.5" fill="white" opacity="0.55" filter="url(#glow)"/>
+    <circle cx="318" cy="52" r="1.8" fill="white" opacity="0.6" filter="url(#glow)"/>
     <circle cx="168" cy="130" r="1.2" fill="white" opacity="0.45"/>
-    <circle cx="355" cy="175" r="1.6" fill="white" opacity="0.5"/>
-    <circle cx="78"  cy="220" r="1.4" fill="white" opacity="0.52"/>
-    <circle cx="290" cy="265" r="1.9" fill="white" opacity="0.58"/>
+    <circle cx="355" cy="175" r="1.6" fill="white" opacity="0.5" filter="url(#glow)"/>
+    <circle cx="78" cy="220" r="1.4" fill="white" opacity="0.52"/>
+    <circle cx="290" cy="265" r="1.9" fill="white" opacity="0.58" filter="url(#glow)"/>
     <circle cx="135" cy="310" r="1.3" fill="white" opacity="0.48"/>
-    <circle cx="390" cy="340" r="1.5" fill="white" opacity="0.5"/>
-    <circle cx="55"  cy="390" r="1.7" fill="white" opacity="0.55"/>
+    <circle cx="390" cy="340" r="1.5" fill="white" opacity="0.5" filter="url(#glow)"/>
+    <circle cx="55" cy="390" r="1.7" fill="white" opacity="0.55" filter="url(#glow)"/>
     <circle cx="245" cy="420" r="1.4" fill="white" opacity="0.45"/>
-    <circle cx="340" cy="470" r="1.6" fill="white" opacity="0.52"/>
-    <circle cx="100" cy="510" r="1.8" fill="white" opacity="0.6"/>
-    <circle cx="215" cy="555" r="1.3" fill="white" opacity="0.48"/>
-    <circle cx="375" cy="580" r="1.5" fill="white" opacity="0.5"/>
-    <circle cx="60"  cy="630" r="1.4" fill="white" opacity="0.55"/>
-    <circle cx="280" cy="660" r="1.7" fill="white" opacity="0.52"/>
-    <circle cx="155" cy="700" r="1.2" fill="white" opacity="0.45"/>
-    <circle cx="410" cy="730" r="1.6" fill="white" opacity="0.58"/>
-    <!-- 小星點 -->
-    <circle cx="95"  cy="65"  r="0.8" fill="white" opacity="0.4"/>
-    <circle cx="200" cy="45"  r="0.7" fill="white" opacity="0.35"/>
+    <circle cx="340" cy="470" r="1.6" fill="white" opacity="0.52" filter="url(#glow)"/>
+    <circle cx="100" cy="510" r="1.8" fill="white" opacity="0.6" filter="url(#glow)"/>
+    <circle cx="95" cy="65" r="0.8" fill="white" opacity="0.4"/>
+    <circle cx="200" cy="45" r="0.7" fill="white" opacity="0.35"/>
     <circle cx="270" cy="110" r="0.9" fill="white" opacity="0.38"/>
-    <circle cx="370" cy="95"  r="0.7" fill="white" opacity="0.32"/>
-    <circle cx="25"  cy="155" r="0.8" fill="white" opacity="0.4"/>
+    <circle cx="370" cy="95" r="0.7" fill="white" opacity="0.32"/>
+    <circle cx="25" cy="155" r="0.8" fill="white" opacity="0.4"/>
     <circle cx="310" cy="200" r="0.9" fill="white" opacity="0.35"/>
     <circle cx="178" cy="245" r="0.7" fill="white" opacity="0.38"/>
     <circle cx="420" cy="280" r="0.8" fill="white" opacity="0.32"/>
     <circle cx="128" cy="360" r="0.9" fill="white" opacity="0.4"/>
     <circle cx="338" cy="395" r="0.7" fill="white" opacity="0.35"/>
-    <circle cx="48"  cy="448" r="0.8" fill="white" opacity="0.38"/>
-    <circle cx="268" cy="492" r="0.9" fill="white" opacity="0.32"/>
-    <circle cx="188" cy="535" r="0.7" fill="white" opacity="0.4"/>
-    <circle cx="398" cy="615" r="0.8" fill="white" opacity="0.35"/>
-    <circle cx="82"  cy="668" r="0.9" fill="white" opacity="0.38"/>
-    <circle cx="322" cy="710" r="0.7" fill="white" opacity="0.32"/>
-    <circle cx="145" cy="755" r="0.8" fill="white" opacity="0.4"/>
-    <circle cx="235" cy="790" r="0.9" fill="white" opacity="0.35"/>
-    <!-- 閃爍大星（十字光芒） -->
-    <g opacity="0.35">
-      <line x1="185" y1="73"  x2="185" y2="63"  stroke="white" stroke-width="0.8"/>
-      <line x1="185" y1="83"  x2="185" y2="73"  stroke="white" stroke-width="0.8" opacity="0.5"/>
-      <line x1="180" y1="78"  x2="190" y2="78"  stroke="white" stroke-width="0.8"/>
-      <circle cx="185" cy="78" r="1.5" fill="white" opacity="0.9"/>
-    </g>
-    <g opacity="0.3">
-      <line x1="358" y1="448" x2="358" y2="438" stroke="white" stroke-width="0.8"/>
-      <line x1="358" y1="458" x2="358" y2="448" stroke="white" stroke-width="0.8" opacity="0.5"/>
-      <line x1="353" y1="453" x2="363" y2="453" stroke="white" stroke-width="0.8"/>
-      <circle cx="358" cy="453" r="1.5" fill="white" opacity="0.9"/>
-    </g>
-    <g opacity="0.28">
-      <line x1="72"  cy="295" x2="72"  y2="285" stroke="white" stroke-width="0.8"/>
-      <line x1="72"  y1="305" x2="72"  y2="295" stroke="white" stroke-width="0.8" opacity="0.5"/>
-      <line x1="67"  y1="300" x2="77"  y2="300" stroke="white" stroke-width="0.8"/>
-      <circle cx="72" cy="295" r="1.3" fill="white" opacity="0.9"/>
-    </g>
+    <g filter="url(#glow2)" opacity="0.7"><line x1="185" y1="68" x2="185" y2="88" stroke="white" stroke-width="0.8"/><line x1="175" y1="78" x2="195" y2="78" stroke="white" stroke-width="0.8"/><circle cx="185" cy="78" r="1.8" fill="white"/></g>
+    <g filter="url(#glow2)" opacity="0.6"><line x1="358" y1="443" x2="358" y2="463" stroke="white" stroke-width="0.8"/><line x1="348" y1="453" x2="368" y2="453" stroke="white" stroke-width="0.8"/><circle cx="358" cy="453" r="1.8" fill="white"/></g>
+    <g filter="url(#glow2)" opacity="0.55"><line x1="72" y1="290" x2="72" y2="310" stroke="white" stroke-width="0.8"/><line x1="62" y1="300" x2="82" y2="300" stroke="white" stroke-width="0.8"/><circle cx="72" cy="300" r="1.5" fill="white"/></g>
   </svg>
 </div>
 
-<!-- ── SPLASH SCREEN ── -->
+<!-- SPLASH SCREEN -->
 <div id="splash-screen" style="position:fixed;inset:0;background:linear-gradient(180deg,#1a3a6a 0%,#0d2245 50%,#081530 100%);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;">
-
-  <!-- 浮動蝴蝶背景 -->
   <div style="position:absolute;top:10%;left:12%;opacity:.25;animation:bfL 5s ease-in-out infinite alternate;">🦋</div>
   <div style="position:absolute;top:15%;right:10%;opacity:.2;animation:bfR 6s ease-in-out infinite alternate;">🦋</div>
   <div style="position:absolute;bottom:20%;left:8%;opacity:.18;animation:bfL 7s ease-in-out infinite alternate-reverse;">🦋</div>
   <div style="position:absolute;bottom:18%;right:9%;opacity:.2;animation:bfR 8s ease-in-out infinite alternate;">🦋</div>
-
-  <!-- 中央內容 -->
   <div style="text-align:center;padding:0 40px;">
-
-    <!-- WELCOME 小標 -->
-    <div style="font-size:11px;font-weight:400;color:rgba(170,215,255,.6);letter-spacing:.35em;margin-bottom:20px;">W E L C O M E</div>
-
-    <!-- 蝴蝶圓圈 -->
+    <div style="font-size:11px;color:rgba(170,215,255,.6);letter-spacing:.35em;margin-bottom:20px;">W E L C O M E</div>
     <div style="position:relative;width:110px;height:110px;margin:0 auto 28px;">
       <div style="position:absolute;inset:-22px;border-radius:50%;border:1px solid rgba(100,180,255,.15);"></div>
       <div style="position:absolute;inset:-11px;border-radius:50%;border:1px solid rgba(100,180,255,.25);"></div>
@@ -345,100 +282,56 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       <span style="position:absolute;top:-40px;left:-44px;font-size:22px;opacity:.8;animation:sp-flutter 4s ease-in-out infinite alternate-reverse;">🦋</span>
       <span style="position:absolute;bottom:-36px;right:-40px;font-size:18px;opacity:.7;animation:sp-flutter 5s ease-in-out infinite alternate;">🦋</span>
     </div>
-
-    <!-- 大標題 -->
     <div style="font-size:34px;font-weight:900;color:#fff;letter-spacing:.04em;margin-bottom:6px;text-shadow:0 2px 28px rgba(60,140,255,.5);">DCT 晉升地圖</div>
-
-    <!-- 分隔線 -->
     <div style="width:40px;height:2px;background:linear-gradient(90deg,transparent,rgba(100,180,255,.6),transparent);margin:10px auto 16px;"></div>
-
-    <!-- 裝飾 emoji -->
     <div style="font-size:16px;letter-spacing:8px;margin-bottom:16px;opacity:.9;">🦋 ✦ 🌟 ✦ 🦋</div>
-
-    <!-- 兩句簡介 -->
-    <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:.02em;">晉升路上，每一步都算數</div>
+    <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px;">晉升路上，每一步都算數</div>
     <div style="font-size:12px;color:rgba(180,220,255,.8);line-height:1.8;margin-bottom:36px;">從愛用客到皇家，你的旅程從這裡開始</div>
-
-    <!-- 進度條 -->
     <div style="width:220px;margin:0 auto;">
       <div style="height:3px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;margin-bottom:10px;">
         <div id="splash-bar" style="height:100%;width:0%;background:linear-gradient(90deg,rgba(80,160,255,.6),rgba(200,235,255,.95));border-radius:999px;transition:width .06s linear;"></div>
       </div>
       <div id="splash-txt" style="font-size:10px;color:rgba(170,215,255,.6);letter-spacing:.12em;">載入中…</div>
     </div>
-
   </div>
 </div>
 
 <!-- WELCOME SCREEN -->
 <div class="welcome" id="welcome">
-
-  <!-- 白色蝴蝶背景剪影 -->
-  <div style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;">
+  <!-- 蝴蝶背景已移除 -->
+  <div style="display:none;">
     <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <g id="bfly">
-          <!-- 左上大翅 -->
-          <path d="M0,-2 C-5,-15 -25,-38 -52,-32 C-68,-28 -66,-10 -50,-3 C-36,3 -16,0 0,-2Z" fill="white"/>
-          <!-- 右上大翅 -->
-          <path d="M0,-2 C5,-15 25,-38 52,-32 C68,-28 66,-10 50,-3 C36,3 16,0 0,-2Z" fill="white"/>
-          <!-- 左下小翅 -->
-          <path d="M0,2 C-6,10 -22,24 -30,38 C-36,50 -24,56 -14,46 C-6,38 -2,20 0,2Z" fill="white"/>
-          <!-- 右下小翅 -->
-          <path d="M0,2 C6,10 22,24 30,38 C36,50 24,56 14,46 C6,38 2,20 0,2Z" fill="white"/>
-          <!-- 身體 -->
-          <ellipse cx="0" cy="14" rx="2" ry="14" fill="white"/>
-          <!-- 頭 -->
-          <circle cx="0" cy="-1" r="3" fill="white"/>
-          <!-- 觸角左 -->
-          <path d="M-1,-3 C-5,-12 -12,-20 -18,-26" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-          <circle cx="-18" cy="-26" r="2.2" fill="white"/>
-          <!-- 觸角右 -->
-          <path d="M1,-3 C5,-12 12,-20 18,-26" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-          <circle cx="18" cy="-26" r="2.2" fill="white"/>
-        </g>
-      </defs>
+      <defs><g id="bfly">
+        <path d="M0,-2 C-5,-15 -25,-38 -52,-32 C-68,-28 -66,-10 -50,-3 C-36,3 -16,0 0,-2Z" fill="white"/>
+        <path d="M0,-2 C5,-15 25,-38 52,-32 C68,-28 66,-10 50,-3 C36,3 16,0 0,-2Z" fill="white"/>
+        <path d="M0,2 C-6,10 -22,24 -30,38 C-36,50 -24,56 -14,46 C-6,38 -2,20 0,2Z" fill="white"/>
+        <path d="M0,2 C6,10 22,24 30,38 C36,50 24,56 14,46 C6,38 2,20 0,2Z" fill="white"/>
+        <ellipse cx="0" cy="14" rx="2" ry="14" fill="white"/>
+        <circle cx="0" cy="-1" r="3" fill="white"/>
+        <path d="M-1,-3 C-5,-12 -12,-20 -18,-26" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><circle cx="-18" cy="-26" r="2.2" fill="white"/>
+        <path d="M1,-3 C5,-12 12,-20 18,-26" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><circle cx="18" cy="-26" r="2.2" fill="white"/>
+      </g></defs>
       <use href="#bfly" transform="translate(70,100) scale(1.6)" opacity="0.18"/>
       <use href="#bfly" transform="translate(310,60) scale(1.2)" opacity="0.13"/>
       <use href="#bfly" transform="translate(40,280) scale(1.9)" opacity="0.12"/>
       <use href="#bfly" transform="translate(340,230) scale(1.4)" opacity="0.15"/>
       <use href="#bfly" transform="translate(90,460) scale(1.3)" opacity="0.14"/>
       <use href="#bfly" transform="translate(310,410) scale(1.1)" opacity="0.13"/>
-      <use href="#bfly" transform="translate(180,580) scale(1.0)" opacity="0.16"/>
-      <use href="#bfly" transform="translate(250,350) scale(0.85)" opacity="0.13"/>
-      <use href="#bfly" transform="translate(150,170) scale(0.8)" opacity="0.15"/>
-      <use href="#bfly" transform="translate(280,500) scale(0.75)" opacity="0.12"/>
     </svg>
   </div>
-
   <div class="welcome-box" style="position:relative;z-index:1;">
     <span class="wc-icon">🦋</span>
-    <div class="wc-title" style="font-size:22px;margin-bottom:4px;">歡迎加入 DCT 🎉</div>
+    <div style="font-size:22px;font-weight:900;color:#1A5A80;margin-bottom:4px;">歡迎加入 DCT 🎉</div>
     <div style="font-size:11px;color:#37A5E6;font-weight:700;letter-spacing:.1em;margin-bottom:14px;">✦ 星空輔導地圖 · 晉升加速系統 ✦</div>
-
-    <!-- 儀式感語句 -->
     <div style="margin-bottom:14px;padding:16px 18px;background:linear-gradient(180deg,#1A4A8A 0%,#0A1E40 100%);border:1px solid rgba(100,180,255,.25);border-radius:18px;text-align:center;">
-      <div style="font-size:15px;font-weight:900;color:#fff;letter-spacing:.05em;margin-bottom:6px;">
-        每一隻蝴蝶，都曾是毛毛蟲 🦋
-      </div>
-      <div style="font-size:11px;color:rgba(180,220,255,.9);line-height:1.8;">
-        你選擇踏上這條路的這一刻<br>就已經開始蛻變了
-      </div>
+      <div style="font-size:15px;font-weight:900;color:#fff;margin-bottom:6px;">每一隻蝴蝶，都曾是毛毛蟲 🦋</div>
+      <div style="font-size:11px;color:rgba(180,220,255,.9);line-height:1.8;">你選擇踏上這條路的這一刻<br>就已經開始蛻變了</div>
     </div>
-
     <div style="background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border-radius:16px;padding:12px 14px;margin-bottom:10px;text-align:left;">
       <div style="font-size:11px;font-weight:900;color:#1A5A80;margin-bottom:6px;">🦋 什麼是 DCT 晉升地圖？</div>
-      <div style="font-size:11px;color:#3A6A8A;line-height:1.8;">
-        專為 DCT 夥伴設計的經營加速系統<br>
-        從愛用客到皇家，每個階段都有清楚的課程、檢核表和行動指引，讓你不迷路。
-      </div>
-      <div style="margin-top:8px;font-size:10px;color:#2290D4;line-height:1.85;">
-        ✦ 每個階段要做什麼、怎麼做<br>
-        ✦ 每日打卡，累積執行天數<br>
-        ✦ 累積星星，解鎖專屬認證
-      </div>
+      <div style="font-size:11px;color:#3A6A8A;line-height:1.8;">專為 DCT 夥伴設計的經營加速系統，從愛用客到皇家每個階段都有清楚的課程、檢核表和行動指引。</div>
+      <div style="margin-top:8px;font-size:10px;color:#2290D4;line-height:1.85;">✦ 每個階段要做什麼、怎麼做<br>✦ 每日打卡，累積執行天數<br>✦ 累積星星，解鎖專屬認證</div>
     </div>
-
     <div class="wc-label">✦ 你的名字</div>
     <input class="wc-input" id="wc-name" type="text" placeholder="例如：小安、Annie…" maxlength="10" oninput="onNameInput()" onkeydown="onNameKey(event)">
     <div class="wc-label" style="margin-top:4px;">🎯 今年目標級別</div>
@@ -454,6 +347,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     <div class="wc-label" style="margin-top:4px;">💰 月淨利目標（元）</div>
     <input class="wc-input" id="wc-income" type="number" placeholder="例如：30000" style="margin-bottom:14px;">
     <button class="wc-btn" id="wc-btn" onclick="startWithName()">🦋 開始我的晉升旅程！</button>
+    <button onclick="skipWelcome()" style="width:100%;padding:10px;border-radius:999px;background:transparent;border:none;color:#90C0E0;font-size:12px;cursor:pointer;font-family:inherit;margin-top:4px;">稍後再設定，先看看 →</button>
     <div class="wc-note">以上設定儲存在你的裝置上，之後可以修改</div>
   </div>
 </div>
@@ -465,7 +359,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       <div class="tb-name" id="tb-name">我的晉升地圖</div>
       <div style="display:flex;align-items:center;gap:5px;">
         <div class="tb-sub" id="lv-tag">愛用客 · 階段 1</div>
-        <span onclick="editName()" style="font-size:10px;cursor:pointer;background:rgba(255,255,255,.5);border-radius:999px;padding:3px 8px;color:#1A5A80;font-weight:700;border:1px solid rgba(255,255,255,.7);">⚙️ 設定</span>
+        <span onclick="editName()" style="font-size:10px;cursor:pointer;background:rgba(255,255,255,.15);border-radius:999px;padding:3px 8px;color:rgba(200,230,255,.9);font-weight:700;border:1px solid rgba(255,255,255,.2);">⚙️ 設定</span>
       </div>
     </div>
   </div>
@@ -506,12 +400,10 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   <div class="ms-display"><div class="ms-d-title">✦ 星星里程碑</div><div id="ms-display-list"></div></div>
   <div class="ach-grid" id="ach-grid"></div>
 </div>
-
 <div class="page-section" id="page-course">
   <div class="page-top"><div class="page-top-title">📖 新人必上課程</div><div class="page-top-sub">每一堂上完都要交作業給上家</div></div>
   <div id="course-list"></div>
 </div>
-
 <div class="page-section" id="page-system">
   <div class="page-top"><div class="page-top-title">🛠️ DCT 系統工具</div><div class="page-top-sub">專屬 DCT 夥伴的經營工具</div></div>
   <div id="system-list"></div>
@@ -527,6 +419,24 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 </div>
 
 <script>
+
+
+(function(){
+  var splash=document.getElementById('splash-screen');
+  var bar=document.getElementById('splash-bar');
+  var txt=document.getElementById('splash-txt');
+  if(!splash||!bar)return;
+  var msgs=[{at:0,msg:'✦ 歡迎加入 DCT 🦋'},{at:25,msg:'載入你的晉升地圖…'},{at:50,msg:'整理課程與檢核表…'},{at:75,msg:'準備你的專屬旅程…'},{at:95,msg:'即將出發 🚀'}];
+  var pct=0;
+  var iv=setInterval(function(){
+    pct=Math.min(pct+Math.random()*5+2,98);
+    bar.style.width=pct+'%';
+    for(var i=msgs.length-1;i>=0;i--){if(pct>=msgs[i].at){if(txt)txt.textContent=msgs[i].msg;break;}}
+    if(pct>=98){clearInterval(iv);setTimeout(function(){bar.style.width='100%';if(txt)txt.textContent='完成！';setTimeout(function(){splash.style.animation='splash-fade .5s ease forwards';setTimeout(function(){splash.style.display='none';},520);},280);},200);}
+  },55);
+})();
+
+
 // ── SPLASH SCREEN JS ──
 (function(){
   var splash=document.getElementById('splash-screen');
@@ -569,7 +479,7 @@ function applyName(name){
   userName=name;
   document.getElementById('tb-name').textContent=name?name+'的晉升地圖':'我的晉升地圖';
   document.getElementById('hero-title').innerHTML=name
-    ?`<span style="color:#37A5E6">${name}</span>，每一關都算數 ⭐<br>你比昨天更強了 🏰`
+    ?`<span style="color:#fff;font-weight:900;">${name}</span>，每一關都算數 ⭐<br>你比昨天更強了 🏰`
     :'每一關都算數 ⭐<br>你比昨天更強了 🏰';
 }
 function editName(){
@@ -590,9 +500,9 @@ function startWithName(){
   const input=document.getElementById('wc-name').value.trim();
   if(!input)return;
   saveName(input);applyName(input);
-  const goalVal=document.getElementById('wc-goal')?.value;
+  const goalVal=(document.getElementById('wc-goal')||{}).value;
   if(goalVal)localStorage.setItem(GK,goalVal);
-  const incomeVal=document.getElementById('wc-income')?.value;
+  const incomeVal=(document.getElementById('wc-income')||{}).value;
   if(incomeVal)localStorage.setItem(IK,incomeVal);
   const wc=document.getElementById('welcome');
   const btnEl=document.getElementById('wc-btn');
@@ -601,6 +511,7 @@ function startWithName(){
   setTimeout(()=>wc.style.display='none',300);
   rHdr();
 }
+function skipWelcome(){var wc=document.getElementById('welcome');wc.style.animation='fadeOut .3s ease forwards';setTimeout(function(){wc.style.display='none';},300);}
 function onNameInput(){const v=document.getElementById('wc-name').value.trim();document.getElementById('wc-btn').disabled=v.length===0;}
 function onNameKey(e){if(e.key==='Enter'){const v=document.getElementById('wc-name').value.trim();if(v)startWithName();}}
 const saved=loadName();
@@ -635,23 +546,29 @@ function mk(li,id){P[k(li,id)]=true;save();}
 function um(li,id){delete P[k(li,id)];save();}
 function ulk(li,q){return !q.ul||done(li,q.ul);}
 function ndone(li){const st=CHECKLISTS[li];if(!st)return 0;return st.sections.reduce((s,sec)=>s+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0);}
-function totXP(){let x=0;CHECKLISTS.forEach(stage=>{stage.sections.forEach(sec=>{sec.items.forEach((item,i)=>{if(ckData[sec.id+'_'+i]){x+=(typeof item==='object'&&item.course)?3:2;}});});});return x;}
+function totXP(){let x=0;CHECKLISTS.forEach(stage=>{stage.sections.forEach(sec=>{sec.items.forEach((item,i)=>{if(ckData[sec.id+'_'+i]){x+=1;}});});});return x;}
 function stagesDone(){return CHECKLISTS.filter((st,i)=>{const t=st.sections.reduce((s,sec)=>s+sec.items.length,0);return t>0&&ndone(i)===t;}).length;}
 function randEnc(arr){return arr[Math.floor(Math.random()*arr.length)];}
 
 function rHdr(){
   const tx=totXP();
-  const curLevelName=CHECKLISTS[ci]?.stageName||'愛用客';
-  document.getElementById('s-done').textContent=STAGES[ci]?.emoji+' '+curLevelName;
+  // 找第一個未完成的階段（闖關中）
+  var activeIdx=0;
+  for(var ai=0;ai<CHECKLISTS.length;ai++){var st=CHECKLISTS[ai];var t=st.sections.reduce(function(s,sec){return s+sec.items.length;},0);var d=st.sections.reduce(function(s,sec){return s+sec.items.filter(function(_,j){return ckData[sec.id+'_'+j];}).length;},0);if(t===0||d<t){activeIdx=ai;break;}}
+  const activeName=(CHECKLISTS[activeIdx]&&CHECKLISTS[activeIdx].stageName)||'愛用客';
+  const activeEmoji=(STAGES[activeIdx]&&STAGES[activeIdx].emoji)||'🌱';
+  const curLevelName=activeName;
+  document.getElementById('s-done').textContent=activeEmoji+' '+activeName;
   const income2=localStorage.getItem(IK);
   if(income2){const num=Number(income2);document.getElementById('s-tot').textContent=num>=10000?(num/10000).toFixed(num%10000===0?0:1)+'萬':'$'+num.toLocaleString();}
   else document.getElementById('s-tot').textContent='未設定';
   document.getElementById('s-pct').textContent=localStorage.getItem(GK)||'未設定';
   document.getElementById('tot-xp').textContent=tx;
   const ckStage=CHECKLISTS[ci];
-  document.getElementById('lv-tag').textContent=(ckStage?ckStage.stageName:'愛用客')+' · 階段 '+(ci+1);
+  document.getElementById('lv-tag').textContent=activeName+' · 階段 '+(activeIdx+1);
   let stageDone=0,stageTotal=0;
   if(ckStage)ckStage.sections.forEach(sec=>{stageTotal+=sec.items.length;stageDone+=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;});
+  var csnEl=document.getElementById('cur-stage-name');if(csnEl)csnEl.textContent=activeName;
   document.getElementById('cx').textContent=stageDone;
   document.getElementById('mx').textContent=stageTotal;
   document.getElementById('xf').style.width=stageTotal?Math.min(100,Math.round(stageDone/stageTotal*100))+'%':'0%';
@@ -674,7 +591,7 @@ function rLvNav(){
       <div class="lv-em">${ck.em}</div>
       <div class="lv-nm">${ck.stageName}</div>
       <div class="lv-pg"><div class="lv-pf" style="width:${p}%"></div></div>
-      <div class="lv-pt">${d}/${t}</div>
+      <div style="font-size:10px;font-weight:700;color:rgba(240,250,255,.95);margin-top:3px;letter-spacing:.02em;">${['0-14天','14-30天','30-60天','60-90天','90-120天','120天+','皇家'][i]||''}</div><div class="lv-pt">${d}/${t}</div>
     </div>`;
   }).join('');
 }
@@ -751,13 +668,13 @@ function switchPage(p){
   curPage=p;
   document.querySelector('.wrap').style.display=p==='map'?'block':'none';
   document.querySelectorAll('.page-section').forEach(el=>el.classList.remove('active'));
-  if(p!=='map')document.getElementById('page-'+p)?.classList.add('active');
+  if(p!=='map')var _pe=document.getElementById('page-'+p);if(_pe)_pe.classList.add('active');
   document.querySelectorAll('.bni').forEach(el=>el.classList.remove('on'));
-  document.getElementById('nav-'+p)?.classList.add('on');
+  var _ne=document.getElementById('nav-'+p);if(_ne)_ne.classList.add('on');
   if(p==='achievement')renderAchievements();
   if(p==='course')renderCourses();
   if(p==='system')renderSystem();
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo(0,0);
 }
 
 const COURSES=[
@@ -775,12 +692,12 @@ function renderCourses(){
   const el=document.getElementById('course-list');if(!el)return;
   el.innerHTML=COURSES.map(ch=>`<div class="course-chapter"><div class="course-ch-hd" onclick="toggleChapter('${ch.id}')"><div class="course-ch-em">${ch.em}</div><div class="course-ch-title">${ch.title}</div><div class="course-ch-count">${ch.links.length}</div><div class="course-ch-arr${openChapters[ch.id]?' open':''}" id="arr-${ch.id}">▼</div></div><div class="course-links${openChapters[ch.id]?' open':''}" id="links-${ch.id}">${ch.links.map(l=>`<a class="course-link" href="${l.url}" target="_blank"><div class="cl-icon cl-${l.type}">${l.type==='yt'?'▶':l.type==='nt'?'📝':'📁'}</div><div class="cl-body"><div class="cl-title">${l.title}</div><div class="cl-sub">${l.type==='yt'?'YouTube影片':l.type==='nt'?'Notion文件':'Google Drive'}</div></div><div class="cl-arr">→</div></a>`).join('')}</div></div>`).join('');
 }
-function toggleChapter(id){openChapters[id]=!openChapters[id];document.getElementById('links-'+id)?.classList.toggle('open',openChapters[id]);document.getElementById('arr-'+id)?.classList.toggle('open',openChapters[id]);}
+function toggleChapter(id){openChapters[id]=!openChapters[id];var _le=document.getElementById('links-'+id);if(_le)_le.classList.toggle('open',openChapters[id]);var _ae=document.getElementById('arr-'+id);if(_ae)_ae.classList.toggle('open',openChapters[id]);}
 
 const ACHIEVEMENTS=[{em:'🌱',name:'踏出第一步',desc:'完成愛用客階段',stageIdx:0},{em:'🌿',name:'展翅飛翔',desc:'完成實習加盟階段',stageIdx:1},{em:'⭐',name:'零售達人',desc:'完成三級零售階段',stageIdx:2},{em:'💫',name:'輔導新星',desc:'完成三級輔導階段',stageIdx:3},{em:'🌙',name:'成長加速',desc:'完成二級輔導階段',stageIdx:4},{em:'🌟',name:'領導核心',desc:'完成一級輔導階段',stageIdx:5},{em:'👑',name:'皇家榮耀',desc:'完成皇家階段',stageIdx:6}];
 function renderAchievements(){
   const grid=document.getElementById('ach-grid');const msList=document.getElementById('ms-display-list');if(!grid||!msList)return;
-  grid.innerHTML=ACHIEVEMENTS.map(a=>{const unlocked=(()=>{const st=CHECKLISTS[a.stageIdx];if(!st)return false;const t=st.sections.reduce((s,sec)=>s+sec.items.length,0);return t>0&&ndone(a.stageIdx)===t;})();return `<div class="ach-item${unlocked?' unlocked':' locked'}" onclick="${unlocked?'showCert('+a.stageIdx+')':''}" style="${unlocked?'cursor:pointer;':''}"><div class="ach-em">${a.em}</div><div class="ach-name">${a.name}</div><div class="ach-desc">${a.desc}</div><div class="ach-badge ${unlocked?'unlocked':'locked'}">${unlocked?'✓ 已解鎖':'🔒 未解鎖'}</div></div>`;}).join('');
+  grid.innerHTML=ACHIEVEMENTS.map(a=>{const unlocked=(()=>{const st=(CHECKLISTS[a.stageIdx]);if(!st)return false;const t=st.sections.reduce((s,sec)=>s+sec.items.length,0);return t>0&&ndone(a.stageIdx)===t;})();return `<div class="ach-item${unlocked?' unlocked':' locked'}" onclick="${unlocked?'showCert('+a.stageIdx+')':''}" style="${unlocked?'cursor:pointer;':''}"><div class="ach-em">${a.em}</div><div class="ach-name">${a.name}</div><div class="ach-desc">${a.desc}</div><div class="ach-badge ${unlocked?'unlocked':'locked'}">${unlocked?'✓ 已解鎖':'🔒 未解鎖'}</div></div>`;}).join('');
   const tx=totXP();
   msList.innerHTML=MILESTONES.map((m,mi)=>`<div class="ms-d-row" ${tx>=m.stars?'onclick="showMilestone(MILESTONES['+mi+'],totXP())" style="cursor:pointer;"':''}><div class="ms-d-icon">${m.icon}</div><div class="ms-d-body"><div class="ms-d-name">${m.title}</div><div class="ms-d-num">累積 ${m.stars} 顆星星</div></div><div class="ms-d-check">${tx>=m.stars?'✅':'⬜'}</div></div>`).join('');
 }
@@ -1306,7 +1223,7 @@ function confirmUpgrade(stageIdx){upgradedStages[stageIdx]=true;saveUpgraded();r
 
 const openSicSections={};let sicOpen=true;let retailFocus=null;
 function setRetailFocus(id){retailFocus=id;renderStageInfo();}
-function toggleSic(){sicOpen=!sicOpen;document.getElementById('sic-body')?.classList.toggle('open',sicOpen);document.getElementById('sic-arr')?.classList.toggle('open',sicOpen);}
+function toggleSic(){sicOpen=!sicOpen;var _sb=document.getElementById('sic-body');if(_sb)_sb.classList.toggle('open',sicOpen);var _sa=document.getElementById('sic-arr');if(_sa)_sa.classList.toggle('open',sicOpen);}
 
 function toggleSicCkItem(secId,itemIdx,evt){
   const key=secId+'_'+itemIdx;
@@ -1316,7 +1233,7 @@ function toggleSicCkItem(secId,itemIdx,evt){
   const stageTotal=ckStageNow?ckStageNow.sections.reduce((a,s)=>a+s.items.length,0):0;
   ckData[key]=!ckData[key];saveCkData();
   const newXP=totXP();
-  if(ckData[key]){const item=CHECKLISTS.flatMap(st=>st.sections).find(s=>s.id===secId)?.items[itemIdx];const xpGain=(typeof item==='object'&&item?.course)?3:2;const clickedEl=evt?.currentTarget||evt?.target;for(let s=0;s<xpGain;s++){setTimeout(()=>showXPFloat(1,clickedEl,s),s*120);}}
+  if(ckData[key]){const item=(CHECKLISTS.flatMap(st=>st.sections).find(s=>s.id===secId)||{items:[]}).items[itemIdx];const xpGain=1;const clickedEl=(evt&&evt.currentTarget)||evt&&evt.target;for(let s=0;s<xpGain;s++){setTimeout(()=>showXPFloat(1,clickedEl,s),s*120);}}
   rHdr();renderStageInfo();renderAchievements();
   if(ckData[key]){
     const newStageDone=ckStageNow?ckStageNow.sections.reduce((a,s)=>a+s.items.filter((_,j)=>ckData[s.id+'_'+j]).length,0):0;
@@ -1338,21 +1255,21 @@ function renderStageInfo(){
   const ncDone=nonCondSections.reduce((s,sec)=>s+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0);
   const ncTotal=nonCondSections.reduce((s,sec)=>s+sec.items.length,0);
   const allDone=ncTotal>0&&ncDone===ncTotal;
-  const thresholdHTML=upg?.threshold?`<div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;"><div style="background:linear-gradient(135deg,#37A5E6,#2290D4);border-radius:999px;padding:5px 14px;display:inline-flex;align-items:center;gap:5px;"><span style="font-size:9px;color:rgba(255,255,255,.8);">${upg.threshold.label}</span><span style="font-size:12px;font-weight:900;color:#fff;">${upg.threshold.amount}</span></div><div style="background:#EEF8FE;border:1.5px solid #A7D1F3;border-radius:999px;padding:5px 14px;display:inline-flex;align-items:center;"><span style="font-size:11px;font-weight:700;color:#2290D4;">${upg.threshold.monthly}</span></div></div>`:'';
+  const thresholdHTML=(upg&&upg.threshold)?`<div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;"><div style="background:linear-gradient(135deg,#37A5E6,#2290D4);border-radius:999px;padding:5px 14px;display:inline-flex;align-items:center;gap:5px;"><span style="font-size:9px;color:rgba(255,255,255,.8);">${upg.threshold.label}</span><span style="font-size:12px;font-weight:900;color:#fff;">${upg.threshold.amount}</span></div><div style="background:#EEF8FE;border:1.5px solid #A7D1F3;border-radius:999px;padding:5px 14px;display:inline-flex;align-items:center;"><span style="font-size:11px;font-weight:700;color:#2290D4;">${upg.threshold.monthly}</span></div></div>`:'';
   const retailTypes={page:'📱 版面',flow:'📣 引流',sales:'🤝 銷售',after:'💝 售後'};
-  const hasRetail=ckStage?.retailFocus;
-  const retailHTML=hasRetail?`<div style="margin-bottom:12px;"><div style="font-size:9px;font-weight:700;color:#37A5E6;letter-spacing:.1em;margin-bottom:7px;">💡 目前最卡關的是哪個？</div><div style="display:flex;gap:6px;flex-wrap:wrap;">${ckStage.sections.filter(s=>s.retailType).map(sec=>{const d=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;const t=sec.items.length;const pct=Math.round(d/t*100);const isSelected=retailFocus===sec.id;return `<button onclick="setRetailFocus('${sec.id}')" style="padding:6px 12px;border-radius:999px;font-size:10px;font-weight:700;border:1.5px solid ${isSelected?'#37A5E6':'#C0E4F8'};background:${isSelected?'linear-gradient(135deg,#37A5E6,#2290D4)':'#fff'};color:${isSelected?'#fff':'#5A9ABB'};cursor:pointer;font-family:inherit;">${retailTypes[sec.retailType]} ${pct}%</button>`;}).join('')}<button onclick="setRetailFocus(null)" style="padding:6px 12px;border-radius:999px;font-size:10px;font-weight:700;border:1.5px solid #C0E4F8;background:#fff;color:#5A9ABB;cursor:pointer;font-family:inherit;">全部</button></div></div>`:'';
+  const hasRetail=(ckStage&&ckStage.retailFocus);
+  const retailHTML='';
   const alreadyUpgraded=!!(upgradedStages[ci]||upgradedStages['review_'+ci]);
-  const completionPrompt=allDone?`<div style="margin-top:14px;background:linear-gradient(180deg,#1A4A9A 0%,#0A2050 100%);border:1px solid rgba(100,180,255,.3);border-radius:14px;padding:14px 16px;margin-bottom:14px;text-align:center;position:relative;"><span style=\"position:absolute;top:8px;left:12px;font-size:13px;color:rgba(200,230,255,.25);\">✦</span><span style=\"position:absolute;top:8px;right:12px;font-size:10px;color:rgba(200,230,255,.2);\">✦</span><div style="font-size:18px;margin-bottom:4px;">${alreadyUpgraded?'🏆':'🎉'}</div><div style="font-size:13px;font-weight:900;color:#fff;margin-bottom:4px;">${alreadyUpgraded?'晉升已確認！':'本階段全部完成！'}</div><div style="font-size:11px;color:rgba(255,255,255,.85);margin-bottom:10px;">${alreadyUpgraded?'你的獎狀已解鎖，到成就頁查看！':'所有檢核項目完成，確認晉升後解鎖專屬獎狀！'}</div>${alreadyUpgraded?'<div style="font-size:10px;color:rgba(255,255,255,.75);background:rgba(255,255,255,.15);border-radius:8px;padding:6px 10px;">✦ 繼續前往下一個階段 ✦</div>':(ci===5||ci===6)?'<button onclick="confirmReview('+ci+')" style="width:100%;padding:10px;border-radius:999px;background:#fff;color:#2290D4;font-size:13px;font-weight:900;border:none;cursor:pointer;font-family:inherit;">📋 確認已送審，解鎖下階段！</button>':'<button onclick="confirmUpgrade('+ci+')" style="width:100%;padding:10px;border-radius:999px;background:#fff;color:#2290D4;font-size:13px;font-weight:900;border:none;cursor:pointer;font-family:inherit;">🏆 確認已升級，解鎖獎狀！</button>'}</div>`:'';
+  const completionPrompt=allDone?`<div style="margin-top:14px;background:linear-gradient(180deg,#1A4A9A 0%,#0A2050 100%);border:1px solid rgba(100,180,255,.3);border-radius:14px;padding:14px 16px;margin-bottom:14px;text-align:center;position:relative;"><span style="position:absolute;top:8px;left:12px;font-size:13px;color:rgba(200,230,255,.25);">✦</span><span style="position:absolute;top:8px;right:12px;font-size:10px;color:rgba(200,230,255,.2);">✦</span><div style="font-size:18px;margin-bottom:4px;">${alreadyUpgraded?'🏆':'🎉'}</div><div style="font-size:13px;font-weight:900;color:#fff;margin-bottom:4px;">${alreadyUpgraded?'晉升已確認！':'本階段全部完成！'}</div><div style="font-size:11px;color:rgba(255,255,255,.85);margin-bottom:10px;">${alreadyUpgraded?'你的獎狀已解鎖，到成就頁查看！':'所有檢核項目完成，確認晉升後解鎖專屬獎狀！'}</div>${alreadyUpgraded?'<div style="font-size:10px;color:rgba(255,255,255,.75);background:rgba(255,255,255,.15);border-radius:8px;padding:6px 10px;">✦ 繼續前往下一個階段 ✦</div>':(ci===5||ci===6)?'<button onclick="confirmReview('+ci+')" style="width:100%;padding:10px;border-radius:999px;background:#fff;color:#2290D4;font-size:13px;font-weight:900;border:none;cursor:pointer;font-family:inherit;">📋 確認已送審，解鎖下階段！</button>':'<button onclick="confirmUpgrade('+ci+')" style="width:100%;padding:10px;border-radius:999px;background:#fff;color:#2290D4;font-size:13px;font-weight:900;border:none;cursor:pointer;font-family:inherit;">🏆 確認已升級，解鎖獎狀！</button>'}</div>`:'';
   const ckHTML=ckStage?ckStage.sections.filter(sec=>!retailFocus||!sec.retailType||sec.id===retailFocus).map(sec=>{const done=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;const total=sec.items.length;return `<div class="sic-ck-section"><div class="sic-ck-sec-hd"><div class="sic-ck-sec-em">${sec.em}</div><div class="sic-ck-sec-title">${sec.title}</div><div class="sic-ck-sec-prog">${done}/${total}</div></div><div class="sic-ck-items"><div class="sic-ck-target">🎯 ${sec.target}</div>${sec.items.map((item,i)=>{const checked=!!ckData[sec.id+'_'+i];const txt=typeof item==='object'?item.text:item;const course=typeof item==='object'?item.course:null;return `<div class="sic-ck-item-row${checked?' checked':''}" onclick="toggleSicCkItem('${sec.id}',${i},event)"><div class="sic-ck-box-sq"><div class="sic-ck-v2"></div></div><div class="sic-ck-item-main"><span class="sic-ck-txt">${txt}</span>${course?`<a class="course-link-btn" href="${course.url}" target="_blank" onclick="event.stopPropagation()">${course.url.includes('instagram.com')?'📱 前往 IG':course.url.includes('youtube.com')||course.url.includes('youtu.be')?'▶ 看課程':course.url.includes('notion.so')?'📝 看文件':course.url.includes('drive.google.com')?'📁 開啟':'🔗 前往'}</a>`:''}</div></div>`;}).join('')}</div></div>`;}).join(''):'';
-  wrap.innerHTML=`<div class="stage-info-card"><div class="sic-top" onclick="toggleSic()"><div class="sic-left"><div class="sic-em">${upg?.em||''}</div><div><div class="sic-name">${upg?.name||''} · 晉升條件 & 檢核表</div><div class="sic-sub">檢核 ${ckTotalDone}/${ckTotalAll} 項完成${allDone?' · ✅ 可準備晉升':''}</div></div></div><div class="sic-arr${sicOpen?' open':''}" id="sic-arr">▼</div></div><div class="sic-body${sicOpen?' open':''}" id="sic-body">${thresholdHTML}${upg?.conditions?.length?`<div class="sic-upg-title">✦ 晉升條件</div>${upg.conditions.map(c=>`<div class="sic-cond"><div class="sic-cond-dot"></div>${c}</div>`).join('')}<div class="sic-note">${upg.note}</div><div class="sic-divider"></div>`:''} ${CHECKLISTS[ci]?.locked_content&&!upgradedStages['review_'+ci]?'<div style="text-align:center;padding:24px 0;"><div style="font-size:28px;margin-bottom:8px;">🔒</div>'+(ci===5?'<div style="font-size:13px;font-weight:700;color:#5A9ABB;">完成並確認送審「一級審核」才解鎖</div>':'')+(ci===6?'<div style="font-size:13px;font-weight:700;color:#5A9ABB;">完成並確認送審「皇家審核」才解鎖</div>':'')+'<div style="font-size:11px;color:#90C0E0;margin-top:4px;">達到門檻後由上家協助送審</div></div>':retailHTML+(ckHTML?'<div class="sic-ck-title">✦ 本階段檢核表</div>'+ckHTML+'<button onclick="showAnalysis()" style="width:100%;margin-top:12px;padding:11px;border-radius:999px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1.5px solid #A7D1F3;color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,rgba(60,120,220,.6),rgba(30,80,180,.6));border:1px solid rgba(100,180,255,.4);">🔍 分析我的進度</button>':'')+completionPrompt}</div></div>`;
+  wrap.innerHTML=`<div class="stage-info-card"><div class="sic-top" onclick="toggleSic()"><div class="sic-left"><div class="sic-em">${(upg&&upg.em)||''}</div><div><div class="sic-name">${(upg&&upg.name)||''} · 晉升條件 & 檢核表</div><div class="sic-sub">檢核 ${ckTotalDone}/${ckTotalAll} 項完成${allDone?' · ✅ 可準備晉升':''}</div></div></div><div class="sic-arr${sicOpen?' open':''}" id="sic-arr">▼</div></div><div class="sic-body${sicOpen?' open':''}" id="sic-body">${thresholdHTML}${(upg&&upg.conditions&&upg.conditions.length)?`<div class="sic-upg-title">✦ 晉升條件</div>${upg.conditions.map(c=>`<div class="sic-cond"><div class="sic-cond-dot"></div>${c}</div>`).join('')}<div class="sic-note">${upg.note}</div><div class="sic-divider"></div>`:''} ${(CHECKLISTS[ci]&&CHECKLISTS[ci].locked_content)&&!upgradedStages['review_'+ci]?'<div style="text-align:center;padding:24px 0;"><div style="font-size:28px;margin-bottom:8px;">🔒</div>'+(ci===5?'<div style="font-size:13px;font-weight:700;color:#5A9ABB;">完成並確認送審「一級審核」才解鎖</div>':'')+(ci===6?'<div style="font-size:13px;font-weight:700;color:#5A9ABB;">完成並確認送審「皇家審核」才解鎖</div>':'')+'<div style="font-size:11px;color:#90C0E0;margin-top:4px;">達到門檻後由上家協助送審</div></div>':retailHTML+(ckHTML?'<div class="sic-ck-title">✦ 本階段檢核表</div>'+ckHTML+'<button onclick="showAnalysis()" style="width:100%;margin-top:12px;padding:11px;border-radius:999px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1.5px solid #A7D1F3;color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,rgba(60,120,220,.6),rgba(30,80,180,.6));border:1px solid rgba(100,180,255,.4);">🔍 分析我的進度</button>':'')+completionPrompt}</div></div>`;
 }
 
 const SYSTEM_TOOLS=[
   {id:'money',em:'💰',title:'DCT Money',subtitle:'淨利數據系統',badge:'實習 ～ 二級輔導',badgeColor:'#37A5E6',url:'https://annie55229900608.github.io/dct-calculator/',locked:false,desc:'開單、復盤、曲線圖一站搞定！讓你清楚掌握每一筆收入、每一位客人，數據永久保存不怕遺失。',features:['🧾 開單功能 — 選等級＋選銷售對象，自動帶入成本與售價','💰 幫客人算錢 — 快速計算客人優惠價，成交更流暢','📅 月復盤 — 每月數據整理，一鍵生成當月業績報告傳給上家','📈 魔術曲線圖 — 自動生成帳號成長曲線','💹 淨利曲線圖 — 自動生成收入趨勢圖','👤 客人歷年記錄 — 追蹤每一位客人的歷年購買紀錄','💾 匯出備份 — 可匯出資料永久保存','🏆 內建99句激勵金句，每次開啟隨機顯示']},
   {id:'promax',em:'👑',title:'DCT Promax',subtitle:'淨利數據系統',badge:'一級輔導・皇家',badgeColor:'#E8A020',url:'#',locked:true,desc:'升到一級輔導後解鎖',features:[]},
   {id:'charm',em:'✨',title:'DCT 魅力定位測驗',subtitle:'定位測驗 × 增粉寶典 × 帳號健檢',badge:'所有人適用',badgeColor:'#A06AEE',url:'https://annie55229900608.github.io/moon/',locked:false,desc:'17 道題，找出你的魅力定位與增粉方向。從「不知道發什麼」到「有方向、有系統」，還能健檢你的帳號、分析數據、找對標影片。',features:['🎯 魅力定位測驗','📱 Reels＋限動策略','👑 IG 命名公式','📊 增粉寶典','🔍 帳號健檢','📈 數據分析','🎬 對標影片','📚 參考課程']},
-  {id:'magic',em:'🌿',title:'DCT 纖體百寶庫',subtitle:'婕樂纖系列完整指南・科學纖體・健康生活',badge:'所有人適用',badgeColor:'#2A8A50',url:'https://annie55229900608.github.io/jerossediet',locked:false,desc:'DCT 客人專用輔助工具，讓你快速掌握產品使用方式，搭配飲食更有效。',features:['🌸 產品介紹','🌿 纖體吃法','✨ 瘦身秘訣','🍵 飲品泡法','🥗 飲食指南','🎓 纖體班']},
+  {id:'magic',em:'🌿',title:'DCT 纖體百寶庫',subtitle:'DCT 客人專用',badge:'所有人適用',badgeColor:'#2A8A50',url:'https://annie55229900608.github.io/jerossediet',locked:false,desc:'DCT 客人專用輔助工具，讓你快速掌握產品使用方式，搭配飲食更有效。',features:['🌸 產品介紹','🌿 纖體吃法','✨ 瘦身秘訣','🍵 飲品泡法','🥗 飲食指南','🎓 纖體班']},
 ];
 const INSTALL_TIPS=[{icon:'🍎',title:'iPhone / iPad',steps:['用 Safari 開啟連結','點下方「分享」按鈕（方塊＋箭頭）','選擇「加入主畫面」','確認名稱後點「新增」']},{icon:'🤖',title:'Android',steps:['用 Chrome 開啟連結','點右上角三點選單','選擇「新增到主畫面」或「安裝應用程式」','確認後即可從桌面直接開啟']}];
 
@@ -1411,22 +1328,27 @@ function renderDailyCheckin(){
   const today=getTodayKey(),data=loadDailyData(),todayData=data[today]||{},streak=loadStreak();
   const allDone=DAILY_ITEMS.every(item=>todayData[item.id]);
   const doneCount=DAILY_ITEMS.filter(item=>todayData[item.id]).length;
-  el.innerHTML=`<div style="background:#fff;border-radius:18px;margin:0 14px 12px;box-shadow:0 2px 12px rgba(55,165,230,.08);overflow:hidden;"><div style="background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;"><div style="display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">☀️</span><div><div style="font-size:12px;font-weight:700;color:#1A5A80;">每日打卡</div><div style="font-size:10px;color:#4A7A9A;">今日 ${doneCount}/${DAILY_ITEMS.length} 完成</div></div></div><div style="font-size:11px;font-weight:700;color:#2290D4;background:rgba(255,255,255,.7);border-radius:999px;padding:3px 10px;">🔥 連續 ${streak.streak||0} 天</div></div><div style="padding:12px 14px;">${DAILY_ITEMS.map(item=>{const checked=!!todayData[item.id];return `<div onclick="toggleDailyItem('${item.id}')" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;background:${checked?'linear-gradient(135deg,#EEF8FE,#E8F6FF)':'#F8FCFF'};border:1.5px solid ${checked?'#A7D1F3':'#E0F0F8'};cursor:pointer;margin-bottom:6px;"><div style="width:22px;height:22px;border-radius:7px;border:2px solid ${checked?'#2290D4':'#A7D1F3'};background:${checked?'linear-gradient(135deg,#37A5E6,#2290D4)':'#fff'};display:flex;align-items:center;justify-content:center;flex-shrink:0;">${checked?'<div style="width:9px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);"></div>':''}</div><span style="font-size:18px;">${item.em}</span><span style="font-size:12px;color:${checked?'#1A7AB8':'#3A6A8A'};font-weight:${checked?'700':'400'};">${item.text}</span>${checked?'<span style="margin-left:auto;font-size:11px;color:#37A5E6;">✓</span>':''}</div>`;}).join('')}${allDone?'<div style="text-align:center;padding:6px 0;font-size:12px;color:#37A5E6;font-weight:700;">🎉 今天全部完成！明天繼續！</div>':''}</div></div>`;
+  el.innerHTML=`<div style="background:rgba(255,255,255,.97);border-radius:18px;margin:0 14px 12px;box-shadow:0 2px 12px rgba(55,165,230,.08);overflow:hidden;"><div style="background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;"><div style="display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">☀️</span><div><div style="font-size:12px;font-weight:700;color:#1A5A80;">每日打卡</div><div style="font-size:10px;color:#4A7A9A;">今日 ${doneCount}/${DAILY_ITEMS.length} 完成</div></div></div><div style="font-size:11px;font-weight:700;color:#2290D4;background:rgba(255,255,255,.7);border-radius:999px;padding:3px 10px;">🔥 連續 ${streak.streak||0} 天</div></div><div style="padding:12px 14px;">${DAILY_ITEMS.map(item=>{const checked=!!todayData[item.id];return `<div onclick="toggleDailyItem('${item.id}')" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;background:${checked?'linear-gradient(135deg,#EEF8FE,#E8F6FF)':'#F8FCFF'};border:1.5px solid ${checked?'#A7D1F3':'#E0F0F8'};cursor:pointer;margin-bottom:6px;"><div style="width:22px;height:22px;border-radius:7px;border:2px solid ${checked?'#2290D4':'#A7D1F3'};background:${checked?'linear-gradient(135deg,#37A5E6,#2290D4)':'#fff'};display:flex;align-items:center;justify-content:center;flex-shrink:0;">${checked?'<div style="width:9px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);"></div>':''}</div><span style="font-size:18px;">${item.em}</span><span style="font-size:12px;color:${checked?'#1A7AB8':'#3A6A8A'};font-weight:${checked?'700':'400'};">${item.text}</span>${checked?'<span style="margin-left:auto;font-size:11px;color:#37A5E6;">✓</span>':''}</div>`;}).join('')}${allDone?'<div style="text-align:center;padding:6px 0;font-size:12px;color:#37A5E6;font-weight:700;">🎉 今天全部完成！明天繼續！</div>':''}</div></div>`;
 }
 
 function renderWeeklyRate(){
   const el=document.getElementById('weekly-rate');if(!el)return;
   const today=new Date(),days=[];
-  for(let i=6;i>=0;i--){const d=new Date(today);d.setDate(d.getDate()-i);days.push(d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate());}
+  // 找本週週一
+  const dow=today.getDay();// 0=日,1=一...6=六
+  const diffToMon=dow===0?-6:1-dow;// 距離本週一的天數
+  for(let i=0;i<7;i++){const d=new Date(today);d.setDate(today.getDate()+diffToMon+i);days.push(d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate());}
   const data=loadDailyData();const totalPossible=DAILY_ITEMS.length*7;let totalDone=0;
   const dayStats=days.map(day=>{const dayData=data[day]||{};const done=DAILY_ITEMS.filter(item=>dayData[item.id]).length;totalDone+=done;return{day,done,total:DAILY_ITEMS.length};});
   const pct=totalPossible>0?Math.round(totalDone/totalPossible*100):0;
   const dayNames=['一','二','三','四','五','六','日'];
-  const todayIdx=(today.getDay()+6)%7;
-  el.innerHTML=`<div style="background:#fff;border-radius:18px;margin:0 14px 12px;padding:14px 16px;box-shadow:0 2px 12px rgba(55,165,230,.08);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><div style="display:flex;align-items:center;gap:7px;"><span style="font-size:16px;">📊</span><div><div style="font-size:12px;font-weight:700;color:#1A5A80;">本週執行率</div><div style="font-size:10px;color:#5A9ABB;">每日打卡完成度</div></div></div><div style="font-size:22px;font-weight:900;color:${pct>=80?'#37A5E6':pct>=50?'#F0C040':'#E07050'};">${pct}%</div></div><div style="display:flex;gap:4px;justify-content:space-between;margin-bottom:10px;">${dayStats.map((s,i)=>{const p=s.total>0?Math.round(s.done/s.total*100):0;const isToday=i===todayIdx;return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;height:40px;background:#EEF8FE;border-radius:6px;overflow:hidden;position:relative;"><div style="position:absolute;bottom:0;width:100%;height:${p}%;background:${isToday?'linear-gradient(135deg,#37A5E6,#2290D4)':'linear-gradient(135deg,#A7D1F3,#C0E4F8)'};border-radius:4px;transition:height .5s;"></div></div><div style="font-size:8px;color:${isToday?'#1A7AB8':'#90C0E0'};font-weight:${isToday?'700':'400'};">週${dayNames[i]}</div></div>`;}).join('')}</div><div style="height:6px;background:#EEF8FE;border-radius:999px;overflow:hidden;"><div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;transition:width .6s;"></div></div><div style="font-size:10px;color:#90C0E0;margin-top:6px;text-align:right;">${dayStats.filter(s=>s.done===s.total).length} / 7 天全部完成</div></div>`;
+  const todayKey=today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  const todayIdx=days.indexOf(todayKey);
+  el.innerHTML=`<div style="background:rgba(255,255,255,.97);border-radius:18px;margin:0 14px 12px;padding:14px 16px;box-shadow:0 2px 12px rgba(55,165,230,.08);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><div style="display:flex;align-items:center;gap:7px;"><span style="font-size:16px;">📊</span><div><div style="font-size:12px;font-weight:700;color:#1A5A80;">本週執行率</div><div style="font-size:10px;color:#5A9ABB;">每日打卡完成度</div></div></div><div style="font-size:22px;font-weight:900;color:${pct>=80?'#37A5E6':pct>=50?'#F0C040':'#E07050'};">${pct}%</div></div><div style="display:flex;gap:4px;justify-content:space-between;margin-bottom:10px;">${dayStats.map((s,i)=>{const p=s.total>0?Math.round(s.done/s.total*100):0;const isToday=i===todayIdx;return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;height:40px;background:#EEF8FE;border-radius:6px;overflow:hidden;position:relative;"><div style="position:absolute;bottom:0;width:100%;height:${p}%;background:${isToday?'linear-gradient(135deg,#37A5E6,#2290D4)':'linear-gradient(135deg,#A7D1F3,#C0E4F8)'};border-radius:4px;transition:height .5s;"></div></div><div style="font-size:8px;color:${isToday?'#1A7AB8':'#90C0E0'};font-weight:${isToday?'700':'400'};">週${dayNames[i]}</div></div>`;}).join('')}</div><div style="height:6px;background:#EEF8FE;border-radius:999px;overflow:hidden;"><div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;transition:width .6s;"></div></div><div style="font-size:10px;color:#90C0E0;margin-top:6px;text-align:right;">${dayStats.filter(s=>s.done===s.total).length} / 7 天全部完成</div></div>`;
 }
 
 loadCkData();loadUpgraded();load();rAll();renderDailyCheckin();renderWeeklyRate();
+
 </script>
 </body>
 </html>
