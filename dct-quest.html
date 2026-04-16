@@ -10,7 +10,7 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Noto Sans TC',sans-serif;background:#EEF8FE;min-height:100vh;overflow-x:hidden;letter-spacing:1px;}
+body{font-family:'Noto Sans TC',sans-serif;background:linear-gradient(180deg,#C8E8FA 0%,#8BBFE0 35%,#4A8AB8 70%,#1A4A7A 100%);background-attachment:fixed;min-height:100vh;overflow-x:hidden;letter-spacing:1px;}
 body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#A7D1F3 1px,transparent 1px);background-size:30px 30px;opacity:.22;pointer-events:none;z-index:0;}
 .wrap{position:relative;z-index:1;max-width:460px;margin:0 auto;padding-bottom:110px;}
 .topbar{background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(55,165,230,.15);position:sticky;top:0;z-index:100;}
@@ -20,7 +20,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .tb-sub{font-size:10px;color:#4A90B8;margin-top:1px;}
 .tb-r{display:flex;align-items:center;gap:6px;}
 .xp-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.7);border:1.5px solid rgba(255,255,255,.9);border-radius:999px;padding:5px 13px;font-size:12px;font-weight:700;color:#1A7AB8;box-shadow:0 2px 8px rgba(55,165,230,.15);}
-.hero{background:linear-gradient(160deg,#DBF6FF,#A7D1F3);padding:28px 18px 30px;text-align:center;position:relative;overflow:hidden;}
+.hero{background:linear-gradient(180deg,#C8E8FA 0%,#8ABDE0 60%,#4A8AB8 100%);padding:28px 18px 30px;text-align:center;position:relative;overflow:hidden;}
 .hero::after{content:'◆';position:absolute;right:14px;top:10px;font-size:60px;color:rgba(255,255,255,.4);}
 .hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:3px 13px;font-size:10px;color:#2290D4;margin-bottom:14px;}
 .hero-title{font-size:20px;font-weight:900;color:#1A5A80;line-height:1.5;margin-bottom:10px;}
@@ -189,9 +189,9 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .ms-btns{display:flex;gap:8px;}
 .ms-btn-save{flex:1;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;}
 .ms-btn-close{flex:1;padding:12px;border-radius:999px;background:#EEF8FE;border:1.5px solid #A7D1F3;color:#2290D4;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
-.welcome{position:fixed;inset:0;background:#EEF8FE;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
-.welcome-box{background:#fff;border-radius:28px;padding:28px 22px;text-align:center;max-width:320px;width:100%;box-shadow:0 12px 40px rgba(55,165,230,.15);}
-.wc-icon{font-size:48px;margin-bottom:10px;display:block;animation:bo 1.5s ease infinite alternate;}
+.welcome{position:fixed;inset:0;background:linear-gradient(180deg,#1a3a6a 0%,#0d2245 55%,#081530 100%);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
+.welcome-box{background:#fff;border-radius:28px;padding:20px 18px;text-align:center;max-width:320px;width:100%;box-shadow:0 12px 40px rgba(55,165,230,.15);}
+.wc-icon{font-size:36px;margin-bottom:6px;display:block;animation:bo 1.5s ease infinite alternate;}
 .wc-label{font-size:11px;font-weight:700;color:#37A5E6;letter-spacing:.08em;margin-bottom:8px;text-align:left;}
 .wc-input{width:100%;padding:13px 16px;border-radius:999px;border:2px solid #A7D1F3;font-size:15px;font-family:inherit;color:#1A5A80;background:#EEF8FE;outline:none;transition:border-color .2s;margin-bottom:14px;}
 .wc-input:focus{border-color:#37A5E6;background:#fff;}
@@ -218,59 +218,151 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 </head>
 <body>
 
+<!-- App 全域白色蝴蝶背景 -->
+<div style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;">
+  <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <g id="appbf">
+        <path d="M0,-2 C-5,-15 -25,-38 -52,-32 C-68,-28 -66,-10 -50,-3 C-36,3 -16,0 0,-2Z" fill="white"/>
+        <path d="M0,-2 C5,-15 25,-38 52,-32 C68,-28 66,-10 50,-3 C36,3 16,0 0,-2Z" fill="white"/>
+        <path d="M0,2 C-6,10 -22,24 -30,38 C-36,50 -24,56 -14,46 C-6,38 -2,20 0,2Z" fill="white"/>
+        <path d="M0,2 C6,10 22,24 30,38 C36,50 24,56 14,46 C6,38 2,20 0,2Z" fill="white"/>
+        <ellipse cx="0" cy="14" rx="2" ry="14" fill="white"/>
+        <circle cx="0" cy="-1" r="3" fill="white"/>
+        <path d="M-1,-3 C-5,-12 -12,-20 -18,-26" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <circle cx="-18" cy="-26" r="2.2" fill="white"/>
+        <path d="M1,-3 C5,-12 12,-20 18,-26" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <circle cx="18" cy="-26" r="2.2" fill="white"/>
+      </g>
+    </defs>
+    <use href="#appbf" transform="translate(30,120)  scale(0.45)" opacity="0.09"/>
+    <use href="#appbf" transform="translate(340,80)  scale(0.38)" opacity="0.08"/>
+    <use href="#appbf" transform="translate(360,320) scale(0.52)" opacity="0.08"/>
+    <use href="#appbf" transform="translate(25,400)  scale(0.35)" opacity="0.09"/>
+    <use href="#appbf" transform="translate(300,550) scale(0.42)" opacity="0.08"/>
+    <use href="#appbf" transform="translate(60,620)  scale(0.32)" opacity="0.09"/>
+  </svg>
+</div>
+
 <!-- ── SPLASH SCREEN ── -->
 <div id="splash-screen" style="position:fixed;inset:0;background:linear-gradient(180deg,#1a3a6a 0%,#0d2245 50%,#081530 100%);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;">
-  <!-- 浮動蝴蝶 -->
-  <div style="position:absolute;top:12%;left:14%;opacity:.3;animation:bfL 5s ease-in-out infinite alternate;"><div style="position:relative;width:22px;height:16px;"><div style="position:absolute;width:12px;height:9px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;left:0;transform:rotate(-38deg);"></div><div style="position:absolute;width:12px;height:9px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;right:0;transform:rotate(38deg) scaleX(-1);"></div></div></div>
-  <div style="position:absolute;top:18%;right:12%;opacity:.22;animation:bfR 6s ease-in-out infinite alternate;"><div style="position:relative;width:16px;height:12px;"><div style="position:absolute;width:9px;height:7px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;left:0;transform:rotate(-38deg);"></div><div style="position:absolute;width:9px;height:7px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;right:0;transform:rotate(38deg) scaleX(-1);"></div></div></div>
-  <div style="position:absolute;bottom:28%;left:10%;opacity:.2;animation:bfL 7s ease-in-out infinite alternate-reverse;"><div style="position:relative;width:18px;height:13px;"><div style="position:absolute;width:10px;height:7px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;left:0;transform:rotate(-38deg);"></div><div style="position:absolute;width:10px;height:7px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;right:0;transform:rotate(38deg) scaleX(-1);"></div></div></div>
-  <div style="position:absolute;bottom:22%;right:11%;opacity:.18;animation:bfR 8s ease-in-out infinite alternate;"><div style="position:relative;width:14px;height:10px;"><div style="position:absolute;width:8px;height:6px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;left:0;transform:rotate(-38deg);"></div><div style="position:absolute;width:8px;height:6px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;right:0;transform:rotate(38deg) scaleX(-1);"></div></div></div>
-  <!-- 中央蝴蝶圓圈 -->
-  <div style="position:relative;width:130px;height:130px;margin-bottom:24px;">
-    <div style="position:absolute;inset:-28px;border-radius:50%;border:1px solid rgba(100,180,255,.1);"></div>
-    <div style="position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(100,180,255,.2);"></div>
-    <!-- 圓圈外左上蝴蝶 -->
-    <span style="font-size:26px;filter:drop-shadow(0 0 10px rgba(120,200,255,0.6));animation:sp-flutter 4s ease-in-out infinite alternate-reverse;display:inline-block;position:absolute;top:-48px;left:-52px;opacity:.85;">🦋</span>
-    <!-- 圓圈外右下蝴蝶 -->
-    <span style="font-size:20px;filter:drop-shadow(0 0 10px rgba(120,200,255,0.6));animation:sp-flutter 5s ease-in-out infinite alternate;display:inline-block;transform:scaleX(-1);position:absolute;bottom:-42px;right:-46px;opacity:.75;">🦋</span>
-    <div style="width:130px;height:130px;border-radius:50%;background:rgba(30,90,200,.35);border:1.5px solid rgba(100,180,255,.45);box-shadow:0 0 50px rgba(60,140,255,.3),0 0 100px rgba(30,80,180,.12);display:flex;align-items:center;justify-content:center;">
-      <span style="font-size:52px;filter:drop-shadow(0 0 18px rgba(120,200,255,0.7));animation:sp-flutter 3s ease-in-out infinite alternate;display:inline-block;">🦋</span>
+
+  <!-- 浮動蝴蝶背景 -->
+  <div style="position:absolute;top:10%;left:12%;opacity:.25;animation:bfL 5s ease-in-out infinite alternate;">🦋</div>
+  <div style="position:absolute;top:15%;right:10%;opacity:.2;animation:bfR 6s ease-in-out infinite alternate;">🦋</div>
+  <div style="position:absolute;bottom:20%;left:8%;opacity:.18;animation:bfL 7s ease-in-out infinite alternate-reverse;">🦋</div>
+  <div style="position:absolute;bottom:18%;right:9%;opacity:.2;animation:bfR 8s ease-in-out infinite alternate;">🦋</div>
+
+  <!-- 中央內容 -->
+  <div style="text-align:center;padding:0 40px;">
+
+    <!-- WELCOME 小標 -->
+    <div style="font-size:11px;font-weight:400;color:rgba(170,215,255,.6);letter-spacing:.35em;margin-bottom:20px;">W E L C O M E</div>
+
+    <!-- 蝴蝶圓圈 -->
+    <div style="position:relative;width:110px;height:110px;margin:0 auto 28px;">
+      <div style="position:absolute;inset:-22px;border-radius:50%;border:1px solid rgba(100,180,255,.15);"></div>
+      <div style="position:absolute;inset:-11px;border-radius:50%;border:1px solid rgba(100,180,255,.25);"></div>
+      <div style="width:110px;height:110px;border-radius:50%;background:linear-gradient(180deg,rgba(80,150,255,.45) 0%,rgba(10,40,140,.65) 100%);border:1.5px solid rgba(100,180,255,.45);box-shadow:0 0 40px rgba(60,140,255,.35);display:flex;align-items:center;justify-content:center;">
+        <span style="font-size:46px;animation:sp-flutter 3s ease-in-out infinite alternate;display:inline-block;">🦋</span>
+      </div>
+      <span style="position:absolute;top:-40px;left:-44px;font-size:22px;opacity:.8;animation:sp-flutter 4s ease-in-out infinite alternate-reverse;">🦋</span>
+      <span style="position:absolute;bottom:-36px;right:-40px;font-size:18px;opacity:.7;animation:sp-flutter 5s ease-in-out infinite alternate;">🦋</span>
     </div>
-  </div>
-  <!-- 標題 -->
-  <div style="font-size:30px;font-weight:900;color:#fff;letter-spacing:.06em;margin-bottom:7px;text-shadow:0 2px 28px rgba(60,140,255,.6);">DCT 晉升地圖</div>
-  <div style="font-size:12px;color:rgba(170,215,255,.75);letter-spacing:.22em;margin-bottom:44px;">✦ 星 空 輔 導 地 圖 ✦</div>
-  <!-- 進度條 -->
-  <div style="width:160px;">
-    <div style="height:2.5px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;">
-      <div id="splash-bar" style="height:100%;width:0%;background:linear-gradient(90deg,rgba(80,160,255,.5),rgba(200,235,255,.95));border-radius:999px;transition:width .06s linear;box-shadow:0 0 8px rgba(120,200,255,.4);"></div>
+
+    <!-- 大標題 -->
+    <div style="font-size:34px;font-weight:900;color:#fff;letter-spacing:.04em;margin-bottom:6px;text-shadow:0 2px 28px rgba(60,140,255,.5);">DCT 晉升地圖</div>
+
+    <!-- 分隔線 -->
+    <div style="width:40px;height:2px;background:linear-gradient(90deg,transparent,rgba(100,180,255,.6),transparent);margin:10px auto 16px;"></div>
+
+    <!-- 裝飾 emoji -->
+    <div style="font-size:16px;letter-spacing:8px;margin-bottom:16px;opacity:.9;">🦋 ✦ 🌟 ✦ 🦋</div>
+
+    <!-- 兩句簡介 -->
+    <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:.02em;">晉升路上，每一步都算數</div>
+    <div style="font-size:12px;color:rgba(180,220,255,.8);line-height:1.8;margin-bottom:36px;">從愛用客到皇家，你的旅程從這裡開始</div>
+
+    <!-- 進度條 -->
+    <div style="width:220px;margin:0 auto;">
+      <div style="height:3px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;margin-bottom:10px;">
+        <div id="splash-bar" style="height:100%;width:0%;background:linear-gradient(90deg,rgba(80,160,255,.6),rgba(200,235,255,.95));border-radius:999px;transition:width .06s linear;"></div>
+      </div>
+      <div id="splash-txt" style="font-size:10px;color:rgba(170,215,255,.6);letter-spacing:.12em;">載入中…</div>
     </div>
+
   </div>
 </div>
 
 <!-- WELCOME SCREEN -->
 <div class="welcome" id="welcome">
-  <div class="welcome-box">
-    <span class="wc-icon">🌟</span>
-    <div class="wc-title" style="font-size:22px;margin-bottom:8px;">DCT 晉升地圖</div>
-    <div style="font-size:11px;color:#37A5E6;font-weight:700;letter-spacing:.1em;margin-bottom:16px;">專屬 DCT 夥伴的經營加速系統</div>
-    <div style="background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border-radius:16px;padding:14px 16px;margin-bottom:16px;text-align:left;">
-      <div style="font-size:12px;font-weight:900;color:#1A5A80;margin-bottom:8px;">🚀 這個 App 能幫你：</div>
-      <div style="font-size:11px;color:#3A6A8A;line-height:1.9;">
-        ✦ 清楚每個階段要做什麼<br>
-        ✦ 找到目前卡關的地方並加強<br>
-        ✦ 追蹤自己的進度，不迷失方向<br>
-        ✦ 累積星星解鎖 DCT 專屬認證
+
+  <!-- 白色蝴蝶背景剪影 -->
+  <div style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <g id="bfly">
+          <!-- 左上大翅 -->
+          <path d="M0,-2 C-5,-15 -25,-38 -52,-32 C-68,-28 -66,-10 -50,-3 C-36,3 -16,0 0,-2Z" fill="white"/>
+          <!-- 右上大翅 -->
+          <path d="M0,-2 C5,-15 25,-38 52,-32 C68,-28 66,-10 50,-3 C36,3 16,0 0,-2Z" fill="white"/>
+          <!-- 左下小翅 -->
+          <path d="M0,2 C-6,10 -22,24 -30,38 C-36,50 -24,56 -14,46 C-6,38 -2,20 0,2Z" fill="white"/>
+          <!-- 右下小翅 -->
+          <path d="M0,2 C6,10 22,24 30,38 C36,50 24,56 14,46 C6,38 2,20 0,2Z" fill="white"/>
+          <!-- 身體 -->
+          <ellipse cx="0" cy="14" rx="2" ry="14" fill="white"/>
+          <!-- 頭 -->
+          <circle cx="0" cy="-1" r="3" fill="white"/>
+          <!-- 觸角左 -->
+          <path d="M-1,-3 C-5,-12 -12,-20 -18,-26" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <circle cx="-18" cy="-26" r="2.2" fill="white"/>
+          <!-- 觸角右 -->
+          <path d="M1,-3 C5,-12 12,-20 18,-26" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <circle cx="18" cy="-26" r="2.2" fill="white"/>
+        </g>
+      </defs>
+      <use href="#bfly" transform="translate(70,100) scale(1.6)" opacity="0.18"/>
+      <use href="#bfly" transform="translate(310,60) scale(1.2)" opacity="0.13"/>
+      <use href="#bfly" transform="translate(40,280) scale(1.9)" opacity="0.12"/>
+      <use href="#bfly" transform="translate(340,230) scale(1.4)" opacity="0.15"/>
+      <use href="#bfly" transform="translate(90,460) scale(1.3)" opacity="0.14"/>
+      <use href="#bfly" transform="translate(310,410) scale(1.1)" opacity="0.13"/>
+      <use href="#bfly" transform="translate(180,580) scale(1.0)" opacity="0.16"/>
+      <use href="#bfly" transform="translate(250,350) scale(0.85)" opacity="0.13"/>
+      <use href="#bfly" transform="translate(150,170) scale(0.8)" opacity="0.15"/>
+      <use href="#bfly" transform="translate(280,500) scale(0.75)" opacity="0.12"/>
+    </svg>
+  </div>
+
+  <div class="welcome-box" style="position:relative;z-index:1;">
+    <span class="wc-icon">🦋</span>
+    <div class="wc-title" style="font-size:22px;margin-bottom:4px;">歡迎加入 DCT 🎉</div>
+    <div style="font-size:11px;color:#37A5E6;font-weight:700;letter-spacing:.1em;margin-bottom:14px;">✦ 星空輔導地圖 · 晉升加速系統 ✦</div>
+
+    <!-- 儀式感語句 -->
+    <div style="margin-bottom:14px;padding:16px 18px;background:linear-gradient(180deg,#1A4A8A 0%,#0A1E40 100%);border:1px solid rgba(100,180,255,.25);border-radius:18px;text-align:center;">
+      <div style="font-size:15px;font-weight:900;color:#fff;letter-spacing:.05em;margin-bottom:6px;">
+        每一隻蝴蝶，都曾是毛毛蟲 🦋
+      </div>
+      <div style="font-size:11px;color:rgba(180,220,255,.9);line-height:1.8;">
+        你選擇踏上這條路的這一刻<br>就已經開始蛻變了
       </div>
     </div>
-    <div style="background:#fff;border:1.5px solid #A7D1F3;border-radius:16px;padding:13px 15px;margin-bottom:16px;text-align:left;">
-      <div style="font-size:10px;font-weight:700;color:#37A5E6;letter-spacing:.1em;margin-bottom:8px;">💛 開始前，想對你說：</div>
-      <div style="font-size:12px;color:#1A5A80;font-weight:700;line-height:1.9;">
-        「成功不是偶然，<br>
-        是每天做對的事累積出來的。<br>
-        你願意開始，就已經領先了。」
+
+    <div style="background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border-radius:16px;padding:12px 14px;margin-bottom:10px;text-align:left;">
+      <div style="font-size:11px;font-weight:900;color:#1A5A80;margin-bottom:6px;">🦋 什麼是 DCT 晉升地圖？</div>
+      <div style="font-size:11px;color:#3A6A8A;line-height:1.8;">
+        專為 DCT 夥伴設計的經營加速系統<br>
+        從愛用客到皇家，每個階段都有清楚的課程、檢核表和行動指引，讓你不迷路。
+      </div>
+      <div style="margin-top:8px;font-size:10px;color:#2290D4;line-height:1.85;">
+        ✦ 每個階段要做什麼、怎麼做<br>
+        ✦ 每日打卡，累積執行天數<br>
+        ✦ 累積星星，解鎖專屬認證
       </div>
     </div>
+
     <div class="wc-label">✦ 你的名字</div>
     <input class="wc-input" id="wc-name" type="text" placeholder="例如：小安、Annie…" maxlength="10" oninput="onNameInput()" onkeydown="onNameKey(event)">
     <div class="wc-label" style="margin-top:4px;">🎯 今年目標級別</div>
@@ -285,7 +377,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     </select>
     <div class="wc-label" style="margin-top:4px;">💰 月淨利目標（元）</div>
     <input class="wc-input" id="wc-income" type="number" placeholder="例如：30000" style="margin-bottom:14px;">
-    <button class="wc-btn" id="wc-btn" onclick="startWithName()">🌸 開始闖關！</button>
+    <button class="wc-btn" id="wc-btn" onclick="startWithName()">🦋 開始我的晉升旅程！</button>
     <div class="wc-note">以上設定儲存在你的裝置上，之後可以修改</div>
   </div>
 </div>
@@ -363,15 +455,27 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 (function(){
   var splash=document.getElementById('splash-screen');
   var bar=document.getElementById('splash-bar');
+  var txt=document.getElementById('splash-txt');
   if(!splash||!bar)return;
+  var msgs=[
+    {at:0,   msg:'✦ 歡迎加入 DCT 🦋'},
+    {at:25,  msg:'載入你的晉升地圖…'},
+    {at:50,  msg:'整理課程與檢核表…'},
+    {at:75,  msg:'準備你的專屬旅程…'},
+    {at:95,  msg:'即將出發 🚀'},
+  ];
   var pct=0;
   var iv=setInterval(function(){
     pct=Math.min(pct+Math.random()*5+2,98);
     bar.style.width=pct+'%';
+    for(var i=msgs.length-1;i>=0;i--){
+      if(pct>=msgs[i].at){if(txt)txt.textContent=msgs[i].msg;break;}
+    }
     if(pct>=98){
       clearInterval(iv);
       setTimeout(function(){
         bar.style.width='100%';
+        if(txt)txt.textContent='完成！';
         setTimeout(function(){
           splash.style.animation='splash-fade .5s ease forwards';
           setTimeout(function(){splash.style.display='none';},520);
