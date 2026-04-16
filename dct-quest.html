@@ -13,8 +13,6 @@ html{scroll-behavior:smooth;}
 body{font-family:'Noto Sans TC',sans-serif;background:#EEF8FE;min-height:100vh;overflow-x:hidden;letter-spacing:1px;}
 body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#A7D1F3 1px,transparent 1px);background-size:30px 30px;opacity:.22;pointer-events:none;z-index:0;}
 .wrap{position:relative;z-index:1;max-width:460px;margin:0 auto;padding-bottom:110px;}
-
-/* ── TOPBAR ── */
 .topbar{background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(55,165,230,.15);position:sticky;top:0;z-index:100;}
 .tb-l{display:flex;align-items:center;gap:10px;}
 .tb-av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.5);border:2px solid rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;font-size:20px;}
@@ -22,8 +20,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .tb-sub{font-size:10px;color:#4A90B8;margin-top:1px;}
 .tb-r{display:flex;align-items:center;gap:6px;}
 .xp-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.7);border:1.5px solid rgba(255,255,255,.9);border-radius:999px;padding:5px 13px;font-size:12px;font-weight:700;color:#1A7AB8;box-shadow:0 2px 8px rgba(55,165,230,.15);}
-
-/* ── HERO ── */
 .hero{background:linear-gradient(160deg,#DBF6FF,#A7D1F3);padding:28px 18px 30px;text-align:center;position:relative;overflow:hidden;}
 .hero::after{content:'◆';position:absolute;right:14px;top:10px;font-size:60px;color:rgba(255,255,255,.4);}
 .hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:3px 13px;font-size:10px;color:#2290D4;margin-bottom:14px;}
@@ -33,52 +29,30 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .hs{background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);border-radius:14px;padding:8px 16px;text-align:center;}
 .hs-n{font-size:14px;font-weight:900;color:#2290D4;line-height:1.2;}
 .hs-l{font-size:9px;color:#5A9ABB;margin-top:1px;}
-
-/* ── STAGE BOX ── */
 .stage-box{background:#fff;margin:0 14px;border-radius:0 0 18px 18px;padding:16px 16px 14px;box-shadow:0 4px 20px rgba(55,165,230,.08);margin-bottom:20px;overflow:visible;}
 .sb-title{font-size:10px;font-weight:700;color:#2290D4;letter-spacing:.1em;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
 .sb-sub{font-size:10px;color:#90C0E0;font-weight:400;}
-.stages-row{display:flex;justify-content:space-between;gap:3px;}
-.stage-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;}
-.stage-star{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:18px;border:1.5px solid #C0E4F8;background:#EEF8FE;transition:all .3s;position:relative;}
-.stage-star.done{background:linear-gradient(135deg,#EEF8FE,#C0E4F8);border-color:#37A5E6;box-shadow:0 2px 8px rgba(55,165,230,.2);}
-.stage-star.current{background:linear-gradient(135deg,#37A5E6,#2290D4);border-color:#2290D4;box-shadow:0 3px 12px rgba(55,165,230,.35);}
-.stage-star.current .ss-icon{filter:brightness(10);}
-.stage-star.locked{opacity:.4;}
-.ss-icon{font-size:17px;}
-.stage-lbl{font-size:8px;color:#90C0E0;text-align:center;line-height:1.3;font-weight:500;}
-.stage-item.done-lbl .stage-lbl{color:#2290D4;font-weight:700;}
-.stage-item.cur-lbl .stage-lbl{color:#1A7AB8;font-weight:900;}
-.xp-bar-wrap{margin-top:10px;}
 .xp-row{display:flex;justify-content:space-between;margin-bottom:5px;}
 .xp-lbl{font-size:10px;font-weight:700;color:#37A5E6;}
 .xp-num{font-size:10px;color:#90C8E8;}
 .xp-bar{height:8px;background:#EEF8FE;border-radius:999px;overflow:hidden;border:1px solid #C0E4F8;}
 .xp-fill{height:100%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;transition:width .6s cubic-bezier(.34,1.56,.64,1);}
-
-/* ── SECTION LABEL ── */
 .sec-lbl{display:flex;align-items:center;gap:8px;padding:0 18px;margin-bottom:11px;}
 .sl-line{flex:1;height:1px;background:linear-gradient(90deg,#A7D1F3,transparent);}
 .sl-line.r{background:linear-gradient(90deg,transparent,#A7D1F3);}
 .sl-txt{font-size:10px;font-weight:700;color:#37A5E6;letter-spacing:.12em;white-space:nowrap;}
-
-/* ── LEVEL SCROLL ── */
 .lv-scroll{display:flex;gap:9px;padding:4px 18px 8px;overflow-x:auto;margin-top:32px;margin-bottom:16px;scrollbar-width:none;}
 .lv-scroll::-webkit-scrollbar{display:none;}
 .lv-card{flex-shrink:0;width:90px;background:#fff;border:2px solid #C0E4F8;border-radius:18px;padding:12px 6px 10px;text-align:center;cursor:pointer;transition:all .2s;position:relative;box-shadow:0 2px 10px rgba(55,165,230,.06);}
 .lv-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(55,165,230,.15);}
 .lv-card.lk{opacity:.4;}
 .lv-card.active{border-color:#37A5E6;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);box-shadow:0 4px 18px rgba(55,165,230,.22);}
-
 .lv-em{font-size:26px;margin-bottom:5px;}
 .lv-nm{font-size:9px;font-weight:700;color:#37A5E6;margin-bottom:3px;line-height:1.3;}
 .lv-pg{height:4px;background:#EEF8FE;border-radius:999px;overflow:hidden;margin-top:4px;}
 .lv-pf{height:100%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;}
 .lv-pt{font-size:8px;color:#90C8E8;margin-top:3px;}
-.lv-lock{position:absolute;top:5px;right:7px;font-size:11px;opacity:.5;}
-.lv-done-badge{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#37A5E6,#2290D4);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:900;box-shadow:0 2px 6px rgba(55,165,230,.3);}
-
-/* ── STAGE INFO CARD ── */
+.lv-done-badge{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#37A5E6,#2290D4);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:900;}
 .stage-info-card{background:#fff;border-radius:18px;margin:0 14px 12px;overflow:hidden;box-shadow:0 2px 12px rgba(55,165,230,.08);}
 .sic-top{background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:13px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
 .sic-left{display:flex;align-items:center;gap:9px;}
@@ -112,72 +86,13 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .sic-ck-item-main{flex:1;display:flex;align-items:flex-start;flex-wrap:wrap;gap:5px;}
 .sic-ck-txt{font-size:11px;color:#3A6A8A;line-height:1.65;flex:1;min-width:100px;}
 .sic-ck-item-row.checked .sic-ck-txt{color:#1A7AB8;}
-.course-link-btn{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:999px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1px solid #A7D1F3;color:#2290D4;font-size:9px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;box-shadow:0 1px 4px rgba(55,165,230,.15);}
-.course-link-btn:hover{background:#DBF6FF;border-color:#37A5E6;}
-
-/* ── QUEST AREA ── */
-.qa{padding:0 14px;}
-.qa-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 2px;}
-.qa-title{font-size:16px;font-weight:900;color:#1A4A6A;}
-.qa-cnt{background:#EEF8FE;border:1.5px solid #A7D1F3;border-radius:999px;padding:3px 12px;font-size:10px;font-weight:700;color:#37A5E6;}
-.cat-row{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none;}
-.cat-row::-webkit-scrollbar{display:none;}
-.cat-btn{flex-shrink:0;padding:6px 14px;border-radius:999px;font-size:10px;font-weight:600;border:1.5px solid #C0E4F8;background:#fff;color:#90C0E0;cursor:pointer;transition:all .15s;font-family:inherit;}
-.cat-btn:hover{border-color:#A7D1F3;color:#37A5E6;}
-.cat-btn.on{background:linear-gradient(135deg,#37A5E6,#2290D4);border-color:transparent;color:#fff;box-shadow:0 3px 10px rgba(55,165,230,.3);}
-
-/* ── QUEST CARD ── */
-.qc{background:#fff;border:2px solid #DCF0FC;border-radius:20px;margin-bottom:10px;overflow:hidden;transition:all .2s;box-shadow:0 2px 12px rgba(55,165,230,.06);}
-.qc:hover{box-shadow:0 4px 18px rgba(55,165,230,.12);}
-.qc.done{border-color:#A7D1F3;background:linear-gradient(135deg,#F5FBFF,#EEF8FE);}
-.qc.lkq{opacity:.4;pointer-events:none;}
-.qc.open{border-color:#37A5E6;}
-.qc-hd{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;}
-.qc-ico{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
-.ik{background:linear-gradient(135deg,#EEF8FE,#C8EEFF);}
-.ia{background:linear-gradient(135deg,#EEFFF8,#C8F0E8);}
-.im{background:linear-gradient(135deg,#FFFAEE,#FFEEC8);}
-.ic{background:linear-gradient(135deg,#F8EEFF,#E8D0FF);}
-.qc-body{flex:1;min-width:0;}
-.qc-name{font-size:13px;font-weight:700;color:#1A4A6A;margin-bottom:4px;}
-.qc-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
-.qtag{font-size:9px;padding:2px 8px;border-radius:999px;font-weight:700;}
-.tk{background:#EEF6FF;color:#3A7ACC;}
-.ta{background:#EEFFF4;color:#2A8A50;}
-.tm{background:#FFFAEE;color:#B87820;}
-.tc{background:#F8EEFF;color:#7A3ACC;}
-.qxp{font-size:9px;color:#90C8E8;font-weight:700;}
-.qc-ck{width:28px;height:28px;border-radius:50%;border:2px solid #C0E4F8;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;background:#fff;}
-.qc.done .qc-ck{background:linear-gradient(135deg,#37A5E6,#2290D4);border-color:transparent;box-shadow:0 2px 8px rgba(55,165,230,.3);}
-.ckv{width:11px;height:7px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);opacity:0;transition:opacity .2s;}
-.qc.done .ckv{opacity:1;}
-.qc-det{border-top:1.5px dashed #C0E4F8;padding:14px 16px 16px;animation:sd .2s ease;}
-@keyframes sd{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
-.qd-desc{font-size:11px;color:#4A7A9A;line-height:1.8;margin-bottom:12px;}
-.qd-cll{margin-bottom:13px;}
-.qd-cl-lbl{font-size:9px;font-weight:700;color:#37A5E6;letter-spacing:.08em;margin-bottom:7px;}
-.qd-cli{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:#3A6A8A;line-height:1.6;padding:5px 0;border-bottom:1px solid #EEF8FE;}
-.qd-cli:last-child{border-bottom:none;}
-.qd-cli-dot{width:5px;height:5px;border-radius:50%;background:#A7D1F3;flex-shrink:0;margin-top:6px;}
-.qd-rw{display:flex;align-items:center;gap:5px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1px solid #A7D1F3;border-radius:10px;padding:7px 11px;margin-bottom:12px;font-size:10px;color:#2290D4;font-weight:700;}
-.qd-enc{font-size:11px;color:#37A5E6;font-style:italic;line-height:1.7;margin-bottom:11px;padding:8px 12px;background:#F5FBFF;border-left:3px solid #37A5E6;border-radius:0 8px 8px 0;}
-.qd-btn{width:100%;padding:12px;border-radius:999px;font-size:12px;font-weight:700;border:none;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.05em;}
-.qdb-ok{background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;box-shadow:0 4px 14px rgba(55,165,230,.35);}
-.qdb-ok:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(55,165,230,.45);}
-.qdb-un{background:#EEF8FE;border:1.5px solid #A7D1F3;color:#2290D4;}
-.qdb-lk{background:#F0F4F8;color:#B0C8D8;cursor:not-allowed;}
-.qd-link{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;border-radius:999px;background:#EEF8FE;border:1.5px solid #A7D1F3;color:#2290D4;font-size:11px;font-weight:700;text-decoration:none;margin-bottom:10px;transition:all .2s;}
-.qd-link:hover{background:#DBF6FF;border-color:#37A5E6;}
-
-/* ── BOTTOM NAV ── */
+.course-link-btn{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:999px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1px solid #A7D1F3;color:#2290D4;font-size:9px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;}
 .bnt{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;background:#fff;border-top:1.5px solid #DCF0FC;padding:8px 0;display:flex;justify-content:space-around;z-index:100;box-shadow:0 -4px 18px rgba(55,165,230,.08);}
 .bni{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 16px;border-radius:12px;transition:all .15s;}
 .bni.on{background:#EEF8FE;}
 .bni-ic{font-size:20px;}
 .bni-lb{font-size:9px;color:#9AB0D0;font-weight:500;letter-spacing:.05em;}
 .bni.on .bni-lb{color:#37A5E6;font-weight:700;}
-
-/* ── PAGES ── */
 .page-section{display:none;max-width:460px;margin:0 auto;padding:16px 14px 110px;}
 .page-section.active{display:block;}
 .page-top{background:linear-gradient(160deg,#DBF6FF,#A7D1F3);padding:20px 18px 18px;text-align:center;margin:-16px -14px 20px;}
@@ -222,15 +137,11 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .ms-d-name{font-size:11px;font-weight:700;color:#1A5A80;}
 .ms-d-num{font-size:9px;color:#5A9ABB;}
 .ms-d-check{font-size:14px;}
-
-/* ── OVERLAY ── */
 .ovl{position:fixed;inset:0;background:rgba(10,30,60,.55);display:flex;align-items:center;justify-content:center;z-index:999;animation:fi .2s ease;padding:20px;}
 @keyframes fi{from{opacity:0}to{opacity:1}}
 @keyframes pi{from{opacity:0;transform:scale(.65)}to{opacity:1;transform:scale(1)}}
 @keyframes bo{from{transform:translateY(0)}to{transform:translateY(-7px)}}
 @keyframes sp{0%{transform:scale(0)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
-
-/* ── QUEST POPUP ── */
 .pop-quest{background:#fff;border-radius:24px;padding:26px 22px;text-align:center;max-width:300px;width:100%;box-shadow:0 20px 60px rgba(55,165,230,.25);animation:pi .35s cubic-bezier(.34,1.56,.64,1);}
 .pq-em{font-size:48px;display:block;margin-bottom:6px;animation:bo 1s ease infinite alternate;}
 .pq-stars{display:flex;justify-content:center;gap:5px;margin-bottom:11px;}
@@ -240,8 +151,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .pq-enc{font-size:11px;color:#4A7A9A;line-height:1.75;margin-bottom:8px;}
 .pq-xp{display:inline-flex;align-items:center;gap:4px;background:#EEF8FE;border:1px solid #A7D1F3;border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700;color:#2290D4;margin-bottom:14px;}
 .pq-btn{width:100%;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(55,165,230,.32);font-family:inherit;}
-
-/* ── CERTIFICATE ── */
 .cert{background:#fff;border-radius:24px;max-width:340px;width:100%;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .4s cubic-bezier(.34,1.56,.64,1);overflow:hidden;}
 .cert-top{background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:28px 24px 22px;text-align:center;position:relative;overflow:hidden;}
 .cert-top::before{content:'◆';position:absolute;left:10px;top:8px;font-size:50px;color:rgba(255,255,255,.3);}
@@ -259,10 +168,8 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .cert-quote{font-size:11px;color:#37A5E6;font-style:italic;line-height:1.75;text-align:center;padding:10px 14px;background:#EEF8FE;border-radius:10px;margin-bottom:16px;border-left:3px solid #37A5E6;}
 .cert-meta{display:flex;justify-content:space-between;font-size:9px;color:#9AB0D0;margin-bottom:16px;}
 .cert-btns{display:flex;gap:8px;}
-.cert-btn-save{flex:1;padding:11px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;box-shadow:0 4px 12px rgba(55,165,230,.28);}
+.cert-btn-save{flex:1;padding:11px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;}
 .cert-btn-next{flex:1;padding:11px;border-radius:999px;background:#EEF8FE;border:1.5px solid #A7D1F3;color:#37A5E6;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
-
-/* ── MILESTONE ── */
 .ms-card{background:#fff;border-radius:28px;max-width:320px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .4s cubic-bezier(.34,1.56,.64,1);}
 .ms-card-top{padding:28px 20px 20px;text-align:center;position:relative;overflow:hidden;}
 .ms-card-top::before{content:'✦';position:absolute;left:12px;top:10px;font-size:40px;color:rgba(255,255,255,.2);}
@@ -280,15 +187,11 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .ms-quote-txt{font-size:11px;color:#2290D4;font-style:italic;line-height:1.75;text-align:center;}
 .ms-tag{font-size:9px;color:#90C0E0;text-align:center;margin-bottom:14px;}
 .ms-btns{display:flex;gap:8px;}
-.ms-btn-save{flex:1;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(55,165,230,.3);}
+.ms-btn-save{flex:1;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;}
 .ms-btn-close{flex:1;padding:12px;border-radius:999px;background:#EEF8FE;border:1.5px solid #A7D1F3;color:#2290D4;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
-
-/* ── WELCOME ── */
 .welcome{position:fixed;inset:0;background:#EEF8FE;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
 .welcome-box{background:#fff;border-radius:28px;padding:28px 22px;text-align:center;max-width:320px;width:100%;box-shadow:0 12px 40px rgba(55,165,230,.15);}
 .wc-icon{font-size:48px;margin-bottom:10px;display:block;animation:bo 1.5s ease infinite alternate;}
-.wc-title{font-size:20px;font-weight:900;color:#1A5A80;margin-bottom:6px;}
-.wc-desc{font-size:11px;color:#5A9ABB;line-height:1.7;margin-bottom:16px;}
 .wc-label{font-size:11px;font-weight:700;color:#37A5E6;letter-spacing:.08em;margin-bottom:8px;text-align:left;}
 .wc-input{width:100%;padding:13px 16px;border-radius:999px;border:2px solid #A7D1F3;font-size:15px;font-family:inherit;color:#1A5A80;background:#EEF8FE;outline:none;transition:border-color .2s;margin-bottom:14px;}
 .wc-input:focus{border-color:#37A5E6;background:#fff;}
@@ -296,29 +199,54 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .wc-btn{width:100%;padding:14px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:14px;font-weight:900;border:none;cursor:pointer;font-family:inherit;box-shadow:0 6px 18px rgba(55,165,230,.35);transition:all .2s;}
 .wc-btn:hover{transform:translateY(-2px);}
 .wc-note{font-size:10px;color:#90C0E0;margin-top:10px;line-height:1.6;}
-
-/* ── CONFETTI ── */
 .cf{position:fixed;pointer-events:none;z-index:1000;border-radius:2px;animation:cff linear forwards;}
 @keyframes cff{0%{transform:translateY(-10px) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
 @keyframes fadeOut{from{opacity:1}to{opacity:0}}
-
-/* ── FLOATING XP ── */
 .xp-float{position:fixed;font-size:20px;font-weight:900;color:#FFD700;pointer-events:none;z-index:9999;text-shadow:0 0 12px rgba(255,200,0,.6);animation:xpfloat 1.3s cubic-bezier(.2,.8,.4,1) forwards;}
 @keyframes xpfloat{0%{opacity:0;transform:translateY(0) scale(.5);}15%{opacity:1;transform:translateY(-15px) scale(1.4);}80%{opacity:1;transform:translateY(-70px) scale(1);}100%{opacity:0;transform:translateY(-95px) scale(.8);}}
-
-/* ── MINI MILESTONE TOAST ── */
-.mini-toast{position:fixed;left:50%;transform:translateX(-50%);bottom:90px;z-index:9998;
-  background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;
-  border-radius:999px;padding:10px 22px;font-size:13px;font-weight:700;
-  box-shadow:0 6px 20px rgba(55,165,230,.4);
-  animation:toastpop .4s cubic-bezier(.34,1.56,.64,1) forwards;}
+.mini-toast{position:fixed;left:50%;transform:translateX(-50%);bottom:90px;z-index:9998;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;border-radius:999px;padding:10px 22px;font-size:13px;font-weight:700;box-shadow:0 6px 20px rgba(55,165,230,.4);animation:toastpop .4s cubic-bezier(.34,1.56,.64,1) forwards;}
 .mini-toast.hide{animation:toasthide .35s ease forwards;}
 @keyframes toastpop{from{opacity:0;transform:translateX(-50%) translateY(20px) scale(.8);}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}}
 @keyframes toasthide{from{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}to{opacity:0;transform:translateX(-50%) translateY(10px) scale(.9);}}
 
+/* ── SPLASH SCREEN ── */
+@keyframes sp-flutter{0%{transform:scaleX(1) rotate(-2deg);}50%{transform:scaleX(.88) rotate(1deg);}100%{transform:scaleX(1) rotate(-1deg);}}
+@keyframes splash-fade{from{opacity:1;}to{opacity:0;pointer-events:none;}}
+@keyframes bfL{0%{transform:translate(0,0) rotate(-8deg);}100%{transform:translate(-10px,-22px) rotate(8deg);}}
+@keyframes bfR{0%{transform:translate(0,0) rotate(8deg);}100%{transform:translate(10px,-18px) rotate(-8deg);}}
 </style>
 </head>
 <body>
+
+<!-- ── SPLASH SCREEN ── -->
+<div id="splash-screen" style="position:fixed;inset:0;background:linear-gradient(180deg,#1a3a6a 0%,#0d2245 50%,#081530 100%);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;">
+  <!-- 浮動蝴蝶 -->
+  <div style="position:absolute;top:12%;left:14%;opacity:.3;animation:bfL 5s ease-in-out infinite alternate;"><div style="position:relative;width:22px;height:16px;"><div style="position:absolute;width:12px;height:9px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;left:0;transform:rotate(-38deg);"></div><div style="position:absolute;width:12px;height:9px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;right:0;transform:rotate(38deg) scaleX(-1);"></div></div></div>
+  <div style="position:absolute;top:18%;right:12%;opacity:.22;animation:bfR 6s ease-in-out infinite alternate;"><div style="position:relative;width:16px;height:12px;"><div style="position:absolute;width:9px;height:7px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;left:0;transform:rotate(-38deg);"></div><div style="position:absolute;width:9px;height:7px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;right:0;transform:rotate(38deg) scaleX(-1);"></div></div></div>
+  <div style="position:absolute;bottom:28%;left:10%;opacity:.2;animation:bfL 7s ease-in-out infinite alternate-reverse;"><div style="position:relative;width:18px;height:13px;"><div style="position:absolute;width:10px;height:7px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;left:0;transform:rotate(-38deg);"></div><div style="position:absolute;width:10px;height:7px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;right:0;transform:rotate(38deg) scaleX(-1);"></div></div></div>
+  <div style="position:absolute;bottom:22%;right:11%;opacity:.18;animation:bfR 8s ease-in-out infinite alternate;"><div style="position:relative;width:14px;height:10px;"><div style="position:absolute;width:8px;height:6px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;left:0;transform:rotate(-38deg);"></div><div style="position:absolute;width:8px;height:6px;border-radius:55% 0 55% 0;background:rgba(100,200,255,.9);top:0;right:0;transform:rotate(38deg) scaleX(-1);"></div></div></div>
+  <!-- 中央蝴蝶圓圈 -->
+  <div style="position:relative;width:130px;height:130px;margin-bottom:24px;">
+    <div style="position:absolute;inset:-28px;border-radius:50%;border:1px solid rgba(100,180,255,.1);"></div>
+    <div style="position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(100,180,255,.2);"></div>
+    <!-- 圓圈外左上蝴蝶 -->
+    <span style="font-size:26px;filter:drop-shadow(0 0 10px rgba(120,200,255,0.6));animation:sp-flutter 4s ease-in-out infinite alternate-reverse;display:inline-block;position:absolute;top:-48px;left:-52px;opacity:.85;">🦋</span>
+    <!-- 圓圈外右下蝴蝶 -->
+    <span style="font-size:20px;filter:drop-shadow(0 0 10px rgba(120,200,255,0.6));animation:sp-flutter 5s ease-in-out infinite alternate;display:inline-block;transform:scaleX(-1);position:absolute;bottom:-42px;right:-46px;opacity:.75;">🦋</span>
+    <div style="width:130px;height:130px;border-radius:50%;background:rgba(30,90,200,.35);border:1.5px solid rgba(100,180,255,.45);box-shadow:0 0 50px rgba(60,140,255,.3),0 0 100px rgba(30,80,180,.12);display:flex;align-items:center;justify-content:center;">
+      <span style="font-size:52px;filter:drop-shadow(0 0 18px rgba(120,200,255,0.7));animation:sp-flutter 3s ease-in-out infinite alternate;display:inline-block;">🦋</span>
+    </div>
+  </div>
+  <!-- 標題 -->
+  <div style="font-size:30px;font-weight:900;color:#fff;letter-spacing:.06em;margin-bottom:7px;text-shadow:0 2px 28px rgba(60,140,255,.6);">DCT 晉升地圖</div>
+  <div style="font-size:12px;color:rgba(170,215,255,.75);letter-spacing:.22em;margin-bottom:44px;">✦ 星 空 輔 導 地 圖 ✦</div>
+  <!-- 進度條 -->
+  <div style="width:160px;">
+    <div style="height:2.5px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;">
+      <div id="splash-bar" style="height:100%;width:0%;background:linear-gradient(90deg,rgba(80,160,255,.5),rgba(200,235,255,.95));border-radius:999px;transition:width .06s linear;box-shadow:0 0 8px rgba(120,200,255,.4);"></div>
+    </div>
+  </div>
+</div>
 
 <!-- WELCOME SCREEN -->
 <div class="welcome" id="welcome">
@@ -326,7 +254,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     <span class="wc-icon">🌟</span>
     <div class="wc-title" style="font-size:22px;margin-bottom:8px;">DCT 晉升地圖</div>
     <div style="font-size:11px;color:#37A5E6;font-weight:700;letter-spacing:.1em;margin-bottom:16px;">專屬 DCT 夥伴的經營加速系統</div>
-
     <div style="background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border-radius:16px;padding:14px 16px;margin-bottom:16px;text-align:left;">
       <div style="font-size:12px;font-weight:900;color:#1A5A80;margin-bottom:8px;">🚀 這個 App 能幫你：</div>
       <div style="font-size:11px;color:#3A6A8A;line-height:1.9;">
@@ -336,7 +263,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
         ✦ 累積星星解鎖 DCT 專屬認證
       </div>
     </div>
-
     <div style="background:#fff;border:1.5px solid #A7D1F3;border-radius:16px;padding:13px 15px;margin-bottom:16px;text-align:left;">
       <div style="font-size:10px;font-weight:700;color:#37A5E6;letter-spacing:.1em;margin-bottom:8px;">💛 開始前，想對你說：</div>
       <div style="font-size:12px;color:#1A5A80;font-weight:700;line-height:1.9;">
@@ -345,11 +271,8 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
         你願意開始，就已經領先了。」
       </div>
     </div>
-
     <div class="wc-label">✦ 你的名字</div>
     <input class="wc-input" id="wc-name" type="text" placeholder="例如：小安、Annie…" maxlength="10" oninput="onNameInput()" onkeydown="onNameKey(event)">
-
-
     <div class="wc-label" style="margin-top:4px;">🎯 今年目標級別</div>
     <select class="wc-input" id="wc-goal" style="margin-bottom:14px;cursor:pointer;">
       <option value="">選擇目標級別</option>
@@ -360,10 +283,8 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
       <option value="一級輔導">🌟 一級輔導</option>
       <option value="皇家">👑 皇家</option>
     </select>
-
     <div class="wc-label" style="margin-top:4px;">💰 月淨利目標（元）</div>
     <input class="wc-input" id="wc-income" type="number" placeholder="例如：30000" style="margin-bottom:14px;">
-
     <button class="wc-btn" id="wc-btn" onclick="startWithName()">🌸 開始闖關！</button>
     <div class="wc-note">以上設定儲存在你的裝置上，之後可以修改</div>
   </div>
@@ -412,41 +333,23 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   <div id="stage-info-wrap"></div>
 </div>
 
-<!-- ACHIEVEMENT PAGE -->
 <div class="page-section" id="page-achievement">
-  <div class="page-top">
-    <div class="page-top-title">🏆 我的成就</div>
-    <div class="page-top-sub">完成階段解鎖專屬徽章</div>
-  </div>
-  <div class="ms-display">
-    <div class="ms-d-title">✦ 星星里程碑</div>
-    <div id="ms-display-list"></div>
-  </div>
+  <div class="page-top"><div class="page-top-title">🏆 我的成就</div><div class="page-top-sub">完成階段解鎖專屬徽章</div></div>
+  <div class="ms-display"><div class="ms-d-title">✦ 星星里程碑</div><div id="ms-display-list"></div></div>
   <div class="ach-grid" id="ach-grid"></div>
 </div>
 
-<!-- COURSE PAGE -->
 <div class="page-section" id="page-course">
-  <div class="page-top">
-    <div class="page-top-title">📖 新人必上課程</div>
-    <div class="page-top-sub">每一堂上完都要交作業給上家</div>
-  </div>
+  <div class="page-top"><div class="page-top-title">📖 新人必上課程</div><div class="page-top-sub">每一堂上完都要交作業給上家</div></div>
   <div id="course-list"></div>
 </div>
 
-
-<!-- SYSTEM PAGE -->
 <div class="page-section" id="page-system">
-  <div class="page-top">
-    <div class="page-top-title">🛠️ DCT 系統工具</div>
-    <div class="page-top-sub">專屬 DCT 夥伴的經營工具</div>
-  </div>
+  <div class="page-top"><div class="page-top-title">🛠️ DCT 系統工具</div><div class="page-top-sub">專屬 DCT 夥伴的經營工具</div></div>
   <div id="system-list"></div>
 </div>
 
-<div class="ovl" id="ovl" style="display:none">
-  <div id="ovl-content"></div>
-</div>
+<div class="ovl" id="ovl" style="display:none"><div id="ovl-content"></div></div>
 
 <div class="bnt">
   <div class="bni on" id="nav-map" onclick="switchPage('map')"><div class="bni-ic">🎮</div><div class="bni-lb">闖關</div></div>
@@ -456,413 +359,127 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 </div>
 
 <script>
-const SK = 'dct_v4';
-const NK = 'dct_name_v1';
-const DK = 'dct_date_v1';
-const GK = 'dct_goal_v1';
-const IK = 'dct_income_v1';
+// ── SPLASH SCREEN JS ──
+(function(){
+  var splash=document.getElementById('splash-screen');
+  var bar=document.getElementById('splash-bar');
+  if(!splash||!bar)return;
+  var pct=0;
+  var iv=setInterval(function(){
+    pct=Math.min(pct+Math.random()*5+2,98);
+    bar.style.width=pct+'%';
+    if(pct>=98){
+      clearInterval(iv);
+      setTimeout(function(){
+        bar.style.width='100%';
+        setTimeout(function(){
+          splash.style.animation='splash-fade .5s ease forwards';
+          setTimeout(function(){splash.style.display='none';},520);
+        },280);
+      },200);
+    }
+  },55);
+})();
 
-let userName = '';
-
-function loadName(){
-  return localStorage.getItem(NK) || '';
-}
-function saveName(n){
-  localStorage.setItem(NK, n);
-}
-
+const SK='dct_v4',NK='dct_name_v1',DK='dct_date_v1',GK='dct_goal_v1',IK='dct_income_v1';
+let userName='';
+function loadName(){return localStorage.getItem(NK)||'';}
+function saveName(n){localStorage.setItem(NK,n);}
 function applyName(name){
-  userName = name;
-  document.getElementById('tb-name').textContent = name ? name+'的晉升地圖' : '我的晉升地圖';
-  document.getElementById('hero-title').innerHTML = name
-    ? `<span style="color:#37A5E6">${name}</span>，每一關都算數 ⭐<br>你比昨天更強了 🏰`
-    : '每一關都算數 ⭐<br>你比昨天更強了 🏰';
+  userName=name;
+  document.getElementById('tb-name').textContent=name?name+'的晉升地圖':'我的晉升地圖';
+  document.getElementById('hero-title').innerHTML=name
+    ?`<span style="color:#37A5E6">${name}</span>，每一關都算數 ⭐<br>你比昨天更強了 🏰`
+    :'每一關都算數 ⭐<br>你比昨天更強了 🏰';
 }
-
 function editName(){
-  const wc = document.getElementById('welcome');
-  const inp = document.getElementById('wc-name');
-  inp.value = userName || '';
-  document.getElementById('wc-btn').disabled = inp.value.trim().length === 0;
-  // Restore saved values
-  const dateInp = document.getElementById('wc-date');
-  if(dateInp) dateInp.value = localStorage.getItem(DK) || '';
-  const goalSel = document.getElementById('wc-goal');
-  if(goalSel) goalSel.value = localStorage.getItem(GK) || '';
-  const incomeInp = document.getElementById('wc-income');
-  if(incomeInp) incomeInp.value = localStorage.getItem(IK) || '';
-  // Change title to settings mode
-  const titleEl = document.getElementById('wc-main-title');
-  if(titleEl) titleEl.textContent = '⚙️ 個人設定';
-  const btnEl = document.getElementById('wc-btn');
-  if(btnEl) btnEl.textContent = '✅ 儲存設定';
-  wc.style.animation='';
-  wc.style.display='flex';
+  const wc=document.getElementById('welcome');
+  const inp=document.getElementById('wc-name');
+  inp.value=userName||'';
+  document.getElementById('wc-btn').disabled=inp.value.trim().length===0;
+  const goalSel=document.getElementById('wc-goal');
+  if(goalSel)goalSel.value=localStorage.getItem(GK)||'';
+  const incomeInp=document.getElementById('wc-income');
+  if(incomeInp)incomeInp.value=localStorage.getItem(IK)||'';
+  const btnEl=document.getElementById('wc-btn');
+  if(btnEl)btnEl.textContent='✅ 儲存設定';
+  wc.style.animation='';wc.style.display='flex';
   setTimeout(()=>inp.focus(),100);
 }
-
 function startWithName(){
-  const input = document.getElementById('wc-name').value.trim();
-  if(!input) return;
-  saveName(input);
-  applyName(input);
-  const dateVal = document.getElementById('wc-date')?.value;
-  if(dateVal) localStorage.setItem(DK, dateVal);
-  const goalVal = document.getElementById('wc-goal')?.value;
-  if(goalVal) localStorage.setItem(GK, goalVal);
-  const incomeVal = document.getElementById('wc-income')?.value;
-  if(incomeVal) localStorage.setItem(IK, incomeVal);
-  const wc = document.getElementById('welcome');
-  // Reset title back to default
-  const titleEl = document.getElementById('wc-main-title');
-  if(titleEl) titleEl.textContent = 'DCT 晉升闖關系統';
-  const btnEl = document.getElementById('wc-btn');
-  if(btnEl) btnEl.textContent = '🌸 開始闖關！';
+  const input=document.getElementById('wc-name').value.trim();
+  if(!input)return;
+  saveName(input);applyName(input);
+  const goalVal=document.getElementById('wc-goal')?.value;
+  if(goalVal)localStorage.setItem(GK,goalVal);
+  const incomeVal=document.getElementById('wc-income')?.value;
+  if(incomeVal)localStorage.setItem(IK,incomeVal);
+  const wc=document.getElementById('welcome');
+  const btnEl=document.getElementById('wc-btn');
+  if(btnEl)btnEl.textContent='🌸 開始闖關！';
   wc.style.animation='fadeOut .3s ease forwards';
-  setTimeout(()=>wc.style.display='none', 300);
+  setTimeout(()=>wc.style.display='none',300);
   rHdr();
 }
-// Listen for input changes to enable/disable button
-function onNameInput(){
-  const v = document.getElementById('wc-name').value.trim();
-  document.getElementById('wc-btn').disabled = v.length === 0;
-}
-function onNameKey(e){
-  if(e.key==='Enter'){
-    const v = document.getElementById('wc-name').value.trim();
-    if(v) startWithName();
-  }
-}
+function onNameInput(){const v=document.getElementById('wc-name').value.trim();document.getElementById('wc-btn').disabled=v.length===0;}
+function onNameKey(e){if(e.key==='Enter'){const v=document.getElementById('wc-name').value.trim();if(v)startWithName();}}
+const saved=loadName();
+if(saved){applyName(saved);document.getElementById('welcome').style.display='none';}
 
-// Init on load
-const saved = loadName();
-if(saved){
-  applyName(saved);
-  document.getElementById('welcome').style.display='none';
-  // Restore income display
-  const income = localStorage.getItem(IK);
-  const incomeEl = document.getElementById('income-display');
-  if(incomeEl && income) incomeEl.textContent = '$'+Number(income).toLocaleString();
-}
-
-const STAGES = [
-  { emoji:'🌱', name:'愛用客',    short:'愛用客' },
-  { emoji:'🌿', name:'實習加盟',  short:'實習' },
-  { emoji:'⭐', name:'三級零售',  short:'三級零售' },
-  { emoji:'💫', name:'三級輔導',  short:'三級輔導' },
-  { emoji:'🌙', name:'二級輔導',  short:'二級輔導' },
-  { emoji:'🌟', name:'一級輔導',  short:'一級輔導' },
-  { emoji:'👑', name:'皇家',      short:'皇家' },
+const STAGES=[
+  {emoji:'🌱',name:'愛用客',short:'愛用客'},
+  {emoji:'🌿',name:'實習加盟',short:'實習'},
+  {emoji:'⭐',name:'三級零售',short:'三級零售'},
+  {emoji:'💫',name:'三級輔導',short:'三級輔導'},
+  {emoji:'🌙',name:'二級輔導',short:'二級輔導'},
+  {emoji:'🌟',name:'一級輔導',short:'一級輔導'},
+  {emoji:'👑',name:'皇家',short:'皇家'},
+];
+const ENCOURAGEMENTS={quest:['你做到了！每一小步都是真實的成長。','太棒了！這個習慣會讓你越來越強。','完成！記住這個感覺，繼續往前走。','做到了！你比你想的更有能力。','很好！堅持的人最後都會到達終點。','完成！成功是每天積累出來的。','你又往前一步了，繼續保持！','做得好！這就是你和以前不同的地方。']};
+const LV=[
+  {id:'l0',name:'愛用客',em:'🌱',xpMax:50,cats:['全部','📖知識','✅行動','💛心態'],cert_quote:'「成為產品最好的見證者，你的故事就是最強的銷售工具。」',qs:[{id:'a',cat:'📖知識',tp:'k',em:'🌟',name:'了解DCT系統與產品',xp:10,ul:null,desc:'了解DCT的運作方式、婕樂纖核心產品，以及你選擇這份事業的意義。',cl:['看完DCT系統說明影片','認識至少3款核心產品','了解晉升路徑與收入結構'],enc:'知道「為什麼」，你才能在最難的時候撐下去。',link:'https://www.youtube.com/watch?v=RaqKArQoVB0',linkTxt:'▶ 觀看 DCT 系統說明影片'},{id:'b',cat:'✅行動',tp:'a',em:'📅',name:'完成14天使用打卡',xp:20,ul:'a',desc:'連續使用產品14天，記錄你身體真實的變化，這是你未來分享的底氣。',cl:['每天按時使用產品','記錄使用前後的感受','拍攝使用過程（可私下留存）'],enc:'你自己就是最有說服力的見證，14天後你會感謝今天的自己。'},{id:'c',cat:'💛心態',tp:'m',em:'✍️',name:'寫下你的使用見證',xp:10,ul:'b',desc:'把你最真實的使用感受寫下來，這段話未來會成為你分享時最有力量的故事。',cl:['寫下使用前的真實狀態','記錄14天後具體的改變','存好這段見證，未來用得到'],enc:'真實的故事比任何話術都更打動人心。'},{id:'d',cat:'✅行動',tp:'a',em:'💬',name:'分享給第一個人聽',xp:10,ul:'c',desc:'把你的使用見證分享給一位你信任的朋友或家人，不是為了賣，而是真心分享。',cl:['選擇一位信任的人分享','說出你真實的感受和改變','不強迫，只是分享'],enc:'開口是最難的第一步，你跨出去了，後面就容易了。'}]},
+  {id:'l1',name:'實習加盟',em:'🌿',xpMax:70,cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],cert_quote:'「每一次開口，都是在練習成為更好的自己。」',qs:[{id:'a',cat:'📖知識',tp:'k',em:'📋',name:'了解加盟制度與晉升條件',xp:10,ul:null,desc:'搞清楚實習加盟的所有條件，包括業績門檻、推薦人數，以及下一步晉升需要什麼。',cl:['了解實習加盟的業績門檻','清楚推薦人數的要求','和上家確認你目前的進度'],enc:'清楚目標才能有效率地前進，模糊只會讓你原地打轉。'},{id:'b',cat:'📖知識',tp:'k',em:'💬',name:'學習自然分享的話術',xp:10,ul:'a',desc:'從「分享生活」開始，而不是「推銷產品」。學會讓對方主動問你的3句話。',cl:['學會3句自然開場白','了解從分享到推薦的流程','練習到說出來不覺得尷尬'],enc:'不是在賣東西，是在分享讓你變好的東西，這個心態改變一切。'},{id:'c',cat:'✅行動',tp:'a',em:'📋',name:'列出100個潛在名單',xp:15,ul:'b',desc:'把你認識的所有人都列出來，不要先判斷「他一定不會」，讓名單說話。',cl:['列出至少50人的名單','標記關係親疏與接觸時機','分類：家人/朋友/同事/網友'],enc:'名單就是你最重要的資產，不要讓「自以為知道」限制你的可能。'},{id:'d',cat:'💛心態',tp:'m',em:'💪',name:'建立面對拒絕的心態',xp:10,ul:'c',desc:'每個成功的夥伴都被拒絕過很多次。拒絕不是終點，是篩選的過程。',cl:['記錄一次被拒絕的真實經過','寫下你從中學到的事','和上家聊聊這次的感受'],enc:'被拒絕說明你有在嘗試，沒有嘗試才是真正的失敗。'},{id:'e',cat:'🎯挑戰',tp:'c',em:'🤝',name:'完成第一次1對1分享',xp:15,ul:'d',desc:'邀請名單上一位朋友聊聊，不是為了成交，而是開口練習。',cl:['邀請一位朋友見面或視訊','完整分享你的使用見證','記錄對話中哪些說法有效'],enc:'第一次永遠最難，但你只要開口一次，下一次就輕鬆一點。'},{id:'f',cat:'🎯挑戰',tp:'c',em:'💡',name:'準備好3個常見問題的回答',xp:10,ul:'e',desc:'整理出朋友最常問的問題，用自己的話練習回答，不背稿，說自己的故事。',cl:['列出5個最常被問的問題','用自己的話練習每個回答','和上家角色扮演練習一次'],enc:'準備好了，你就不怕被問，甚至會期待被問。'}]},
+  {id:'l2',name:'三級零售',em:'⭐',xpMax:80,cats:['全部','📖知識','✅行動','🎯挑戰'],cert_quote:'「服務好一個人，他會幫你帶來更多人。」',qs:[{id:'a',cat:'📖知識',tp:'k',em:'💝',name:'學習客戶維護的方法',xp:15,ul:null,desc:'了解如何讓客戶從「買一次」變成「每個月回購」。',cl:['了解客戶回購的心理','學習3種跟進話術','知道如何把客戶變成推薦者'],enc:'留住一個客戶，比開發十個新客戶更有效率。'},{id:'b',cat:'✅行動',tp:'a',em:'📊',name:'建立客戶記錄系統',xp:15,ul:'a',desc:'用表格記錄每位客戶的購買記錄、使用狀況和下次聯繫時間。',cl:['建立基本客戶資料記錄','設定每位客戶的回購提醒','每週主動關心至少3位客戶'],enc:'用心記錄的人，才能提供讓人感動的服務。'},{id:'c',cat:'✅行動',tp:'a',em:'📱',name:'打造你的IG帳號',xp:20,ul:'b',desc:'把你的IG帳號定位清楚，讓陌生人第一眼就知道你是誰、你分享什麼。',cl:['更新大頭照與個人簡介','確定帳號的核心主題','發佈第一支定位明確的內容'],enc:'你的帳號是你的名片，讓它說出你想說的話。'},{id:'d',cat:'🎯挑戰',tp:'c',em:'🎯',name:'完成第一個月銷售目標',xp:30,ul:'c',desc:'和上家一起設定一個合理的月目標，每週追蹤進度，月底達成。',cl:['設定明確的月銷售目標','每週追蹤進度並調整','達標後記錄3個成功關鍵'],enc:'完成一個目標的感覺，會讓你更相信自己能完成下一個。'}]},
+  {id:'l3',name:'三級輔導',em:'💫',xpMax:90,cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],cert_quote:'「你的成長速度，決定你能帶多少人一起成長。」',qs:[{id:'a',cat:'📖知識',tp:'k',em:'👥',name:'了解輔導與領導的差異',xp:15,ul:null,desc:'輔導不是管理，是陪伴。',cl:['了解輔導者的角色與責任','學習如何給予有效的回饋','知道何時推一把、何時放手'],enc:'最好的輔導者，是讓對方覺得「我自己做到的」。'},{id:'b',cat:'✅行動',tp:'a',em:'📋',name:'建立你的新人輔導流程',xp:20,ul:'a',desc:'整理出你自己走過的路，把它變成可以給新人參考的流程。',cl:['整理你認為最重要的3個步驟','設計新人第一週的行動計畫','寫下你最想對新人說的一句話'],enc:'把你學到的傳出去，是對這段旅程最好的致敬。'},{id:'c',cat:'💛心態',tp:'m',em:'🌱',name:'建立長期陪伴的心態',xp:15,ul:'b',desc:'你的夥伴不會每天都狀態好，輔導者需要有穩定的心態。',cl:['寫下你為什麼想帶人的原因','設定你對夥伴的長期承諾','和上家聊聊你的輔導目標'],enc:'你穩定的時候，你的夥伴才敢跌倒。'},{id:'d',cat:'🎯挑戰',tp:'c',em:'🤝',name:'輔導第一位新人度過第一個月',xp:40,ul:'c',desc:'陪伴你的第一位夥伴完成新人第一個月。',cl:['每週至少和夥伴確認一次進度','解決至少一次夥伴的卡關','月底做一次回顧和鼓勵'],enc:'能讓別人成功的人，自己才會真的成功。'}]},
+  {id:'l4',name:'二級輔導',em:'🌙',xpMax:100,cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],cert_quote:'「團隊的高度，取決於你願意成為多高的人。」',qs:[{id:'a',cat:'📖知識',tp:'k',em:'📈',name:'學習團隊管理與激勵方法',xp:20,ul:null,desc:'了解如何維持團隊的士氣，如何激勵不同類型的夥伴。',cl:['了解不同夥伴的動力來源','學習3種激勵方式','知道如何處理夥伴之間的問題'],enc:'好的領導者不是讓人服從，而是讓人想追隨。'},{id:'b',cat:'✅行動',tp:'a',em:'📅',name:'建立團隊定期會議機制',xp:20,ul:'a',desc:'設定固定的團隊聚會或線上會議。',cl:['設定每週/每月的固定時間','準備有主題的會議內容','建立夥伴互相分享的空間'],enc:'固定的連結，是團隊不散的原因。'},{id:'c',cat:'💛心態',tp:'m',em:'🧘',name:'建立面對挫折的復原能力',xp:20,ul:'b',desc:'帶團隊的路上一定會有挫折。',cl:['列出你在這條路上最大的恐懼','找出3個讓你快速恢復的方法','和上家分享你的心路歷程'],enc:'跌倒不可怕，站起來的速度才決定你能走多遠。'},{id:'d',cat:'🎯挑戰',tp:'c',em:'🚀',name:'帶出一位三級零售的夥伴',xp:40,ul:'c',desc:'輔導你的夥伴完成三級零售的晉升。',cl:['確認夥伴的晉升條件與進度','在關鍵時刻給予具體支持','夥伴晉升後一起慶祝'],enc:'你帶出去的每一個人，都是你對這份事業最好的回答。'}]},
+  {id:'l5',name:'一級輔導',em:'🌟',xpMax:110,cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],cert_quote:'「真正的領導者，是讓每個人都覺得自己很重要。」',qs:[{id:'a',cat:'📖知識',tp:'k',em:'🏛️',name:'學習組織架構與系統化複製',xp:20,ul:null,desc:'了解如何把你的成功方法系統化。',cl:['整理出你的核心成功要素','設計可複製的輔導SOP','讓至少一位夥伴成功複製'],enc:'能被複製的成功，才是真正可持續的成功。'},{id:'b',cat:'✅行動',tp:'a',em:'📣',name:'建立品牌形象與影響力',xp:25,ul:'a',desc:'在社群上建立你作為領導者的形象。',cl:['定期分享你的領導者視角','建立你的個人品牌關鍵字','至少影響3位陌生人了解DCT'],enc:'你的影響力有多大，你能幫助的人就有多多。'},{id:'c',cat:'💛心態',tp:'m',em:'💎',name:'建立永續經營的心態',xp:25,ul:'b',desc:'一級輔導不是終點，是一個新的起點。',cl:['寫下你5年後想成為的樣子','設計讓你持續成長的每日習慣','分享你的長期願景給你的夥伴'],enc:'短期的努力改變結果，長期的堅持改變命運。'},{id:'d',cat:'🎯挑戰',tp:'c',em:'👑',name:'帶出一位二級輔導的夥伴',xp:40,ul:'c',desc:'陪伴一位夥伴完成二級輔導的晉升。',cl:['確認夥伴的晉升條件','提供關鍵時刻的策略支持','完成後一起舉辦慶祝儀式'],enc:'你能帶出什麼樣的人，就說明你是什麼樣的領導者。'}]},
+  {id:'l6',name:'皇家',em:'👑',xpMax:120,cats:['全部','📖知識','✅行動','💛心態'],cert_quote:'「皇家不是終點，是你開始影響更多人生命的起點。」',qs:[{id:'a',cat:'📖知識',tp:'k',em:'🌍',name:'了解皇家的責任與使命',xp:20,ul:null,desc:'皇家代表的不只是成就，而是承諾。',cl:['了解皇家的角色與象徵意義','確認你對夥伴的長期承諾','寫下你的皇家宣言'],enc:'到達這裡的你，已經證明了自己。現在是為別人而活的時候。'},{id:'b',cat:'✅行動',tp:'a',em:'🏆',name:'分享你的完整旅程故事',xp:30,ul:'a',desc:'把你從愛用客到皇家的完整故事整理出來。',cl:['整理你的完整晉升旅程','記錄最難熬的時刻和你如何撐過去','把這個故事分享給至少10位夥伴'],enc:'你走過的路，是別人最需要的地圖。'},{id:'c',cat:'💛心態',tp:'m',em:'🌟',name:'成為DCT精神的傳承者',xp:30,ul:'b',desc:'皇家的使命是讓更多人有機會改變自己的生命。',cl:['每個月至少鼓勵一位在低潮的夥伴','參與或舉辦至少一次分享會','讓你的故事持續影響新人'],enc:'你不需要做什麼偉大的事，你只需要繼續做真實的自己。'},{id:'d',cat:'✅行動',tp:'a',em:'👑',name:'完成皇家認證儀式',xp:40,ul:'c',desc:'和你的上家、你的夥伴一起完成屬於你的皇家認證。',cl:['通知上家你已完成所有條件','安排認證儀式的時間和形式','把這一刻永久記錄下來'],enc:'恭喜你。你做到了。'}]},
 ];
 
-const ENCOURAGEMENTS = {
-  quest: [
-    '你做到了！每一小步都是真實的成長。',
-    '太棒了！這個習慣會讓你越來越強。',
-    '完成！記住這個感覺，繼續往前走。',
-    '做到了！你比你想的更有能力。',
-    '很好！堅持的人最後都會到達終點。',
-    '完成！成功是每天積累出來的。',
-    '你又往前一步了，繼續保持！',
-    '做得好！這就是你和以前不同的地方。',
-  ],
-  stage: [
-    '恭喜你完成這個階段！這條路你選對了，繼續走下去。',
-    '你做到了！很多人在這裡放棄，但你沒有。這就是差別。',
-    '階段完成！你已經不是剛開始的那個你了。',
-    '太厲害了！每一個完成都是你給自己最好的禮物。',
-    '你突破了！接下來的每一步，都站在更高的地方出發。',
-    '完成！你的努力沒有被浪費，它們都在為你的未來鋪路。',
-    '你到達了！從這裡看到的風景，只有堅持到這裡的人才能看見。',
-  ],
-};
-
-const LV = [
-  {
-    id:'l0', name:'愛用客', em:'🌱', xpMax:50,
-    cats:['全部','📖知識','✅行動','💛心態'],
-    cert_quote:'「成為產品最好的見證者，你的故事就是最強的銷售工具。」',
-    qs:[
-      {id:'a',cat:'📖知識',tp:'k',em:'🌟',name:'了解DCT系統與產品',xp:10,ul:null,
-       desc:'了解DCT的運作方式、婕樂纖核心產品，以及你選擇這份事業的意義。',
-       cl:['看完DCT系統說明影片','認識至少3款核心產品','了解晉升路徑與收入結構'],
-       enc:'知道「為什麼」，你才能在最難的時候撐下去。',
-       link:'https://www.youtube.com/watch?v=RaqKArQoVB0',linkTxt:'▶ 觀看 DCT 系統說明影片'},
-      {id:'b',cat:'✅行動',tp:'a',em:'📅',name:'完成14天使用打卡',xp:20,ul:'a',
-       desc:'連續使用產品14天，記錄你身體真實的變化，這是你未來分享的底氣。',
-       cl:['每天按時使用產品','記錄使用前後的感受','拍攝使用過程（可私下留存）'],
-       enc:'你自己就是最有說服力的見證，14天後你會感謝今天的自己。'},
-      {id:'c',cat:'💛心態',tp:'m',em:'✍️',name:'寫下你的使用見證',xp:10,ul:'b',
-       desc:'把你最真實的使用感受寫下來，這段話未來會成為你分享時最有力量的故事。',
-       cl:['寫下使用前的真實狀態','記錄14天後具體的改變','存好這段見證，未來用得到'],
-       enc:'真實的故事比任何話術都更打動人心。'},
-      {id:'d',cat:'✅行動',tp:'a',em:'💬',name:'分享給第一個人聽',xp:10,ul:'c',
-       desc:'把你的使用見證分享給一位你信任的朋友或家人，不是為了賣，而是真心分享。',
-       cl:['選擇一位信任的人分享','說出你真實的感受和改變','不強迫，只是分享'],
-       enc:'開口是最難的第一步，你跨出去了，後面就容易了。'},
-    ]
-  },
-  {
-    id:'l1', name:'實習加盟', em:'🌿', xpMax:70,
-    cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],
-    cert_quote:'「每一次開口，都是在練習成為更好的自己。」',
-    qs:[
-      {id:'a',cat:'📖知識',tp:'k',em:'📋',name:'了解加盟制度與晉升條件',xp:10,ul:null,
-       desc:'搞清楚實習加盟的所有條件，包括業績門檻、推薦人數，以及下一步晉升需要什麼。',
-       cl:['了解實習加盟的業績門檻','清楚推薦人數的要求','和上家確認你目前的進度'],
-       enc:'清楚目標才能有效率地前進，模糊只會讓你原地打轉。'},
-      {id:'b',cat:'📖知識',tp:'k',em:'💬',name:'學習自然分享的話術',xp:10,ul:'a',
-       desc:'從「分享生活」開始，而不是「推銷產品」。學會讓對方主動問你的3句話。',
-       cl:['學會3句自然開場白','了解從分享到推薦的流程','練習到說出來不覺得尷尬'],
-       enc:'不是在賣東西，是在分享讓你變好的東西，這個心態改變一切。'},
-      {id:'c',cat:'✅行動',tp:'a',em:'📋',name:'列出100個潛在名單',xp:15,ul:'b',
-       desc:'把你認識的所有人都列出來，不要先判斷「他一定不會」，讓名單說話。',
-       cl:['列出至少50人的名單','標記關係親疏與接觸時機','分類：家人/朋友/同事/網友'],
-       enc:'名單就是你最重要的資產，不要讓「自以為知道」限制你的可能。'},
-      {id:'d',cat:'💛心態',tp:'m',em:'💪',name:'建立面對拒絕的心態',xp:10,ul:'c',
-       desc:'每個成功的夥伴都被拒絕過很多次。拒絕不是終點，是篩選的過程。',
-       cl:['記錄一次被拒絕的真實經過','寫下你從中學到的事','和上家聊聊這次的感受'],
-       enc:'被拒絕說明你有在嘗試，沒有嘗試才是真正的失敗。'},
-      {id:'e',cat:'🎯挑戰',tp:'c',em:'🤝',name:'完成第一次1對1分享',xp:15,ul:'d',
-       desc:'邀請名單上一位朋友聊聊，不是為了成交，而是開口練習。結果不重要，開口才重要。',
-       cl:['邀請一位朋友見面或視訊','完整分享你的使用見證','記錄對話中哪些說法有效'],
-       enc:'第一次永遠最難，但你只要開口一次，下一次就輕鬆一點。'},
-      {id:'f',cat:'🎯挑戰',tp:'c',em:'💡',name:'準備好3個常見問題的回答',xp:10,ul:'e',
-       desc:'整理出朋友最常問的問題，用自己的話練習回答，不背稿，說自己的故事。',
-       cl:['列出5個最常被問的問題','用自己的話練習每個回答','和上家角色扮演練習一次'],
-       enc:'準備好了，你就不怕被問，甚至會期待被問。'},
-    ]
-  },
-  {
-    id:'l2', name:'三級零售', em:'⭐', xpMax:80,
-    cats:['全部','📖知識','✅行動','🎯挑戰'],
-    cert_quote:'「服務好一個人，他會幫你帶來更多人。」',
-    qs:[
-      {id:'a',cat:'📖知識',tp:'k',em:'💝',name:'學習客戶維護的方法',xp:15,ul:null,
-       desc:'了解如何讓客戶從「買一次」變成「每個月回購」，以及如何讓滿意的客戶介紹新客戶。',
-       cl:['了解客戶回購的心理','學習3種跟進話術','知道如何把客戶變成推薦者'],
-       enc:'留住一個客戶，比開發十個新客戶更有效率。'},
-      {id:'b',cat:'✅行動',tp:'a',em:'📊',name:'建立客戶記錄系統',xp:15,ul:'a',
-       desc:'用表格記錄每位客戶的購買記錄、使用狀況和下次聯繫時間，讓你的服務更精準。',
-       cl:['建立基本客戶資料記錄','設定每位客戶的回購提醒','每週主動關心至少3位客戶'],
-       enc:'用心記錄的人，才能提供讓人感動的服務。'},
-      {id:'c',cat:'✅行動',tp:'a',em:'📱',name:'打造你的IG帳號',xp:20,ul:'b',
-       desc:'把你的IG帳號定位清楚，讓陌生人第一眼就知道你是誰、你分享什麼。',
-       cl:['更新大頭照與個人簡介','確定帳號的核心主題','發佈第一支定位明確的內容'],
-       enc:'你的帳號是你的名片，讓它說出你想說的話。'},
-      {id:'d',cat:'🎯挑戰',tp:'c',em:'🎯',name:'完成第一個月銷售目標',xp:30,ul:'c',
-       desc:'和上家一起設定一個合理的月目標，每週追蹤進度，月底達成。',
-       cl:['設定明確的月銷售目標','每週追蹤進度並調整','達標後記錄3個成功關鍵'],
-       enc:'完成一個目標的感覺，會讓你更相信自己能完成下一個。'},
-    ]
-  },
-  {
-    id:'l3', name:'三級輔導', em:'💫', xpMax:90,
-    cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],
-    cert_quote:'「你的成長速度，決定你能帶多少人一起成長。」',
-    qs:[
-      {id:'a',cat:'📖知識',tp:'k',em:'👥',name:'了解輔導與領導的差異',xp:15,ul:null,
-       desc:'輔導不是管理，是陪伴。了解如何讓新人感受到被支持，而不是被監督。',
-       cl:['了解輔導者的角色與責任','學習如何給予有效的回饋','知道何時推一把、何時放手'],
-       enc:'最好的輔導者，是讓對方覺得「我自己做到的」。'},
-      {id:'b',cat:'✅行動',tp:'a',em:'📋',name:'建立你的新人輔導流程',xp:20,ul:'a',
-       desc:'整理出你自己走過的路，把它變成可以給新人參考的流程，讓他們少走彎路。',
-       cl:['整理你認為最重要的3個步驟','設計新人第一週的行動計畫','寫下你最想對新人說的一句話'],
-       enc:'把你學到的傳出去，是對這段旅程最好的致敬。'},
-      {id:'c',cat:'💛心態',tp:'m',em:'🌱',name:'建立長期陪伴的心態',xp:15,ul:'b',
-       desc:'你的夥伴不會每天都狀態好，輔導者需要有穩定的心態，才能成為別人的依靠。',
-       cl:['寫下你為什麼想帶人的原因','設定你對夥伴的長期承諾','和上家聊聊你的輔導目標'],
-       enc:'你穩定的時候，你的夥伴才敢跌倒。'},
-      {id:'d',cat:'🎯挑戰',tp:'c',em:'🤝',name:'輔導第一位新人度過第一個月',xp:40,ul:'c',
-       desc:'陪伴你的第一位夥伴完成新人第一個月，記錄你遇到的挑戰和你的應對方式。',
-       cl:['每週至少和夥伴確認一次進度','解決至少一次夥伴的卡關','月底做一次回顧和鼓勵'],
-       enc:'能讓別人成功的人，自己才會真的成功。'},
-    ]
-  },
-  {
-    id:'l4', name:'二級輔導', em:'🌙', xpMax:100,
-    cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],
-    cert_quote:'「團隊的高度，取決於你願意成為多高的人。」',
-    qs:[
-      {id:'a',cat:'📖知識',tp:'k',em:'📈',name:'學習團隊管理與激勵方法',xp:20,ul:null,
-       desc:'了解如何維持團隊的士氣，如何激勵不同類型的夥伴，以及如何處理衝突。',
-       cl:['了解不同夥伴的動力來源','學習3種激勵方式','知道如何處理夥伴之間的問題'],
-       enc:'好的領導者不是讓人服從，而是讓人想追隨。'},
-      {id:'b',cat:'✅行動',tp:'a',em:'📅',name:'建立團隊定期會議機制',xp:20,ul:'a',
-       desc:'設定固定的團隊聚會或線上會議，讓夥伴有歸屬感，也讓問題不會累積太久。',
-       cl:['設定每週/每月的固定時間','準備有主題的會議內容','建立夥伴互相分享的空間'],
-       enc:'固定的連結，是團隊不散的原因。'},
-      {id:'c',cat:'💛心態',tp:'m',em:'🧘',name:'建立面對挫折的復原能力',xp:20,ul:'b',
-       desc:'帶團隊的路上一定會有挫折。這一關要你建立讓自己快速復原的方法。',
-       cl:['列出你在這條路上最大的恐懼','找出3個讓你快速恢復的方法','和上家分享你的心路歷程'],
-       enc:'跌倒不可怕，站起來的速度才決定你能走多遠。'},
-      {id:'d',cat:'🎯挑戰',tp:'c',em:'🚀',name:'帶出一位三級零售的夥伴',xp:40,ul:'c',
-       desc:'輔導你的夥伴完成三級零售的晉升，記錄你在過程中扮演的角色。',
-       cl:['確認夥伴的晉升條件與進度','在關鍵時刻給予具體支持','夥伴晉升後一起慶祝'],
-       enc:'你帶出去的每一個人，都是你對這份事業最好的回答。'},
-    ]
-  },
-  {
-    id:'l5', name:'一級輔導', em:'🌟', xpMax:110,
-    cats:['全部','📖知識','✅行動','💛心態','🎯挑戰'],
-    cert_quote:'「真正的領導者，是讓每個人都覺得自己很重要。」',
-    qs:[
-      {id:'a',cat:'📖知識',tp:'k',em:'🏛️',name:'學習組織架構與系統化複製',xp:20,ul:null,
-       desc:'了解如何把你的成功方法系統化，讓它可以被複製到更多夥伴身上。',
-       cl:['整理出你的核心成功要素','設計可複製的輔導SOP','讓至少一位夥伴成功複製'],
-       enc:'能被複製的成功，才是真正可持續的成功。'},
-      {id:'b',cat:'✅行動',tp:'a',em:'📣',name:'建立品牌形象與影響力',xp:25,ul:'a',
-       desc:'在社群上建立你作為領導者的形象，讓更多人因為你的內容而認識DCT。',
-       cl:['定期分享你的領導者視角','建立你的個人品牌關鍵字','至少影響3位陌生人了解DCT'],
-       enc:'你的影響力有多大，你能幫助的人就有多多。'},
-      {id:'c',cat:'💛心態',tp:'m',em:'💎',name:'建立永續經營的心態',xp:25,ul:'b',
-       desc:'一級輔導不是終點，是一個新的起點。建立讓你可以走10年的心態和習慣。',
-       cl:['寫下你5年後想成為的樣子','設計讓你持續成長的每日習慣','分享你的長期願景給你的夥伴'],
-       enc:'短期的努力改變結果，長期的堅持改變命運。'},
-      {id:'d',cat:'🎯挑戰',tp:'c',em:'👑',name:'帶出一位二級輔導的夥伴',xp:40,ul:'c',
-       desc:'這是你晉升到皇家前最重要的一步，陪伴一位夥伴完成二級輔導的晉升。',
-       cl:['確認夥伴的晉升條件','提供關鍵時刻的策略支持','完成後一起舉辦慶祝儀式'],
-       enc:'你能帶出什麼樣的人，就說明你是什麼樣的領導者。'},
-    ]
-  },
-  {
-    id:'l6', name:'皇家', em:'👑', xpMax:120,
-    cats:['全部','📖知識','✅行動','💛心態'],
-    cert_quote:'「皇家不是終點，是你開始影響更多人生命的起點。」',
-    qs:[
-      {id:'a',cat:'📖知識',tp:'k',em:'🌍',name:'了解皇家的責任與使命',xp:20,ul:null,
-       desc:'皇家代表的不只是成就，而是承諾。了解你作為皇家對團隊和品牌的責任。',
-       cl:['了解皇家的角色與象徵意義','確認你對夥伴的長期承諾','寫下你的皇家宣言'],
-       enc:'到達這裡的你，已經證明了自己。現在是為別人而活的時候。'},
-      {id:'b',cat:'✅行動',tp:'a',em:'🏆',name:'分享你的完整旅程故事',xp:30,ul:'a',
-       desc:'把你從愛用客到皇家的完整故事整理出來，這個故事會成為無數新人的力量。',
-       cl:['整理你的完整晉升旅程','記錄最難熬的時刻和你如何撐過去','把這個故事分享給至少10位夥伴'],
-       enc:'你走過的路，是別人最需要的地圖。'},
-      {id:'c',cat:'💛心態',tp:'m',em:'🌟',name:'成為DCT精神的傳承者',xp:30,ul:'b',
-       desc:'皇家的使命是讓更多人有機會改變自己的生命。你的存在本身就是最好的鼓勵。',
-       cl:['每個月至少鼓勵一位在低潮的夥伴','參與或舉辦至少一次分享會','讓你的故事持續影響新人'],
-       enc:'你不需要做什麼偉大的事，你只需要繼續做真實的自己。'},
-      {id:'d',cat:'✅行動',tp:'a',em:'👑',name:'完成皇家認證儀式',xp:40,ul:'c',
-       desc:'和你的上家、你的夥伴一起完成屬於你的皇家認證。這一刻值得被好好記錄。',
-       cl:['通知上家你已完成所有條件','安排認證儀式的時間和形式','把這一刻永久記錄下來'],
-       enc:'恭喜你。你做到了。'},
-    ]
-  },
-];
-
-let P={}, ci=0, cc='全部', oq=null;
-function load(){ try{ P=JSON.parse(localStorage.getItem(SK)||'{}'); }catch(e){ P={}; } }
-function save(){ localStorage.setItem(SK,JSON.stringify(P)); }
-function k(li,id){ return 'l'+li+'_'+id; }
-function done(li,id){ return !!P[k(li,id)]; }
-function mk(li,id){ P[k(li,id)]=true; save(); }
-function um(li,id){ delete P[k(li,id)]; save(); }
-function ulk(li,q){ return !q.ul||done(li,q.ul); }
-function ndone(li){ const st=CHECKLISTS[li]; if(!st) return 0; return st.sections.reduce((s,sec)=>s+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0); }
-function totDone(){ let d=0; CHECKLISTS.forEach(st=>st.sections.forEach(sec=>{ d+=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length; })); return d; }
-function totQ(){ let t=0; CHECKLISTS.forEach(st=>st.sections.forEach(sec=>{ t+=sec.items.length; })); return t; }
-function totXP(){
-  let x=0;
-  // XP from checklist items
-  CHECKLISTS.forEach(stage=>{
-    stage.sections.forEach(sec=>{
-      sec.items.forEach((item,i)=>{
-        if(ckData[sec.id+'_'+i]){
-          const hasCourse = typeof item==='object' && item.course;
-          x += hasCourse ? 3 : 2;
-        }
-      });
-    });
-  });
-  return x;
-}
-function stagesDone(){ return CHECKLISTS.filter((st,i)=>{ const t=st.sections.reduce((s,sec)=>s+sec.items.length,0); return t>0&&ndone(i)===t; }).length; }
-
-function randEnc(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+let P={},ci=0,cc='全部',oq=null;
+function load(){try{P=JSON.parse(localStorage.getItem(SK)||'{}');}catch(e){P={};}}
+function save(){localStorage.setItem(SK,JSON.stringify(P));}
+function k(li,id){return 'l'+li+'_'+id;}
+function done(li,id){return !!P[k(li,id)];}
+function mk(li,id){P[k(li,id)]=true;save();}
+function um(li,id){delete P[k(li,id)];save();}
+function ulk(li,q){return !q.ul||done(li,q.ul);}
+function ndone(li){const st=CHECKLISTS[li];if(!st)return 0;return st.sections.reduce((s,sec)=>s+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0);}
+function totXP(){let x=0;CHECKLISTS.forEach(stage=>{stage.sections.forEach(sec=>{sec.items.forEach((item,i)=>{if(ckData[sec.id+'_'+i]){x+=(typeof item==='object'&&item.course)?3:2;}});});});return x;}
+function stagesDone(){return CHECKLISTS.filter((st,i)=>{const t=st.sections.reduce((s,sec)=>s+sec.items.length,0);return t>0&&ndone(i)===t;}).length;}
+function randEnc(arr){return arr[Math.floor(Math.random()*arr.length)];}
 
 function rHdr(){
-  const td=totDone(), tq=totQ(), tx=totXP();
-  // Use checklist stats
-  let ckDone=0, ckTotal=0;
-  CHECKLISTS.forEach(st=>st.sections.forEach(sec=>{
-    ckTotal+=sec.items.length;
-    ckDone+=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;
-  }));
-  // Current level name
-  const curLevelName = CHECKLISTS[ci]?.stageName || '愛用客';
-  document.getElementById('s-done').textContent = STAGES[ci]?.emoji + ' ' + curLevelName;
-
-  // Monthly income goal
-  const income2 = localStorage.getItem(IK);
-  if(income2){
-    const num = Number(income2);
-    document.getElementById('s-tot').textContent = num >= 10000
-      ? (num/10000).toFixed(num%10000===0?0:1) + '萬'
-      : '$' + num.toLocaleString();
-  } else {
-    document.getElementById('s-tot').textContent = '未設定';
-  }
-
-  // Annual goal + monthly income
-  const goal = localStorage.getItem(GK);
-  const income = localStorage.getItem(IK);
-  const goalTxt = goal || '未設定';
-  const incomeTxt = income ? '$'+Number(income).toLocaleString() : '未設定';
-  document.getElementById('s-pct').textContent = goalTxt;
-  document.getElementById('tot-xp').textContent = tx;
-
-  // Update monthly income display in topbar pill
-  const incomeEl = document.getElementById('income-display');
-  if(incomeEl) incomeEl.textContent = incomeTxt;
-  const ckStage = CHECKLISTS[ci];
-  const stageName = ckStage ? ckStage.stageName : '愛用客';
-  document.getElementById('lv-tag').textContent=stageName+' · 階段 '+(ci+1);
-  let stageDone=0, stageTotal=0;
-  if(ckStage) ckStage.sections.forEach(sec=>{
-    stageTotal+=sec.items.length;
-    stageDone+=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;
-  });
+  const tx=totXP();
+  const curLevelName=CHECKLISTS[ci]?.stageName||'愛用客';
+  document.getElementById('s-done').textContent=STAGES[ci]?.emoji+' '+curLevelName;
+  const income2=localStorage.getItem(IK);
+  if(income2){const num=Number(income2);document.getElementById('s-tot').textContent=num>=10000?(num/10000).toFixed(num%10000===0?0:1)+'萬':'$'+num.toLocaleString();}
+  else document.getElementById('s-tot').textContent='未設定';
+  document.getElementById('s-pct').textContent=localStorage.getItem(GK)||'未設定';
+  document.getElementById('tot-xp').textContent=tx;
+  const ckStage=CHECKLISTS[ci];
+  document.getElementById('lv-tag').textContent=(ckStage?ckStage.stageName:'愛用客')+' · 階段 '+(ci+1);
+  let stageDone=0,stageTotal=0;
+  if(ckStage)ckStage.sections.forEach(sec=>{stageTotal+=sec.items.length;stageDone+=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;});
   document.getElementById('cx').textContent=stageDone;
   document.getElementById('mx').textContent=stageTotal;
   document.getElementById('xf').style.width=stageTotal?Math.min(100,Math.round(stageDone/stageTotal*100))+'%':'0%';
-  const sd=stagesDone();
-  const sdCk=CHECKLISTS.filter((st)=>{
-    const t=st.sections.reduce((s,sec)=>s+sec.items.length,0);
-    const d=st.sections.reduce((s,sec)=>s+sec.items.filter((_,j)=>ckData[sec.id+'_'+j]).length,0);
-    return t>0&&d===t;
-  }).length;
+  const sdCk=CHECKLISTS.filter(st=>{const t=st.sections.reduce((s,sec)=>s+sec.items.length,0);const d=st.sections.reduce((s,sec)=>s+sec.items.filter((_,j)=>ckData[sec.id+'_'+j]).length,0);return t>0&&d===t;}).length;
   const stageNames=['愛用客','實習','三零售','三輔導','二輔導','一輔導','皇家'];
   const doneNames=stageNames.slice(0,sdCk);
   const nextName=sdCk<7?stageNames[sdCk]:'';
   document.getElementById('stage-sub').textContent=sdCk===0?'尚未完成任何階段':sdCk===7?'全部完成 👑':doneNames.join('・')+(nextName?' → '+nextName:'');
-}
-
-function rStages(){
-  document.getElementById('stages-row').innerHTML=STAGES.map((s,i)=>{
-    const ckSt=CHECKLISTS[i];
-    const total=ckSt?ckSt.sections.reduce((s,sec)=>s+sec.items.length,0):0;
-    const done=ckSt?ckSt.sections.reduce((s,sec)=>s+sec.items.filter((_,j)=>ckData[sec.id+'_'+j]).length,0):0;
-    const all=total>0&&done===total;
-    const isCur=i===ci;
-    const lk=i>0&&(()=>{
-      const prev=CHECKLISTS[i-1];
-      if(!prev) return false;
-      const pt=prev.sections.reduce((s,sec)=>s+sec.items.length,0);
-      const pd=prev.sections.reduce((s,sec)=>s+sec.items.filter((_,j)=>ckData[sec.id+'_'+j]).length,0);
-      return pd<pt;
-    })();
-    let cls='stage-star';
-    if(all) cls+=' done';
-    else if(isCur) cls+=' current';
-    else if(lk) cls+=' locked';
-    let itemCls='stage-item';
-    if(all) itemCls+=' done-lbl';
-    else if(isCur) itemCls+=' cur-lbl';
-    return `<div class="${itemCls}" onclick="setLv(${i})">
-      <div class="${cls}"><span class="ss-icon">${s.emoji}</span></div>
-      <div class="stage-lbl">${s.short}</div>
-    </div>`;
-  }).join('');
 }
 
 function rLvNav(){
@@ -870,14 +487,8 @@ function rLvNav(){
     const t=ck.sections.reduce((s,sec)=>s+sec.items.length,0);
     const d=ck.sections.reduce((s,sec)=>s+sec.items.filter((_,j)=>ckData[sec.id+'_'+j]).length,0);
     const p=t?Math.round(d/t*100):0;
-    const lk=i>0&&(()=>{
-      const prev=CHECKLISTS[i-1];
-      const pt=prev.sections.reduce((s,sec)=>s+sec.items.length,0);
-      const pd=prev.sections.reduce((s,sec)=>s+sec.items.filter((_,j)=>ckData[sec.id+'_'+j]).length,0);
-      return pd<pt;
-    })();
+    const lk=i>0&&(()=>{const prev=CHECKLISTS[i-1];const pt=prev.sections.reduce((s,sec)=>s+sec.items.length,0);const pd=prev.sections.reduce((s,sec)=>s+sec.items.filter((_,j)=>ckData[sec.id+'_'+j]).length,0);return pd<pt;})();
     const all=t>0&&d===t;
-    const lv=STAGES[i];
     return `<div class="lv-card${i===ci?' active':''}${lk?' lk':''}" onclick="setLv(${i})">
       ${all?'<div class="lv-done-badge">✓</div>':''}
       <div class="lv-em">${ck.em}</div>
@@ -888,921 +499,340 @@ function rLvNav(){
   }).join('');
 }
 
-function rTabs(){
-  document.getElementById('cat-row').innerHTML=LV[ci].cats.map(c=>
-    `<button class="cat-btn${cc===c?' on':''}" onclick="setCat('${c}')">${c}</button>`
-  ).join('');
-}
-
-function rQuests(){
-  const lv=LV[ci]; let qs=lv.qs;
-  if(cc!=='全部') qs=qs.filter(q=>q.cat===cc);
-  const d=ndone(ci), t=lv.qs.length;
-  document.getElementById('qa-title').textContent=lv.em+' '+lv.name;
-  document.getElementById('qa-cnt').textContent=d+'/'+t;
-  const im={k:'ik',a:'ia',m:'im',c:'ic'}, tm={k:'tk',a:'ta',m:'tm',c:'tc'}, tn={k:'知識',a:'行動',m:'心態',c:'挑戰'};
-  document.getElementById('qlist').innerHTML=qs.map(q=>{
-    const qk=k(ci,q.id), d=done(ci,q.id), u=ulk(ci,q), op=oq===qk;
-    return `<div class="qc${d?' done':''}${!u?' lkq':''}${op?' open':''}" id="qc-${qk}">
-      <div class="qc-hd" onclick="tog('${qk}')">
-        <div class="qc-ico ${im[q.tp]}">${q.em}</div>
-        <div class="qc-body">
-          <div class="qc-name">${q.name}</div>
-          <div class="qc-meta">
-            <span class="qtag ${tm[q.tp]}">${tn[q.tp]}</span>
-            <span class="qxp">⭐+${q.xp}</span>
-            ${!u?'<span class="qxp">🔒先完成前一關</span>':''}
-            ${d?'<span class="qxp" style="color:#37A5E6">✓完成</span>':''}
-          </div>
-        </div>
-        <div class="qc-ck"><div class="ckv"></div></div>
-      </div>
-      ${op?`<div class="qc-det">
-        <div class="qd-desc">${q.desc}</div>
-        <div class="qd-cll">
-          <div class="qd-cl-lbl">✦ 完成這關你需要</div>
-          ${(q.cl||[]).map(c=>`<div class="qd-cli"><div class="qd-cli-dot"></div>${c}</div>`).join('')}
-        </div>
-        ${q.enc?`<div class="qd-enc">${q.enc}</div>`:''}
-        ${q.link?`<a class="qd-link" href="${q.link}" target="_blank">${q.linkTxt||'▶ 觀看影片'}</a>`:''}
-        <div class="qd-rw">🏅 完成獎勵：+${q.xp} 星星</div>
-        ${u
-          ? d
-            ? `<button class="qd-btn qdb-un" onclick="undoQ(${ci},'${q.id}',event)">取消完成</button>`
-            : `<button class="qd-btn qdb-ok" onclick="compQ(${ci},'${q.id}','${q.name}',${q.xp},'${(q.enc||'').replace(/'/g,"\\'")}',event)">完成這一關 ✓</button>`
-          : `<button class="qd-btn qdb-lk" disabled>🔒 先完成前一關</button>`
-        }
-      </div>`:''}
-    </div>`;
-  }).join('');
-}
-
 function confetti(){
   const cols=['#37A5E6','#7AA0FF','#A0C0FF','#2290D4','#FFD700','#fff'];
   for(let i=0;i<30;i++){
-    const e=document.createElement('div'); e.className='cf';
+    const e=document.createElement('div');e.className='cf';
     e.style.cssText=`left:${Math.random()*100}vw;background:${cols[Math.floor(Math.random()*cols.length)]};width:${5+Math.random()*7}px;height:${5+Math.random()*7}px;border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${1.2+Math.random()*1.4}s;animation-delay:${Math.random()*.4}s;`;
-    document.body.appendChild(e); setTimeout(()=>e.remove(),2800);
+    document.body.appendChild(e);setTimeout(()=>e.remove(),2800);
   }
 }
 
-const MILESTONES = [
-  {stars:50, icon:'🌱', name:'種下第一顆種子',
-   title:'種下第一顆種子 🌱',
-   msg:'50 顆星！\n你選擇開始，\n這就是最勇敢的一步。',
-   quote:'「開始了，就不要停。\n停下來的代價比繼續更大。」',
-   tag:'#DCT種子夥伴 #婕樂纖 #DCT裂變系統'},
-  {stars:100, icon:'🌿', name:'發芽了',
-   title:'發芽了 🌿',
-   msg:'100 顆星！\n每天的小行動，\n正在悄悄改變你的生命軌跡。',
-   quote:'「你自己就是最有說服力的見證，\n說真實的故事，比任何話術都有力量。」',
-   tag:'#DCT實習夥伴 #婕樂纖 #DCT裂變系統'},
-  {stars:200, icon:'✨', name:'開始閃光',
-   title:'開始閃光 ✨',
-   msg:'200 顆星！\n你不只是用戶，\n你已經是一個會賣東西的人了。',
-   quote:'「成交的那一刻，\n是你幫助了一個人改變生活的開始。」',
-   tag:'#DCT三級零售 #婕樂纖 #DCT裂變系統'},
-  {stars:270, icon:'💫', name:'開始帶人',
-   title:'開始帶人 💫',
-   msg:'270 顆星！\n你走過的路，\n現在成為別人的地圖。',
-   quote:'「播種跟收割本來就不在同季節，\n你的付出，終將開花。」',
-   tag:'#DCT三級輔導 #婕樂纖 #DCT裂變系統'},
-  {stars:325, icon:'🌙', name:'夜空中最亮的那顆',
-   title:'夜空中最亮的那顆 🌙',
-   msg:'325 顆星！\n很多人在這裡停下來，\n但你繼續走了。',
-   quote:'「跌倒不可怕，\n站起來的速度才決定你能走多遠。」',
-   tag:'#DCT二級輔導 #婕樂纖 #DCT裂變系統'},
-  {stars:400, icon:'🌟', name:'成為別人眼中的光',
-   title:'成為別人眼中的光 🌟',
-   msg:'400 顆星！\n你已經是一個\n真正的領導者了。',
-   quote:'「真正的領導者，\n是讓每個人都覺得自己很重要。」',
-   tag:'#DCT一級輔導 #婕樂纖 #DCT裂變系統'},
-  {stars:445, icon:'👑', name:'夢想成真',
-   title:'夢想成真 👑',
-   msg:'445 顆星！\n你完成了所有的檢核項目。\nDream Come True。',
-   quote:'「不是因為容易才堅持，\n是因為值得才繼續。\n你，值得這一切。」',
-   tag:'#DCT皇家 #婕樂纖 #DCT裂變系統'},
+const MILESTONES=[
+  {stars:50,icon:'🌱',name:'種下第一顆種子',title:'種下第一顆種子 🌱',msg:'50 顆星！\n你選擇開始，\n這就是最勇敢的一步。',quote:'「開始了，就不要停。\n停下來的代價比繼續更大。」',tag:'#DCT種子夥伴 #婕樂纖 #DCT裂變系統'},
+  {stars:100,icon:'🌿',name:'發芽了',title:'發芽了 🌿',msg:'100 顆星！\n每天的小行動，\n正在悄悄改變你的生命軌跡。',quote:'「你自己就是最有說服力的見證，\n說真實的故事，比任何話術都有力量。」',tag:'#DCT實習夥伴 #婕樂纖 #DCT裂變系統'},
+  {stars:200,icon:'✨',name:'開始閃光',title:'開始閃光 ✨',msg:'200 顆星！\n你不只是用戶，\n你已經是一個會賣東西的人了。',quote:'「成交的那一刻，\n是你幫助了一個人改變生活的開始。」',tag:'#DCT三級零售 #婕樂纖 #DCT裂變系統'},
+  {stars:270,icon:'💫',name:'開始帶人',title:'開始帶人 💫',msg:'270 顆星！\n你走過的路，\n現在成為別人的地圖。',quote:'「播種跟收割本來就不在同季節，\n你的付出，終將開花。」',tag:'#DCT三級輔導 #婕樂纖 #DCT裂變系統'},
+  {stars:325,icon:'🌙',name:'夜空中最亮的那顆',title:'夜空中最亮的那顆 🌙',msg:'325 顆星！\n很多人在這裡停下來，\n但你繼續走了。',quote:'「跌倒不可怕，\n站起來的速度才決定你能走多遠。」',tag:'#DCT二級輔導 #婕樂纖 #DCT裂變系統'},
+  {stars:400,icon:'🌟',name:'成為別人眼中的光',title:'成為別人眼中的光 🌟',msg:'400 顆星！\n你已經是一個\n真正的領導者了。',quote:'「真正的領導者，\n是讓每個人都覺得自己很重要。」',tag:'#DCT一級輔導 #婕樂纖 #DCT裂變系統'},
+  {stars:445,icon:'👑',name:'夢想成真',title:'夢想成真 👑',msg:'445 顆星！\n你完成了所有的檢核項目。\nDream Come True。',quote:'「不是因為容易才堅持，\n是因為值得才繼續。\n你，值得這一切。」',tag:'#DCT皇家 #婕樂纖 #DCT裂變系統'},
 ];
-const ALL_DONE_MILESTONE = {
-  icon:'👑', name:'夢想成真',
-  title:'夢想成真 👑',
-  msg:'你完成了所有的檢核項目！\n這條路你沒有放棄，\nDream Come True。',
-  quote:'「不是因為容易才堅持，\n是因為值得才繼續。\n你，值得這一切。」',
-  tag:'#DCT皇家 #婕樂纖 #DCT裂變系統'
-};
+const ALL_DONE_MILESTONE={icon:'👑',name:'夢想成真',title:'夢想成真 👑',msg:'你完成了所有的檢核項目！\n這條路你沒有放棄，\nDream Come True。',quote:'「不是因為容易才堅持，\n是因為值得才繼續。\n你，值得這一切。」',tag:'#DCT皇家 #婕樂纖 #DCT裂變系統'};
 
-function checkMilestone(prevXP, newXP){
-  for(const m of MILESTONES){
-    if(prevXP < m.stars && newXP >= m.stars) return m;
-  }
-  return null;
-}
+function checkMilestone(prevXP,newXP){for(const m of MILESTONES){if(prevXP<m.stars&&newXP>=m.stars)return m;}return null;}
 
-function showMilestone(m, totalXP){
-  const gradients = {
-    '🌱': 'linear-gradient(135deg,#6DBF8A,#3A9A60)',
-    '⭐': 'linear-gradient(135deg,#F0C040,#D4960A)',
-    '📱': 'linear-gradient(135deg,#6A8FEE,#2952CC)',
-    '💰': 'linear-gradient(135deg,#5DBF9A,#1A8A6A)',
-    '🤝': 'linear-gradient(135deg,#A06AEE,#6030CC)',
-    '💫': 'linear-gradient(135deg,#37A5E6,#1A70B0)',
-    '👑': 'linear-gradient(135deg,#E8A020,#B87010)',
-  };
-  const grad = gradients[m.icon] || 'linear-gradient(135deg,#A7D1F3,#2290D4)';
-
-  document.getElementById('ovl-content').innerHTML=`
-    <div class="ms-card">
-      <div class="ms-card-top" style="background:${grad}">
-        <div class="ms-icon-wrap">${m.icon}</div>
-        <div class="ms-badge-label">DCT 成就解鎖</div>
-        <div class="ms-card-title">${m.name||m.title}</div>
-        <div class="ms-card-sub">累積 ${totalXP} 顆星星</div>
-      </div>
-      <div class="ms-card-body">
-        <div class="ms-stars-row">
-          <div class="ms-star-big">⭐</div>
-          <div class="ms-star-count">× ${totalXP}</div>
-          <div class="ms-star-big">⭐</div>
-        </div>
-        <div class="ms-msg">${(m.msg||'').replace(/\n/g,'<br>')}</div>
-        <div class="ms-quote-box">
-          <div class="ms-quote-txt">${(m.quote||'').replace(/\n/g,'<br>')}</div>
-        </div>
-        ${m.tag?`<div class="ms-tag">${m.tag}</div>`:''}
-        <button class="ms-btn-save" onclick="closeOvl()" style="width:100%;">繼續加油 ✨</button>
-      </div>
-    </div>`;
-  confetti(); confetti();
+function showMilestone(m,totalXP){
+  const gradients={'🌱':'linear-gradient(135deg,#6DBF8A,#3A9A60)','✨':'linear-gradient(135deg,#F0C040,#D4960A)','💫':'linear-gradient(135deg,#37A5E6,#1A70B0)','👑':'linear-gradient(135deg,#E8A020,#B87010)'};
+  const grad=gradients[m.icon]||'linear-gradient(135deg,#A7D1F3,#2290D4)';
+  document.getElementById('ovl-content').innerHTML=`<div class="ms-card"><div class="ms-card-top" style="background:${grad}"><div class="ms-icon-wrap">${m.icon}</div><div class="ms-badge-label">DCT 成就解鎖</div><div class="ms-card-title">${m.name||m.title}</div><div class="ms-card-sub">累積 ${totalXP} 顆星星</div></div><div class="ms-card-body"><div class="ms-stars-row"><div class="ms-star-big">⭐</div><div class="ms-star-count">× ${totalXP}</div><div class="ms-star-big">⭐</div></div><div class="ms-msg">${(m.msg||'').replace(/\n/g,'<br>')}</div><div class="ms-quote-box"><div class="ms-quote-txt">${(m.quote||'').replace(/\n/g,'<br>')}</div></div>${m.tag?`<div class="ms-tag">${m.tag}</div>`:''}<button class="ms-btn-save" onclick="closeOvl()" style="width:100%;">繼續加油 ✨</button></div></div>`;
+  confetti();confetti();
   document.getElementById('ovl').style.display='flex';
 }
 
-
-function compQ(li, id, name, xp, enc, e){
+function compQ(li,id,name,xp,enc,e){
   e.stopPropagation();
-  const prevXP = totXP();
-  mk(li,id); oq=null; rAll();
-  const newXP = totXP();
-  const stg=CHECKLISTS[li]; const t=stg?stg.sections.reduce((s,sec)=>s+sec.items.length,0):0; const d=ndone(li), all=t>0&&d===t;
+  const prevXP=totXP();
+  mk(li,id);oq=null;rAll();
+  const newXP=totXP();
+  const stg=CHECKLISTS[li];const t=stg?stg.sections.reduce((s,sec)=>s+sec.items.length,0):0;const d=ndone(li),all=t>0&&d===t;
   const st=d>=t*.75?3:d>=t*.4?2:1;
   confetti();
-
-  const milestone = checkMilestone(prevXP, newXP);
-  if(milestone){
-    setTimeout(()=>showMilestone(milestone, newXP), 400);
-  } else if(all){
-    showCert(li);
-  } else {
-    const encTxt = enc || randEnc(ENCOURAGEMENTS.quest);
-    showQuestPop(name, xp, st, encTxt, li);
-  }
+  const milestone=checkMilestone(prevXP,newXP);
+  if(milestone){setTimeout(()=>showMilestone(milestone,newXP),400);}
+  else if(all){showCert(li);}
+  else{const encTxt=enc||randEnc(ENCOURAGEMENTS.quest);showQuestPop(name,xp,st,encTxt,li);}
 }
 
-function showQuestPop(name, xp, st, enc, li){
-  document.getElementById('ovl-content').innerHTML=`
-    <div class="pop-quest">
-      <span class="pq-em">✨</span>
-      <div class="pq-stars">${[1,2,3].map(i=>`<span class="pqs${i<=st?' lit':''}">★</span>`).join('')}</div>
-      <div class="pq-title">「${name}」完成！</div>
-      <div class="pq-enc">${enc}</div>
-      <div class="pq-xp">⭐ +${xp} 星星</div>
-      <button class="pq-btn" onclick="closeOvl()">繼續前進 →</button>
-    </div>`;
+function showQuestPop(name,xp,st,enc,li){
+  document.getElementById('ovl-content').innerHTML=`<div class="pop-quest"><span class="pq-em">✨</span><div class="pq-stars">${[1,2,3].map(i=>`<span class="pqs${i<=st?' lit':''}">★</span>`).join('')}</div><div class="pq-title">「${name}」完成！</div><div class="pq-enc">${enc}</div><div class="pq-xp">⭐ +${xp} 星星</div><button class="pq-btn" onclick="closeOvl()">繼續前進 →</button></div>`;
   document.getElementById('ovl').style.display='flex';
 }
 
 function showCert(li){
-  const lv=LV[li], stage=STAGES[li];
+  const stage=STAGES[li];
   const now=new Date();
   const dateStr=now.getFullYear()+'年'+(now.getMonth()+1)+'月'+now.getDate()+'日';
-  const msgs=[
-    `${userName ? userName+'，你' : '你'}完成了「${stage.name}」階段的所有關卡。`,
-    `這不是一件容易的事，但你做到了。`,
-  ];
-  const nextLv = li<LV.length-1 ? LV[li+1] : null;
-  document.getElementById('ovl-content').innerHTML=`
-    <div class="cert">
-      <div class="cert-top">
-        <span class="cert-badge-icon">${stage.emoji}</span>
-        <div class="cert-stage-name">DCT 晉升認證</div>
-        <div class="cert-title">${userName ? userName+'<br>' : ''}${stage.name}<br>階段完成</div>
-        <div class="cert-subtitle">第 ${li+1} 階段 · 共 7 階段</div>
-      </div>
-      <div class="cert-body">
-        <div class="cert-seal">
-          <div class="cert-seal-line"></div>
-          <div class="cert-seal-txt">✦ CERTIFICATE ✦</div>
-          <div class="cert-seal-line r"></div>
-        </div>
-        <div class="cert-msg">${msgs.join('<br>')}</div>
-        <div class="cert-quote">${lv.cert_quote}</div>
-        <div class="cert-meta">
-          <span>完成日期：${dateStr}</span>
-          <span>DCT 晉升地圖</span>
-        </div>
-        <div class="cert-btns">
-          
-          ${nextLv
-            ? `<button class="cert-btn-next" onclick="closeOvl();setLv(${li+1})">前往${nextLv.name} →</button>`
-            : `<button class="cert-btn-next" onclick="closeOvl()">感謝這段旅程 🙏</button>`
-          }
-        </div>
-      </div>
-    </div>`;
-  confetti(); confetti();
+  const certQuotes=['「成為產品最好的見證者，你的故事就是最強的銷售工具。」','「每一次開口，都是在練習成為更好的自己。」','「服務好一個人，他會幫你帶來更多人。」','「你的成長速度，決定你能帶多少人一起成長。」','「團隊的高度，取決於你願意成為多高的人。」','「真正的領導者，是讓每個人都覺得自己很重要。」','「皇家不是終點，是你開始影響更多人生命的起點。」'];
+  const nextStage=ci<STAGES.length-1?STAGES[ci+1]:null;
+  document.getElementById('ovl-content').innerHTML=`<div class="cert"><div class="cert-top"><span class="cert-badge-icon">${stage.emoji}</span><div class="cert-stage-name">DCT 晉升認證</div><div class="cert-title">${userName?userName+'<br>':''}${stage.name}<br>階段完成</div><div class="cert-subtitle">第 ${ci+1} 階段 · 共 7 階段</div></div><div class="cert-body"><div class="cert-seal"><div class="cert-seal-line"></div><div class="cert-seal-txt">✦ CERTIFICATE ✦</div><div class="cert-seal-line r"></div></div><div class="cert-msg">${userName?userName+'，你':'你'}完成了「${stage.name}」的所有檢核項目。<br>這不是一件容易的事，但你做到了。</div><div class="cert-quote">${certQuotes[ci]||''}</div><div class="cert-meta"><span>完成日期：${dateStr}</span><span>DCT 晉升地圖</span></div><div class="cert-btns">${nextStage?`<button class="cert-btn-next" onclick="closeOvl();setLv(${ci+1})" style="flex:1;">前往${nextStage.name} →</button>`:`<button class="cert-btn-next" onclick="closeOvl()" style="flex:1;">感謝這段旅程 🙏</button>`}</div></div></div>`;
+  confetti();confetti();
   document.getElementById('ovl').style.display='flex';
 }
 
-function undoQ(li, id, e){ e.stopPropagation(); um(li,id); oq=null; rAll(); }
-function closeOvl(){ document.getElementById('ovl').style.display='none'; }
-function stageComplete(i){
-  const st=CHECKLISTS[i]; if(!st) return false;
-  const t=st.sections.reduce((a,s)=>a+s.items.length,0);
-  const d=st.sections.reduce((a,s)=>a+s.items.filter((_,j)=>ckData[s.id+'_'+j]).length,0);
-  return t>0&&d===t;
-}
+function undoQ(li,id,e){e.stopPropagation();um(li,id);oq=null;rAll();}
+function closeOvl(){document.getElementById('ovl').style.display='none';}
+function stageComplete(i){const st=CHECKLISTS[i];if(!st)return false;const t=st.sections.reduce((a,s)=>a+s.items.length,0);const d=st.sections.reduce((a,s)=>a+s.items.filter((_,j)=>ckData[s.id+'_'+j]).length,0);return t>0&&d===t;}
+function setLv(i){ci=i;cc='全部';oq=null;sicOpen=true;retailFocus=null;rAll();}
+function setCat(c){cc=c;oq=null;}
+function rAll(){rHdr();rLvNav();renderStageInfo();}
 
-function setLv(i){ ci=i; cc='全部'; oq=null; sicOpen=true; retailFocus=null; rAll(); }
-function setCat(c){ cc=c; oq=null; rTabs(); rQuests(); }
-function tog(qk){ oq=oq===qk?null:qk; rQuests(); }
-function rAll(){ rHdr(); rLvNav(); renderStageInfo(); }
-
-
-// ── PAGE SWITCHING ────────────────────────────────────────────────
-let curPage = 'map';
-
+let curPage='map';
 function switchPage(p){
-  curPage = p;
-  document.querySelector('.wrap').style.display = p==='map'?'block':'none';
+  curPage=p;
+  document.querySelector('.wrap').style.display=p==='map'?'block':'none';
   document.querySelectorAll('.page-section').forEach(el=>el.classList.remove('active'));
-  if(p!=='map') document.getElementById('page-'+p)?.classList.add('active');
+  if(p!=='map')document.getElementById('page-'+p)?.classList.add('active');
   document.querySelectorAll('.bni').forEach(el=>el.classList.remove('on'));
   document.getElementById('nav-'+p)?.classList.add('on');
-  if(p==='achievement') renderAchievements();
-  if(p==='course') renderCourses();
-  if(p==='system') renderSystem();
-  if(p==='checklist') renderChecklist();
-  if(p==='upgrade') renderUpgrade();
+  if(p==='achievement')renderAchievements();
+  if(p==='course')renderCourses();
+  if(p==='system')renderSystem();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ── COURSE DATA ───────────────────────────────────────────────────
-const COURSES = [
-  {
-    id:'c1', title:'基礎課程', em:'🌟',
-    links:[
-      {type:'yt',title:'新人Day1 @惠誼',url:'https://youtu.be/1g_daerd81U'},
-      {type:'yt',title:'個人形象魅力 @丙鈞',url:'https://youtu.be/8mQdgzNC6FA'},
-      {type:'yt',title:'99%精準的新人銷售技巧 VIP價格、零售、優惠價 @凝凝',url:'https://www.youtube.com/watch?v=90152gSAO6w'},
-      {type:'yt',title:'20250226進階群會議 產品知識大補帖 @惠誼',url:'https://youtu.be/doaT4DiXGJ4'},
-      {type:'yt',title:'20241220打造自己魔術曲線圖 @丙鈞',url:'https://youtu.be/cVtwIjAvNQE'},
-    ]
-  },
-  {
-    id:'c2', title:'版面打造、引流', em:'📱',
-    links:[
-      {type:'yt',title:'引爆IG社群力 @毛妮芭',url:'https://www.youtube.com/watch?v=9MvrbRM-zjM'},
-      {type:'yt',title:'短視頻速成班「第三期·基礎剪輯」@惠誼、Ming',url:'https://www.youtube.com/watch?v=VElTABXDVCc'},
-      {type:'yt',title:'20241228全方位引流 @惠誼',url:'https://youtu.be/YczqRbFOF6o'},
-      {type:'yt',title:'20251008精準雙軌定位力 @Ruby',url:'https://youtu.be/S4GfSuX72Lo'},
-      {type:'yt',title:'20241023單支影片變現10萬的關鍵 @Ruby',url:'https://youtu.be/aTnc2xL8S5M'},
-    ]
-  },
-  {
-    id:'c3', title:'限動', em:'✨',
-    links:[
-      {type:'yt',title:'20240402「100%掌握限動開賣三關鍵？如何避免療效法規」',url:'https://www.youtube.com/watch?v=--8zGzbB6KU'},
-      {type:'yt',title:'新手開賣影片怎麼拍？@惠誼',url:'https://www.youtube.com/watch?v=pXn2YleuKZI'},
-      {type:'yt',title:'20250924限動美感全攻略 @珮珮',url:'https://youtu.be/yJcL18HgAXI'},
-      {type:'yt',title:'20250420惠誼直屬「限動影響力 日常怎麼發」',url:'https://youtu.be/laIGVjOVzJE'},
-      {type:'yt',title:'20260202福袋爆賣50組 @惠誼',url:'https://youtu.be/sp62qW2aiQQ'},
-      {type:'yt',title:'20241229限動沒靈感怎麼辦？@小可',url:'https://youtu.be/zEn-oCuw3uE'},
-    ]
-  },
-  {
-    id:'c4', title:'銷售', em:'💰',
-    links:[
-      {type:'yt',title:'20241222銷售動人心 @惠誼',url:'https://youtu.be/Bm3YQl4_gDg'},
-      {type:'yt',title:'新人必學！絕對成交七步驟 @惠云',url:'https://www.youtube.com/watch?v=6LTTkjoBNsU'},
-      {type:'yt',title:'20260128美肌福袋報賣四步驟 @皇家瑜萍',url:'https://youtu.be/gZhtB_iWpS4'},
-      {type:'yt',title:'20260128纖體福袋變現全攻略 @皇家珮珮',url:'https://youtu.be/az9bgsEk8XM'},
-      {type:'yt',title:'20250910「大健康系列到底怎麼爆？」妮',url:'https://youtu.be/dMr_NPRzAw0'},
-    ]
-  },
-  {
-    id:'c5', title:'售後', em:'💝',
-    links:[
-      {type:'yt',title:'20241230售後最暖心 @惠誼',url:'https://youtu.be/CW2fSYu6Bjk'},
-    ]
-  },
-  {
-    id:'c6', title:'心態', em:'💛',
-    links:[
-      {type:'yt',title:'20241213心態穩經營就穩 @丙鈞',url:'https://youtu.be/t51aRb6wh1Q'},
-      {type:'yt',title:'20241213搞定新人90%在經營上遇到的問題 @子晴',url:'https://youtu.be/tsCoAXN8x6s'},
-      {type:'yt',title:'20260320心態啟航（上）@木白',url:'https://youtu.be/2V0pR59_AsI'},
-      {type:'yt',title:'20260331能量續航 @惠誼',url:'https://youtu.be/uAE5axNqafU'},
-    ]
-  },
-  {
-    id:'c7', title:'拓展輔導督導必看', em:'🚀',
-    links:[
-      {type:'yt',title:'20250913新人第三堂「開啟第二口袋收入」@丙鈞',url:'https://youtu.be/LHgcVrVkmSE'},
-      {type:'yt',title:'20240508「如何善用16大優勢 每月多招商五位」',url:'https://www.youtube.com/watch?v=QqQ_2htHz0c'},
-      {type:'yt',title:'讓你收入翻倍三關鍵',url:'https://www.youtube.com/watch?v=fT0S31de_D0'},
-    ]
-  },
-  {
-    id:'c8', title:'DCT系統4.0 輔導督導必看資料', em:'📋',
-    links:[
-      {type:'nt',title:'美肌使用方法、注意事項',url:'https://www.notion.so/31abbada9af3802d9e60e50b50ac66c3'},
-      {type:'nt',title:'纖體吃法、飲食、纖體班',url:'https://www.notion.so/31b306c06b7d80ed88ebf77e9a18afe7'},
-      {type:'nt',title:'新輔導督導要怎麼開始',url:'https://www.notion.so/312306c06b7d80078f8debb07160b219'},
-      {type:'nt',title:'帶夥伴入加盟的SOP',url:'https://www.notion.so/SOP-312b58d2c79e806596f0c44d8f562f8a'},
-      {type:'nt',title:'Day1 新人第一天',url:'https://www.notion.so/Day1-312339f987098091b133ef6b34eef80f'},
-      {type:'nt',title:'新人開賣第一天怎麼發限動',url:'https://www.notion.so/06286b5c397e447b8723b2e8c12d73e7'},
-      {type:'nt',title:'限動美感',url:'https://www.notion.so/312bbada9af3802a9b7bd97282819374'},
-      {type:'nt',title:'銷售QA寶典',url:'https://www.notion.so/QA-312306c06b7d805593e6c783a5c7aaf6'},
-      {type:'nt',title:'引流建議',url:'https://www.notion.so/312b0938dcdb80bf8023fe8c364af7dc'},
-      {type:'nt',title:'FABEQ一句話成交',url:'https://www.notion.so/FABEQ-312b58d2c79e8018b2cef9d7a9ed53f9'},
-      {type:'nt',title:'銷售SOP',url:'https://www.notion.so/SOP-312b58d2c79e803590bcf61e08d4daf5'},
-      {type:'nt',title:'關於魔術曲線圖如何製作',url:'https://www.notion.so/3121c0dd9cb480318d33e93b42a166a9'},
-      {type:'nt',title:'售後怎麼做？',url:'https://www.notion.so/3121c0dd9cb4806d9c2cfb53c47f48f8'},
-      {type:'nt',title:'經營必備App（短語鍵盤、待辦提醒、快速做筆記）',url:'https://www.notion.so/App-31c8fcb6b75d80c99c60dc721e2a742b'},
-      {type:'gd',title:'經營相關資料 - Google Drive',url:'https://drive.google.com/drive/folders/1Olk-O2FDnFLHcsRCD-qOkVfzx25-UcTr'},
-      {type:'gd',title:'DCT產品圖庫 - Google Drive',url:'https://drive.google.com/drive/folders/1AbliMVQR3SnYxREowaLP0vws6pDz3Byv'},
-    ]
-  },
+const COURSES=[
+  {id:'c1',title:'基礎課程',em:'🌟',links:[{type:'yt',title:'新人Day1 @惠誼',url:'https://youtu.be/1g_daerd81U'},{type:'yt',title:'個人形象魅力 @丙鈞',url:'https://youtu.be/8mQdgzNC6FA'},{type:'yt',title:'99%精準的新人銷售技巧 @凝凝',url:'https://www.youtube.com/watch?v=90152gSAO6w'},{type:'yt',title:'20250226進階群會議 產品知識大補帖 @惠誼',url:'https://youtu.be/doaT4DiXGJ4'},{type:'yt',title:'20241220打造自己魔術曲線圖 @丙鈞',url:'https://youtu.be/cVtwIjAvNQE'}]},
+  {id:'c2',title:'版面打造、引流',em:'📱',links:[{type:'yt',title:'引爆IG社群力 @毛妮芭',url:'https://www.youtube.com/watch?v=9MvrbRM-zjM'},{type:'yt',title:'短視頻速成班「第三期·基礎剪輯」@惠誼、Ming',url:'https://www.youtube.com/watch?v=VElTABXDVCc'},{type:'yt',title:'20241228全方位引流 @惠誼',url:'https://youtu.be/YczqRbFOF6o'},{type:'yt',title:'20251008精準雙軌定位力 @Ruby',url:'https://youtu.be/S4GfSuX72Lo'},{type:'yt',title:'20241023單支影片變現10萬的關鍵 @Ruby',url:'https://youtu.be/aTnc2xL8S5M'}]},
+  {id:'c3',title:'限動',em:'✨',links:[{type:'yt',title:'20240402「100%掌握限動開賣三關鍵」',url:'https://www.youtube.com/watch?v=--8zGzbB6KU'},{type:'yt',title:'新手開賣影片怎麼拍？@惠誼',url:'https://www.youtube.com/watch?v=pXn2YleuKZI'},{type:'yt',title:'20250924限動美感全攻略 @珮珮',url:'https://youtu.be/yJcL18HgAXI'},{type:'yt',title:'20250420惠誼直屬「限動影響力 日常怎麼發」',url:'https://youtu.be/laIGVjOVzJE'},{type:'yt',title:'20260202福袋爆賣50組 @惠誼',url:'https://youtu.be/sp62qW2aiQQ'},{type:'yt',title:'20241229限動沒靈感怎麼辦？@小可',url:'https://youtu.be/zEn-oCuw3uE'}]},
+  {id:'c4',title:'銷售',em:'💰',links:[{type:'yt',title:'20241222銷售動人心 @惠誼',url:'https://youtu.be/Bm3YQl4_gDg'},{type:'yt',title:'新人必學！絕對成交七步驟 @惠云',url:'https://www.youtube.com/watch?v=6LTTkjoBNsU'},{type:'yt',title:'20260128美肌福袋報賣四步驟 @皇家瑜萍',url:'https://youtu.be/gZhtB_iWpS4'},{type:'yt',title:'20260128纖體福袋變現全攻略 @皇家珮珮',url:'https://youtu.be/az9bgsEk8XM'},{type:'yt',title:'20250910「大健康系列到底怎麼爆？」妮',url:'https://youtu.be/dMr_NPRzAw0'}]},
+  {id:'c5',title:'售後',em:'💝',links:[{type:'yt',title:'20241230售後最暖心 @惠誼',url:'https://youtu.be/CW2fSYu6Bjk'}]},
+  {id:'c6',title:'心態',em:'💛',links:[{type:'yt',title:'20241213心態穩經營就穩 @丙鈞',url:'https://youtu.be/t51aRb6wh1Q'},{type:'yt',title:'20241213搞定新人90%在經營上遇到的問題 @子晴',url:'https://youtu.be/tsCoAXN8x6s'},{type:'yt',title:'20260320心態啟航（上）@木白',url:'https://youtu.be/2V0pR59_AsI'},{type:'yt',title:'20260331能量續航 @惠誼',url:'https://youtu.be/uAE5axNqafU'}]},
+  {id:'c7',title:'拓展輔導督導必看',em:'🚀',links:[{type:'yt',title:'20250913新人第三堂「開啟第二口袋收入」@丙鈞',url:'https://youtu.be/LHgcVrVkmSE'},{type:'yt',title:'20240508「如何善用16大優勢 每月多招商五位」',url:'https://www.youtube.com/watch?v=QqQ_2htHz0c'},{type:'yt',title:'讓你收入翻倍三關鍵',url:'https://www.youtube.com/watch?v=fT0S31de_D0'}]},
+  {id:'c8',title:'DCT系統4.0 輔導督導必看資料',em:'📋',links:[{type:'nt',title:'美肌使用方法、注意事項',url:'https://www.notion.so/31abbada9af3802d9e60e50b50ac66c3'},{type:'nt',title:'纖體吃法、飲食、纖體班',url:'https://www.notion.so/31b306c06b7d80ed88ebf77e9a18afe7'},{type:'nt',title:'新輔導督導要怎麼開始',url:'https://www.notion.so/312306c06b7d80078f8debb07160b219'},{type:'nt',title:'帶夥伴入加盟的SOP',url:'https://www.notion.so/SOP-312b58d2c79e806596f0c44d8f562f8a'},{type:'nt',title:'Day1 新人第一天',url:'https://www.notion.so/Day1-312339f987098091b133ef6b34eef80f'},{type:'nt',title:'新人開賣第一天怎麼發限動',url:'https://www.notion.so/06286b5c397e447b8723b2e8c12d73e7'},{type:'nt',title:'限動美感',url:'https://www.notion.so/312bbada9af3802a9b7bd97282819374'},{type:'nt',title:'銷售QA寶典',url:'https://www.notion.so/QA-312306c06b7d805593e6c783a5c7aaf6'},{type:'nt',title:'引流建議',url:'https://www.notion.so/312b0938dcdb80bf8023fe8c364af7dc'},{type:'nt',title:'FABEQ一句話成交',url:'https://www.notion.so/FABEQ-312b58d2c79e8018b2cef9d7a9ed53f9'},{type:'nt',title:'銷售SOP',url:'https://www.notion.so/SOP-312b58d2c79e803590bcf61e08d4daf5'},{type:'nt',title:'關於魔術曲線圖如何製作',url:'https://www.notion.so/3121c0dd9cb480318d33e93b42a166a9'},{type:'nt',title:'售後怎麼做？',url:'https://www.notion.so/3121c0dd9cb4806d9c2cfb53c47f48f8'},{type:'nt',title:'經營必備App',url:'https://www.notion.so/App-31c8fcb6b75d80c99c60dc721e2a742b'},{type:'gd',title:'經營相關資料 - Google Drive',url:'https://drive.google.com/drive/folders/1Olk-O2FDnFLHcsRCD-qOkVfzx25-UcTr'},{type:'gd',title:'DCT產品圖庫 - Google Drive',url:'https://drive.google.com/drive/folders/1AbliMVQR3SnYxREowaLP0vws6pDz3Byv'}]},
 ];
-
-const openChapters = {};
-
+const openChapters={};
 function renderCourses(){
-  const el = document.getElementById('course-list');
-  if(!el) return;
-  el.innerHTML = COURSES.map(ch=>`
-    <div class="course-chapter">
-      <div class="course-ch-hd" onclick="toggleChapter('${ch.id}')">
-        <div class="course-ch-em">${ch.em}</div>
-        <div class="course-ch-title">${ch.title}</div>
-        <div class="course-ch-count">${ch.links.length}</div>
-        <div class="course-ch-arr${openChapters[ch.id]?' open':''}" id="arr-${ch.id}">▼</div>
-      </div>
-      <div class="course-links${openChapters[ch.id]?' open':''}" id="links-${ch.id}">
-        ${ch.links.map(l=>`
-          <a class="course-link" href="${l.url}" target="_blank">
-            <div class="cl-icon cl-${l.type}">${l.type==='yt'?'▶':l.type==='nt'?'📝':'📁'}</div>
-            <div class="cl-body">
-              <div class="cl-title">${l.title}</div>
-              <div class="cl-sub">${l.type==='yt'?'YouTube影片':l.type==='nt'?'Notion文件':'Google Drive'}</div>
-            </div>
-            <div class="cl-arr">→</div>
-          </a>`).join('')}
-      </div>
-    </div>`).join('');
+  const el=document.getElementById('course-list');if(!el)return;
+  el.innerHTML=COURSES.map(ch=>`<div class="course-chapter"><div class="course-ch-hd" onclick="toggleChapter('${ch.id}')"><div class="course-ch-em">${ch.em}</div><div class="course-ch-title">${ch.title}</div><div class="course-ch-count">${ch.links.length}</div><div class="course-ch-arr${openChapters[ch.id]?' open':''}" id="arr-${ch.id}">▼</div></div><div class="course-links${openChapters[ch.id]?' open':''}" id="links-${ch.id}">${ch.links.map(l=>`<a class="course-link" href="${l.url}" target="_blank"><div class="cl-icon cl-${l.type}">${l.type==='yt'?'▶':l.type==='nt'?'📝':'📁'}</div><div class="cl-body"><div class="cl-title">${l.title}</div><div class="cl-sub">${l.type==='yt'?'YouTube影片':l.type==='nt'?'Notion文件':'Google Drive'}</div></div><div class="cl-arr">→</div></a>`).join('')}</div></div>`).join('');
 }
+function toggleChapter(id){openChapters[id]=!openChapters[id];document.getElementById('links-'+id)?.classList.toggle('open',openChapters[id]);document.getElementById('arr-'+id)?.classList.toggle('open',openChapters[id]);}
 
-function toggleChapter(id){
-  openChapters[id] = !openChapters[id];
-  const links = document.getElementById('links-'+id);
-  const arr = document.getElementById('arr-'+id);
-  if(links) links.classList.toggle('open', openChapters[id]);
-  if(arr) arr.classList.toggle('open', openChapters[id]);
-}
-
-// ── ACHIEVEMENTS ─────────────────────────────────────────────────
-const ACHIEVEMENTS = [
-  {em:'🌱',name:'踏出第一步',desc:'完成愛用客階段',stageIdx:0},
-  {em:'🌿',name:'展翅飛翔',desc:'完成實習加盟階段',stageIdx:1},
-  {em:'⭐',name:'零售達人',desc:'完成三級零售階段',stageIdx:2},
-  {em:'💫',name:'輔導新星',desc:'完成三級輔導階段',stageIdx:3},
-  {em:'🌙',name:'成長加速',desc:'完成二級輔導階段',stageIdx:4},
-  {em:'🌟',name:'領導核心',desc:'完成一級輔導階段',stageIdx:5},
-  {em:'👑',name:'皇家榮耀',desc:'完成皇家階段',stageIdx:6},
-];
-
+const ACHIEVEMENTS=[{em:'🌱',name:'踏出第一步',desc:'完成愛用客階段',stageIdx:0},{em:'🌿',name:'展翅飛翔',desc:'完成實習加盟階段',stageIdx:1},{em:'⭐',name:'零售達人',desc:'完成三級零售階段',stageIdx:2},{em:'💫',name:'輔導新星',desc:'完成三級輔導階段',stageIdx:3},{em:'🌙',name:'成長加速',desc:'完成二級輔導階段',stageIdx:4},{em:'🌟',name:'領導核心',desc:'完成一級輔導階段',stageIdx:5},{em:'👑',name:'皇家榮耀',desc:'完成皇家階段',stageIdx:6}];
 function renderAchievements(){
-  const grid = document.getElementById('ach-grid');
-  const msList = document.getElementById('ms-display-list');
-  if(!grid || !msList) return;
-
-  grid.innerHTML = ACHIEVEMENTS.map(a=>{
-    const unlocked = (()=>{ const st=CHECKLISTS[a.stageIdx]; if(!st) return false; const t=st.sections.reduce((s,sec)=>s+sec.items.length,0); return t>0&&ndone(a.stageIdx)===t; })();
-    return `<div class="ach-item${unlocked?' unlocked':' locked'}" onclick="${unlocked?'showCert('+a.stageIdx+')':''}" style="${unlocked?'cursor:pointer;':''}">
-      <div class="ach-em">${a.em}</div>
-      <div class="ach-name">${a.name}</div>
-      <div class="ach-desc">${a.desc}</div>
-      <div class="ach-badge ${unlocked?'unlocked':'locked'}">${unlocked?'✓ 已解鎖':'🔒 未解鎖'}</div>
-    </div>`;
-  }).join('');
-
-  const tx = totXP();
-  msList.innerHTML = MILESTONES.map((m,mi)=>`
-    <div class="ms-d-row" ${tx>=m.stars?'onclick="showMilestone(MILESTONES['+mi+'],totXP())" style="cursor:pointer;"':''}>
-      <div class="ms-d-icon">${m.icon}</div>
-      <div class="ms-d-body">
-        <div class="ms-d-name">${m.title}</div>
-        <div class="ms-d-num">累積 ${m.stars} 顆星星</div>
-      </div>
-      <div class="ms-d-check">${tx>=m.stars?'✅':'⬜'}</div>
-    </div>`).join('');
+  const grid=document.getElementById('ach-grid');const msList=document.getElementById('ms-display-list');if(!grid||!msList)return;
+  grid.innerHTML=ACHIEVEMENTS.map(a=>{const unlocked=(()=>{const st=CHECKLISTS[a.stageIdx];if(!st)return false;const t=st.sections.reduce((s,sec)=>s+sec.items.length,0);return t>0&&ndone(a.stageIdx)===t;})();return `<div class="ach-item${unlocked?' unlocked':' locked'}" onclick="${unlocked?'showCert('+a.stageIdx+')':''}" style="${unlocked?'cursor:pointer;':''}"><div class="ach-em">${a.em}</div><div class="ach-name">${a.name}</div><div class="ach-desc">${a.desc}</div><div class="ach-badge ${unlocked?'unlocked':'locked'}">${unlocked?'✓ 已解鎖':'🔒 未解鎖'}</div></div>`;}).join('');
+  const tx=totXP();
+  msList.innerHTML=MILESTONES.map((m,mi)=>`<div class="ms-d-row" ${tx>=m.stars?'onclick="showMilestone(MILESTONES['+mi+'],totXP())" style="cursor:pointer;"':''}><div class="ms-d-icon">${m.icon}</div><div class="ms-d-body"><div class="ms-d-name">${m.title}</div><div class="ms-d-num">累積 ${m.stars} 顆星星</div></div><div class="ms-d-check">${tx>=m.stars?'✅':'⬜'}</div></div>`).join('');
 }
 
-
-// ── CHECKLIST DATA ────────────────────────────────────────────────
-const CHECKLISTS = [
-  {
-    stageId:0, stageName:'愛用客', em:'🌱',
-    sections:[
-      { id:'c0_product', em:'💛', title:'產品了解 & BA見證建立', target:'累積使用感受及BA見證',
-        items:[
-          {text:'看完新人Day1課程', course:{title:'新人Day1 @惠誼',url:'https://youtu.be/1g_daerd81U'}},
-          {text:'必看產品課程', course:{title:'必看產品課程',url:'https://drive.google.com/file/d/1CWeDQNNGmU5SMKfrO0o1R_SHrMZ8POcn/view?usp=drive_web'}},
-          {text:'了解纖體吃法與飲食搭配', course:{title:'纖體吃法、飲食、纖體班',url:'https://www.notion.so/31b306c06b7d80ed88ebf77e9a18afe7'}},
-          {text:'了解美肌使用方法及注意事項', course:{title:'美肌使用方法、注意事項',url:'https://www.notion.so/31abbada9af3802d9e60e50b50ac66c3'}},
-          {text:'拍攝纖體系列BA前後對比照＆錄影'},
-          {text:'拍攝美肌系列BA前後對比照＆錄影'},
-          {text:'報名參加纖體班'},
-          {text:'連續使用產品14天以上，記錄身體的變化'},
-        ]
-      },
-      { id:'c0_exec', em:'💛', title:'執行檢核', target:'建立基本習慣與連結',
-        items:[
-          {text:'對比照及影片請放在跟上家記事本（避免誤刪）'},
-          {text:'認真使用產品＝越快有感受！'},
-          {text:'寫下自己的使用心得見證，跟上家分享'},
-          {text:'追蹤DCT IG並私訊告知上家是誰', course:{title:'DCT IG @mao_dctall',url:'https://www.instagram.com/mao_dctall?igsh=MWpoODEyczl6NzY2cA%3D%3D&utm_source=qr'}},
-        ]
-      },
-    ]
-  },
-  {
-    stageId:1, stageName:'實習加盟', em:'🌿',
-    retailFocus: true,
-    sections:[
-      { id:'c1_mindset', em:'💛', title:'確立原動力及目標', target:'建立正確心態與方向',
-        items:[
-          {text:'了解DCT系統4.0說明與團規', course:{title:'DCT系統4.0說明&團規更新',url:'https://youtu.be/RaqKArQoVB0'}},
-          {text:'看完心態啟航課程', course:{title:'20260320心態啟航（上）@木白',url:'https://youtu.be/2V0pR59_AsI'}},
-          {text:'看完搞定新人90%遇到的問題', course:{title:'20241213搞定新人90%在經營上遇到的問題 @子晴',url:'https://youtu.be/tsCoAXN8x6s'}},
-          {text:'設定三個月內的目標跟上家討論'},
-          {text:'看完心態穩經營就穩課程', course:{title:'20241213心態穩經營就穩 @丙鈞',url:'https://youtu.be/t51aRb6wh1Q'}},
-        ]
-      },
-      { id:'c1_flow', em:'💛', title:'零售四大循環｜引流', target:'每個月增加粉絲至少50-200名',
-        retailType:'flow',
-        items:[
-          {text:'看完引爆IG社群力課程', course:{title:'引爆IG社群力 @毛妮芭',url:'https://www.youtube.com/watch?v=9MvrbRM-zjM'}},
-          {text:'看完打造魔術曲線圖課程', course:{title:'20241220打造自己魔術曲線圖 @丙鈞',url:'https://youtu.be/cVtwIjAvNQE'}},
-        ]
-      },
-      { id:'c1_page', em:'💛', title:'零售四大循環｜版面', target:'讓人一眼看出你是誰、你分享什麼',
-        retailType:'page',
-        items:[
-          {text:'看完新手開賣影片怎麼拍', course:{title:'新手開賣影片怎麼拍？@惠誼',url:'https://www.youtube.com/watch?v=pXn2YleuKZI'}},
-          {text:'看完限動開賣三關鍵，如何避免療效法規', course:{title:'20240402「100%掌握限動開賣三關鍵」',url:'https://www.youtube.com/watch?v=--8zGzbB6KU'}},
-          {text:'看完日常怎麼發課程', course:{title:'20250420惠誼直屬「限動影響力 日常怎麼發」',url:'https://youtu.be/laIGVjOVzJE'}},
-          {text:'看完限動美感全攻略', course:{title:'20250924限動美感全攻略 @珮珮',url:'https://youtu.be/yJcL18HgAXI'}},
-          {text:'看完個人形象魅力課程', course:{title:'個人形象魅力 @丙鈞',url:'https://youtu.be/8mQdgzNC6FA'}},
-        ]
-      },
-      { id:'c1_sales', em:'💛', title:'零售四大循環｜銷售', target:'成交率80%以上',
-        retailType:'sales',
-        items:[
-          {text:'看完銷售動人心課程', course:{title:'20241222銷售動人心 @惠誼',url:'https://youtu.be/Bm3YQl4_gDg'}},
-          {text:'看完絕對成交七步驟', course:{title:'新人必學！絕對成交七步驟 @惠云',url:'https://www.youtube.com/watch?v=6LTTkjoBNsU'}},
-          {text:'看完產品知識大補帖', course:{title:'20250226進階群會議 產品知識大補帖 @惠誼',url:'https://youtu.be/doaT4DiXGJ4'}},
-          {text:'看完零售VIP價格計算課程', course:{title:'99%精準的新人銷售技巧 VIP價格、零售、優惠價 @凝凝',url:'https://www.youtube.com/watch?v=90152gSAO6w'}},
-          {text:'看完美肌福袋報賣四步驟', course:{title:'20260128美肌福袋報賣四步驟 @皇家瑜萍',url:'https://youtu.be/gZhtB_iWpS4'}},
-          {text:'看完纖體福袋變現全攻略', course:{title:'20260128纖體福袋變現全攻略 @皇家珮珮',url:'https://youtu.be/az9bgsEk8XM'}},
-        ]
-      },
-      { id:'c1_after', em:'💛', title:'零售四大循環｜售後', target:'回購率70%以上',
-        retailType:'after',
-        items:[
-          {text:'看完售後最暖心課程', course:{title:'20241230售後最暖心 @惠誼',url:'https://youtu.be/CW2fSYu6Bjk'}},
-          {text:'了解售後怎麼做', course:{title:'售後怎麼做？',url:'https://www.notion.so/3121c0dd9cb4806d9c2cfb53c47f48f8'}},
-        ]
-      },
-      { id:'c1_publish', em:'💛', title:'開賣發文步驟', target:'挑一產品或系列開始輸出',
-        items:[
-          {text:'第1~3天分享最近的嘗試及BA改變'},
-          {text:'第4~5天分享為何選擇這個產品（安全/有效）'},
-          {text:'第6~8天分享其他人BA/反饋/詢問'},
-          {text:'第9天開始分享專業知識'},
-          {text:'每天都至少五篇產品動態'},
-        ]
-      },
-      { id:'c1_exec', em:'💛', title:'執行檢核', target:'建立每日執行習慣',
-        items:[
-          {text:'會操作DCT Money復盤系統'},
-          {text:'頭貼、簡介、名字調整完成'},
-          {text:'精選動態建立一些跟生活相關的'},
-          {text:'限動每日都有5-10篇（生活：產品＝5:4）'},
-          {text:'發自身使用感受✓、自身BA反饋✓、熱銷證實✓'},
-          {text:'動態進行瘦身或者養膚打卡'},
-          {text:'DCT Money月復盤每月完成並傳給上家'},
-          {text:'養成習慣各群組回覆＆感謝分享者'},
-          {text:'會議課程每堂都跟上或補課！'},
-          {text:'限動口播分享每日發生的事，養成分享欲！'},
-          {text:'追蹤培訓總監Jeff IG每日清醒', course:{title:'Jeff IG @jerosse_jeff0605',url:'https://www.instagram.com/jerosse_jeff0605/'}},
-          {text:'熟悉MBA系統課程/資料查找'},
-          {text:'下載所有產品EDM分類相簿並詳讀'},
-        ]
-      },
-    ]
-  },
-  {
-    stageId:2, stageName:'三級零售', em:'⭐',
-    retailFocus: true,
-    sections:[
-      { id:'c2_condition', em:'💛', title:'晉升條件達成', target:'兩個月補貨達標',
-        items:[
-          {text:'兩個月補貨 > 12,000元'},
-          {text:'首次補貨款19,600元即可升級'},
-          {text:'有持續在分享銷售'},
-        ]
-      },
-      { id:'c2_flow', em:'💛', title:'零售四大循環｜引流', target:'每個月穩定增粉',
-        retailType:'flow',
-        items:[
-          {text:'看完全方位引流課程', course:{title:'20241228全方位引流 @惠誼',url:'https://youtu.be/YczqRbFOF6o'}},
-          {text:'看完短視頻速成班課程', course:{title:'短視頻速成班「第三期·基礎剪輯」@惠誼、Ming',url:'https://www.youtube.com/watch?v=VElTABXDVCc'}},
-          {text:'善用DCT魅力定位寶典找尋初步定位', course:{title:'DCT 魅力定位測驗',url:'https://annie55229900608.github.io/moon/'}},
-          {text:'看完精準雙軌定位力課程', course:{title:'20251008精準雙軌定位力 @Ruby',url:'https://youtu.be/S4GfSuX72Lo'}},
-          {text:'基礎剪輯', course:{title:'基礎剪輯課程',url:'https://www.youtube.com/watch?v=VElTABXDVCc'}},
-          {text:'拍攝/剪輯技巧 @仙女', course:{title:'拍攝/剪輯技巧 @仙女',url:'https://youtu.be/W7_mrT2Yxr8'}},
-          {text:'一堂課學會從0到爆款的剪輯技巧', course:{title:'從0到爆款剪輯技巧',url:'https://youtu.be/XHq0GSKJey8'}},
-        ]
-      },
-      { id:'c2_page', em:'💛', title:'零售四大循環｜版面', target:'帳號定位清楚，能吸引目標客群',
-        retailType:'page',
-        items:[
-          {text:'帳號定位清楚，能吸引目標客群', course:{title:'引流建議',url:'https://www.notion.so/312b0938dcdb80bf8023fe8c364af7dc'}},
-          {text:'新人開賣第一天限動SOP已熟悉', course:{title:'新人開賣第一天怎麼發限動',url:'https://www.notion.so/06286b5c397e447b8723b2e8c12d73e7'}},
-          {text:'限動沒靈感怎麼辦？', course:{title:'20241229限動沒靈感怎麼辦？@小可',url:'https://www.youtube.com/watch?v=zEn-oCuw3uE'}},
-          {text:'限動影響力・日常怎麼發', course:{title:'限動影響力 日常怎麼發',url:'https://www.youtube.com/watch?v=laIGVjOVzJE'}},
-          {text:'限動完整起承轉合', course:{title:'20260202福袋爆賣50組 @惠誼',url:'https://www.youtube.com/watch?v=sp62qW2aiQQ'}},
-          {text:'大健康系列靈感庫', course:{title:'大健康系列靈感庫',url:'https://drive.google.com/file/d/1MUxdFghYt5Cha196-k0PchTfebACrB1f/view?usp=share_link'}},
-          {text:'美肌系列靈感庫', course:{title:'美肌系列靈感庫',url:'https://drive.google.com/file/d/1qkOKTmxytDvnfTphgts80z3bZ3-CqrTO/view?usp=share_link'}},
-          {text:'纖體系列靈感庫', course:{title:'纖體系列靈感庫',url:'https://drive.google.com/file/d/1R-YL0kG2stpbS3dol33gBcZ3aIkdrU9-/view?usp=share_link'}},
-          {text:'起承轉合範例', course:{title:'起承轉合範例',url:'https://drive.google.com/file/d/1exEZtQtWb2z5cQiSmqAJ7P3vVAvRNVae/view?usp=share_link'}},
-          {text:'限動生活靈感庫', course:{title:'限動生活靈感庫',url:'https://drive.google.com/file/d/1HsFsrbSMqWHGbewqdS_hFl7ErWFtCcjX/view?usp=share_link'}},
-        ]
-      },
-      { id:'c2_sales', em:'💛', title:'零售四大循環｜銷售', target:'成交率80%以上',
-        retailType:'sales',
-        items:[
-          {text:'看完大健康系列怎麼爆', course:{title:'20250910「大健康系列到底怎麼爆？」妮',url:'https://youtu.be/dMr_NPRzAw0'}},
-          {text:'看完銷售QA寶典', course:{title:'銷售QA寶典',url:'https://www.notion.so/QA-312306c06b7d805593e6c783a5c7aaf6'}},
-          {text:'了解FABEQ一句話成交', course:{title:'FABEQ一句話成交',url:'https://www.notion.so/FABEQ-312b58d2c79e8018b2cef9d7a9ed53f9'}},
-          {text:'了解銷售SOP流程', course:{title:'銷售SOP',url:'https://www.notion.so/SOP-312b58d2c79e803590bcf61e08d4daf5'}},
-        ]
-      },
-      { id:'c2_after', em:'💛', title:'零售四大循環｜售後', target:'回購率70%以上',
-        retailType:'after',
-        items:[
-          {text:'收到產品第一天告知吃法，第三天關心，第七天關心'},
-          {text:'之後每兩週關心一次'},
-          {text:'會幫客人做產品+飲食搭配'},
-          {text:'主動關心使用狀況，給予溫心服務感'},
-        ]
-      },
-      { id:'c2_other', em:'💛', title:'其他', target:'拓展工具與資源',
-        items:[
-          {text:'看完新人第三堂開啟第二口袋收入', course:{title:'20250913新人第三堂「開啟第二口袋收入」@丙鈞',url:'https://youtu.be/LHgcVrVkmSE'}},
-          {text:'經營必備App', course:{title:'經營必備App',url:'https://www.notion.so/App-31c8fcb6b75d80c99c60dc721e2a742b'}},
-          {text:'經營相關資料', course:{title:'經營相關資料 - Google Drive',url:'https://drive.google.com/drive/folders/1Olk-O2FDnFLHcsRCD-qOkVfzx25-UcTr'}},
-        ]
-      },
-      { id:'c2_coach', em:'💛', title:'約上家', target:'線下討論與實戰練習',
-        items:[
-          {text:'討論初步定位（是誰、分享什麼）'},
-          {text:'明確想吸引的客群是誰'},
-          {text:'進行實際銷售演練'},
-          {text:'練習拍攝口播動態（角度/燈光/取景）'},
-          {text:'當場產片（腳本/拍攝/剪輯/上片）'},
-          {text:'拍攝食物/人物/景觀 取景練習'},
-          {text:'完整剪輯步驟示範'},
-          {text:'設定明確年度目標'},
-          {text:'共同討論過程會遇到的問題&解法'},
-          {text:'帳號及動態檢視復盤'},
-          {text:'協助報名輔導督導新人訓'},
-        ]
-      },
-      { id:'c2_mindset', em:'💛', title:'心態', target:'穩定心態持續前進',
-        items:[
-          {text:'能量續航 @惠誼', course:{title:'20260331能量續航 @惠誼',url:'https://www.youtube.com/watch?v=uAE5axNqafU'}},
-          {text:'千萬別怕麻煩上家！越麻煩越有錢'},
-          {text:'上下家像朋友，但也要有禮貌尊重'},
-          {text:'有任何問題找上家，別預設他很忙'},
-          {text:'有急事打電話給上家，不是找其他夥伴'},
-        ]
-      },
-      { id:'c2_exec', em:'💛', title:'執行檢核', target:'每日執行達標',
-        items:[
-          {text:'同時經營至少兩個平台（IG/TikTok）'},
-          {text:'每週至少發2-3篇貼文或連續短片'},
-          {text:'動態讓人感到信任，產品可以解決問題'},
-          {text:'銷售過程：聊天諮詢有溫度、找出需求、觀察痛點'},
-          {text:'至少傳兩次與客人對話給上家看'},
-          {text:'每日限動10則以上'},
-          {text:'至少每兩日聯繫上家一次'},
-          {text:'⚠️ 前往公司官方群組記事本，報名輔導督導課程'},
-        ]
-      },
-    ]
-  },
-  {
-    stageId:3, stageName:'三級輔導', em:'💫',
-    sections:[
-      { id:'c3_condition', em:'💛', title:'晉升條件達成', target:'考取輔導督導資格',
-        items:[
-          {text:'考取輔導督導資格'},
-          {text:'不用另外補貨升級'},
-          {text:'考了成本馬上降低！'},
-        ]
-      },
-      { id:'c3_flow', em:'💛', title:'引流', target:'每週穩定輸出',
-        items:[
-          {text:'看完單支影片變現課程', course:{title:'20241023單支影片變現10萬的關鍵 @Ruby',url:'https://youtu.be/aTnc2xL8S5M'}},
-          {text:'定位捉對流量加倍', course:{title:'定位捉對流量加倍',url:'https://youtu.be/Wh-UTA_Z2wA'}},
-          {text:'3秒勾住觀眾！爆款影片文案拆解術', course:{title:'3秒勾住觀眾！爆款影片文案拆解術',url:'https://youtu.be/2hrUWP2UMdU'}},
-          {text:'打造成長複利系統 @陳思諭', course:{title:'打造成長複利系統 @陳思諭',url:'https://youtu.be/Ktr91aGTuWw'}},
-        ]
-      },
-      { id:'c3_retail_review', em:'💛', title:'零售四大循環檢核', target:'能穩定執行版面、引流、銷售、售後',
-        items:[
-          {text:'引流：每週至少上片或輪播貼文2~3則'},
-          {text:'版面：限動每日至少3則口播，動態總數>10則'},
-          {text:'銷售：成交率80%以上持續維持'},
-          {text:'售後：客戶回購率70%以上，有回購名單'},
-        ]
-      },
-      { id:'c3_guide', em:'💛', title:'輔導督導', target:'能協助新人度過第一個月',
-        items:[
-          {text:'開啟第二口袋收入', course:{title:'20250913新人第三堂「開啟第二口袋收入」@丙鈞',url:'https://www.youtube.com/watch?v=LHgcVrVkmSE'}},
-          {text:'了解新輔導督導要怎麼開始', course:{title:'新輔導督導要怎麼開始',url:'https://www.notion.so/312306c06b7d80078f8debb07160b219'}},
-          {text:'如何善用16大優勢發文', course:{title:'如何善用16大優勢發文',url:'https://drive.google.com/file/d/1-Dkmw6UOWHfBvyr0V28pKFhT9lFAnoCN/view?usp=share_link'}},
-          {text:'了解帶夥伴入加盟的SOP', course:{title:'帶夥伴入加盟的SOP',url:'https://www.notion.so/SOP-312b58d2c79e806596f0c44d8f562f8a'}},
-          {text:'了解新人Day1流程', course:{title:'Day1 新人第一天',url:'https://www.notion.so/Day1-312339f987098091b133ef6b34eef80f'}},
-        ]
-      },
-      { id:'c3_recruit_post', em:'💛', title:'招商發文步驟', target:'能自然用發文帶入事業機會',
-        items:[
-          {text:'第1~3天分享加入故事及改變'},
-          {text:'第4~5天分享為何選擇這間公司'},
-          {text:'第6~8天分享為何選擇團隊'},
-          {text:'第9天開始分享VVIP（實習加盟愛用客）'},
-          {text:'每天都至少兩篇招商文！'},
-          {text:'找上家約線下拍攝招商影片'},
-        ]
-      },
-      { id:'c3_mindset', em:'💛', title:'心態', target:'穩定心態持續輸出',
-        items:[
-          {text:'是分享不是單純招募'},
-          {text:'愛用客加入VVIP更省錢'},
-          {text:'很多人在觀望，像當初的你一樣'},
-          {text:'持續分享一定會有影響力'},
-          {text:'收單是前三個月累積的結果'},
-          {text:'播種跟收割本來就不在同季節'},
-          {text:'如果心態不穩找上家聊聊'},
-          {text:'要確認你為何要做這些事？為何要賺錢？'},
-          {text:'從過程中找尋成就感及熱愛'},
-          {text:'養成「習慣」是最重要的關鍵'},
-          {text:'你能影響越多人，收入就越高'},
-        ]
-      },
-      { id:'c3_exec', em:'💛', title:'執行檢核', target:'每日執行達標',
-        items:[
-          {text:'零售淨利達6,000元以上'},
-          {text:'有穩定的3位以上回購客戶'},
-          {text:'每堂公司課程、團隊會議都要跟上'},
-          {text:'輸出各一則產品變現、招商Reels'},
-          {text:'持續每個月完成月復盤'},
-        ]
-      },
-    ]
-  },
-  {
-    stageId:4, stageName:'二級輔導', em:'🌙',
-    sections:[
-      { id:'c4_condition', em:'💛', title:'晉升條件達成', target:'單筆5萬 / 兩月4萬 / 4位實習',
-        items:[
-          {text:'單筆叫貨金額達5萬元'},
-          {text:'兩個月累積補貨金額4萬元以上'},
-          {text:'目標：有4位實習加盟 或 2位三級零售+2位實習'},
-        ]
-      },
-      { id:'c4_recruit', em:'💛', title:'招商', target:'持續招商穩定輸出',
-        items:[
-          {text:'看完收入翻倍三關鍵', course:{title:'讓你收入翻倍三關鍵',url:'https://www.youtube.com/watch?v=fT0S31de_D0'}},
-          {text:'99個招商常見問題', course:{title:'99個招商常見問題',url:'https://www.notion.so/319bbada9af38031a501cce1e08d61d2'}},
-          {text:'下家零售卡關可能遇到的問題、解決方法', course:{title:'下家零售卡關解決方法',url:'https://www.notion.so/31955b274c07804896c4fc2da11fc42a'}},
-          {text:'下家招商卡關可能遇到問題、解決方法', course:{title:'下家招商卡關解決方法',url:'https://www.notion.so/31955b274c07808ca48cd137607452ef'}},
-          {text:'「黃金圈」足以改變你生活跟經營的法則', course:{title:'黃金圈法則',url:'https://www.notion.so/31c8fcb6b75d8058b720f0586f6aea80'}},
-          {text:'意象加盟心中潛在QA', course:{title:'意象加盟心中潛在QA',url:'https://youtu.be/92zyKngoIdE'}},
-          {text:'90%的人招商都少了這個！', course:{title:'90%的人招商都少了這個！',url:'https://youtu.be/J-tCu4gv4lw'}},
-          {text:'招商如何賣自己', course:{title:'招商如何賣自己',url:'https://youtu.be/i60ipem6zIU'}},
-          {text:'跨越招商瓶頸大步向前', course:{title:'跨越招商瓶頸大步向前',url:'https://youtu.be/CsGczoLOlzE'}},
-          {text:'解決這5大雷區 招商很簡單', course:{title:'解決這5大雷區 招商很簡單',url:'https://youtu.be/pFCGwsAoVDw'}},
-          {text:'真誠感動人突破招商瓶頸', course:{title:'真誠感動人突破招商瓶頸',url:'https://youtu.be/NY6GuQWhZ-g'}},
-        ]
-      },
-      { id:'c4_team', em:'💛', title:'帶人', target:'能有效帶領夥伴',
-        items:[
-          {text:'如何帶好新人', course:{title:'如何帶好新人',url:'https://youtu.be/b7riml7y240'}},
-          {text:'如何帶人帶心', course:{title:'如何帶人帶心',url:'https://youtu.be/I2LOZTKb2LQ'}},
-          {text:'如何有效溝通，帶出行動力？', course:{title:'如何有效溝通，帶出行動力？',url:'https://youtu.be/hSQhnNB6PHs'}},
-        ]
-      },
-      { id:'c4_thinking', em:'💛', title:'思維', target:'建立全局觀與領導思維',
-        items:[
-          {text:'團隊長全局觀思維', course:{title:'團隊長全局觀思維',url:'https://youtu.be/MZW-_CFhm9E'}},
-          {text:'如何利用活動達到100+?', course:{title:'如何利用活動達到100+?',url:'https://www.youtube.com/watch?v=ecA0UO-J-qU'}},
-          {text:'中階訓突破盲點', course:{title:'中階訓突破盲點',url:'https://www.notion.so/31a8fcb6b75d80b89f6bfc55bcd84ab0'}},
-        ]
-      },
-      { id:'c4_exec', em:'💛', title:'執行檢核', target:'每日執行達標',
-        items:[
-          {text:'淨利10,000元以上'},
-          {text:'至少有四位實習以上'},
-          {text:'跟上家約線下見面或參與線下聚會'},
-          {text:'每兩天跟上家保持聯繫'},
-          {text:'遇到問題隨時發問！'},
-          {text:'關注自用夥伴的使用狀況'},
-          {text:'每1~2週主動跟進經營者的狀況'},
-          {text:'引流每週3~4則以上'},
-          {text:'限動最低每日不少於10則'},
-          {text:'招商動態每日至少3~4則'},
-          {text:'創立自己的愛用客群組'},
-          {text:'公司團隊會議全身上'},
-          {text:'持續每個月完成月復盤'},
-        ]
-      },
-    ]
-  },
-  {
-    stageId:5, stageName:'一級輔導', em:'🌟',
-    locked_content: true,
-    sections:[
-      { id:'c5_condition', em:'💛', title:'晉升條件達成', target:'單筆15萬 / 兩月12萬 / 5人以上',
-        items:[
-          {text:'單筆叫貨金額達15萬元'},
-          {text:'兩個月累積補貨金額12萬元以上'},
-          {text:'團隊人數5人以上'},
-          {text:'需單一品牌'},
-          {text:'達門檻需送審通過才可升級'},
-          {text:'審核通過時間約1~3個月'},
-        ]
-      },
-      { id:'c5_course', em:'💛', title:'必上課程', target:'深化領導力',
-        items:[
-          {text:'100%皇家翻倍「培育力」', course:{title:'100%皇家翻倍「培育力」',url:'https://youtu.be/7nFlKt_qzck'}},
-        ]
-      },
-      { id:'c5_system', em:'💛', title:'系統化複製', target:'成功方法可以被複製到夥伴身上',
-        items:[
-          {text:'整理出自己的核心成功要素與SOP'},
-          {text:'定期舉辦團隊聚會'},
-          {text:'建立團隊組織圖表'},
-          {text:'「如何帶領下家零售四大循環」具體操作方法'},
-          {text:'「如何帶領下家招商」具體進行的方法'},
-          {text:'年度戰略地圖（年度目標劃分成小目標，每月進度）'},
-          {text:'團隊培訓地圖（實習一路往上晉升的路徑）'},
-          {text:'中階訓內容如何應用在團隊'},
-        ]
-      },
-      { id:'c5_skills', em:'💛', title:'必備技能', target:'成為真正的領導者',
-        items:[
-          {text:'如何籌備線下聚會'},
-          {text:'公司課程如何帶領大家得名'},
-          {text:'如何散發好的影響力'},
-          {text:'該避免哪些負面影響力'},
-          {text:'群組提醒課程及會議時間'},
-          {text:'以身作則，說到做到'},
-          {text:'主動承擔責任並當責'},
-          {text:'無私分享貢獻者收穫最大'},
-          {text:'多次複習公司線下課程'},
-          {text:'帶領夥伴參加線下聚會及課程'},
-          {text:'定期自己團隊的會議'},
-          {text:'思考如何帶夥伴晉升'},
-          {text:'思考如何讓夥伴賣更好'},
-          {text:'持續招商目標100+'},
-          {text:'引流是關鍵'},
-          {text:'持續招收更多實習加盟每個月10+'},
-          {text:'每日帶團隊動態2則以上'},
-        ]
-      },
-      { id:'c5_exec', em:'💛', title:'執行檢核', target:'每日執行達標',
-        items:[
-          {text:'每週引流至少5~7則'},
-          {text:'每天限動散發影響力、價值分享'},
-          {text:'用動態及影片影響更多人'},
-          {text:'每日招商動態5則以上'},
-          {text:'每月至少1~2則變現、招商Reels'},
-          {text:'每月至少一場團隊線下聚會'},
-          {text:'持續認真「輸出」的夥伴1對1'},
-          {text:'目標粉絲數1.5萬'},
-          {text:'目標團隊人數30人'},
-        ]
-      },
-    ]
-  },
-  {
-    stageId:6, stageName:'皇家', em:'👑',
-    locked_content: true,
-    sections:[
-      { id:'c6_condition', em:'💛', title:'晉升條件達成', target:'單筆35萬 / 兩月30萬 / 25人以上',
-        items:[
-          {text:'單筆叫貨金額達35萬元'},
-          {text:'兩個月累積補貨金額30萬元以上'},
-          {text:'團隊人數25人以上，單一品牌'},
-          {text:'達門檻需送審通過才可升級'},
-          {text:'審核通過時間約2~12個月'},
-        ]
-      },
-      { id:'c6_course', em:'💛', title:'必上課程', target:'皇家心態建立',
-        items:[
-          {text:'皇家晉升心態 @木白', course:{title:'皇家晉升心態 @木白',url:'https://youtu.be/Gggc5n8VyBw'}},
-        ]
-      },
-      { id:'c6_legacy', em:'💛', title:'傳承 & 影響力', target:'成為DCT精神的傳承者',
-        items:[
-          {text:'完整整理自己從愛用客到皇家的旅程故事'},
-          {text:'每兩天至少鼓勵一位在低潮的夥伴'},
-          {text:'通過皇家審核，親身經歷調適性領導'},
-          {text:'讓你的故事持續影響更多人'},
-          {text:'帶領夥伴招商、零售'},
-          {text:'每日招商動態5則以上'},
-          {text:'每日帶團隊動態3則以上'},
-        ]
-      },
-      { id:'c6_exec', em:'💛', title:'執行檢核', target:'每日執行達標',
-        items:[
-          {text:'帶出1~5位一級、10~20位二級'},
-          {text:'粉絲數3萬以上'},
-          {text:'每週引流至少5~7則'},
-          {text:'每天限動散發影響力、價值分享'},
-          {text:'用動態及影片影響更多人'},
-          {text:'每月至少1~2則變現、招商Reels'},
-          {text:'每月至少一場團隊線下聚會'},
-          {text:'每月補貨目標50萬'},
-          {text:'目標團隊人數100人以上'},
-          {text:'目標淨利達10~20萬'},
-        ]
-      },
-    ]
-  },
+const CHECKLISTS=[
+  {stageId:0,stageName:'愛用客',em:'🌱',sections:[
+    {id:'c0_product',em:'💛',title:'產品了解 & BA見證建立',target:'累積使用感受及BA見證',items:[
+      {text:'看完新人Day1課程',course:{title:'新人Day1 @惠誼',url:'https://youtu.be/1g_daerd81U'}},
+      {text:'必看產品課程',course:{title:'必看產品課程',url:'https://drive.google.com/file/d/1CWeDQNNGmU5SMKfrO0o1R_SHrMZ8POcn/view?usp=drive_web'}},
+      {text:'了解纖體吃法與飲食搭配',course:{title:'纖體吃法、飲食、纖體班',url:'https://www.notion.so/31b306c06b7d80ed88ebf77e9a18afe7'}},
+      {text:'了解美肌使用方法及注意事項',course:{title:'美肌使用方法、注意事項',url:'https://www.notion.so/31abbada9af3802d9e60e50b50ac66c3'}},
+      {text:'拍攝纖體系列BA前後對比照＆錄影'},{text:'拍攝美肌系列BA前後對比照＆錄影'},{text:'報名參加纖體班'},{text:'連續使用產品14天以上，記錄身體的變化'},
+    ]},
+    {id:'c0_exec',em:'💛',title:'執行檢核',target:'建立基本習慣與連結',items:[
+      {text:'對比照及影片請放在跟上家記事本（避免誤刪）'},{text:'認真使用產品＝越快有感受！'},{text:'寫下自己的使用心得見證，跟上家分享'},
+      {text:'追蹤DCT IG並私訊告知上家是誰',course:{title:'DCT IG @mao_dctall',url:'https://www.instagram.com/mao_dctall?igsh=MWpoODEyczl6NzY2cA%3D%3D&utm_source=qr'}},
+    ]},
+  ]},
+  {stageId:1,stageName:'實習加盟',em:'🌿',retailFocus:true,sections:[
+    {id:'c1_mindset',em:'💛',title:'確立原動力及目標',target:'建立正確心態與方向',items:[
+      {text:'了解DCT系統4.0說明與團規',course:{title:'DCT系統4.0說明&團規更新',url:'https://youtu.be/RaqKArQoVB0'}},
+      {text:'看完心態啟航課程',course:{title:'20260320心態啟航（上）@木白',url:'https://youtu.be/2V0pR59_AsI'}},
+      {text:'看完搞定新人90%遇到的問題',course:{title:'20241213搞定新人90%在經營上遇到的問題 @子晴',url:'https://youtu.be/tsCoAXN8x6s'}},
+      {text:'設定三個月內的目標跟上家討論'},
+      {text:'看完心態穩經營就穩課程',course:{title:'20241213心態穩經營就穩 @丙鈞',url:'https://youtu.be/t51aRb6wh1Q'}},
+    ]},
+    {id:'c1_flow',em:'💛',title:'零售四大循環｜引流',target:'每個月增加粉絲至少50-200名',retailType:'flow',items:[
+      {text:'看完引爆IG社群力課程',course:{title:'引爆IG社群力 @毛妮芭',url:'https://www.youtube.com/watch?v=9MvrbRM-zjM'}},
+      {text:'看完打造魔術曲線圖課程',course:{title:'20241220打造自己魔術曲線圖 @丙鈞',url:'https://youtu.be/cVtwIjAvNQE'}},
+    ]},
+    {id:'c1_page',em:'💛',title:'零售四大循環｜版面',target:'讓人一眼看出你是誰、你分享什麼',retailType:'page',items:[
+      {text:'看完新手開賣影片怎麼拍',course:{title:'新手開賣影片怎麼拍？@惠誼',url:'https://www.youtube.com/watch?v=pXn2YleuKZI'}},
+      {text:'看完限動開賣三關鍵，如何避免療效法規',course:{title:'20240402「100%掌握限動開賣三關鍵」',url:'https://www.youtube.com/watch?v=--8zGzbB6KU'}},
+      {text:'看完日常怎麼發課程',course:{title:'20250420惠誼直屬「限動影響力 日常怎麼發」',url:'https://youtu.be/laIGVjOVzJE'}},
+      {text:'看完限動美感全攻略',course:{title:'20250924限動美感全攻略 @珮珮',url:'https://youtu.be/yJcL18HgAXI'}},
+      {text:'看完個人形象魅力課程',course:{title:'個人形象魅力 @丙鈞',url:'https://youtu.be/8mQdgzNC6FA'}},
+    ]},
+    {id:'c1_sales',em:'💛',title:'零售四大循環｜銷售',target:'成交率80%以上',retailType:'sales',items:[
+      {text:'看完銷售動人心課程',course:{title:'20241222銷售動人心 @惠誼',url:'https://youtu.be/Bm3YQl4_gDg'}},
+      {text:'看完絕對成交七步驟',course:{title:'新人必學！絕對成交七步驟 @惠云',url:'https://www.youtube.com/watch?v=6LTTkjoBNsU'}},
+      {text:'看完產品知識大補帖',course:{title:'20250226進階群會議 產品知識大補帖 @惠誼',url:'https://youtu.be/doaT4DiXGJ4'}},
+      {text:'看完零售VIP價格計算課程',course:{title:'99%精準的新人銷售技巧 VIP價格、零售、優惠價 @凝凝',url:'https://www.youtube.com/watch?v=90152gSAO6w'}},
+      {text:'看完美肌福袋報賣四步驟',course:{title:'20260128美肌福袋報賣四步驟 @皇家瑜萍',url:'https://youtu.be/gZhtB_iWpS4'}},
+      {text:'看完纖體福袋變現全攻略',course:{title:'20260128纖體福袋變現全攻略 @皇家珮珮',url:'https://youtu.be/az9bgsEk8XM'}},
+    ]},
+    {id:'c1_after',em:'💛',title:'零售四大循環｜售後',target:'回購率70%以上',retailType:'after',items:[
+      {text:'看完售後最暖心課程',course:{title:'20241230售後最暖心 @惠誼',url:'https://youtu.be/CW2fSYu6Bjk'}},
+      {text:'了解售後怎麼做',course:{title:'售後怎麼做？',url:'https://www.notion.so/3121c0dd9cb4806d9c2cfb53c47f48f8'}},
+    ]},
+    {id:'c1_publish',em:'💛',title:'開賣發文步驟',target:'挑一產品或系列開始輸出',items:[
+      {text:'第1~3天分享最近的嘗試及BA改變'},{text:'第4~5天分享為何選擇這個產品（安全/有效）'},{text:'第6~8天分享其他人BA/反饋/詢問'},{text:'第9天開始分享專業知識'},{text:'每天都至少五篇產品動態'},
+    ]},
+    {id:'c1_exec',em:'💛',title:'執行檢核',target:'建立每日執行習慣',items:[
+      {text:'會操作DCT Money復盤系統'},{text:'頭貼、簡介、名字調整完成'},{text:'精選動態建立一些跟生活相關的'},{text:'限動每日都有5-10篇（生活：產品＝5:4）'},
+      {text:'發自身使用感受✓、自身BA反饋✓、熱銷證實✓'},{text:'動態進行瘦身或者養膚打卡'},{text:'DCT Money月復盤每月完成並傳給上家'},
+      {text:'養成習慣各群組回覆＆感謝分享者'},{text:'會議課程每堂都跟上或補課！'},{text:'限動口播分享每日發生的事，養成分享欲！'},
+      {text:'追蹤培訓總監Jeff IG每日清醒',course:{title:'Jeff IG @jerosse_jeff0605',url:'https://www.instagram.com/jerosse_jeff0605/'}},
+      {text:'熟悉MBA系統課程/資料查找'},{text:'下載所有產品EDM分類相簿並詳讀'},
+    ]},
+  ]},
+  {stageId:2,stageName:'三級零售',em:'⭐',retailFocus:true,sections:[
+    {id:'c2_condition',em:'💛',title:'晉升條件達成',target:'兩個月補貨達標',items:[{text:'兩個月補貨 > 12,000元'},{text:'首次補貨款19,600元即可升級'},{text:'有持續在分享銷售'}]},
+    {id:'c2_flow',em:'💛',title:'零售四大循環｜引流',target:'每個月穩定增粉',retailType:'flow',items:[
+      {text:'看完全方位引流課程',course:{title:'20241228全方位引流 @惠誼',url:'https://youtu.be/YczqRbFOF6o'}},
+      {text:'看完短視頻速成班課程',course:{title:'短視頻速成班「第三期·基礎剪輯」@惠誼、Ming',url:'https://www.youtube.com/watch?v=VElTABXDVCc'}},
+      {text:'善用DCT魅力定位寶典找尋初步定位',course:{title:'DCT 魅力定位測驗',url:'https://annie55229900608.github.io/moon/'}},
+      {text:'看完精準雙軌定位力課程',course:{title:'20251008精準雙軌定位力 @Ruby',url:'https://youtu.be/S4GfSuX72Lo'}},
+      {text:'基礎剪輯',course:{title:'基礎剪輯課程',url:'https://www.youtube.com/watch?v=VElTABXDVCc'}},
+      {text:'拍攝/剪輯技巧 @仙女',course:{title:'拍攝/剪輯技巧 @仙女',url:'https://youtu.be/W7_mrT2Yxr8'}},
+      {text:'一堂課學會從0到爆款的剪輯技巧',course:{title:'從0到爆款剪輯技巧',url:'https://youtu.be/XHq0GSKJey8'}},
+    ]},
+    {id:'c2_page',em:'💛',title:'零售四大循環｜版面',target:'帳號定位清楚，能吸引目標客群',retailType:'page',items:[
+      {text:'帳號定位清楚，能吸引目標客群',course:{title:'引流建議',url:'https://www.notion.so/312b0938dcdb80bf8023fe8c364af7dc'}},
+      {text:'新人開賣第一天限動SOP已熟悉',course:{title:'新人開賣第一天怎麼發限動',url:'https://www.notion.so/06286b5c397e447b8723b2e8c12d73e7'}},
+      {text:'限動沒靈感怎麼辦？',course:{title:'20241229限動沒靈感怎麼辦？@小可',url:'https://www.youtube.com/watch?v=zEn-oCuw3uE'}},
+      {text:'限動影響力・日常怎麼發',course:{title:'限動影響力 日常怎麼發',url:'https://www.youtube.com/watch?v=laIGVjOVzJE'}},
+      {text:'限動完整起承轉合',course:{title:'20260202福袋爆賣50組 @惠誼',url:'https://www.youtube.com/watch?v=sp62qW2aiQQ'}},
+      {text:'大健康系列靈感庫',course:{title:'大健康系列靈感庫',url:'https://drive.google.com/file/d/1MUxdFghYt5Cha196-k0PchTfebACrB1f/view?usp=share_link'}},
+      {text:'美肌系列靈感庫',course:{title:'美肌系列靈感庫',url:'https://drive.google.com/file/d/1qkOKTmxytDvnfTphgts80z3bZ3-CqrTO/view?usp=share_link'}},
+      {text:'纖體系列靈感庫',course:{title:'纖體系列靈感庫',url:'https://drive.google.com/file/d/1R-YL0kG2stpbS3dol33gBcZ3aIkdrU9-/view?usp=share_link'}},
+      {text:'起承轉合範例',course:{title:'起承轉合範例',url:'https://drive.google.com/file/d/1exEZtQtWb2z5cQiSmqAJ7P3vVAvRNVae/view?usp=share_link'}},
+      {text:'限動生活靈感庫',course:{title:'限動生活靈感庫',url:'https://drive.google.com/file/d/1HsFsrbSMqWHGbewqdS_hFl7ErWFtCcjX/view?usp=share_link'}},
+    ]},
+    {id:'c2_sales',em:'💛',title:'零售四大循環｜銷售',target:'成交率80%以上',retailType:'sales',items:[
+      {text:'看完大健康系列怎麼爆',course:{title:'20250910「大健康系列到底怎麼爆？」妮',url:'https://youtu.be/dMr_NPRzAw0'}},
+      {text:'看完銷售QA寶典',course:{title:'銷售QA寶典',url:'https://www.notion.so/QA-312306c06b7d805593e6c783a5c7aaf6'}},
+      {text:'了解FABEQ一句話成交',course:{title:'FABEQ一句話成交',url:'https://www.notion.so/FABEQ-312b58d2c79e8018b2cef9d7a9ed53f9'}},
+      {text:'了解銷售SOP流程',course:{title:'銷售SOP',url:'https://www.notion.so/SOP-312b58d2c79e803590bcf61e08d4daf5'}},
+    ]},
+    {id:'c2_after',em:'💛',title:'零售四大循環｜售後',target:'回購率70%以上',retailType:'after',items:[
+      {text:'收到產品第一天告知吃法，第三天關心，第七天關心'},{text:'之後每兩週關心一次'},{text:'會幫客人做產品+飲食搭配'},{text:'主動關心使用狀況，給予溫心服務感'},
+    ]},
+    {id:'c2_other',em:'💛',title:'其他',target:'拓展工具與資源',items:[
+      {text:'看完新人第三堂開啟第二口袋收入',course:{title:'20250913新人第三堂「開啟第二口袋收入」@丙鈞',url:'https://youtu.be/LHgcVrVkmSE'}},
+      {text:'經營必備App',course:{title:'經營必備App',url:'https://www.notion.so/App-31c8fcb6b75d80c99c60dc721e2a742b'}},
+      {text:'經營相關資料',course:{title:'經營相關資料 - Google Drive',url:'https://drive.google.com/drive/folders/1Olk-O2FDnFLHcsRCD-qOkVfzx25-UcTr'}},
+    ]},
+    {id:'c2_coach',em:'💛',title:'約上家',target:'線下討論與實戰練習',items:[
+      {text:'討論初步定位（是誰、分享什麼）'},{text:'明確想吸引的客群是誰'},{text:'進行實際銷售演練'},{text:'練習拍攝口播動態（角度/燈光/取景）'},
+      {text:'當場產片（腳本/拍攝/剪輯/上片）'},{text:'拍攝食物/人物/景觀 取景練習'},{text:'完整剪輯步驟示範'},{text:'設定明確年度目標'},
+      {text:'共同討論過程會遇到的問題&解法'},{text:'帳號及動態檢視復盤'},{text:'協助報名輔導督導新人訓'},
+    ]},
+    {id:'c2_mindset',em:'💛',title:'心態',target:'穩定心態持續前進',items:[
+      {text:'能量續航 @惠誼',course:{title:'20260331能量續航 @惠誼',url:'https://www.youtube.com/watch?v=uAE5axNqafU'}},
+      {text:'千萬別怕麻煩上家！越麻煩越有錢'},{text:'上下家像朋友，但也要有禮貌尊重'},{text:'有任何問題找上家，別預設他很忙'},{text:'有急事打電話給上家，不是找其他夥伴'},
+    ]},
+    {id:'c2_exec',em:'💛',title:'執行檢核',target:'每日執行達標',items:[
+      {text:'同時經營至少兩個平台（IG/TikTok）'},{text:'每週至少發2-3篇貼文或連續短片'},{text:'動態讓人感到信任，產品可以解決問題'},
+      {text:'銷售過程：聊天諮詢有溫度、找出需求、觀察痛點'},{text:'至少傳兩次與客人對話給上家看'},{text:'每日限動10則以上'},
+      {text:'至少每兩日聯繫上家一次'},{text:'⚠️ 前往公司官方群組記事本，報名輔導督導課程'},
+    ]},
+  ]},
+  {stageId:3,stageName:'三級輔導',em:'💫',sections:[
+    {id:'c3_condition',em:'💛',title:'晉升條件達成',target:'考取輔導督導資格',items:[{text:'考取輔導督導資格'},{text:'不用另外補貨升級'},{text:'考了成本馬上降低！'}]},
+    {id:'c3_flow',em:'💛',title:'引流',target:'每週穩定輸出',items:[
+      {text:'看完單支影片變現課程',course:{title:'20241023單支影片變現10萬的關鍵 @Ruby',url:'https://youtu.be/aTnc2xL8S5M'}},
+      {text:'定位捉對流量加倍',course:{title:'定位捉對流量加倍',url:'https://youtu.be/Wh-UTA_Z2wA'}},
+      {text:'3秒勾住觀眾！爆款影片文案拆解術',course:{title:'3秒勾住觀眾！爆款影片文案拆解術',url:'https://youtu.be/2hrUWP2UMdU'}},
+      {text:'打造成長複利系統 @陳思諭',course:{title:'打造成長複利系統 @陳思諭',url:'https://youtu.be/Ktr91aGTuWw'}},
+    ]},
+    {id:'c3_retail_review',em:'💛',title:'零售四大循環檢核',target:'能穩定執行版面、引流、銷售、售後',items:[
+      {text:'引流：每週至少上片或輪播貼文2~3則'},{text:'版面：限動每日至少3則口播，動態總數>10則'},{text:'銷售：成交率80%以上持續維持'},{text:'售後：客戶回購率70%以上，有回購名單'},
+    ]},
+    {id:'c3_guide',em:'💛',title:'輔導督導',target:'能協助新人度過第一個月',items:[
+      {text:'開啟第二口袋收入',course:{title:'20250913新人第三堂「開啟第二口袋收入」@丙鈞',url:'https://www.youtube.com/watch?v=LHgcVrVkmSE'}},
+      {text:'了解新輔導督導要怎麼開始',course:{title:'新輔導督導要怎麼開始',url:'https://www.notion.so/312306c06b7d80078f8debb07160b219'}},
+      {text:'如何善用16大優勢發文',course:{title:'如何善用16大優勢發文',url:'https://drive.google.com/file/d/1-Dkmw6UOWHfBvyr0V28pKFhT9lFAnoCN/view?usp=share_link'}},
+      {text:'了解帶夥伴入加盟的SOP',course:{title:'帶夥伴入加盟的SOP',url:'https://www.notion.so/SOP-312b58d2c79e806596f0c44d8f562f8a'}},
+      {text:'了解新人Day1流程',course:{title:'Day1 新人第一天',url:'https://www.notion.so/Day1-312339f987098091b133ef6b34eef80f'}},
+    ]},
+    {id:'c3_recruit_post',em:'💛',title:'招商發文步驟',target:'能自然用發文帶入事業機會',items:[
+      {text:'第1~3天分享加入故事及改變'},{text:'第4~5天分享為何選擇這間公司'},{text:'第6~8天分享為何選擇團隊'},
+      {text:'第9天開始分享VVIP（實習加盟愛用客）'},{text:'每天都至少兩篇招商文！'},{text:'找上家約線下拍攝招商影片'},
+    ]},
+    {id:'c3_mindset',em:'💛',title:'心態',target:'穩定心態持續輸出',items:[
+      {text:'是分享不是單純招募'},{text:'愛用客加入VVIP更省錢'},{text:'很多人在觀望，像當初的你一樣'},{text:'持續分享一定會有影響力'},
+      {text:'收單是前三個月累積的結果'},{text:'播種跟收割本來就不在同季節'},{text:'如果心態不穩找上家聊聊'},
+      {text:'要確認你為何要做這些事？為何要賺錢？'},{text:'從過程中找尋成就感及熱愛'},{text:'養成「習慣」是最重要的關鍵'},{text:'你能影響越多人，收入就越高'},
+    ]},
+    {id:'c3_exec',em:'💛',title:'執行檢核',target:'每日執行達標',items:[
+      {text:'零售淨利達6,000元以上'},{text:'有穩定的3位以上回購客戶'},{text:'每堂公司課程、團隊會議都要跟上'},{text:'輸出各一則產品變現、招商Reels'},{text:'持續每個月完成月復盤'},
+    ]},
+  ]},
+  {stageId:4,stageName:'二級輔導',em:'🌙',sections:[
+    {id:'c4_condition',em:'💛',title:'晉升條件達成',target:'單筆5萬 / 兩月4萬 / 4位實習',items:[{text:'單筆叫貨金額達5萬元'},{text:'兩個月累積補貨金額4萬元以上'},{text:'目標：有4位實習加盟 或 2位三級零售+2位實習'}]},
+    {id:'c4_recruit',em:'💛',title:'招商',target:'持續招商穩定輸出',items:[
+      {text:'看完收入翻倍三關鍵',course:{title:'讓你收入翻倍三關鍵',url:'https://www.youtube.com/watch?v=fT0S31de_D0'}},
+      {text:'99個招商常見問題',course:{title:'99個招商常見問題',url:'https://www.notion.so/319bbada9af38031a501cce1e08d61d2'}},
+      {text:'下家零售卡關可能遇到的問題、解決方法',course:{title:'下家零售卡關解決方法',url:'https://www.notion.so/31955b274c07804896c4fc2da11fc42a'}},
+      {text:'下家招商卡關可能遇到問題、解決方法',course:{title:'下家招商卡關解決方法',url:'https://www.notion.so/31955b274c07808ca48cd137607452ef'}},
+      {text:'「黃金圈」足以改變你生活跟經營的法則',course:{title:'黃金圈法則',url:'https://www.notion.so/31c8fcb6b75d8058b720f0586f6aea80'}},
+      {text:'意象加盟心中潛在QA',course:{title:'意象加盟心中潛在QA',url:'https://youtu.be/92zyKngoIdE'}},
+      {text:'90%的人招商都少了這個！',course:{title:'90%的人招商都少了這個！',url:'https://youtu.be/J-tCu4gv4lw'}},
+      {text:'招商如何賣自己',course:{title:'招商如何賣自己',url:'https://youtu.be/i60ipem6zIU'}},
+      {text:'跨越招商瓶頸大步向前',course:{title:'跨越招商瓶頸大步向前',url:'https://youtu.be/CsGczoLOlzE'}},
+      {text:'解決這5大雷區 招商很簡單',course:{title:'解決這5大雷區 招商很簡單',url:'https://youtu.be/pFCGwsAoVDw'}},
+      {text:'真誠感動人突破招商瓶頸',course:{title:'真誠感動人突破招商瓶頸',url:'https://youtu.be/NY6GuQWhZ-g'}},
+    ]},
+    {id:'c4_team',em:'💛',title:'帶人',target:'能有效帶領夥伴',items:[
+      {text:'如何帶好新人',course:{title:'如何帶好新人',url:'https://youtu.be/b7riml7y240'}},
+      {text:'如何帶人帶心',course:{title:'如何帶人帶心',url:'https://youtu.be/I2LOZTKb2LQ'}},
+      {text:'如何有效溝通，帶出行動力？',course:{title:'如何有效溝通，帶出行動力？',url:'https://youtu.be/hSQhnNB6PHs'}},
+    ]},
+    {id:'c4_thinking',em:'💛',title:'思維',target:'建立全局觀與領導思維',items:[
+      {text:'團隊長全局觀思維',course:{title:'團隊長全局觀思維',url:'https://youtu.be/MZW-_CFhm9E'}},
+      {text:'如何利用活動達到100+?',course:{title:'如何利用活動達到100+?',url:'https://www.youtube.com/watch?v=ecA0UO-J-qU'}},
+      {text:'中階訓突破盲點',course:{title:'中階訓突破盲點',url:'https://www.notion.so/31a8fcb6b75d80b89f6bfc55bcd84ab0'}},
+    ]},
+    {id:'c4_exec',em:'💛',title:'執行檢核',target:'每日執行達標',items:[
+      {text:'淨利10,000元以上'},{text:'至少有四位實習以上'},{text:'跟上家約線下見面或參與線下聚會'},{text:'每兩天跟上家保持聯繫'},
+      {text:'遇到問題隨時發問！'},{text:'關注自用夥伴的使用狀況'},{text:'每1~2週主動跟進經營者的狀況'},
+      {text:'引流每週3~4則以上'},{text:'限動最低每日不少於10則'},{text:'招商動態每日至少3~4則'},
+      {text:'創立自己的愛用客群組'},{text:'公司團隊會議全身上'},{text:'持續每個月完成月復盤'},
+    ]},
+  ]},
+  {stageId:5,stageName:'一級輔導',em:'🌟',locked_content:true,sections:[
+    {id:'c5_condition',em:'💛',title:'晉升條件達成',target:'單筆15萬 / 兩月12萬 / 5人以上',items:[
+      {text:'單筆叫貨金額達15萬元'},{text:'兩個月累積補貨金額12萬元以上'},{text:'團隊人數5人以上'},{text:'需單一品牌'},{text:'達門檻需送審通過才可升級'},{text:'審核通過時間約1~3個月'},
+    ]},
+    {id:'c5_course',em:'💛',title:'必上課程',target:'深化領導力',items:[{text:'100%皇家翻倍「培育力」',course:{title:'100%皇家翻倍「培育力」',url:'https://youtu.be/7nFlKt_qzck'}}]},
+    {id:'c5_system',em:'💛',title:'系統化複製',target:'成功方法可以被複製到夥伴身上',items:[
+      {text:'整理出自己的核心成功要素與SOP'},{text:'定期舉辦團隊聚會'},{text:'建立團隊組織圖表'},
+      {text:'「如何帶領下家零售四大循環」具體操作方法'},{text:'「如何帶領下家招商」具體進行的方法'},
+      {text:'年度戰略地圖（年度目標劃分成小目標，每月進度）'},{text:'團隊培訓地圖（實習一路往上晉升的路徑）'},{text:'中階訓內容如何應用在團隊'},
+    ]},
+    {id:'c5_skills',em:'💛',title:'必備技能',target:'成為真正的領導者',items:[
+      {text:'如何籌備線下聚會'},{text:'公司課程如何帶領大家得名'},{text:'如何散發好的影響力'},{text:'該避免哪些負面影響力'},
+      {text:'群組提醒課程及會議時間'},{text:'以身作則，說到做到'},{text:'主動承擔責任並當責'},{text:'無私分享貢獻者收穫最大'},
+      {text:'多次複習公司線下課程'},{text:'帶領夥伴參加線下聚會及課程'},{text:'定期自己團隊的會議'},
+      {text:'思考如何帶夥伴晉升'},{text:'思考如何讓夥伴賣更好'},{text:'持續招商目標100+'},{text:'引流是關鍵'},
+      {text:'持續招收更多實習加盟每個月10+'},{text:'每日帶團隊動態2則以上'},
+    ]},
+    {id:'c5_exec',em:'💛',title:'執行檢核',target:'每日執行達標',items:[
+      {text:'每週引流至少5~7則'},{text:'每天限動散發影響力、價值分享'},{text:'用動態及影片影響更多人'},
+      {text:'每日招商動態5則以上'},{text:'每月至少1~2則變現、招商Reels'},{text:'每月至少一場團隊線下聚會'},
+      {text:'持續認真「輸出」的夥伴1對1'},{text:'目標粉絲數1.5萬'},{text:'目標團隊人數30人'},
+    ]},
+  ]},
+  {stageId:6,stageName:'皇家',em:'👑',locked_content:true,sections:[
+    {id:'c6_condition',em:'💛',title:'晉升條件達成',target:'單筆35萬 / 兩月30萬 / 25人以上',items:[
+      {text:'單筆叫貨金額達35萬元'},{text:'兩個月累積補貨金額30萬元以上'},{text:'團隊人數25人以上，單一品牌'},{text:'達門檻需送審通過才可升級'},{text:'審核通過時間約2~12個月'},
+    ]},
+    {id:'c6_course',em:'💛',title:'必上課程',target:'皇家心態建立',items:[{text:'皇家晉升心態 @木白',course:{title:'皇家晉升心態 @木白',url:'https://youtu.be/Gggc5n8VyBw'}}]},
+    {id:'c6_legacy',em:'💛',title:'傳承 & 影響力',target:'成為DCT精神的傳承者',items:[
+      {text:'完整整理自己從愛用客到皇家的旅程故事'},{text:'每兩天至少鼓勵一位在低潮的夥伴'},{text:'通過皇家審核，親身經歷調適性領導'},
+      {text:'讓你的故事持續影響更多人'},{text:'帶領夥伴招商、零售'},{text:'每日招商動態5則以上'},{text:'每日帶團隊動態3則以上'},
+    ]},
+    {id:'c6_exec',em:'💛',title:'執行檢核',target:'每日執行達標',items:[
+      {text:'帶出1~5位一級、10~20位二級'},{text:'粉絲數3萬以上'},{text:'每週引流至少5~7則'},{text:'每天限動散發影響力、價值分享'},
+      {text:'用動態及影片影響更多人'},{text:'每月至少1~2則變現、招商Reels'},{text:'每月至少一場團隊線下聚會'},
+      {text:'每月補貨目標50萬'},{text:'目標團隊人數100人以上'},{text:'目標淨利達10~20萬'},
+    ]},
+  ]},
 ];
 
-
-const UPGRADE_INFO = [
-  {stageId:0,name:'愛用客',em:'🌱',
-   threshold:null,
-   conditions:['開始使用婕樂纖產品','建立個人使用見證'],
-   note:'從使用者開始，成為自己最好的見證'},
-  {stageId:1,name:'實習加盟',em:'🌿',
-   threshold:{label:'新加盟',amount:'6,800元',monthly:'月補貨 6,000元以上'},
-   conditions:['新加盟：6,800元（6,600首次備貨款+200元創業包）','兩個月補貨金額6,000元以上'],
-   note:'沒有招商權，專注在零售獲利'},
-  {stageId:2,name:'三級零售',em:'⭐',
-   threshold:{label:'新加盟',amount:'19,800元',monthly:'月補貨 12,000元以上'},
-   conditions:['新加盟：19,800元（19,600首次備貨款+200元創業包）','兩個月補貨金額12,000元以上'],
-   note:'沒有招商權，零售獲利四大技能全掌握'},
-  {stageId:3,name:'三級輔導',em:'💫',
-   threshold:{label:'晉升門檻',amount:'不須首次備貨',monthly:'月補貨 12,000元以上'},
-   conditions:['新晉升不須首次備貨金額','兩個月補貨金額12,000元以上','4位實習 或 2位三級零售+2位實習','⚠️ 前往公司官方群組記事本報名輔導督導課程'],
-   note:'有招商權，開始帶夥伴一起成長'},
-  {stageId:4,name:'二級輔導',em:'🌙',
-   threshold:{label:'晉升門檻',amount:'單筆 50,000元',monthly:'兩月補貨 40,000元以上'},
-   conditions:['單筆叫貨金額：50,000元','兩個月累積補貨金額40,000元以上'],
-   note:'兩個月能補貨4萬就可以升級'},
-  {stageId:5,name:'一級輔導',em:'🌟',
-   threshold:{label:'晉升門檻',amount:'單筆 150,000元',monthly:'兩月補貨 120,000元以上'},
-   conditions:['單筆叫貨金額：150,000元','兩個月累積補貨金額120,000元以上','團隊人數5人以上','單一品牌'],
-   note:'補貨達標 + 團隊5人 + 單一品牌'},
-  {stageId:6,name:'皇家',em:'👑',
-   threshold:{label:'晉升門檻',amount:'單筆 350,000元',monthly:'兩月補貨 300,000元以上'},
-   conditions:['單筆叫貨金額：350,000元','兩個月累積補貨金額300,000元以上','團隊人數25人以上','單一品牌'],
-   note:'補貨達標 + 團隊25人 + 單一品牌'},
+const UPGRADE_INFO=[
+  {stageId:0,name:'愛用客',em:'🌱',threshold:null,conditions:['開始使用婕樂纖產品','建立個人使用見證'],note:'從使用者開始，成為自己最好的見證'},
+  {stageId:1,name:'實習加盟',em:'🌿',threshold:{label:'新加盟',amount:'6,800元',monthly:'月補貨 6,000元以上'},conditions:['新加盟：6,800元（6,600首次備貨款+200元創業包）','兩個月補貨金額6,000元以上'],note:'沒有招商權，專注在零售獲利'},
+  {stageId:2,name:'三級零售',em:'⭐',threshold:{label:'新加盟',amount:'19,800元',monthly:'月補貨 12,000元以上'},conditions:['新加盟：19,800元（19,600首次備貨款+200元創業包）','兩個月補貨金額12,000元以上'],note:'沒有招商權，零售獲利四大技能全掌握'},
+  {stageId:3,name:'三級輔導',em:'💫',threshold:{label:'晉升門檻',amount:'不須首次備貨',monthly:'月補貨 12,000元以上'},conditions:['新晉升不須首次備貨金額','兩個月補貨金額12,000元以上','4位實習 或 2位三級零售+2位實習','⚠️ 前往公司官方群組記事本報名輔導督導課程'],note:'有招商權，開始帶夥伴一起成長'},
+  {stageId:4,name:'二級輔導',em:'🌙',threshold:{label:'晉升門檻',amount:'單筆 50,000元',monthly:'兩月補貨 40,000元以上'},conditions:['單筆叫貨金額：50,000元','兩個月累積補貨金額40,000元以上'],note:'兩個月能補貨4萬就可以升級'},
+  {stageId:5,name:'一級輔導',em:'🌟',threshold:{label:'晉升門檻',amount:'單筆 150,000元',monthly:'兩月補貨 120,000元以上'},conditions:['單筆叫貨金額：150,000元','兩個月累積補貨金額120,000元以上','團隊人數5人以上','單一品牌'],note:'補貨達標 + 團隊5人 + 單一品牌'},
+  {stageId:6,name:'皇家',em:'👑',threshold:{label:'晉升門檻',amount:'單筆 350,000元',monthly:'兩月補貨 300,000元以上'},conditions:['單筆叫貨金額：350,000元','兩個月累積補貨金額300,000元以上','團隊人數25人以上','單一品牌'],note:'補貨達標 + 團隊25人 + 單一品牌'},
 ];
 
-
-// ── CHECKLIST LOGIC ───────────────────────────────────────────────
-const CK_KEY = 'dct_checklist_v1';
-const UP_KEY = 'dct_upgraded_v1';
-const UPG_KEY = 'dct_upgrade_v1';
-let ckData = {};
-let upgradedStages = {};
-let upgData = {};
-let curCkStage = 0;
-const openCkSections = {};
-
-function loadUpgraded(){ try{ upgradedStages=JSON.parse(localStorage.getItem(UP_KEY)||'{}'); }catch(e){ upgradedStages={}; } }
-function saveUpgraded(){ localStorage.setItem(UP_KEY, JSON.stringify(upgradedStages)); }
-
-
-
+const CK_KEY='dct_checklist_v1',UP_KEY='dct_upgraded_v1',UPG_KEY='dct_upgrade_v1';
+let ckData={},upgradedStages={},upgData={},curCkStage=0;
+const openCkSections={};
+function loadUpgraded(){try{upgradedStages=JSON.parse(localStorage.getItem(UP_KEY)||'{}');}catch(e){upgradedStages={};}}
+function saveUpgraded(){localStorage.setItem(UP_KEY,JSON.stringify(upgradedStages));}
+function loadCkData(){try{ckData=JSON.parse(localStorage.getItem(CK_KEY)||'{}');}catch(e){ckData={};}try{upgData=JSON.parse(localStorage.getItem(UPG_KEY)||'{}');}catch(e){upgData={};}}
+function saveCkData(){localStorage.setItem(CK_KEY,JSON.stringify(ckData));}
 
 function showAnalysis(){
   const ckStage = CHECKLISTS[ci];
@@ -1813,9 +843,7 @@ function showAnalysis(){
   const doneItems = sections.reduce((a,s)=>a+s.items.filter((_,i)=>ckData[s.id+'_'+i]).length,0);
   const pct = totalItems ? Math.round(doneItems/totalItems*100) : 0;
 
-  // Per-item specific advice
   const ITEM_TIPS = {
-    // 愛用客 - 產品了解
     'c0_product_0': '打開連結看完課程，看完後把3個印象最深的重點傳給上家。',
     'c0_product_1': '打開連結看完必看產品課程，不懂的地方記下來問上家。',
     'c0_product_2': '看完纖體課程後，把吃法寫在手機備忘錄，每天對照執行。',
@@ -1824,43 +852,35 @@ function showAnalysis(){
     'c0_product_5': '同上，拍攝美肌BA，記得臉部光線要一致，比較才有說服力。',
     'c0_product_6': '去公司群組找纖體班資訊，馬上報名，上課能快速了解產品效果。',
     'c0_product_7': '今天開始，每天用完產品在手機備忘錄記一句話：「今天感覺＿＿」',
-    // 愛用客 - 執行
     'c0_exec_0': '現在就把BA照片上傳到和上家共用的記事本，避免換手機遺失。',
     'c0_exec_1': '把「認真使用＝越快有感受」設成手機鎖屏提醒，每天看到就想到。',
     'c0_exec_2': '打開手機，用語音備忘錄說出你的使用感受，說完整理成文字傳給上家。',
     'c0_exec_3': '現在就點連結追蹤 DCT IG，然後私訊告知上家你的 IG 帳號名稱。',
-    // 實習 - 心態
     'c1_mindset_0': '今天看完DCT系統說明，把「我為什麼加入」這句話寫下來，貼在你每天看得到的地方。',
     'c1_mindset_1': '看完心態啟航課程，把最打動你的一句話傳給上家，討論怎麼應用。',
     'c1_mindset_2': '看完課程，把你目前最困擾的問題列出來，傳給上家一起解決。',
     'c1_mindset_3': '拿出紙筆，寫下三個月內要達成什麼，傳給上家討論是否合理可行。',
     'c1_mindset_4': '看完心態課程，把最有共鳴的一段截圖存起來，放在你常看到的地方。',
-    // 實習 - 引流
     'c1_flow_0': '看完引爆IG社群力，馬上找出你帳號目前最弱的地方，今天改一個。',
     'c1_flow_1': '看完魔術曲線圖課程，今天就去 dctmagic 建立你的第一筆數據。',
-    // 實習 - 版面
     'c1_page_0': '看完課程，今天就拍一支口播：「我是誰、我用什麼、我有什麼改變」60秒說完。',
     'c1_page_1': '看完限動開賣三關鍵，把三個關鍵寫在便利貼貼在桌前，每次發文前看一眼。',
     'c1_page_2': '看完日常怎麼發，今天就發一則你今天做的事，不用提產品，先練分享習慣。',
     'c1_page_3': '看完限動美感課程，參考課程中的範例，今天重新設計一則限動的風格。',
     'c1_page_4': '看完個人形象魅力，今天更新你的大頭照和簡介，更新完截圖傳給上家確認。',
-    // 實習 - 銷售
     'c1_sales_0': '看完銷售動人心，把「找出需求、觀察痛點」這兩步驟用自己的話說給上家聽。',
     'c1_sales_1': '看完絕對成交七步驟，今天和上家角色扮演一次，你當銷售員，上家當客人。',
     'c1_sales_2': '看完產品知識大補帖，選一個產品系列把它說清楚，錄音傳給上家聽。',
     'c1_sales_3': '看完VIP價格課程，把三種價格結構寫在手機備忘錄，對話時隨時查。',
     'c1_sales_4': '看完美肌福袋四步驟，今天就用這四步驟跟一位朋友介紹一次，哪怕只是練習。',
     'c1_sales_5': '看完纖體福袋課程，把「開場白→需求→呈現→成交」四步驟背熟，說十次才算懂。',
-    // 實習 - 售後
     'c1_after_0': '看完售後課程，把課程中最打動你的售後話術抄下來，改成你自己的說話方式。',
     'c1_after_1': '現在建一個追蹤表：客人名字、購買日、第3天、第7天、每兩週的提醒日期全部設好。',
-    // 實習 - 開賣步驟
     'c1_publish_0': '今天就發！拍一張你用完產品的照片，寫一句「最近在嘗試＿＿」發出去。',
     'c1_publish_1': '第4天：寫一段「我為什麼選這個產品」，100字以內，真實就好，發出去。',
     'c1_publish_2': '找一位已經有效果的客人，詢問他願不願意分享BA，有一個就夠了，發出去。',
     'c1_publish_3': '從產品知識大補帖選一個知識點，用自己的話說一遍，錄成限動發出去。',
     'c1_publish_4': '設手機提醒：每天固定時間發5則限動，不管好壞先發，量比質重要。',
-    // 實習 - 執行
     'c1_exec_0': '現在打開DCT Money，把今天的第一筆記錄進去，哪怕只是一元也要記。',
     'c1_exec_1': '今天就改！大頭照換成清晰的自拍，簡介寫「我是誰＋我分享什麼＋聯繫方式」。',
     'c1_exec_2': '建3個精選動態：生活日常、美食或旅遊、一個個人興趣，和產品分開放。',
@@ -1874,7 +894,6 @@ function showAnalysis(){
     'c1_exec_10': '現在就點連結追蹤 Jeff IG，每天早上看他一則動態，啟動你的狀態。',
     'c1_exec_11': '登入MBA系統，找到課程區，把課程列表截圖存起來，排進你的學習計畫。',
     'c1_exec_12': '下載所有產品EDM，建一個相簿分類存好，有客人問問題時馬上查。',
-    // 三級零售 - 引流
     'c2_flow_0': '看完引流課程，今天選一個你能持續做的引流方式，就做那一個，做到熟練。',
     'c2_flow_1': '看完短視頻課程，今天拍一支30秒的影片，不用剪輯，先拍出來看看。',
     'c2_flow_2': '現在就去做魅力定位測驗，把結果截圖傳給上家，討論你的定位方向。',
@@ -1882,7 +901,6 @@ function showAnalysis(){
     'c2_flow_4': '看完基礎剪輯課程，今天用手機剪一支30秒影片，剪完傳給上家看。',
     'c2_flow_5': '看完仙女的拍攝技巧，今天換不同角度拍3張照片，比較哪個最好看。',
     'c2_flow_6': '看完爆款剪輯課程，把「開頭三秒」的技巧用在你的下一支影片。',
-    // 三級零售 - 版面
     'c2_page_0': '現在去檢視你的帳號：一眼能看出你是誰嗎？不行就今天改簡介。',
     'c2_page_1': '看完新人開賣SOP，把步驟截圖，下次新人第一天直接照著做。',
     'c2_page_2': '看完課程，下次想不到發什麼就打開這個影片，跟著做一次。',
@@ -1893,21 +911,17 @@ function showAnalysis(){
     'c2_page_7': '下載纖體靈感庫，從裡面找一個你最有共鳴的，今天用自己的方式重拍。',
     'c2_page_8': '下載起承轉合範例，研究它的結構，今天拍一則照著這個結構的限動。',
     'c2_page_9': '下載生活靈感庫，選3個你今天就能做到的靈感，今天發出去。',
-    // 三級零售 - 銷售
     'c2_sales_0': '看完大健康怎麼爆，今天發一則大健康系列的銷售限動，用課程教的方式。',
     'c2_sales_1': '看完銷售QA寶典，找到你最常被問的問題，用寶典的答法練習說一遍。',
     'c2_sales_2': '看完FABEQ，今天就把你的產品用FABEQ架構說一遍，錄音傳給上家聽。',
     'c2_sales_3': '看完銷售SOP，把SOP印出來或截圖，每次和客人對話前先看一遍。',
-    // 三級零售 - 售後
     'c2_after_0': '今天就聯繫最近購買的客人，第一天告知正確吃法，問他有沒有問題。',
     'c2_after_1': '現在幫所有客人設手機提醒，每兩週一次，提醒內容是「關心＿＿的使用狀況」。',
     'c2_after_2': '建一個客人資料表：名字、買了什麼、體質、建議搭配方式，今天填入3個客人。',
     'c2_after_3': '今天發一則「客人反饋」的限動，附上你主動關心後客人的感謝，真實就好。',
-    // 三級零售 - 其他
     'c2_other_0': '看完開啟第二口袋收入課程，把課程中最讓你心動的收入結構截圖，傳給上家討論。',
     'c2_other_1': '現在下載經營必備App，每個App花5分鐘了解怎麼用，今天就開始用。',
     'c2_other_2': '打開Google Drive連結，找到最需要的3份資料，下載到手機備用。',
-    // 三級零售 - 約上家
     'c2_coach_0': '現在傳訊息給上家：「上家，我想約你討論我的定位，你什麼時候方便？」',
     'c2_coach_1': '準備一張紙，寫下你認為你的目標客群是誰，帶去和上家討論。',
     'c2_coach_2': '約好後，準備一個你最近遇到的真實銷售情境，讓上家幫你演練。',
@@ -1919,13 +933,11 @@ function showAnalysis(){
     'c2_coach_8': '列出你最困擾的3個問題，帶去和上家逐一討論，每個問題要有具體解法。',
     'c2_coach_9': '讓上家幫你看帳號，哪個動態最強、哪個最弱，聽完馬上改一個。',
     'c2_coach_10': '現在就問上家輔導督導課程的報名方式，確認下一次的上課時間。',
-    // 三級零售 - 心態
     'c2_mindset_0': '看完能量續航課程，把最有共鳴的一段話截圖存起來，心情低落時就看。',
     'c2_mindset_1': '現在就傳訊息給上家，問他一個你最近卡關的問題，不要等「完整問題」才問。',
     'c2_mindset_2': '今天發一則謝謝上家的限動或私訊，感謝讓人更願意幫助你。',
     'c2_mindset_3': '設定一個勇氣觸發物：遇到問題第一步是打電話而不是發訊息，直接說清楚更快。',
     'c2_mindset_4': '把這句話設成手機鎖屏：「有急事打電話給上家，不是找其他夥伴。」',
-    // 三級零售 - 執行
     'c2_exec_0': '今天下載TikTok並申請帳號，發第一則影片，內容就用IG已發過的。',
     'c2_exec_1': '這週目標：每週一三五各發一則Reels或輪播貼文，先排好主題再拍。',
     'c2_exec_2': '現在去看你最近發的5則動態，問自己：「看完這個會想買嗎？」不會就改。',
@@ -1934,30 +946,25 @@ function showAnalysis(){
     'c2_exec_5': '設手機提醒：每天至少10則限動，分早中晚三個時段發，一次不用超過4則。',
     'c2_exec_6': '今天傳訊息給上家，明天約15分鐘線上對話更新進度。',
     'c2_exec_7': '現在打開公司官方群組記事本，找到報名連結，馬上填寫報名輔導督導課程。',
-    // 三級輔導 - 引流
     'c3_flow_0': '看完單支影片變現課程，把課程中的「選題公式」用在你下一支影片，今天就拍。',
     'c3_flow_1': '看完定位加流量課程，對照你現在的定位，找出一個可以加強的地方今天改。',
     'c3_flow_2': '看完爆款文案課程，把你下一支影片的開頭三秒改用這個課程的公式寫。',
     'c3_flow_3': '看完複利系統課程，把你的「內容方向」用一句話定義清楚，傳給上家確認。',
-    // 三級輔導 - 四大循環
     'c3_retail_review_0': '今天發一則引流影片，不管品質，先發出去，發完傳給上家看看哪裡可以改進。',
     'c3_retail_review_1': '今天限動要有3則以上是口播，說你今天做了什麼、有什麼感想，真實就好。',
     'c3_retail_review_2': '回顧最近10次對話，哪幾次沒有成交？找出共同點傳給上家分析原因。',
     'c3_retail_review_3': '現在列出你所有客人的名字，哪些超過一個月沒聯繫？今天就傳一則關心訊息。',
-    // 三級輔導 - 輔導督導
     'c3_guide_0': '看完第二口袋收入課程，把課程中的「收入結構圖」截圖，傳給你有興趣拓展的朋友看。',
     'c3_guide_1': '看完新輔導督導要怎麼開始，把第一週要做的事情列出來，今天就執行第一件。',
     'c3_guide_2': '下載16大優勢發文清單，找出你最有共鳴的3個優勢，這週各發一則相關限動。',
     'c3_guide_3': '看完帶夥伴入加盟SOP，把整個流程截圖存起來，下次有人有興趣就照著做。',
     'c3_guide_4': '看完新人Day1流程，把流程列成一個清單，新人入夥第一天就照著做。',
-    // 三級輔導 - 招商
     'c3_recruit_post_0': '今天就發第一則招商文：分享你當初為什麼加入DCT，100字以內，真實就好。',
     'c3_recruit_post_1': '發一則「我選擇這間公司的原因」，寫三個具體的點，不是廣告，是真心分享。',
     'c3_recruit_post_2': '發一則「我為什麼選擇這個團隊」，把上家幫助你的一個真實故事說出來。',
     'c3_recruit_post_3': '今天發一則VVIP介紹限動，說清楚什麼是VVIP、有什麼好處，簡單明瞭。',
     'c3_recruit_post_4': '今天就開始！每天早上9點、晚上8點各發一則招商相關限動，持續21天。',
     'c3_recruit_post_5': '現在傳訊息給上家：「我想約你拍招商影片，你什麼時候有空？」今天約好時間。',
-    // 三級輔導 - 心態
     'c3_mindset_0': '今天發一則「我分享的是改變，不是賣東西」的限動，說說你對這份事業的看法。',
     'c3_mindset_1': '現在傳訊息給一個你覺得有潛力的朋友，說「你用我的優惠價試試看，更省錢。」',
     'c3_mindset_2': '找出你過去發過的一則沒人回應的限動，思考：「哪種人可能在看但沒出聲？」',
@@ -1969,13 +976,11 @@ function showAnalysis(){
     'c3_mindset_8': '今天找到今天最有成就感的一件小事，在限動上分享，養成慶祝小勝利的習慣。',
     'c3_mindset_9': '今天執行一件你一直拖延的事，做完後截圖傳給上家，讓習慣從今天開始。',
     'c3_mindset_10': '算算你現在影響了多少人，把這個數字寫下來，每個月更新一次。',
-    // 三級輔導 - 執行
     'c3_exec_0': '打開DCT Money，算出這個月的零售淨利，如果不到6000，找出差距原因告訴上家。',
     'c3_exec_1': '列出你所有回購客人名字，如果不到3個，今天就聯繫5個潛在客人做售後追蹤。',
     'c3_exec_2': '把下一堂課程加進行事曆，設提醒，像上班一樣不能缺席。',
     'c3_exec_3': '今天各發一則產品變現、一則招商的Reels，不用完美，先發出去。',
     'c3_exec_4': '月底前完成DCT Money月復盤，截圖傳給上家，一起討論下個月怎麼突破。',
-    // 二級輔導 - 招商
     'c4_recruit_0': '看完收入翻倍課程，把課程中最讓你有感的3個關鍵點傳給上家討論。',
     'c4_recruit_1': '打開99個招商QA，找到你最近被問到的問題，把答案讀熟，說給鏡子聽。',
     'c4_recruit_2': '打開零售卡關解決方法，找到你下家目前的問題，今天就傳解決建議給他。',
@@ -1987,15 +992,12 @@ function showAnalysis(){
     'c4_recruit_8': '看完跨越瓶頸課程，找出你招商上最大的瓶頸，今天傳給上家一起解決。',
     'c4_recruit_9': '看完5大雷區課程，對照自己，哪個雷你踩了？今天改掉一個。',
     'c4_recruit_10': '看完真誠感動人課程，今天發一則最真實的招商文，不要廣告腔，說真話。',
-    // 二級輔導 - 帶人
     'c4_team_0': '看完如何帶好新人課程，今天約你最有潛力的下家聊15分鐘，問他目前的卡關。',
     'c4_team_1': '看完帶人帶心課程，找出你下家最在乎的事是什麼，用那個方式激勵他。',
     'c4_team_2': '看完有效溝通課程，下次和下家說話前先問「你現在遇到什麼問題？」不要直接給答案。',
-    // 二級輔導 - 思維
     'c4_thinking_0': '看完全局觀思維課程，畫出你的團隊組織圖，看清楚誰在哪個階段、需要什麼支持。',
     'c4_thinking_1': '看完利用活動達到100+課程，研究下一個公司活動怎麼讓你的團隊全員參與得名。',
     'c4_thinking_2': '打開中階訓突破盲點，找到你目前最大的盲點是什麼，今天告訴上家。',
-    // 二級輔導 - 執行
     'c4_exec_0': '打開DCT Money，算出這個月淨利，如果不到10000，找上家討論缺口在哪。',
     'c4_exec_1': '現在數一下你有幾位實習，不夠就今天多約一個潛在對象聊聊。',
     'c4_exec_2': '今天傳訊息給上家：「我想約你線下見面，你這週什麼時候有空？」',
@@ -2009,7 +1011,6 @@ function showAnalysis(){
     'c4_exec_10': '今天建立你的愛用客LINE群組，把所有購買過的客人邀請進去。',
     'c4_exec_11': '把下一次公司、團隊會議的時間存進行事曆，設提醒，全勤是基本。',
     'c4_exec_12': '月底前用DCT Money完成月復盤，截圖傳給上家，一起討論下個月目標。',
-    // 一級輔導
     'c5_course_0': '看完皇家培育力課程，把「帶人的三個關鍵」用你的話說給鏡子聽，直到說得流暢。',
     'c5_system_0': '今天就把你的核心成功要素寫出來，3~5個步驟，傳給一位下家讓他照著做。',
     'c5_system_1': '現在安排下一次團隊聚會的時間地點，傳訊息給所有夥伴確認出席。',
@@ -2045,7 +1046,6 @@ function showAnalysis(){
     'c5_exec_6': '找出一個最近輸出很認真的夥伴，今天約他1對1聊15分鐘，給他具體反饋。',
     'c5_exec_7': '現在查一下你的粉絲數，和上個月比成長了多少？制定這個月的增粉計畫。',
     'c5_exec_8': '列出你的團隊名單，數一數，如果不到30人，今天要多接觸幾個潛在夥伴？',
-    // 皇家
     'c6_course_0': '看完皇家晉升心態課程，把課程中最讓你有感的一段話，今天在限動上分享。',
     'c6_legacy_0': '今天花30分鐘，把你從愛用客到現在的旅程寫成一篇300字的故事，傳給上家看。',
     'c6_legacy_1': '今天找一位你知道狀態不好的夥伴，發一則真心的鼓勵訊息給他。',
@@ -2087,7 +1087,6 @@ function showAnalysis(){
     : unchecked.map(({sec, missing, done})=>{
         const items = missing.map(({item, idx})=>{
           const txt = typeof item==='object' ? item.text : item;
-          const key = sec.id+'_'+idx;
           const tip = ITEM_TIPS[sec.id+'_'+idx] || '今天就做！把這個項目排進今天的行程，做完才打勾。';
           return '<div style="margin-bottom:10px;padding:10px 12px;background:#fff;border-radius:10px;border:1.5px solid #E0F0F8;">'
             +'<div style="font-size:11px;color:#1A5A80;font-weight:700;margin-bottom:5px;">☐ '+txt+'</div>'
@@ -2122,774 +1121,131 @@ function showAnalysis(){
     </div>`;
   document.getElementById('ovl').style.display='flex';
 }
+function confirmReview(stageIdx){upgradedStages['review_'+stageIdx]=true;saveUpgraded();renderStageInfo();renderAchievements();}
+function confirmUpgrade(stageIdx){upgradedStages[stageIdx]=true;saveUpgraded();renderStageInfo();renderAchievements();showCert(stageIdx);}
 
+const openSicSections={};let sicOpen=true;let retailFocus=null;
+function setRetailFocus(id){retailFocus=id;renderStageInfo();}
+function toggleSic(){sicOpen=!sicOpen;document.getElementById('sic-body')?.classList.toggle('open',sicOpen);document.getElementById('sic-arr')?.classList.toggle('open',sicOpen);}
 
-
-function confirmReview(stageIdx){
-  upgradedStages['review_'+stageIdx] = true;
-  saveUpgraded();
-  renderStageInfo();
-  renderAchievements();
-}
-
-function confirmUpgrade(stageIdx){
-  upgradedStages[stageIdx] = true;
-  saveUpgraded();
-  renderStageInfo();
-  renderAchievements();
-  // Show cert
-  showCert(stageIdx);
-}
-
-function loadCkData(){
-  try{ ckData = JSON.parse(localStorage.getItem(CK_KEY)||'{}'); }catch(e){ ckData={}; }
-  try{ upgData = JSON.parse(localStorage.getItem(UPG_KEY)||'{}'); }catch(e){ upgData={}; }
-}
-function saveCkData(){ localStorage.setItem(CK_KEY, JSON.stringify(ckData)); }
-function saveUpgData(){ localStorage.setItem(UPG_KEY, JSON.stringify(upgData)); }
-
-function toggleCkItem(secId, itemIdx){
-  const key = secId+'_'+itemIdx;
-  ckData[key] = !ckData[key];
-  saveCkData();
-  renderChecklistContent();
-}
-
-function getCkProgress(sec){
-  const done = sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;
-  return {done, total:sec.items.length};
-}
-
-function renderChecklist(){
-  const tabs = document.getElementById('ck-tabs');
-  if(!tabs) return;
-  tabs.innerHTML = CHECKLISTS.map((c,i)=>
-    `<button class="ck-stage-tab${i===curCkStage?' on':''}" onclick="setCkStage(${i})">${c.em} ${c.stageName}</button>`
-  ).join('');
-  renderChecklistContent();
-}
-
-function renderChecklistContent(){
-  const el = document.getElementById('ck-content');
-  if(!el) return;
-  const stage = CHECKLISTS[curCkStage];
-  el.innerHTML = stage.sections.map(sec=>{
-    const {done,total} = getCkProgress(sec);
-    const isOpen = openCkSections[sec.id];
-    return `<div class="ck-section">
-      <div class="ck-sec-hd" onclick="toggleCkSection('${sec.id}')">
-        <div class="ck-sec-em">${sec.em}</div>
-        <div class="ck-sec-title">${sec.title}</div>
-        <div class="ck-sec-progress">${done}/${total}</div>
-        <div class="ck-sec-arr${isOpen?' open':''}" id="ckarr-${sec.id}">▼</div>
-      </div>
-      <div class="ck-items${isOpen?' open':''}" id="ckitems-${sec.id}">
-        <div class="ck-target">🎯 目標：${sec.target}</div>
-        ${sec.items.map((item,i)=>{
-          const checked = !!ckData[sec.id+'_'+i];
-          return `<div class="ck-item${checked?' checked':''}" onclick="toggleCkItem('${sec.id}',${i})">
-            <div class="ck-item-box"><div class="ck-item-check"></div></div>
-            <div class="ck-item-text">${item}</div>
-          </div>`;
-        }).join('')}
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function toggleCkSection(id){
-  openCkSections[id] = !openCkSections[id];
-  renderChecklistContent();
-}
-
-function setCkStage(i){
-  curCkStage = i;
-  renderChecklist();
-}
-
-// ── UPGRADE LOGIC ─────────────────────────────────────────────────
-function renderUpgrade(){
-  const el = document.getElementById('upg-list');
-  if(!el) return;
-  const curStageIdx = ci; // current level in quest map
-
-  el.innerHTML = UPGRADE_INFO.map((u,i)=>{
-    const isDone = (()=>{ const st=CHECKLISTS[i]; if(!st) return false; const t=st.sections.reduce((s,sec)=>s+sec.items.length,0); return t>0&&ndone(i)===t; })();
-    const isCur = i === curStageIdx;
-    const isLocked = i > curStageIdx + 1;
-    const statusClass = isDone ? 'upg-hd-done' : isCur ? 'upg-hd-cur' : 'upg-hd-locked';
-    const badgeClass = isDone ? 'upg-badge-done' : isCur ? 'upg-badge-cur' : 'upg-badge-locked';
-    const badgeTxt = isDone ? '✓ 已達成' : isCur ? '▶ 進行中' : '🔒 未解鎖';
-
-    
-
-    return `<div class="upg-card">
-      <div class="upg-hd ${statusClass}" onclick="toggleUpgCard('upg-detail-${i}')">
-        <div class="upg-em">${u.em}</div>
-        <div class="upg-body">
-          <div class="upg-name">${u.name}</div>
-          <div class="upg-sub">${u.note}</div>
-        </div>
-        <div class="upg-badge ${badgeClass}">${badgeTxt}</div>
-      </div>
-      <div class="upg-detail" id="upg-detail-${i}" style="display:none">
-        <div class="upg-cond-title">✦ 晉升條件</div>
-        ${u.conditions.map(c=>`<div class="upg-cond"><div class="upg-cond-dot"></div>${c}</div>`).join('')}
-
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function toggleUpgCard(id){
-  const el = document.getElementById(id);
-  if(!el) return;
-  el.style.display = el.style.display==='none' ? 'block' : 'none';
-}
-
-
-
-
-
-// ── STAGE INFO CARD (integrated checklist + upgrade) ─────────────
-const openSicSections = {};
-let sicOpen = true;
-let retailFocus = null;
-
-function setRetailFocus(id){
-  retailFocus = id;
-  renderStageInfo();
-}
-
-function toggleSic(){
-  sicOpen = !sicOpen;
-  document.getElementById('sic-body')?.classList.toggle('open', sicOpen);
-  document.getElementById('sic-arr')?.classList.toggle('open', sicOpen);
-}
-
-function toggleSicCkSec(id){
-  openSicSections[id] = !openSicSections[id];
-  const items = document.getElementById('sic-ck-items-'+id);
-  const arr = document.getElementById('sic-ck-arr-'+id);
-  if(items) items.classList.toggle('open', openSicSections[id]);
-  if(arr) arr.classList.toggle('open', openSicSections[id]);
-}
-
-function toggleSicCkItem(secId, itemIdx, evt){
-  const key = secId+'_'+itemIdx;
-  const prevXP = totXP();
-  // Compute stage done before
-  const ckStageNow = CHECKLISTS[ci];
-  const prevStageDone = ckStageNow ? ckStageNow.sections.reduce((a,s)=>a+s.items.filter((_,j)=>ckData[s.id+'_'+j]).length,0) : 0;
-  const stageTotal = ckStageNow ? ckStageNow.sections.reduce((a,s)=>a+s.items.length,0) : 0;
-
-  ckData[key] = !ckData[key];
-  saveCkData();
-  const newXP = totXP();
-
-  // Show floating XP
+function toggleSicCkItem(secId,itemIdx,evt){
+  const key=secId+'_'+itemIdx;
+  const prevXP=totXP();
+  const ckStageNow=CHECKLISTS[ci];
+  const prevStageDone=ckStageNow?ckStageNow.sections.reduce((a,s)=>a+s.items.filter((_,j)=>ckData[s.id+'_'+j]).length,0):0;
+  const stageTotal=ckStageNow?ckStageNow.sections.reduce((a,s)=>a+s.items.length,0):0;
+  ckData[key]=!ckData[key];saveCkData();
+  const newXP=totXP();
+  if(ckData[key]){const item=CHECKLISTS.flatMap(st=>st.sections).find(s=>s.id===secId)?.items[itemIdx];const xpGain=(typeof item==='object'&&item?.course)?3:2;const clickedEl=evt?.currentTarget||evt?.target;for(let s=0;s<xpGain;s++){setTimeout(()=>showXPFloat(1,clickedEl,s),s*120);}}
+  rHdr();renderStageInfo();renderAchievements();
   if(ckData[key]){
-    const item = CHECKLISTS.flatMap(st=>st.sections).find(s=>s.id===secId)?.items[itemIdx];
-    const xpGain = (typeof item==='object' && item?.course) ? 3 : 2;
-    const clickedEl = evt?.currentTarget || evt?.target;
-    // Show multiple star floats for more impact
-    for(let s=0; s<xpGain; s++){
-      setTimeout(()=>showXPFloat(1, clickedEl, s), s*120);
-    }
-  }
-
-  rHdr();
-  renderStageInfo();
-  renderAchievements();
-
-  if(ckData[key]){
-    // Check stage milestone
-    const newStageDone = ckStageNow ? ckStageNow.sections.reduce((a,s)=>a+s.items.filter((_,j)=>ckData[s.id+'_'+j]).length,0) : 0;
-    checkStageMilestone(ci, prevStageDone, newStageDone, stageTotal);
-
-    // Check global milestone
-    const milestone = checkMilestone(prevXP, newXP);
-    if(milestone){ setTimeout(()=>showMilestone(milestone, newXP), 300); return; }
-
-    // Check all done
-    const totalItems = CHECKLISTS.reduce((s,st)=>s+st.sections.reduce((ss,sec)=>ss+sec.items.length,0),0);
-    const doneItems = CHECKLISTS.reduce((s,st)=>s+st.sections.reduce((ss,sec)=>ss+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0),0);
-    if(doneItems===totalItems){ setTimeout(()=>showMilestone(ALL_DONE_MILESTONE, newXP), 300); }
+    const newStageDone=ckStageNow?ckStageNow.sections.reduce((a,s)=>a+s.items.filter((_,j)=>ckData[s.id+'_'+j]).length,0):0;
+    checkStageMilestone(ci,prevStageDone,newStageDone,stageTotal);
+    const milestone=checkMilestone(prevXP,newXP);
+    if(milestone){setTimeout(()=>showMilestone(milestone,newXP),300);return;}
+    const totalItems=CHECKLISTS.reduce((s,st)=>s+st.sections.reduce((ss,sec)=>ss+sec.items.length,0),0);
+    const doneItems=CHECKLISTS.reduce((s,st)=>s+st.sections.reduce((ss,sec)=>ss+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0),0);
+    if(doneItems===totalItems){setTimeout(()=>showMilestone(ALL_DONE_MILESTONE,newXP),300);}
   }
 }
 
 function renderStageInfo(){
-  const wrap = document.getElementById('stage-info-wrap');
-  if(!wrap) return;
-  const upg = UPGRADE_INFO[ci];
-  const ckStage = CHECKLISTS[ci];
-
-  // Calculate completion
-  const ckTotalDone = ckStage ? ckStage.sections.reduce((s,sec)=>
-    s + sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length, 0) : 0;
-  const ckTotalAll = ckStage ? ckStage.sections.reduce((s,sec)=>s+sec.items.length, 0) : 0;
-  // allDone excludes condition sections (those are just info, not required to check)
-  const nonCondSections = ckStage ? ckStage.sections.filter(sec=>!sec.id.endsWith('_condition')) : [];
-  const ncDone = nonCondSections.reduce((s,sec)=>s+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0);
-  const ncTotal = nonCondSections.reduce((s,sec)=>s+sec.items.length,0);
-  const allDone = ncTotal > 0 && ncDone === ncTotal;
-  const lk = ci > 0 && !stageComplete(ci-1);
-
-  // Threshold badge HTML
-  const thresholdHTML = upg?.threshold ? `
-    <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
-      <div style="background:linear-gradient(135deg,#37A5E6,#2290D4);border-radius:999px;padding:5px 14px;display:inline-flex;align-items:center;gap:5px;">
-        <span style="font-size:9px;color:rgba(255,255,255,.8);">${upg.threshold.label}</span>
-        <span style="font-size:12px;font-weight:900;color:#fff;">${upg.threshold.amount}</span>
-      </div>
-      <div style="background:#EEF8FE;border:1.5px solid #A7D1F3;border-radius:999px;padding:5px 14px;display:inline-flex;align-items:center;">
-        <span style="font-size:11px;font-weight:700;color:#2290D4;">${upg.threshold.monthly}</span>
-      </div>
-    </div>` : '';
-
-  // Retail focus selector (for stages 1 & 2)
-  const retailTypes = {page:'📱 版面',flow:'📣 引流',limit:'✨ 限動',sales:'🤝 銷售',after:'💝 售後'};
-  const hasRetail = ckStage?.retailFocus;
-  const retailHTML = hasRetail ? `
-    <div style="margin-bottom:12px;">
-      <div style="font-size:9px;font-weight:700;color:#37A5E6;letter-spacing:.1em;margin-bottom:7px;">💡 目前最卡關的是哪個？</div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;">
-        ${ckStage.sections.filter(s=>s.retailType).map(sec=>{
-          const d=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;
-          const t=sec.items.length;
-          const pct=Math.round(d/t*100);
-          const isSelected = retailFocus===sec.id;
-          return `<button onclick="setRetailFocus('${sec.id}')" style="padding:6px 12px;border-radius:999px;font-size:10px;font-weight:700;border:1.5px solid ${isSelected?'#37A5E6':'#C0E4F8'};background:${isSelected?'linear-gradient(135deg,#37A5E6,#2290D4)':'#fff'};color:${isSelected?'#fff':'#5A9ABB'};cursor:pointer;font-family:inherit;transition:all .15s;">
-            ${retailTypes[sec.retailType]} ${pct}%
-          </button>`;
-        }).join('')}
-        <button onclick="setRetailFocus(null)" style="padding:6px 12px;border-radius:999px;font-size:10px;font-weight:700;border:1.5px solid #C0E4F8;background:#fff;color:#5A9ABB;cursor:pointer;font-family:inherit;">全部</button>
-      </div>
-    </div>` : '';
-
-  // Completion prompt
-  const alreadyUpgraded = !!(upgradedStages[ci] || upgradedStages['review_'+ci]);
-  const completionPrompt = allDone ? `
-    <div style="background:linear-gradient(135deg,#37A5E6,#2290D4);border-radius:14px;padding:14px 16px;margin-bottom:14px;text-align:center;">
-      <div style="font-size:18px;margin-bottom:4px;">${alreadyUpgraded?'🏆':'🎉'}</div>
-      <div style="font-size:13px;font-weight:900;color:#fff;margin-bottom:4px;">${alreadyUpgraded?'晉升已確認！':'本階段全部完成！'}</div>
-      <div style="font-size:11px;color:rgba(255,255,255,.85);margin-bottom:10px;">${alreadyUpgraded?'你的獎狀已解鎖，到成就頁查看！':'所有檢核項目完成，確認晉升後解鎖專屬獎狀！'}</div>
-      ${alreadyUpgraded
-        ? '<div style="font-size:10px;color:rgba(255,255,255,.75);background:rgba(255,255,255,.15);border-radius:8px;padding:6px 10px;">✦ 繼續前往下一個階段 ✦</div>'
-        : (ci===5||ci===6)
-          ? '<button onclick="confirmReview('+ci+')" style="width:100%;padding:10px;border-radius:999px;background:#fff;color:#2290D4;font-size:13px;font-weight:900;border:none;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.1);">📋 確認已送審，解鎖下階段！</button>'
-          : '<button onclick="confirmUpgrade('+ci+')" style="width:100%;padding:10px;border-radius:999px;background:#fff;color:#2290D4;font-size:13px;font-weight:900;border:none;cursor:pointer;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.1);">🏆 確認已升級，解鎖獎狀！</button>'
-      }
-    </div>` : '';
-
-  // Build checklist - with retail focus filter
-  const ckHTML = ckStage ? ckStage.sections
-    .filter(sec => !retailFocus || !sec.retailType || sec.id === retailFocus)
-    .map(sec=>{
-      const done = sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;
-      const total = sec.items.length;
-      return `<div class="sic-ck-section">
-        <div class="sic-ck-sec-hd">
-          <div class="sic-ck-sec-em">${sec.em}</div>
-          <div class="sic-ck-sec-title">${sec.title}</div>
-          <div class="sic-ck-sec-prog">${done}/${total}</div>
-        </div>
-        <div class="sic-ck-items">
-          <div class="sic-ck-target">🎯 ${sec.target}</div>
-          ${sec.items.map((item,i)=>{
-            const checked = !!ckData[sec.id+'_'+i];
-            const txt = typeof item==='object' ? item.text : item;
-            const course = typeof item==='object' ? item.course : null;
-            return `<div class="sic-ck-item-row${checked?' checked':''}" onclick="toggleSicCkItem('${sec.id}',${i},event)">
-              <div class="sic-ck-box-sq"><div class="sic-ck-v2"></div></div>
-              <div class="sic-ck-item-main">
-                <span class="sic-ck-txt">${txt}</span>
-                ${course ? `<a class="course-link-btn" href="${course.url}" target="_blank" onclick="event.stopPropagation()">${
-  course.url.includes('instagram.com') ? '📱 前往 IG' :
-  course.url.includes('youtube.com') || course.url.includes('youtu.be') ? '▶ 看課程' :
-  course.url.includes('notion.so') ? '📝 看文件' :
-  course.url.includes('drive.google.com') ? '📁 開啟' :
-  '🔗 前往'
-}</a>` : ''}
-              </div>
-            </div>`;
-          }).join('')}
-        </div>
-      </div>`;
-    }).join('') : '';
-
-  wrap.innerHTML = `<div class="stage-info-card">
-    <div class="sic-top" onclick="toggleSic()">
-      <div class="sic-left">
-        <div class="sic-em">${upg?.em||''}</div>
-        <div>
-          <div class="sic-name">${upg?.name||''} · 晉升條件 & 檢核表</div>
-          <div class="sic-sub">檢核 ${ckTotalDone}/${ckTotalAll} 項完成${allDone?' · ✅ 可準備晉升':''}</div>
-        </div>
-      </div>
-      <div class="sic-arr${sicOpen?' open':''}" id="sic-arr">▼</div>
-    </div>
-    <div class="sic-body${sicOpen?' open':''}" id="sic-body">
-      ${thresholdHTML}
-      ${upg?.conditions?.length ? `
-      <div class="sic-upg-title">✦ 晉升條件</div>
-      ${upg.conditions.map(c=>`<div class="sic-cond"><div class="sic-cond-dot"></div>${c}</div>`).join('')}
-      <div class="sic-note">${upg.note}</div>
-      <div class="sic-divider"></div>` : ''}
-      ${CHECKLISTS[ci]?.locked_content && !upgradedStages['review_'+ci]
-        ? '<div style="text-align:center;padding:24px 0;"><div style="font-size:28px;margin-bottom:8px;">🔒</div>'
-          +(ci===5?'<div style="font-size:13px;font-weight:700;color:#5A9ABB;">完成並確認送審「一級審核」才解鎖</div>':'')
-          +(ci===6?'<div style="font-size:13px;font-weight:700;color:#5A9ABB;">完成並確認送審「皇家審核」才解鎖</div>':'')
-          +'<div style="font-size:11px;color:#90C0E0;margin-top:4px;">達到門檻後由上家協助送審</div></div>'
-        : retailHTML + (ckHTML ? '<div class="sic-ck-title">✦ 本階段檢核表</div>'+ckHTML+'<button onclick="showAnalysis()" style="width:100%;margin-top:12px;padding:11px;border-radius:999px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1.5px solid #A7D1F3;color:#2290D4;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">🔍 分析我的進度</button>' : '') + completionPrompt
-      }
-    </div>
-  </div>`;
+  const wrap=document.getElementById('stage-info-wrap');if(!wrap)return;
+  const upg=UPGRADE_INFO[ci],ckStage=CHECKLISTS[ci];
+  const ckTotalDone=ckStage?ckStage.sections.reduce((s,sec)=>s+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0):0;
+  const ckTotalAll=ckStage?ckStage.sections.reduce((s,sec)=>s+sec.items.length,0):0;
+  const nonCondSections=ckStage?ckStage.sections.filter(sec=>!sec.id.endsWith('_condition')):[];
+  const ncDone=nonCondSections.reduce((s,sec)=>s+sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length,0);
+  const ncTotal=nonCondSections.reduce((s,sec)=>s+sec.items.length,0);
+  const allDone=ncTotal>0&&ncDone===ncTotal;
+  const thresholdHTML=upg?.threshold?`<div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;"><div style="background:linear-gradient(135deg,#37A5E6,#2290D4);border-radius:999px;padding:5px 14px;display:inline-flex;align-items:center;gap:5px;"><span style="font-size:9px;color:rgba(255,255,255,.8);">${upg.threshold.label}</span><span style="font-size:12px;font-weight:900;color:#fff;">${upg.threshold.amount}</span></div><div style="background:#EEF8FE;border:1.5px solid #A7D1F3;border-radius:999px;padding:5px 14px;display:inline-flex;align-items:center;"><span style="font-size:11px;font-weight:700;color:#2290D4;">${upg.threshold.monthly}</span></div></div>`:'';
+  const retailTypes={page:'📱 版面',flow:'📣 引流',sales:'🤝 銷售',after:'💝 售後'};
+  const hasRetail=ckStage?.retailFocus;
+  const retailHTML=hasRetail?`<div style="margin-bottom:12px;"><div style="font-size:9px;font-weight:700;color:#37A5E6;letter-spacing:.1em;margin-bottom:7px;">💡 目前最卡關的是哪個？</div><div style="display:flex;gap:6px;flex-wrap:wrap;">${ckStage.sections.filter(s=>s.retailType).map(sec=>{const d=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;const t=sec.items.length;const pct=Math.round(d/t*100);const isSelected=retailFocus===sec.id;return `<button onclick="setRetailFocus('${sec.id}')" style="padding:6px 12px;border-radius:999px;font-size:10px;font-weight:700;border:1.5px solid ${isSelected?'#37A5E6':'#C0E4F8'};background:${isSelected?'linear-gradient(135deg,#37A5E6,#2290D4)':'#fff'};color:${isSelected?'#fff':'#5A9ABB'};cursor:pointer;font-family:inherit;">${retailTypes[sec.retailType]} ${pct}%</button>`;}).join('')}<button onclick="setRetailFocus(null)" style="padding:6px 12px;border-radius:999px;font-size:10px;font-weight:700;border:1.5px solid #C0E4F8;background:#fff;color:#5A9ABB;cursor:pointer;font-family:inherit;">全部</button></div></div>`:'';
+  const alreadyUpgraded=!!(upgradedStages[ci]||upgradedStages['review_'+ci]);
+  const completionPrompt=allDone?`<div style="background:linear-gradient(135deg,#37A5E6,#2290D4);border-radius:14px;padding:14px 16px;margin-bottom:14px;text-align:center;"><div style="font-size:18px;margin-bottom:4px;">${alreadyUpgraded?'🏆':'🎉'}</div><div style="font-size:13px;font-weight:900;color:#fff;margin-bottom:4px;">${alreadyUpgraded?'晉升已確認！':'本階段全部完成！'}</div><div style="font-size:11px;color:rgba(255,255,255,.85);margin-bottom:10px;">${alreadyUpgraded?'你的獎狀已解鎖，到成就頁查看！':'所有檢核項目完成，確認晉升後解鎖專屬獎狀！'}</div>${alreadyUpgraded?'<div style="font-size:10px;color:rgba(255,255,255,.75);background:rgba(255,255,255,.15);border-radius:8px;padding:6px 10px;">✦ 繼續前往下一個階段 ✦</div>':(ci===5||ci===6)?'<button onclick="confirmReview('+ci+')" style="width:100%;padding:10px;border-radius:999px;background:#fff;color:#2290D4;font-size:13px;font-weight:900;border:none;cursor:pointer;font-family:inherit;">📋 確認已送審，解鎖下階段！</button>':'<button onclick="confirmUpgrade('+ci+')" style="width:100%;padding:10px;border-radius:999px;background:#fff;color:#2290D4;font-size:13px;font-weight:900;border:none;cursor:pointer;font-family:inherit;">🏆 確認已升級，解鎖獎狀！</button>'}</div>`:'';
+  const ckHTML=ckStage?ckStage.sections.filter(sec=>!retailFocus||!sec.retailType||sec.id===retailFocus).map(sec=>{const done=sec.items.filter((_,i)=>ckData[sec.id+'_'+i]).length;const total=sec.items.length;return `<div class="sic-ck-section"><div class="sic-ck-sec-hd"><div class="sic-ck-sec-em">${sec.em}</div><div class="sic-ck-sec-title">${sec.title}</div><div class="sic-ck-sec-prog">${done}/${total}</div></div><div class="sic-ck-items"><div class="sic-ck-target">🎯 ${sec.target}</div>${sec.items.map((item,i)=>{const checked=!!ckData[sec.id+'_'+i];const txt=typeof item==='object'?item.text:item;const course=typeof item==='object'?item.course:null;return `<div class="sic-ck-item-row${checked?' checked':''}" onclick="toggleSicCkItem('${sec.id}',${i},event)"><div class="sic-ck-box-sq"><div class="sic-ck-v2"></div></div><div class="sic-ck-item-main"><span class="sic-ck-txt">${txt}</span>${course?`<a class="course-link-btn" href="${course.url}" target="_blank" onclick="event.stopPropagation()">${course.url.includes('instagram.com')?'📱 前往 IG':course.url.includes('youtube.com')||course.url.includes('youtu.be')?'▶ 看課程':course.url.includes('notion.so')?'📝 看文件':course.url.includes('drive.google.com')?'📁 開啟':'🔗 前往'}</a>`:''}</div></div>`;}).join('')}</div></div>`;}).join(''):'';
+  wrap.innerHTML=`<div class="stage-info-card"><div class="sic-top" onclick="toggleSic()"><div class="sic-left"><div class="sic-em">${upg?.em||''}</div><div><div class="sic-name">${upg?.name||''} · 晉升條件 & 檢核表</div><div class="sic-sub">檢核 ${ckTotalDone}/${ckTotalAll} 項完成${allDone?' · ✅ 可準備晉升':''}</div></div></div><div class="sic-arr${sicOpen?' open':''}" id="sic-arr">▼</div></div><div class="sic-body${sicOpen?' open':''}" id="sic-body">${thresholdHTML}${upg?.conditions?.length?`<div class="sic-upg-title">✦ 晉升條件</div>${upg.conditions.map(c=>`<div class="sic-cond"><div class="sic-cond-dot"></div>${c}</div>`).join('')}<div class="sic-note">${upg.note}</div><div class="sic-divider"></div>`:''} ${CHECKLISTS[ci]?.locked_content&&!upgradedStages['review_'+ci]?'<div style="text-align:center;padding:24px 0;"><div style="font-size:28px;margin-bottom:8px;">🔒</div>'+(ci===5?'<div style="font-size:13px;font-weight:700;color:#5A9ABB;">完成並確認送審「一級審核」才解鎖</div>':'')+(ci===6?'<div style="font-size:13px;font-weight:700;color:#5A9ABB;">完成並確認送審「皇家審核」才解鎖</div>':'')+'<div style="font-size:11px;color:#90C0E0;margin-top:4px;">達到門檻後由上家協助送審</div></div>':retailHTML+(ckHTML?'<div class="sic-ck-title">✦ 本階段檢核表</div>'+ckHTML+'<button onclick="showAnalysis()" style="width:100%;margin-top:12px;padding:11px;border-radius:999px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border:1.5px solid #A7D1F3;color:#2290D4;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">🔍 分析我的進度</button>':'')+completionPrompt}</div></div>`;
 }
 
-
-
-
-
-function checkMilestone(prevXP, newXP){
-  for(const m of MILESTONES){ if(prevXP < m.stars && newXP >= m.stars) return m; }
-  return null;
-}
-
-function showCert(li){
-  const stage=STAGES[li];
-  const now=new Date();
-  const dateStr=now.getFullYear()+'年'+(now.getMonth()+1)+'月'+now.getDate()+'日';
-  const certQuotes = ['「成為產品最好的見證者，你的故事就是最強的銷售工具。」','「每一次開口，都是在練習成為更好的自己。」','「服務好一個人，他會幫你帶來更多人。」','「你的成長速度，決定你能帶多少人一起成長。」','「團隊的高度，取決於你願意成為多高的人。」','「真正的領導者，是讓每個人都覺得自己很重要。」','「皇家不是終點，是你開始影響更多人生命的起點。」'];
-  const nextStage = ci < STAGES.length-1 ? STAGES[ci+1] : null;
-  document.getElementById('ovl-content').innerHTML=`
-    <div class="cert">
-      <div class="cert-top">
-        <span class="cert-badge-icon">${stage.emoji}</span>
-        <div class="cert-stage-name">DCT 晉升認證</div>
-        <div class="cert-title">${userName ? userName+'<br>' : ''}${stage.name}<br>階段完成</div>
-        <div class="cert-subtitle">第 ${ci+1} 階段 · 共 7 階段</div>
-      </div>
-      <div class="cert-body">
-        <div class="cert-seal"><div class="cert-seal-line"></div><div class="cert-seal-txt">✦ CERTIFICATE ✦</div><div class="cert-seal-line r"></div></div>
-        <div class="cert-msg">${userName?userName+'，你':'你'}完成了「${stage.name}」的所有檢核項目。<br>這不是一件容易的事，但你做到了。</div>
-        <div class="cert-quote">${certQuotes[ci]||''}</div>
-        <div class="cert-meta"><span>完成日期：${dateStr}</span><span>DCT 晉升地圖</span></div>
-        <div class="cert-btns">
-          ${nextStage ? `<button class="cert-btn-next" onclick="closeOvl();setLv(${ci+1})" style="flex:1;">前往${nextStage.name} →</button>` : `<button class="cert-btn-next" onclick="closeOvl()" style="flex:1;">感謝這段旅程 🙏</button>`}
-        </div>
-      </div>
-    </div>`;
-  confetti(); confetti();
-  document.getElementById('ovl').style.display='flex';
-}
-
-function closeOvl(){ document.getElementById('ovl').style.display='none'; }
-
-function switchPage(p){
-  document.querySelector('.wrap').style.display = p==='map'?'block':'none';
-  document.querySelectorAll('.page-section').forEach(el=>el.classList.remove('active'));
-  if(p!=='map') document.getElementById('page-'+p)?.classList.add('active');
-  document.querySelectorAll('.bni').forEach(el=>el.classList.remove('on'));
-  document.getElementById('nav-'+p)?.classList.add('on');
-  if(p==='achievement') renderAchievements();
-  if(p==='course') renderCourses();
-  if(p==='system') renderSystem();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function stageComplete(i){
-  const st=CHECKLISTS[i]; if(!st) return false;
-  const t=st.sections.reduce((a,s)=>a+s.items.length,0);
-  const d=st.sections.reduce((a,s)=>a+s.items.filter((_,j)=>ckData[s.id+'_'+j]).length,0);
-  return t>0&&d===t;
-}
-
-function setLv(i){ ci=i; cc='全部'; oq=null; sicOpen=true; retailFocus=null; rAll(); }
-function setCat(c){ cc=c; oq=null; }
-function rAll(){ rHdr(); rLvNav(); renderStageInfo(); }
-
-
-const SYSTEM_TOOLS = [
-  {
-    id:'money',
-    em:'💰',
-    title:'DCT Money',
-    subtitle:'淨利數據系統',
-    badge:'實習 ～ 二級輔導',
-    badgeColor:'#37A5E6',
-    url:'https://annie55229900608.github.io/dct-calculator/',
-    locked: false,
-    desc:'開單、復盤、曲線圖一站搞定！讓你清楚掌握每一筆收入、每一位客人，數據永久保存不怕遺失。',
-    features:[
-      '🧾 開單功能 — 選等級＋選銷售對象，自動帶入成本與售價，運費手續費直接扣',
-      '💰 幫客人算錢 — 快速計算客人優惠價，成交更流暢',
-      '📅 月復盤 — 每月數據整理，一鍵生成當月業績報告傳給上家',
-      '📈 魔術曲線圖 — 自動生成帳號成長曲線，衡量活躍度與內容效度',
-      '💹 淨利曲線圖 — 自動生成收入趨勢圖，清楚看見每月成長軌跡',
-      '👤 客人歷年記錄 — 追蹤每一位客人的歷年購買紀錄，售後更精準',
-      '💾 匯出備份 — 可匯出資料永久保存，換手機也不怕資料消失',
-      '🏆 內建99句激勵金句，每次開啟隨機顯示',
-    ]
-  },
-  {
-    id:'promax',
-    em:'👑',
-    title:'DCT Promax',
-    subtitle:'淨利數據系統',
-    badge:'一級輔導・皇家',
-    badgeColor:'#E8A020',
-    url:'#',
-    locked: true,
-    desc:'升到一級輔導後解鎖',
-    features:[]
-  },
-  {
-    id:'charm',
-    em:'✨',
-    title:'DCT 魅力定位測驗',
-    subtitle:'定位測驗 × 增粉寶典 × 帳號健檢',
-    badge:'所有人適用',
-    badgeColor:'#A06AEE',
-    url:'https://annie55229900608.github.io/moon/',
-    locked: false,
-    desc:'17 道題，找出你的魅力定位與增粉方向。從「不知道發什麼」到「有方向、有系統」，還能健檢你的帳號、分析數據、找對標影片。',
-    features:[
-      '🎯 魅力定位測驗 — 找出你最自然的拍攝風格與內容方向',
-      '📱 Reels＋限動策略 — 選題、開頭三秒、注意事項全附',
-      '👑 IG 命名公式 — 好名字的三要素＋踩雷清單',
-      '📊 增粉寶典 — 社群漏斗、粉絲三階段、15則法則',
-      '🔍 帳號健檢 — 找出帳號目前最需要改善的地方',
-      '📈 數據分析 — 解讀你的帳號數據，知道哪裡要加強',
-      '🎬 對標影片 — 找到適合你風格的參考影片',
-      '📚 參考課程 — 依你的定位推薦最適合的學習資源',
-    ]
-  },
-  {
-    id:'magic',
-    em:'🌿',
-    title:'DCT 纖體百寶庫',
-    subtitle:'婕樂纖系列完整指南・科學纖體・健康生活',
-    badge:'所有人適用',
-    badgeColor:'#2A8A50',
-    url:'https://annie55229900608.github.io/jerossediet',
-    locked: false,
-    desc:'DCT 客人專用輔助工具，讓你快速掌握產品使用方式，搭配飲食更有效。',
-    features:[
-      '🌸 產品介紹 — 六纖系列完整說明，快速找到適合的產品',
-      '🌿 纖體吃法 — 正確使用方式與注意事項',
-      '✨ 瘦身秘訣 — 科學搭配讓效果最大化',
-      '🍵 飲品泡法 — 各系列正確沖泡步驟',
-      '🥗 飲食指南 — 搭配飲食讓身體更快有感',
-      '🎓 纖體班 — 報名與課程資訊',
-    ]
-  },
+const SYSTEM_TOOLS=[
+  {id:'money',em:'💰',title:'DCT Money',subtitle:'淨利數據系統',badge:'實習 ～ 二級輔導',badgeColor:'#37A5E6',url:'https://annie55229900608.github.io/dct-calculator/',locked:false,desc:'開單、復盤、曲線圖一站搞定！讓你清楚掌握每一筆收入、每一位客人，數據永久保存不怕遺失。',features:['🧾 開單功能 — 選等級＋選銷售對象，自動帶入成本與售價','💰 幫客人算錢 — 快速計算客人優惠價，成交更流暢','📅 月復盤 — 每月數據整理，一鍵生成當月業績報告傳給上家','📈 魔術曲線圖 — 自動生成帳號成長曲線','💹 淨利曲線圖 — 自動生成收入趨勢圖','👤 客人歷年記錄 — 追蹤每一位客人的歷年購買紀錄','💾 匯出備份 — 可匯出資料永久保存','🏆 內建99句激勵金句，每次開啟隨機顯示']},
+  {id:'promax',em:'👑',title:'DCT Promax',subtitle:'淨利數據系統',badge:'一級輔導・皇家',badgeColor:'#E8A020',url:'#',locked:true,desc:'升到一級輔導後解鎖',features:[]},
+  {id:'charm',em:'✨',title:'DCT 魅力定位測驗',subtitle:'定位測驗 × 增粉寶典 × 帳號健檢',badge:'所有人適用',badgeColor:'#A06AEE',url:'https://annie55229900608.github.io/moon/',locked:false,desc:'17 道題，找出你的魅力定位與增粉方向。從「不知道發什麼」到「有方向、有系統」，還能健檢你的帳號、分析數據、找對標影片。',features:['🎯 魅力定位測驗','📱 Reels＋限動策略','👑 IG 命名公式','📊 增粉寶典','🔍 帳號健檢','📈 數據分析','🎬 對標影片','📚 參考課程']},
+  {id:'magic',em:'🌿',title:'DCT 纖體百寶庫',subtitle:'婕樂纖系列完整指南・科學纖體・健康生活',badge:'所有人適用',badgeColor:'#2A8A50',url:'https://annie55229900608.github.io/jerossediet',locked:false,desc:'DCT 客人專用輔助工具，讓你快速掌握產品使用方式，搭配飲食更有效。',features:['🌸 產品介紹','🌿 纖體吃法','✨ 瘦身秘訣','🍵 飲品泡法','🥗 飲食指南','🎓 纖體班']},
 ];
-
-const INSTALL_TIPS = [
-  {icon:'🍎', title:'iPhone / iPad', steps:['用 Safari 開啟連結','點下方「分享」按鈕（方塊＋箭頭）','選擇「加入主畫面」','確認名稱後點「新增」']},
-  {icon:'🤖', title:'Android', steps:['用 Chrome 開啟連結','點右上角三點選單','選擇「新增到主畫面」或「安裝應用程式」','確認後即可從桌面直接開啟']},
-];
+const INSTALL_TIPS=[{icon:'🍎',title:'iPhone / iPad',steps:['用 Safari 開啟連結','點下方「分享」按鈕（方塊＋箭頭）','選擇「加入主畫面」','確認名稱後點「新增」']},{icon:'🤖',title:'Android',steps:['用 Chrome 開啟連結','點右上角三點選單','選擇「新增到主畫面」或「安裝應用程式」','確認後即可從桌面直接開啟']}];
 
 function renderSystem(){
-  const el = document.getElementById('system-list');
-  if(!el) return;
-
-  const toolsHTML = SYSTEM_TOOLS.map(t=>`
-    <div style="background:#fff;border-radius:18px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 12px rgba(55,165,230,.07);">
-      <div style="padding:16px 16px 14px;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-          <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">${t.em}</div>
-          <div style="flex:1;">
-            <div style="font-size:14px;font-weight:900;color:#1A5A80;">${t.title}</div>
-            <div style="font-size:10px;color:#5A9ABB;margin-top:1px;">${t.subtitle}</div>
-          </div>
-          <div style="font-size:9px;font-weight:700;color:#fff;background:${t.badgeColor};padding:3px 9px;border-radius:999px;white-space:nowrap;">${t.badge}</div>
-        </div>
-        <div style="font-size:11px;color:#3A6A8A;line-height:1.7;margin-bottom:${t.features.length?'10px':'0'};">${t.desc}</div>
-        ${t.features.length ? '<div style="background:#EEF8FE;border-radius:10px;padding:10px 12px;margin-bottom:12px;">'
-          + t.features.map(f=>`<div style="font-size:10px;color:#3A6A8A;line-height:1.8;">· ${f}</div>`).join('')
-          + '</div>' : ''}
-        ${t.locked
-          ? `<div style="width:100%;padding:11px;border-radius:999px;background:#F0F4F8;color:#B0C8D8;font-size:12px;font-weight:700;text-align:center;">🔒 升到${t.badge.split('・')[0]}後解鎖</div>`
-          : `<a href="${t.url}" target="_blank" style="display:block;width:100%;padding:11px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;text-align:center;text-decoration:none;box-shadow:0 4px 12px rgba(55,165,230,.3);">開啟工具 →</a>`
-        }
-      </div>
-    </div>`).join('');
-
-  const installHTML = `
-    <div style="background:#fff;border-radius:18px;margin-bottom:12px;padding:16px;box-shadow:0 2px 12px rgba(55,165,230,.07);">
-      <div style="font-size:11px;font-weight:700;color:#37A5E6;letter-spacing:.1em;margin-bottom:12px;">📲 加到手機主畫面變成 App</div>
-      ${INSTALL_TIPS.map(tip=>`
-        <div style="margin-bottom:12px;">
-          <div style="font-size:12px;font-weight:700;color:#1A5A80;margin-bottom:6px;">${tip.icon} ${tip.title}</div>
-          ${tip.steps.map((s,i)=>`<div style="font-size:11px;color:#3A6A8A;line-height:1.8;display:flex;gap:6px;"><span style="color:#37A5E6;font-weight:700;flex-shrink:0;">${i+1}.</span>${s}</div>`).join('')}
-        </div>`).join('<div style="height:1px;background:#EEF8FE;margin:10px 0;"></div>')}
-    </div>
-    <div style="background:#FFF8EE;border:1px solid #FFDDA0;border-radius:14px;padding:13px 14px;margin-bottom:12px;">
-      <div style="font-size:10px;font-weight:700;color:#B87820;margin-bottom:7px;">⚠️ 注意事項</div>
-      <div style="font-size:10px;color:#7A5A20;line-height:1.85;">
-        · 所有資料儲存在當前裝置的瀏覽器，不會上傳雲端<br>
-        · 換手機、換瀏覽器或清除瀏覽器資料，所有紀錄將會消失<br>
-        · 不支援跨裝置同步<br>
-        · 建議固定使用同一台手機、同一個瀏覽器開啟
-      </div>
-    </div>`;
-
-  el.innerHTML = toolsHTML + installHTML;
+  const el=document.getElementById('system-list');if(!el)return;
+  const toolsHTML=SYSTEM_TOOLS.map(t=>`<div style="background:#fff;border-radius:18px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 12px rgba(55,165,230,.07);"><div style="padding:16px 16px 14px;"><div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;"><div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#EEF8FE,#DBF6FF);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">${t.em}</div><div style="flex:1;"><div style="font-size:14px;font-weight:900;color:#1A5A80;">${t.title}</div><div style="font-size:10px;color:#5A9ABB;margin-top:1px;">${t.subtitle}</div></div><div style="font-size:9px;font-weight:700;color:#fff;background:${t.badgeColor};padding:3px 9px;border-radius:999px;white-space:nowrap;">${t.badge}</div></div><div style="font-size:11px;color:#3A6A8A;line-height:1.7;margin-bottom:${t.features.length?'10px':'0'};">${t.desc}</div>${t.features.length?'<div style="background:#EEF8FE;border-radius:10px;padding:10px 12px;margin-bottom:12px;">'+t.features.map(f=>`<div style="font-size:10px;color:#3A6A8A;line-height:1.8;">· ${f}</div>`).join('')+'</div>':''}${t.locked?`<div style="width:100%;padding:11px;border-radius:999px;background:#F0F4F8;color:#B0C8D8;font-size:12px;font-weight:700;text-align:center;">🔒 升到${t.badge.split('・')[0]}後解鎖</div>`:`<a href="${t.url}" target="_blank" style="display:block;width:100%;padding:11px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;text-align:center;text-decoration:none;box-shadow:0 4px 12px rgba(55,165,230,.3);">開啟工具 →</a>`}</div></div>`).join('');
+  const installHTML=`<div style="background:#fff;border-radius:18px;margin-bottom:12px;padding:16px;box-shadow:0 2px 12px rgba(55,165,230,.07);"><div style="font-size:11px;font-weight:700;color:#37A5E6;letter-spacing:.1em;margin-bottom:12px;">📲 加到手機主畫面變成 App</div>${INSTALL_TIPS.map(tip=>`<div style="margin-bottom:12px;"><div style="font-size:12px;font-weight:700;color:#1A5A80;margin-bottom:6px;">${tip.icon} ${tip.title}</div>${tip.steps.map((s,i)=>`<div style="font-size:11px;color:#3A6A8A;line-height:1.8;display:flex;gap:6px;"><span style="color:#37A5E6;font-weight:700;flex-shrink:0;">${i+1}.</span>${s}</div>`).join('')}</div>`).join('<div style="height:1px;background:#EEF8FE;margin:10px 0;"></div>')}</div><div style="background:#FFF8EE;border:1px solid #FFDDA0;border-radius:14px;padding:13px 14px;margin-bottom:12px;"><div style="font-size:10px;font-weight:700;color:#B87820;margin-bottom:7px;">⚠️ 注意事項</div><div style="font-size:10px;color:#7A5A20;line-height:1.85;">· 所有資料儲存在當前裝置的瀏覽器，不會上傳雲端<br>· 換手機、換瀏覽器或清除瀏覽器資料，所有紀錄將會消失<br>· 不支援跨裝置同步<br>· 建議固定使用同一台手機、同一個瀏覽器開啟</div></div>`;
+  el.innerHTML=toolsHTML+installHTML;
 }
 
-
-function showXPFloat(xp, el, offset){
-  const rect = el ? el.getBoundingClientRect() : {left: window.innerWidth/2, top: window.innerHeight/3};
-  const div = document.createElement('div');
-  div.className = 'xp-float';
-  div.textContent = '+1 ⭐';
-  const spread = ((offset||0) - 1) * 30;
-  div.style.left = Math.max(10, Math.min(window.innerWidth-60, rect.left + rect.width/2 - 15 + spread)) + 'px';
-  div.style.top = Math.max(60, rect.top - 10) + 'px';
-  document.body.appendChild(div);
-  setTimeout(() => div.remove(), 1500);
+function showXPFloat(xp,el,offset){
+  const rect=el?el.getBoundingClientRect():{left:window.innerWidth/2,top:window.innerHeight/3};
+  const div=document.createElement('div');div.className='xp-float';div.textContent='+1 ⭐';
+  const spread=((offset||0)-1)*30;
+  div.style.left=Math.max(10,Math.min(window.innerWidth-60,rect.left+rect.width/2-15+spread))+'px';
+  div.style.top=Math.max(60,rect.top-10)+'px';
+  document.body.appendChild(div);setTimeout(()=>div.remove(),1500);
 }
 
-let toastTimer = null;
-function showMiniToast(msg){
-  // Remove existing
-  document.querySelectorAll('.mini-toast').forEach(e => e.remove());
-  clearTimeout(toastTimer);
-  const div = document.createElement('div');
-  div.className = 'mini-toast';
-  div.textContent = msg;
-  document.body.appendChild(div);
-  toastTimer = setTimeout(() => {
-    div.classList.add('hide');
-    setTimeout(() => div.remove(), 400);
-  }, 2200);
-}
+let toastTimer=null;
+function showMiniToast(msg){document.querySelectorAll('.mini-toast').forEach(e=>e.remove());clearTimeout(toastTimer);const div=document.createElement('div');div.className='mini-toast';div.textContent=msg;document.body.appendChild(div);toastTimer=setTimeout(()=>{div.classList.add('hide');setTimeout(()=>div.remove(),400);},2200);}
+function checkStageMilestone(stageIdx,prevDone,newDone,total){const milestones=[{pct:25,msg:'🔥 完成 25%！繼續衝！'},{pct:50,msg:'⚡ 完成一半了！你超強的！'},{pct:75,msg:'🚀 75% 完成！快到了！'},{pct:100,msg:'🎉 本階段全部完成！可以晉升了！'}];for(const m of milestones){const threshold=Math.floor(total*m.pct/100);if(prevDone<threshold&&newDone>=threshold){showMiniToast(m.msg);return;}}}
 
-function checkStageMilestone(stageIdx, prevDone, newDone, total){
-  const milestones = [
-    {pct:25, msg:'🔥 完成 25%！繼續衝！'},
-    {pct:50, msg:'⚡ 完成一半了！你超強的！'},
-    {pct:75, msg:'🚀 75% 完成！快到了！'},
-    {pct:100, msg:'🎉 本階段全部完成！可以晉升了！'},
-  ];
-  for(const m of milestones){
-    const threshold = Math.floor(total * m.pct / 100);
-    if(prevDone < threshold && newDone >= threshold){
-      showMiniToast(m.msg);
-      return;
-    }
-  }
-}
+const DC_KEY='dct_daily_v1',STREAK_KEY='dct_streak_v1';
+function getTodayKey(){const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
+function loadDailyData(){try{return JSON.parse(localStorage.getItem(DC_KEY)||'{}');}catch(e){return {};}}
+function saveDailyData(data){localStorage.setItem(DC_KEY,JSON.stringify(data));}
+function loadStreak(){try{return JSON.parse(localStorage.getItem(STREAK_KEY)||'{"streak":0,"lastDate":""}');}catch(e){return {streak:0,lastDate:''};}}
+function saveStreak(s){localStorage.setItem(STREAK_KEY,JSON.stringify(s));}
+function getYesterdayKey(){const d=new Date();d.setDate(d.getDate()-1);return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
+function updateStreak(todayKey){const s=loadStreak();if(s.lastDate===todayKey)return s.streak;s.streak=s.lastDate===getYesterdayKey()?(s.streak||0)+1:1;s.lastDate=todayKey;saveStreak(s);return s.streak;}
 
-
-// ── DAILY CHECK-IN ────────────────────────────────────────────────
-const DC_KEY = 'dct_daily_v1';
-const STREAK_KEY = 'dct_streak_v1';
-
-function getTodayKey(){
-  const d = new Date();
-  return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
-}
-
-function loadDailyData(){
-  try{ return JSON.parse(localStorage.getItem(DC_KEY)||'{}'); }catch(e){ return {}; }
-}
-function saveDailyData(data){ localStorage.setItem(DC_KEY, JSON.stringify(data)); }
-function loadStreak(){
-  try{ return JSON.parse(localStorage.getItem(STREAK_KEY)||'{"streak":0,"lastDate":""}'); }catch(e){ return {streak:0,lastDate:''}; }
-}
-function saveStreak(s){ localStorage.setItem(STREAK_KEY, JSON.stringify(s)); }
-
-function getYesterdayKey(){
-  const d = new Date(); d.setDate(d.getDate()-1);
-  return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
-}
-
-function updateStreak(todayKey){
-  const s = loadStreak();
-  if(s.lastDate === todayKey) return s.streak;
-  if(s.lastDate === getYesterdayKey()){
-    s.streak = (s.streak||0) + 1;
-  } else {
-    s.streak = 1;
-  }
-  s.lastDate = todayKey;
-  saveStreak(s);
-  return s.streak;
-}
-
-const DAILY_ITEMS = [
-  {id:'story', em:'📱', text:'今天發了五則限動'},
-  {id:'reel',  em:'🎬', text:'今天剪片/發貼文了'},
-  {id:'coach', em:'💬', text:'今天已找上家'},
-  {id:'course', em:'📚', text:'今天看了課程'},
-];
-
-const STREAK_CARDS = [
-  {days:1,  em:'🌱', title:'第一天！', msg:'踏出第一步最難，你做到了！'},
-  {days:3,  em:'🔥', title:'連續3天！', msg:'習慣正在形成，繼續保持！'},
-  {days:7,  em:'⭐', title:'連續一週！', msg:'整整一週！你比90%的人更有執行力。'},
-  {days:14, em:'💫', title:'連續兩週！', msg:'兩週了！這不是運氣，是紀律。'},
-  {days:21, em:'🌟', title:'連續21天！', msg:'21天！習慣已經養成，這就是你的新日常。'},
-  {days:30, em:'👑', title:'連續一個月！', msg:'整整30天！你已經是最強的那1%了。'},
-  {days:60, em:'💎', title:'連續兩個月！', msg:'60天！你的成功不是偶然，是每天選擇堅持。'},
-  {days:100,em:'🏆', title:'連續100天！', msg:'100天！Dream Come True 正在發生。'},
-];
-
-function getStreakCard(streak){
-  let card = null;
-  for(const c of STREAK_CARDS){
-    if(streak >= c.days) card = c;
-  }
-  return card;
-}
+const DAILY_ITEMS=[{id:'story',em:'📱',text:'今天發了五則限動'},{id:'reel',em:'🎬',text:'今天剪片/發貼文了'},{id:'coach',em:'💬',text:'今天已找上家'},{id:'course',em:'📚',text:'今天看了課程'}];
+const STREAK_CARDS=[{days:1,em:'🌱',title:'第一天！',msg:'踏出第一步最難，你做到了！'},{days:3,em:'🔥',title:'連續3天！',msg:'習慣正在形成，繼續保持！'},{days:7,em:'⭐',title:'連續一週！',msg:'整整一週！你比90%的人更有執行力。'},{days:14,em:'💫',title:'連續兩週！',msg:'兩週了！這不是運氣，是紀律。'},{days:21,em:'🌟',title:'連續21天！',msg:'21天！習慣已經養成，這就是你的新日常。'},{days:30,em:'👑',title:'連續一個月！',msg:'整整30天！你已經是最強的那1%了。'},{days:60,em:'💎',title:'連續兩個月！',msg:'60天！你的成功不是偶然，是每天選擇堅持。'},{days:100,em:'🏆',title:'連續100天！',msg:'100天！Dream Come True 正在發生。'}];
+function getStreakCard(streak){let card=null;for(const c of STREAK_CARDS){if(streak>=c.days)card=c;}return card;}
 
 function toggleDailyItem(id){
-  const today = getTodayKey();
-  const data = loadDailyData();
-  if(!data[today]) data[today] = {};
-  data[today][id] = !data[today][id];
-  saveDailyData(data);
-
-  // Check if all done today
-  const todayData = data[today];
-  const allDone = DAILY_ITEMS.every(item => todayData[item.id]);
-
-  if(allDone){
-    const streak = updateStreak(today);
-    const card = getStreakCard(streak);
-    if(card) setTimeout(()=>showStreakCard(streak, card), 300);
-  }
-
-  renderDailyCheckin();
-  renderWeeklyRate();
+  const today=getTodayKey(),data=loadDailyData();
+  if(!data[today])data[today]={};
+  data[today][id]=!data[today][id];saveDailyData(data);
+  const todayData=data[today];
+  const allDone=DAILY_ITEMS.every(item=>todayData[item.id]);
+  if(allDone){const streak=updateStreak(today);const card=getStreakCard(streak);if(card)setTimeout(()=>showStreakCard(streak,card),300);}
+  renderDailyCheckin();renderWeeklyRate();
 }
 
-function showStreakCard(streak, card){
-  confetti(); confetti();
-  document.getElementById('ovl-content').innerHTML = `
-    <div style="background:#fff;border-radius:28px;max-width:300px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .4s cubic-bezier(.34,1.56,.64,1);">
-      <div style="background:linear-gradient(135deg,#37A5E6,#2290D4);padding:28px 20px 22px;text-align:center;position:relative;">
-        <div style="font-size:56px;margin-bottom:8px;animation:bo 1.2s ease infinite alternate;">${card.em}</div>
-        <div style="font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.7);margin-bottom:4px;">連續打卡</div>
-        <div style="font-size:22px;font-weight:900;color:#fff;margin-bottom:2px;">${card.title}</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.8);">已連續 ${streak} 天！</div>
-      </div>
-      <div style="padding:20px 22px 22px;">
-        <div style="font-size:13px;color:#2A5A7A;line-height:1.8;text-align:center;margin-bottom:14px;">${card.msg}</div>
-        <div style="display:flex;justify-content:center;gap:4px;margin-bottom:16px;">
-          ${Array.from({length:Math.min(streak,7)},(_,i)=>'<div style="width:10px;height:10px;border-radius:50%;background:'+(i<streak?'#37A5E6':'#EEF8FE')+';"></div>').join('')+(streak>7?'<div style="font-size:10px;color:#90C0E0;">+&#43;'+(streak-7)+'</div>':'')}
-        </div>
-        <button onclick="closeOvl()" style="width:100%;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:inherit;">繼續加油 🔥</button>
-      </div>
-    </div>`;
+function showStreakCard(streak,card){
+  confetti();confetti();
+  document.getElementById('ovl-content').innerHTML=`<div style="background:#fff;border-radius:28px;max-width:300px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .4s cubic-bezier(.34,1.56,.64,1);"><div style="background:linear-gradient(135deg,#37A5E6,#2290D4);padding:28px 20px 22px;text-align:center;position:relative;"><div style="font-size:56px;margin-bottom:8px;animation:bo 1.2s ease infinite alternate;">${card.em}</div><div style="font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.7);margin-bottom:4px;">連續打卡</div><div style="font-size:22px;font-weight:900;color:#fff;margin-bottom:2px;">${card.title}</div><div style="font-size:13px;color:rgba(255,255,255,.8);">已連續 ${streak} 天！</div></div><div style="padding:20px 22px 22px;"><div style="font-size:13px;color:#2A5A7A;line-height:1.8;text-align:center;margin-bottom:14px;">${card.msg}</div><div style="display:flex;justify-content:center;gap:4px;margin-bottom:16px;">${Array.from({length:Math.min(streak,7)},(_,i)=>'<div style="width:10px;height:10px;border-radius:50%;background:'+(i<streak?'#37A5E6':'#EEF8FE')+';"></div>').join('')+(streak>7?'<div style="font-size:10px;color:#90C0E0;">+'+(streak-7)+'</div>':'')}</div><button onclick="closeOvl()" style="width:100%;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:inherit;">繼續加油 🔥</button></div></div>`;
   document.getElementById('ovl').style.display='flex';
 }
 
 function renderDailyCheckin(){
-  const el = document.getElementById('daily-checkin');
-  if(!el) return;
-  const today = getTodayKey();
-  const data = loadDailyData();
-  const todayData = data[today] || {};
-  const streak = loadStreak();
-  const allDone = DAILY_ITEMS.every(item => todayData[item.id]);
-  const doneCount = DAILY_ITEMS.filter(item => todayData[item.id]).length;
-
-  el.innerHTML = `
-    <div style="background:#fff;border-radius:18px;margin:0 14px 12px;box-shadow:0 2px 12px rgba(55,165,230,.08);overflow:hidden;">
-      <div style="background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
-        <div style="display:flex;align-items:center;gap:8px;">
-          <span style="font-size:18px;">☀️</span>
-          <div>
-            <div style="font-size:12px;font-weight:700;color:#1A5A80;">每日打卡</div>
-            <div style="font-size:10px;color:#4A7A9A;">今日 ${doneCount}/${DAILY_ITEMS.length} 完成</div>
-          </div>
-        </div>
-        <div style="text-align:right;">
-          <div style="font-size:11px;font-weight:700;color:#2290D4;background:rgba(255,255,255,.7);border-radius:999px;padding:3px 10px;">🔥 連續 ${streak.streak||0} 天</div>
-        </div>
-      </div>
-      <div style="padding:12px 14px;">
-        ${DAILY_ITEMS.map(item=>{
-          const checked = !!todayData[item.id];
-          return `<div onclick="toggleDailyItem('${item.id}')" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;background:${checked?'linear-gradient(135deg,#EEF8FE,#E8F6FF)':'#F8FCFF'};border:1.5px solid ${checked?'#A7D1F3':'#E0F0F8'};cursor:pointer;margin-bottom:6px;transition:all .15s;">
-            <div style="width:22px;height:22px;border-radius:7px;border:2px solid ${checked?'#2290D4':'#A7D1F3'};background:${checked?'linear-gradient(135deg,#37A5E6,#2290D4)':'#fff'};display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;">
-              ${checked?'<div style="width:9px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);"></div>':''}
-            </div>
-            <span style="font-size:18px;">${item.em}</span>
-            <span style="font-size:12px;color:${checked?'#1A7AB8':'#3A6A8A'};font-weight:${checked?'700':'400'};">${item.text}</span>
-            ${checked?'<span style="margin-left:auto;font-size:11px;color:#37A5E6;">✓</span>':''}
-          </div>`;
-        }).join('')}
-        ${allDone?`<div style="text-align:center;padding:6px 0;font-size:12px;color:#37A5E6;font-weight:700;">🎉 今天全部完成！明天繼續！</div>`:''}
-      </div>
-    </div>`;
+  const el=document.getElementById('daily-checkin');if(!el)return;
+  const today=getTodayKey(),data=loadDailyData(),todayData=data[today]||{},streak=loadStreak();
+  const allDone=DAILY_ITEMS.every(item=>todayData[item.id]);
+  const doneCount=DAILY_ITEMS.filter(item=>todayData[item.id]).length;
+  el.innerHTML=`<div style="background:#fff;border-radius:18px;margin:0 14px 12px;box-shadow:0 2px 12px rgba(55,165,230,.08);overflow:hidden;"><div style="background:linear-gradient(135deg,#A7D1F3,#DBF6FF);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;"><div style="display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">☀️</span><div><div style="font-size:12px;font-weight:700;color:#1A5A80;">每日打卡</div><div style="font-size:10px;color:#4A7A9A;">今日 ${doneCount}/${DAILY_ITEMS.length} 完成</div></div></div><div style="font-size:11px;font-weight:700;color:#2290D4;background:rgba(255,255,255,.7);border-radius:999px;padding:3px 10px;">🔥 連續 ${streak.streak||0} 天</div></div><div style="padding:12px 14px;">${DAILY_ITEMS.map(item=>{const checked=!!todayData[item.id];return `<div onclick="toggleDailyItem('${item.id}')" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;background:${checked?'linear-gradient(135deg,#EEF8FE,#E8F6FF)':'#F8FCFF'};border:1.5px solid ${checked?'#A7D1F3':'#E0F0F8'};cursor:pointer;margin-bottom:6px;"><div style="width:22px;height:22px;border-radius:7px;border:2px solid ${checked?'#2290D4':'#A7D1F3'};background:${checked?'linear-gradient(135deg,#37A5E6,#2290D4)':'#fff'};display:flex;align-items:center;justify-content:center;flex-shrink:0;">${checked?'<div style="width:9px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);"></div>':''}</div><span style="font-size:18px;">${item.em}</span><span style="font-size:12px;color:${checked?'#1A7AB8':'#3A6A8A'};font-weight:${checked?'700':'400'};">${item.text}</span>${checked?'<span style="margin-left:auto;font-size:11px;color:#37A5E6;">✓</span>':''}</div>`;}).join('')}${allDone?'<div style="text-align:center;padding:6px 0;font-size:12px;color:#37A5E6;font-weight:700;">🎉 今天全部完成！明天繼續！</div>':''}</div></div>`;
 }
 
 function renderWeeklyRate(){
-  const el = document.getElementById('weekly-rate');
-  if(!el) return;
-
-  // Calculate this week's checklist progress
-  // Count items checked this week vs total expected
-  // Use daily checkin data for the week
-  const today = new Date();
-  const days = [];
-  for(let i=6; i>=0; i--){
-    const d = new Date(today);
-    d.setDate(d.getDate()-i);
-    days.push(d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate());
-  }
-
-  const data = loadDailyData();
-  const totalPossible = DAILY_ITEMS.length * 7;
-  let totalDone = 0;
-  const dayStats = days.map(day=>{
-    const dayData = data[day]||{};
-    const done = DAILY_ITEMS.filter(item=>dayData[item.id]).length;
-    totalDone += done;
-    return {day, done, total:DAILY_ITEMS.length};
-  });
-
-  const pct = totalPossible > 0 ? Math.round(totalDone/totalPossible*100) : 0;
-  const dayNames = ['一','二','三','四','五','六','日'];
-  const todayIdx = (today.getDay()+6)%7; // Mon=0
-
-  el.innerHTML = `
-    <div style="background:#fff;border-radius:18px;margin:0 14px 12px;padding:14px 16px;box-shadow:0 2px 12px rgba(55,165,230,.08);">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <div style="display:flex;align-items:center;gap:7px;">
-          <span style="font-size:16px;">📊</span>
-          <div>
-            <div style="font-size:12px;font-weight:700;color:#1A5A80;">本週執行率</div>
-            <div style="font-size:10px;color:#5A9ABB;">每日打卡完成度</div>
-          </div>
-        </div>
-        <div style="font-size:22px;font-weight:900;color:${pct>=80?'#37A5E6':pct>=50?'#F0C040':'#E07050'};">${pct}%</div>
-      </div>
-      <div style="display:flex;gap:4px;justify-content:space-between;margin-bottom:10px;">
-        ${dayStats.map((s,i)=>{
-          const p = s.total>0?Math.round(s.done/s.total*100):0;
-          const isToday = i===todayIdx;
-          return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;">
-            <div style="width:100%;height:40px;background:#EEF8FE;border-radius:6px;overflow:hidden;position:relative;">
-              <div style="position:absolute;bottom:0;width:100%;height:${p}%;background:${isToday?'linear-gradient(135deg,#37A5E6,#2290D4)':'linear-gradient(135deg,#A7D1F3,#C0E4F8)'};border-radius:4px;transition:height .5s;"></div>
-            </div>
-            <div style="font-size:8px;color:${isToday?'#1A7AB8':'#90C0E0'};font-weight:${isToday?'700':'400'};">週${dayNames[i]}</div>
-          </div>`;
-        }).join('')}
-      </div>
-      <div style="height:6px;background:#EEF8FE;border-radius:999px;overflow:hidden;">
-        <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;transition:width .6s;"></div>
-      </div>
-      <div style="font-size:10px;color:#90C0E0;margin-top:6px;text-align:right;">${dayStats.filter(s=>s.done===s.total).length} / 7 天全部完成</div>
-    </div>`;
+  const el=document.getElementById('weekly-rate');if(!el)return;
+  const today=new Date(),days=[];
+  for(let i=6;i>=0;i--){const d=new Date(today);d.setDate(d.getDate()-i);days.push(d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate());}
+  const data=loadDailyData();const totalPossible=DAILY_ITEMS.length*7;let totalDone=0;
+  const dayStats=days.map(day=>{const dayData=data[day]||{};const done=DAILY_ITEMS.filter(item=>dayData[item.id]).length;totalDone+=done;return{day,done,total:DAILY_ITEMS.length};});
+  const pct=totalPossible>0?Math.round(totalDone/totalPossible*100):0;
+  const dayNames=['一','二','三','四','五','六','日'];
+  const todayIdx=(today.getDay()+6)%7;
+  el.innerHTML=`<div style="background:#fff;border-radius:18px;margin:0 14px 12px;padding:14px 16px;box-shadow:0 2px 12px rgba(55,165,230,.08);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><div style="display:flex;align-items:center;gap:7px;"><span style="font-size:16px;">📊</span><div><div style="font-size:12px;font-weight:700;color:#1A5A80;">本週執行率</div><div style="font-size:10px;color:#5A9ABB;">每日打卡完成度</div></div></div><div style="font-size:22px;font-weight:900;color:${pct>=80?'#37A5E6':pct>=50?'#F0C040':'#E07050'};">${pct}%</div></div><div style="display:flex;gap:4px;justify-content:space-between;margin-bottom:10px;">${dayStats.map((s,i)=>{const p=s.total>0?Math.round(s.done/s.total*100):0;const isToday=i===todayIdx;return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;height:40px;background:#EEF8FE;border-radius:6px;overflow:hidden;position:relative;"><div style="position:absolute;bottom:0;width:100%;height:${p}%;background:${isToday?'linear-gradient(135deg,#37A5E6,#2290D4)':'linear-gradient(135deg,#A7D1F3,#C0E4F8)'};border-radius:4px;transition:height .5s;"></div></div><div style="font-size:8px;color:${isToday?'#1A7AB8':'#90C0E0'};font-weight:${isToday?'700':'400'};">週${dayNames[i]}</div></div>`;}).join('')}</div><div style="height:6px;background:#EEF8FE;border-radius:999px;overflow:hidden;"><div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;transition:width .6s;"></div></div><div style="font-size:10px;color:#90C0E0;margin-top:6px;text-align:right;">${dayStats.filter(s=>s.done===s.total).length} / 7 天全部完成</div></div>`;
 }
 
-loadCkData(); loadUpgraded(); load(); rAll(); renderDailyCheckin(); renderWeeklyRate();
+loadCkData();loadUpgraded();load();rAll();renderDailyCheckin();renderWeeklyRate();
 </script>
 </body>
 </html>
