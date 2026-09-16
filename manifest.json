@@ -1,0 +1,27 @@
+{
+  "name": "DCT 每日靈感",
+  "short_name": "DCT靈感",
+  "description": "每日自動生成發文文案，一鍵複製",
+  "start_url": "/DCTmap/dct-quest.html",
+  "scope": "/DCTmap/",
+  "display": "standalone",
+  "background_color": "#1a2a6c",
+  "theme_color": "#1a2a6c",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/DCTmap/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/DCTmap/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "lifestyle"],
+  "lang": "zh-TW"
+}
