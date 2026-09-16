@@ -445,20 +445,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 <script>
 
 
-(function(){
-  var splash=document.getElementById('splash-screen');
-  var bar=document.getElementById('splash-bar');
-  var txt=document.getElementById('splash-txt');
-  if(!splash||!bar)return;
-  var msgs=[{at:0,msg:'✦ 歡迎加入 DCT 🦋'},{at:25,msg:'載入你的晉升地圖…'},{at:50,msg:'整理課程與檢核表…'},{at:75,msg:'準備你的專屬旅程…'},{at:95,msg:'即將出發 🚀'}];
-  var pct=0;
-  var iv=setInterval(function(){
-    pct=Math.min(pct+Math.random()*5+2,98);
-    bar.style.width=pct+'%';
-    for(var i=msgs.length-1;i>=0;i--){if(pct>=msgs[i].at){if(txt)txt.textContent=msgs[i].msg;break;}}
-    if(pct>=98){clearInterval(iv);setTimeout(function(){bar.style.width='100%';if(txt)txt.textContent='完成！';setTimeout(function(){splash.style.animation='splash-fade .5s ease forwards';setTimeout(function(){splash.style.display='none';},520);},280);},200);}
-  },55);
-})();
+
 
 
 // ── SPLASH SCREEN JS ──
