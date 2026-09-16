@@ -2037,6 +2037,8 @@ function scheduleTodayNotifications() {
       var parts = timeStr.split(':');
       var trigger = new Date(now.getFullYear(), now.getMonth(), now.getDate(),
         parseInt(parts[0]), parseInt(parts[1]), 0);
+      // iOS 背景延遲補償：提前4分鐘觸發
+      trigger = new Date(trigger.getTime() - 4 * 60 * 1000);
       if (trigger <= now) return;
       var delay = trigger - now;
       setTimeout(function() {
