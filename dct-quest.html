@@ -445,7 +445,20 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 <script>
 
 
-
+(function(){
+  var splash=document.getElementById('splash-screen');
+  var bar=document.getElementById('splash-bar');
+  var txt=document.getElementById('splash-txt');
+  if(!splash||!bar)return;
+  var msgs=[{at:0,msg:'✦ 歡迎加入 DCT 🦋'},{at:25,msg:'載入你的晉升地圖…'},{at:50,msg:'整理課程與檢核表…'},{at:75,msg:'準備你的專屬旅程…'},{at:95,msg:'即將出發 🚀'}];
+  var pct=0;
+  var iv=setInterval(function(){
+    pct=Math.min(pct+Math.random()*5+2,98);
+    bar.style.width=pct+'%';
+    for(var i=msgs.length-1;i>=0;i--){if(pct>=msgs[i].at){if(txt)txt.textContent=msgs[i].msg;break;}}
+    if(pct>=98){clearInterval(iv);setTimeout(function(){bar.style.width='100%';if(txt)txt.textContent='完成！';setTimeout(function(){splash.style.animation='splash-fade .5s ease forwards';setTimeout(function(){splash.style.display='none';},520);},280);},200);}
+  },55);
+})();
 
 
 // ── SPLASH SCREEN JS ──
@@ -1893,13 +1906,15 @@ function copyProductText(catId,prodIdx,itemIdx){
 loadCkData();loadUpgraded();load();rAll();renderDailyCheckin();renderWeeklyRate();renderInspire();setTimeout(function(){switchPage('inspire');},10);
 
 
-// ═══ PWA & 推播通知系統 v2 ═══
+// ═══ PWA & 推播通知系統 ═══
 var swReg = null;
 
+// 註冊 Service Worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/DCTmap/sw.js').then(function(reg) {
       swReg = reg;
+      console.log('SW registered');
       checkNotifyStatus();
     }).catch(function(err) {
       console.log('SW failed:', err);
@@ -1914,7 +1929,7 @@ function checkNotifyStatus() {
   if (Notification.permission === 'granted') {
     if (btn) btn.style.display = 'none';
     if (settingsBtn) settingsBtn.style.display = 'block';
-    scheduleTodayNotifications();
+    scheduleNotifications();
   } else if (Notification.permission === 'denied') {
     if (btn) { btn.textContent = '🔕 通知已封鎖（請至設定開啟）'; btn.style.opacity = '0.6'; }
   }
@@ -1922,622 +1937,121 @@ function checkNotifyStatus() {
 
 function requestNotifyPermission() {
   if (!('Notification' in window)) {
-    alert('請先將此頁面加入主畫面，再開啟通知！\n(分享 → 加入主畫面)');
+    alert('你的瀏覽器不支援推播通知\n\n請使用 Safari 並將頁面加入主畫面後再試');
     return;
   }
   Notification.requestPermission().then(function(permission) {
     if (permission === 'granted') {
       checkNotifyStatus();
       showNotifySettings();
-      // 立即發測試通知
+      // 立即發一個測試通知
       if (swReg) {
-        swReg.active.postMessage({ type: 'SHOW_NOTIFY', title: '🎉 通知開啟成功！' });
+        swReg.showNotification('🎉 通知已開啟！', {
+          body: '每日發文與課程提醒已設定好，你很棒！💪',
+          icon: '/DCTmap/icon-192.png',
+          vibrate: [200, 100, 200]
+        });
       }
     } else {
-      alert('請至 Safari 設定 → 網站 → 通知 → 允許本站發送通知');
+      alert('通知權限被拒絕\n請至 Safari 設定 → 網站 → 通知 → 允許');
     }
   });
 }
 
 function showNotifySettings() {
+  // 載入已儲存的設定
   try {
-    document.getElementById('notify-time1').value = localStorage.getItem('notify_time1') || '08:30';
-    document.getElementById('notify-time2').value = localStorage.getItem('notify_time2') || '19:00';
-    var en2 = localStorage.getItem('notify_enable2') !== 'false';
-    document.getElementById('notify-enable2').checked = en2;
+    var postTime = localStorage.getItem('notify_post_time') || '08:30';
+    var courseTime = localStorage.getItem('notify_course_time') || '20:00';
+    var courseEnable = localStorage.getItem('notify_course_enable') !== 'false';
+    var postDays = localStorage.getItem('notify_post_days') || 'daily';
+    document.getElementById('post-time').value = postTime;
+    document.getElementById('course-time').value = courseTime;
+    document.getElementById('course-enable').checked = courseEnable;
+    document.getElementById('post-days').value = postDays;
   } catch(e) {}
   document.getElementById('notify-modal').style.display = 'flex';
 }
 
 function saveNotifySettings() {
   try {
-    localStorage.setItem('notify_time1', document.getElementById('notify-time1').value);
-    localStorage.setItem('notify_time2', document.getElementById('notify-time2').value);
-    localStorage.setItem('notify_enable2', document.getElementById('notify-enable2').checked);
+    var postTime = document.getElementById('post-time').value;
+    var courseTime = document.getElementById('course-time').value;
+    var courseEnable = document.getElementById('course-enable').checked;
+    var postDays = document.getElementById('post-days').value;
+    localStorage.setItem('notify_post_time', postTime);
+    localStorage.setItem('notify_course_time', courseTime);
+    localStorage.setItem('notify_course_enable', courseEnable);
+    localStorage.setItem('notify_post_days', postDays);
   } catch(e) {}
   document.getElementById('notify-modal').style.display = 'none';
+  scheduleNotifications();
+  showMiniToast('✅ 提醒設定已儲存！');
+}
+
+function scheduleNotifications() {
+  // 使用 Periodic Background Sync（如果支援）
+  if (swReg && 'periodicSync' in swReg) {
+    swReg.periodicSync.register('daily-inspire', { minInterval: 24 * 60 * 60 * 1000 })
+      .catch(function() {});
+  }
+  // Fallback: 使用 setTimeout 在當天正確時間觸發
   scheduleTodayNotifications();
-  showMiniToast('✅ 提醒時間已設定！');
-}
-
-function getCheer() {
-  var cheers = [
-    '你今天的每一篇分享，都在種下一顆改變的種子 🌱',
-    '堅持發文的人，終究會被對的人看見 👀',
-    '不完美的開始，也比完美的等待更有力量 💪',
-    '你分享的每一句話，都可能是某個人今天需要的 🤍',
-    '持續出現，就是你最強大的個人品牌 ✨',
-    '今天發的文，是三個月後收入的種子 🌿',
-    '你不是在賣東西，你是在幫助需要的人找到答案 💡',
-    '每一個按讚，都是宇宙在說：繼續走，走對了 🌟',
-    '你今天的勇敢出現，讓明天的自己更有底氣 🔥',
-    '不要小看每天的小小積累，那是複利的力量 📈',
-    '你的真實故事，就是最有力量的文案 📝',
-    '發文這件事，沒有完美的時機，只有現在 ⏰',
-    '每次按下發布，你就比昨天的自己更勇敢一點 🦋',
-    '你願意每天出現，就已經贏過大多數人了 🏆',
-    '今天的你，比昨天更靠近夢想的自己 🎯',
-    '你的堅持，會讓觀望的人因為你而做出改變 💫',
-    '貼文不需要完美，真誠才是最打動人心的力量 ❤️',
-    '你選擇做自己事業的主人，這本身就很了不起 👑',
-    '每一天的努力，都是給未來的自己最好的禮物 🎁',
-    '有人因為你今天的分享而改變，你不知道是誰 🌈',
-    '別怕發文，閉眼按發布，發完就好了 😄',
-    '你正在走一條很多人不敢走的路，繼續走 🛤️',
-    '發文就像澆水，你不知道哪天花會開，但要每天澆 🌸',
-    '你的影響力，比你想像的還要大 🌊',
-    '今天多發一篇，就多一個機會讓對的人找到你 🔍',
-    '不是每篇都爆紅，但每篇都在累積信任資產 💎',
-    '你有故事、你有產品、你有心，這三樣加起來就夠了 🙌',
-    '加油！今天的你很棒，明天的你會更棒 🌻',
-    '你的分享是光，照亮了正在猶豫中的那個人 ☀️',
-    '每一步都算數，即使今天只發了一篇 ✅',
-  ];
-  var d = new Date();
-  var seed = d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate();
-  var x = Math.sin(seed * 9301 + 77 * 49297 + 233) * 233280;
-  var idx = Math.floor((x - Math.floor(x)) * cheers.length);
-  return cheers[idx];
-}
-
-function getTodayFocus() {
-  var types = [
-    { icon:'🌟', name:'價值觀', hint:'分享你的成長故事或人生觀' },
-    { icon:'📦', name:'產品動態', hint:'分享產品心得或客戶見證' },
-    { icon:'💡', name:'觀念動態', hint:'分享瘦身/保養/保健知識' },
-    { icon:'🤝', name:'招商動態', hint:'解答加入團隊的疑問' },
-  ];
-  var d = new Date();
-  var seed = d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate();
-  var x = Math.sin(seed * 9301 + 55 * 49297 + 233) * 233280;
-  return types[Math.floor((x - Math.floor(x)) * types.length)];
 }
 
 function scheduleTodayNotifications() {
   try {
-    var time1 = localStorage.getItem('notify_time1') || '08:30';
-    var time2 = localStorage.getItem('notify_time2') || '19:00';
-    var enable2 = localStorage.getItem('notify_enable2') !== 'false';
+    var postTime = localStorage.getItem('notify_post_time') || '08:30';
+    var courseTime = localStorage.getItem('notify_course_time') || '20:00';
+    var courseEnable = localStorage.getItem('notify_course_enable') !== 'false';
+
     var now = new Date();
 
-    function scheduleAt(timeStr, label) {
-      var parts = timeStr.split(':');
-      var trigger = new Date(now.getFullYear(), now.getMonth(), now.getDate(),
-        parseInt(parts[0]), parseInt(parts[1]), 0);
-      // iOS 背景延遲補償：提前4分鐘觸發
-      trigger = new Date(trigger.getTime() - 4 * 60 * 1000);
-      if (trigger <= now) return;
-      var delay = trigger - now;
+    // 發文提醒
+    var postParts = postTime.split(':');
+    var postTrigger = new Date(now.getFullYear(), now.getMonth(), now.getDate(),
+      parseInt(postParts[0]), parseInt(postParts[1]), 0);
+    if (postTrigger > now) {
+      var postDelay = postTrigger - now;
       setTimeout(function() {
-        if (Notification.permission !== 'granted' || !swReg) return;
-        var cheer = getCheer();
-        var focus = getTodayFocus();
-        var isEvening = parseInt(parts[0]) >= 17;
-        var title = isEvening ? '🌙 晚上好！今天發文了嗎？' : '☀️ 早安！今天的發文任務來了';
-        var body = cheer + ' 今日重點：' + focus.icon + ' ' + focus.name + ' - ' + focus.hint + ' | 📋 點我開啟，一鍵複製今日文案';
-
-
-
-
-
-        swReg.showNotification(title, {
-          body: body,
-          icon: '/DCTmap/icon-192.png',
-          badge: '/DCTmap/icon-192.png',
-          vibrate: [200, 100, 200],
-          tag: 'dct-' + label,
-          data: { url: '/DCTmap/dct-quest.html' },
-          actions: [{ action: 'open', title: '📋 開啟複製文案' }]
-        });
-      }, delay);
+        if (Notification.permission === 'granted' && swReg) {
+          swReg.showNotification('☀️ 今日發文提醒', {
+            body: '今天記得發：價值觀×1、產品動態×5、觀念動態×1、招商動態×2\n點擊進入靈感頁面取得今日文案 💡',
+            icon: '/DCTmap/icon-192.png',
+            badge: '/DCTmap/icon-192.png',
+            vibrate: [200, 100, 200],
+            tag: 'daily-post',
+            data: { url: '/DCTmap/dct-quest.html' }
+          });
+        }
+      }, postDelay);
     }
 
-    scheduleAt(time1, 'morning');
-    if (enable2) scheduleAt(time2, 'evening');
+    // 課程提醒
+    if (courseEnable) {
+      var courseParts = courseTime.split(':');
+      var courseTrigger = new Date(now.getFullYear(), now.getMonth(), now.getDate(),
+        parseInt(courseParts[0]), parseInt(courseParts[1]), 0);
+      if (courseTrigger > now) {
+        var courseDelay = courseTrigger - now;
+        setTimeout(function() {
+          if (Notification.permission === 'granted' && swReg) {
+            swReg.showNotification('📚 課程進度提醒', {
+              body: '今天的課程完成了嗎？記得進入系統確認今日學習進度 ✅',
+              icon: '/DCTmap/icon-192.png',
+              badge: '/DCTmap/icon-192.png',
+              vibrate: [200, 100, 200],
+              tag: 'daily-course',
+              data: { url: '/DCTmap/dct-quest.html' }
+            });
+          }
+        }, courseDelay);
+      }
+    }
   } catch(e) {}
 }
 
-</script><!-- 通知設定 Modal v2 -->
-<div id="notify-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;">
-  <div style="background:#fff;border-radius:20px;padding:24px;margin:20px;max-width:360px;width:100%;max-height:90vh;overflow-y:auto;">
-    <div style="font-size:16px;font-weight:900;color:#1A3A8A;margin-bottom:4px;">🔔 每日提醒設定</div>
-    <div style="font-size:11px;color:#888;margin-bottom:20px;">設定後每天自動提醒並附上今日鼓勵語 💌</div>
-
-    <div style="margin-bottom:16px;">
-      <div style="font-size:12px;font-weight:700;color:#1A3A8A;margin-bottom:8px;">⏰ 第一輪提醒時間（早上）</div>
-      <input type="time" id="notify-time1" value="08:30" style="width:100%;padding:10px 12px;border:1.5px solid #EEF3FF;border-radius:10px;font-size:15px;color:#1A3A8A;background:#F8FAFF;box-sizing:border-box;">
-    </div>
-
-    <div style="margin-bottom:20px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <div style="font-size:12px;font-weight:700;color:#1A3A8A;">⏰ 第二輪提醒時間（晚上）</div>
-        <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:#666;cursor:pointer;">
-          <input type="checkbox" id="notify-enable2" checked style="width:15px;height:15px;"> 啟用
-        </label>
-      </div>
-      <input type="time" id="notify-time2" value="19:00" style="width:100%;padding:10px 12px;border:1.5px solid #EEF3FF;border-radius:10px;font-size:15px;color:#1A3A8A;background:#F8FAFF;box-sizing:border-box;">
-    </div>
-
-    <div style="margin-bottom:20px;padding:14px;background:#EEF3FF;border-radius:12px;">
-      <div style="font-size:11px;font-weight:700;color:#1A3A8A;margin-bottom:6px;">📋 通知內容包含</div>
-      <div style="font-size:11px;color:#3A6AC8;line-height:2;">
-        ✦ 每天不同的鼓勵語（30種輪替）<br>
-        ✦ 今日發文重點建議<br>
-        ✦ 點擊直接開啟文案複製頁
-      </div>
-    </div>
-
-    <div style="display:flex;gap:10px;">
-      <button onclick="saveNotifySettings()" style="flex:1;background:#1A3A8A;color:#fff;border:none;border-radius:12px;padding:13px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">✅ 儲存</button>
-      <button onclick="document.getElementById('notify-modal').style.display='none'" style="flex:1;background:#EEF3FF;color:#1A3A8A;border:none;border-radius:12px;padding:13px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">取消</button>
-    </div>
-  </div>
-</div>
-
-PE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
-<link rel="manifest" href="/DCTmap/manifest.json">
-<meta name="theme-color" content="#1a2a6c">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="DCT靈感">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DCT 晉升闖關系統 🍄</title>
-<link rel="apple-touch-icon" href="./IMG_2687.PNG">
-<link rel="icon" type="image/png" href="./IMG_2687.PNG">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'Noto Sans TC',sans-serif;background:linear-gradient(180deg,#3A72B8 0%,#2A5AA0 40%,#1E4A88 100%);background-attachment:fixed;min-height:100vh;overflow-x:hidden;letter-spacing:1px;}
-body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;z-index:0;}
-.wrap{position:relative;z-index:1;max-width:460px;margin:0 auto;padding-bottom:110px;}
-.topbar{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.12);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-.tb-l{display:flex;align-items:center;gap:10px;}
-.tb-av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:20px;}
-.tb-name{font-size:13px;font-weight:700;color:#fff;}
-.tb-sub{font-size:10px;color:rgba(200,230,255,.7);margin-top:1px;}
-.tb-r{display:flex;align-items:center;gap:6px;}
-.xp-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 13px;font-size:12px;font-weight:700;color:#fff;}
-.hero{background:rgba(255,255,255,.06);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1);padding:28px 18px 30px;text-align:center;position:relative;overflow:hidden;}
-.hero::after{content:'';}
-.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:3px 13px;font-size:10px;color:#fff;margin-bottom:14px;}
-.hero-title{font-size:20px;font-weight:900;color:#fff;line-height:1.5;margin-bottom:10px;text-shadow:0 2px 16px rgba(30,80,180,.5);}
-.hero-title .hero-name{color:#7FCFFF;text-shadow:0 0 20px rgba(120,200,255,.6);}
-.hero-desc{font-size:11px;color:rgba(235,248,255,.98);line-height:2.2;margin-bottom:20px;}
-.hs{flex:1;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.5);border-radius:14px;padding:8px 6px;text-align:center;}
-.hs-n{font-size:14px;font-weight:900;color:#fff;line-height:1.2;}
-.hs-l{font-size:9px;color:rgba(220,240,255,.92);margin-top:1px;}
-.hero-stats{display:flex;justify-content:center;gap:8px;width:100%;}
-.stage-box{background:rgba(255,255,255,.07);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.11);margin:0 14px;border-radius:0 0 18px 18px;padding:16px 16px 14px;margin-bottom:20px;overflow:visible;}
-.sb-title{font-size:10px;font-weight:700;color:#fff;letter-spacing:.1em;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
-.sb-sub{font-size:10px;color:rgba(215,235,255,.9);font-weight:400;}
-.xp-row{display:flex;justify-content:space-between;margin-bottom:5px;}
-.xp-lbl{font-size:10px;font-weight:700;color:rgba(230,245,255,.97);}
-.xp-num{font-size:10px;color:rgba(220,240,255,.9);}
-.xp-bar{height:8px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;border:none;}
-.xp-fill{height:100%;background:linear-gradient(90deg,#4A9FE8,#A7D1F3);border-radius:999px;transition:width .6s cubic-bezier(.34,1.56,.64,1);}
-.sec-lbl{display:flex;align-items:center;gap:8px;padding:0 18px;margin-bottom:11px;}
-.sl-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.15),transparent);}
-.sl-line.r{background:linear-gradient(90deg,transparent,rgba(255,255,255,.15));}
-.sl-txt{font-size:10px;font-weight:700;color:rgba(200,230,255,.7);letter-spacing:.12em;white-space:nowrap;}
-.lv-scroll{display:flex;gap:9px;padding:4px 18px 8px;overflow-x:auto;margin-top:32px;margin-bottom:16px;scrollbar-width:none;}
-.lv-scroll::-webkit-scrollbar{display:none;}
-.lv-card{flex-shrink:0;width:90px;background:rgba(255,255,255,.38);border:2px solid rgba(255,255,255,.75);border-radius:18px;padding:12px 6px 10px;text-align:center;cursor:pointer;transition:all .2s;position:relative;}
-.lv-card:hover{transform:translateY(-2px);background:rgba(255,255,255,.42);}
-.lv-card.lk{opacity:.4;}
-.lv-card.active{border-color:rgba(100,180,255,.6);background:rgba(100,180,255,.18);box-shadow:0 4px 18px rgba(60,140,255,.25);}
-.lv-em{font-size:26px;margin-bottom:5px;}
-.lv-nm{font-size:9px;font-weight:700;color:rgba(200,230,255,.9);margin-bottom:3px;line-height:1.3;}
-.lv-pg{height:4px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;margin-top:4px;}
-.lv-pf{height:100%;background:linear-gradient(90deg,#37A5E6,#A7D1F3);border-radius:999px;}
-.lv-pt{font-size:8px;color:rgba(180,215,255,.6);margin-top:3px;}
-.lv-done-badge{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#37A5E6,#2290D4);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:900;}
-.stage-info-card{background:rgba(30,75,170,.4);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(100,160,255,.2);border-radius:18px;margin:0 14px 12px;overflow:hidden;}
-.sic-top{background:rgba(255,255,255,.05);padding:13px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.08);}
-.sic-left{display:flex;align-items:center;gap:9px;}
-.sic-em{font-size:20px;}
-.sic-name{font-size:12px;font-weight:700;color:#fff;}
-.sic-sub{font-size:10px;color:rgba(200,230,255,.6);margin-top:1px;}
-.sic-arr{font-size:10px;color:rgba(200,230,255,.65);width:22px;height:22px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s;}
-.sic-arr.open{transform:rotate(180deg);}
-.sic-body{display:none;padding:16px 16px 20px;background:rgba(25,60,140,.3);}
-.sic-body.open{display:block;}
-.sic-upg-title{font-size:9px;font-weight:700;color:rgba(180,220,255,.9);letter-spacing:.1em;margin-bottom:8px;}
-.sic-cond{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:rgba(200,230,255,.85);line-height:1.6;margin-bottom:5px;padding:6px 10px;background:rgba(255,255,255,.06);border-radius:9px;}
-.sic-cond-dot{width:6px;height:6px;border-radius:50%;background:#4A9FE8;flex-shrink:0;margin-top:5px;}
-.sic-note{font-size:10px;color:#7AC8F0;font-style:italic;margin:6px 0 12px;padding:7px 11px;background:rgba(74,159,232,.12);border-radius:8px;border-left:3px solid rgba(74,159,232,.45);}
-.sic-divider{height:1px;background:rgba(255,255,255,.1);margin:10px 0 12px;}
-.sic-ck-title{font-size:9px;font-weight:700;color:rgba(180,220,255,.9);letter-spacing:.1em;margin-bottom:10px;}
-.sic-ck-section{margin-bottom:16px;}
-.sic-ck-sec-hd{display:flex;align-items:center;gap:7px;padding:10px 13px;background:linear-gradient(135deg,rgba(30,70,160,.7),rgba(15,40,100,.8));border-radius:12px;margin-bottom:8px;border:1px solid rgba(100,160,255,.35);border-left:3px solid rgba(100,180,255,.7);}
-.sic-ck-sec-em{font-size:15px;}
-.sic-ck-sec-title{font-size:11px;font-weight:700;color:#fff;flex:1;text-shadow:0 1px 8px rgba(100,180,255,.3);}
-.sic-ck-sec-prog{font-size:9px;color:rgba(180,220,255,.9);font-weight:700;background:rgba(255,255,255,.1);padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.15);}
-.sic-ck-items{display:flex;flex-direction:column;gap:5px;}
-.sic-ck-target{font-size:10px;color:#7AC8F0;padding:5px 10px;background:rgba(74,159,232,.1);border-radius:8px;border-left:3px solid rgba(74,159,232,.4);margin-bottom:5px;font-weight:500;}
-.sic-ck-item-row{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;border-radius:12px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.42);cursor:pointer;transition:all .15s;}
-.sic-ck-item-row:hover{border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.20);}
-.sic-ck-item-row.checked{background:rgba(100,180,255,.25);border-color:rgba(100,200,255,.55);}
-.sic-ck-box-sq{width:20px;height:20px;border-radius:6px;border:1.5px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;background:rgba(255,255,255,.1);transition:all .2s;}
-.sic-ck-item-row.checked .sic-ck-box-sq{background:linear-gradient(135deg,#37A5E6,#2290D4);border-color:#2290D4;box-shadow:0 2px 6px rgba(55,165,230,.3);}
-.sic-ck-v2{width:9px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);opacity:0;transition:opacity .2s;}
-.sic-ck-item-row.checked .sic-ck-v2{opacity:1;}
-.sic-ck-item-main{flex:1;display:flex;align-items:flex-start;flex-wrap:wrap;gap:5px;}
-.sic-ck-txt{font-size:11px;color:#fff;line-height:1.65;flex:1;min-width:100px;}
-.sic-ck-item-row.checked .sic-ck-txt{color:#fff;font-weight:600;}
-.course-link-btn{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:999px;background:rgba(100,180,255,.2);border:1px solid rgba(100,180,255,.4);color:rgba(180,220,255,.95);font-size:9px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;}
-.bnt{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;background:rgba(20,50,110,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.1);padding:8px 0;display:flex;justify-content:space-around;z-index:100;}
-.bni{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 16px;border-radius:12px;transition:all .15s;}
-.bni.on{background:rgba(74,159,232,.18);}
-.bni-ic{font-size:20px;}
-.bni-lb{font-size:9px;color:rgba(180,215,255,.45);font-weight:500;letter-spacing:.05em;}
-.bni.on .bni-lb{color:rgba(200,235,255,.95);font-weight:700;}
-.page-section{display:none;max-width:460px;margin:0 auto;padding:16px 14px 110px;}
-.page-section.active{display:block;}
-.page-top{background:rgba(255,255,255,.07);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1);padding:20px 18px 18px;text-align:center;margin:-16px -14px 20px;}
-.page-top-title{font-size:18px;font-weight:900;color:#fff;margin-bottom:4px;}
-.page-top-sub{font-size:11px;color:rgba(200,230,255,.7);}
-.course-chapter{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:16px;margin-bottom:12px;overflow:hidden;}
-.course-ch-hd{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.08);}
-.course-ch-em{font-size:20px;flex-shrink:0;}
-.course-ch-title{font-size:13px;font-weight:700;color:#fff;flex:1;}
-.course-ch-count{font-size:10px;color:rgba(180,215,255,.7);background:rgba(255,255,255,.1);padding:2px 8px;border-radius:999px;}
-.course-ch-arr{font-size:12px;color:rgba(180,215,255,.6);transition:transform .2s;}
-.course-ch-arr.open{transform:rotate(180deg);}
-.course-links{display:none;padding:10px 12px;flex-direction:column;gap:7px;}
-.course-links.open{display:flex;}
-.course-link{display:flex;align-items:center;gap:9px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);text-decoration:none;transition:all .15s;}
-.course-link:hover{background:rgba(255,255,255,.1);}
-.cl-icon{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
-.cl-yt{background:linear-gradient(135deg,#FFE8E8,#FFCCD0);}
-.cl-nt{background:linear-gradient(135deg,#E8F0FF,#C8D8F8);}
-.cl-gd{background:linear-gradient(135deg,#E8FFEE,#C8F0D4);}
-.cl-body{flex:1;min-width:0;}
-.cl-title{font-size:11px;font-weight:700;color:#fff;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.cl-sub{font-size:9px;color:rgba(220,240,255,.9);}
-.cl-arr{font-size:11px;color:#A7D1F3;}
-.ach-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.ach-item{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px 12px;text-align:center;transition:all .2s;}
-.ach-item.unlocked{border-color:rgba(74,159,232,.5);background:rgba(74,159,232,.15);}
-.ach-item.locked{opacity:.35;}
-.ach-item.locked .ach-em{opacity:.4;}
-.ach-em{font-size:32px;margin-bottom:6px;}
-.ach-name{font-size:11px;font-weight:700;color:#fff;margin-bottom:3px;}
-.ach-desc{font-size:9px;color:rgba(180,215,255,.7);line-height:1.5;}
-.ach-badge{font-size:8px;padding:2px 8px;border-radius:999px;margin-top:5px;display:inline-block;}
-.ach-badge.unlocked{background:rgba(74,159,232,.3);color:#fff;}
-.ach-badge.locked{background:rgba(255,255,255,.1);color:rgba(220,240,255,.9);}
-.ms-display{background:rgba(255,255,255,.07);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px;margin-bottom:12px;}
-.ms-d-title{font-size:10px;font-weight:700;color:rgba(180,220,255,.9);letter-spacing:.1em;margin-bottom:12px;}
-.ms-d-row{display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08);}
-.ms-d-row:last-child{border-bottom:none;}
-.ms-d-icon{font-size:22px;width:36px;text-align:center;}
-.ms-d-body{flex:1;}
-.ms-d-name{font-size:11px;font-weight:700;color:#fff;}
-.ms-d-num{font-size:9px;color:rgba(220,240,255,.9);}
-.ms-d-check{font-size:14px;}
-.ovl{position:fixed;inset:0;background:rgba(10,30,60,.65);display:flex;align-items:center;justify-content:center;z-index:999;animation:fi .2s ease;padding:20px;}
-@keyframes fi{from{opacity:0}to{opacity:1}}
-@keyframes pi{from{opacity:0;transform:scale(.65)}to{opacity:1;transform:scale(1)}}
-@keyframes bo{from{transform:translateY(0)}to{transform:translateY(-7px)}}
-@keyframes sp{0%{transform:scale(0)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
-.pop-quest{background:linear-gradient(180deg,#1E4A8A 0%,#0D2A5A 100%);border:1px solid rgba(100,180,255,.25);border-radius:24px;padding:26px 22px;text-align:center;max-width:300px;width:100%;box-shadow:0 20px 60px rgba(20,60,180,.4);animation:pi .35s cubic-bezier(.34,1.56,.64,1);position:relative;}
-.pq-em{font-size:48px;display:block;margin-bottom:6px;animation:bo 1s ease infinite alternate;}
-.pq-stars{display:flex;justify-content:center;gap:5px;margin-bottom:11px;}
-.pqs{font-size:22px;filter:drop-shadow(0 0 6px rgba(255,220,80,.6));}
-.pqs.lit{animation:sp .4s ease;}
-.pq-title{font-size:16px;font-weight:900;color:#fff;margin-bottom:5px;text-shadow:0 2px 12px rgba(100,180,255,.4);}
-.pq-enc{font-size:11px;color:rgba(200,230,255,.85);line-height:1.75;margin-bottom:8px;}
-.pq-xp{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.12);border:1px solid rgba(100,180,255,.35);border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700;color:#fff;margin-bottom:14px;}
-.pq-btn{width:100%;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(55,165,230,.32);font-family:inherit;}
-.cert{background:linear-gradient(180deg,#0E2A5C 0%,#071528 100%);border:1px solid rgba(100,180,255,.2);border-radius:24px;max-width:340px;width:100%;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .4s cubic-bezier(.34,1.56,.64,1);overflow:hidden;}
-.cert-top{background:linear-gradient(180deg,#1A4A9A 0%,#0A2050 100%);padding:28px 24px 22px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(100,180,255,.2);}
-.cert-top::before{content:'✦';position:absolute;left:10px;top:8px;font-size:40px;color:rgba(180,220,255,.25);text-shadow:0 0 20px rgba(100,180,255,.5);}
-.cert-top::after{content:'✦';position:absolute;right:10px;bottom:8px;font-size:30px;color:rgba(180,220,255,.2);text-shadow:0 0 20px rgba(100,180,255,.4);}
-.cert-badge-icon{font-size:52px;display:block;margin-bottom:8px;animation:bo 1.2s ease infinite alternate;}
-.cert-stage-name{font-size:11px;letter-spacing:.2em;color:rgba(180,220,255,.75);margin-bottom:6px;}
-.cert-title{font-size:18px;font-weight:900;color:#fff;line-height:1.35;margin-bottom:4px;text-shadow:0 2px 16px rgba(80,150,255,.5);}
-.cert-subtitle{font-size:10px;color:rgba(180,220,255,.7);letter-spacing:.08em;}
-.cert-body{padding:20px 22px 22px;}
-.cert-seal{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px;}
-.cert-seal-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(100,180,255,.4));}
-.cert-seal-line.r{background:linear-gradient(90deg,rgba(100,180,255,.4),transparent);}
-.cert-seal-txt{font-size:9px;color:rgba(180,220,255,.7);letter-spacing:.12em;font-weight:700;}
-.cert-msg{font-size:12px;color:rgba(200,230,255,.88);line-height:1.85;text-align:center;margin-bottom:16px;}
-.cert-quote{font-size:11px;color:rgba(180,220,255,.9);font-style:italic;line-height:1.75;text-align:center;padding:10px 14px;background:rgba(100,180,255,.1);border-radius:10px;margin-bottom:16px;border-left:3px solid rgba(100,180,255,.5);}
-.cert-meta{display:flex;justify-content:space-between;font-size:9px;color:rgba(180,215,255,.6);margin-bottom:16px;}
-.cert-btns{display:flex;gap:8px;}
-.cert-btn-save{flex:1;padding:11px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;}
-.cert-btn-next{flex:1;padding:11px;border-radius:999px;background:rgba(255,255,255,.1);border:1.5px solid rgba(100,180,255,.4);color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
-.ms-card{background:linear-gradient(180deg,#0E2A5C 0%,#071528 100%);border:1px solid rgba(100,180,255,.2);border-radius:28px;max-width:320px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(55,165,230,.3);animation:pi .4s cubic-bezier(.34,1.56,.64,1);}
-.ms-card-top{padding:28px 20px 20px;text-align:center;position:relative;overflow:hidden;}
-.ms-card-top::before{content:'✦';position:absolute;left:12px;top:10px;font-size:40px;color:rgba(200,230,255,.3);text-shadow:0 0 20px rgba(100,180,255,.6);}
-.ms-card-top::after{content:'✦';position:absolute;right:12px;bottom:10px;font-size:28px;color:rgba(200,230,255,.25);text-shadow:0 0 16px rgba(100,180,255,.5);}
-.ms-icon-wrap{width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:36px;animation:bo 1.2s ease infinite alternate;border:2px solid rgba(255,255,255,.3);}
-.ms-badge-label{font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,.7);margin-bottom:4px;}
-.ms-card-title{font-size:19px;font-weight:900;color:#fff;margin-bottom:4px;line-height:1.3;text-shadow:0 2px 16px rgba(80,160,255,.5);}
-.ms-card-sub{font-size:10px;color:rgba(255,255,255,.75);}
-.ms-card-body{padding:18px 20px 20px;}
-.ms-stars-row{display:flex;justify-content:center;align-items:center;gap:6px;margin-bottom:14px;}
-.ms-star-big{font-size:28px;}
-.ms-star-count{background:rgba(100,180,255,.15);border:1.5px solid rgba(100,180,255,.4);border-radius:999px;padding:5px 16px;font-size:14px;font-weight:900;color:#fff;}
-.ms-msg{font-size:12px;color:rgba(200,230,255,.88);line-height:1.85;text-align:center;margin-bottom:12px;}
-.ms-quote-box{background:rgba(100,180,255,.1);border-radius:12px;padding:11px 14px;margin-bottom:12px;border-left:3px solid rgba(100,180,255,.5);}
-.ms-quote-txt{font-size:11px;color:rgba(180,220,255,.9);font-style:italic;line-height:1.75;text-align:center;}
-.ms-tag{font-size:9px;color:rgba(180,215,255,.6);text-align:center;margin-bottom:14px;}
-.ms-btns{display:flex;gap:8px;}
-.ms-btn-save{flex:1;padding:12px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;}
-.ms-btn-close{flex:1;padding:12px;border-radius:999px;background:rgba(255,255,255,.1);border:1.5px solid rgba(100,180,255,.35);color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
-.welcome{position:fixed;inset:0;background:linear-gradient(180deg,#1a3a6a 0%,#0d2245 55%,#081530 100%);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
-.welcome-box{background:#fff;border-radius:28px;padding:20px 18px;text-align:center;max-width:320px;width:100%;box-shadow:0 12px 40px rgba(55,165,230,.15);}
-.wc-title{font-size:22px;font-weight:900;color:#1A5A80;margin-bottom:4px;}
-.wc-icon{font-size:36px;margin-bottom:6px;display:block;animation:bo 1.5s ease infinite alternate;}
-.wc-label{font-size:11px;font-weight:700;color:#37A5E6;letter-spacing:.08em;margin-bottom:8px;text-align:left;}
-.wc-input{width:100%;padding:13px 16px;border-radius:999px;border:2px solid #A7D1F3;font-size:15px;font-family:inherit;color:#0A1E3A;background:#EEF8FE;outline:none;transition:border-color .2s;margin-bottom:14px;}
-.wc-input:focus{border-color:#37A5E6;background:#fff;}
-.wc-input::placeholder{color:#A7C8E0;}
-.wc-btn{width:100%;padding:14px;border-radius:999px;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;font-size:14px;font-weight:900;border:none;cursor:pointer;font-family:inherit;box-shadow:0 6px 18px rgba(55,165,230,.35);transition:all .2s;}
-.wc-btn:hover{transform:translateY(-2px);}
-.wc-note{font-size:10px;color:#90C0E0;margin-top:10px;line-height:1.6;}
-.cf{position:fixed;pointer-events:none;z-index:1000;border-radius:2px;animation:cff linear forwards;}
-@keyframes cff{0%{transform:translateY(-10px) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
-@keyframes fadeOut{from{opacity:1}to{opacity:0}}
-.xp-float{position:fixed;font-size:20px;font-weight:900;color:#FFD700;pointer-events:none;z-index:9999;text-shadow:0 0 12px rgba(255,200,0,.6);animation:xpfloat 1.3s cubic-bezier(.2,.8,.4,1) forwards;}
-@keyframes xpfloat{0%{opacity:0;transform:translateY(0) scale(.5);}15%{opacity:1;transform:translateY(-15px) scale(1.4);}80%{opacity:1;transform:translateY(-70px) scale(1);}100%{opacity:0;transform:translateY(-95px) scale(.8);}}
-.mini-toast{position:fixed;left:50%;transform:translateX(-50%);bottom:90px;z-index:9998;background:linear-gradient(135deg,#37A5E6,#2290D4);color:#fff;border-radius:999px;padding:10px 22px;font-size:13px;font-weight:700;box-shadow:0 6px 20px rgba(55,165,230,.4);animation:toastpop .4s cubic-bezier(.34,1.56,.64,1) forwards;}
-.mini-toast.hide{animation:toasthide .35s ease forwards;}
-@keyframes toastpop{from{opacity:0;transform:translateX(-50%) translateY(20px) scale(.8);}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}}
-@keyframes toasthide{from{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}to{opacity:0;transform:translateX(-50%) translateY(10px) scale(.9);}}
-/* ── SPLASH SCREEN ── */
-@keyframes sp-flutter{0%{transform:scaleX(1) rotate(-2deg);}50%{transform:scaleX(.88) rotate(1deg);}100%{transform:scaleX(1) rotate(-1deg);}}
-@keyframes splash-fade{from{opacity:1;}to{opacity:0;pointer-events:none;}}
-@keyframes bfL{0%{transform:translate(0,0) rotate(-8deg);}100%{transform:translate(-10px,-22px) rotate(8deg);}}
-@keyframes bfR{0%{transform:translate(0,0) rotate(8deg);}100%{transform:translate(10px,-18px) rotate(-8deg);}}
-</style>
-<body>
-
-<!-- App 全域星空背景 -->
-<div style="position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden;">
-  <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      <filter id="glow2"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    </defs>
-    <path d="M-20,180 Q120,80 260,120 Q380,155 440,100" stroke="rgba(100,200,255,0.45)" stroke-width="1" fill="none" filter="url(#glow)"/>
-    <path d="M-20,185 Q120,85 260,125 Q380,160 440,105" stroke="rgba(140,220,255,0.22)" stroke-width="3" fill="none" filter="url(#glow2)"/>
-    <path d="M0,380 Q180,320 360,400 Q420,420 460,380" stroke="rgba(100,200,255,0.38)" stroke-width="1" fill="none" filter="url(#glow)"/>
-    <path d="M-10,620 Q100,570 220,600 Q340,630 460,580" stroke="rgba(100,200,255,0.32)" stroke-width="1" fill="none" filter="url(#glow)"/>
-    <line x1="18" y1="100" x2="18" y2="520" stroke="rgba(120,200,255,0.35)" stroke-width="1" filter="url(#glow)"/>
-    <line x1="18" y1="100" x2="18" y2="520" stroke="rgba(120,200,255,0.15)" stroke-width="4" filter="url(#glow2)"/>
-    <line x1="442" y1="150" x2="442" y2="600" stroke="rgba(120,200,255,0.35)" stroke-width="1" filter="url(#glow)"/>
-    <line x1="442" y1="150" x2="442" y2="600" stroke="rgba(120,200,255,0.15)" stroke-width="4" filter="url(#glow2)"/>
-    <circle cx="18" cy="100" r="3" fill="rgba(150,220,255,0.85)" filter="url(#glow2)"/>
-    <circle cx="442" cy="150" r="3" fill="rgba(150,220,255,0.85)" filter="url(#glow2)"/>
-    <circle cx="18" cy="520" r="3" fill="rgba(150,220,255,0.75)" filter="url(#glow2)"/>
-    <circle cx="442" cy="600" r="3" fill="rgba(150,220,255,0.75)" filter="url(#glow2)"/>
-    <circle cx="42" cy="88" r="1.5" fill="white" opacity="0.55" filter="url(#glow)"/>
-    <circle cx="318" cy="52" r="1.8" fill="white" opacity="0.6" filter="url(#glow)"/>
-    <circle cx="168" cy="130" r="1.2" fill="white" opacity="0.45"/>
-    <circle cx="355" cy="175" r="1.6" fill="white" opacity="0.5" filter="url(#glow)"/>
-    <circle cx="78" cy="220" r="1.4" fill="white" opacity="0.52"/>
-    <circle cx="290" cy="265" r="1.9" fill="white" opacity="0.58" filter="url(#glow)"/>
-    <circle cx="135" cy="310" r="1.3" fill="white" opacity="0.48"/>
-    <circle cx="390" cy="340" r="1.5" fill="white" opacity="0.5" filter="url(#glow)"/>
-    <circle cx="55" cy="390" r="1.7" fill="white" opacity="0.55" filter="url(#glow)"/>
-    <circle cx="245" cy="420" r="1.4" fill="white" opacity="0.45"/>
-    <circle cx="340" cy="470" r="1.6" fill="white" opacity="0.52" filter="url(#glow)"/>
-    <circle cx="100" cy="510" r="1.8" fill="white" opacity="0.6" filter="url(#glow)"/>
-    <circle cx="95" cy="65" r="0.8" fill="white" opacity="0.4"/>
-    <circle cx="200" cy="45" r="0.7" fill="white" opacity="0.35"/>
-    <circle cx="270" cy="110" r="0.9" fill="white" opacity="0.38"/>
-    <circle cx="370" cy="95" r="0.7" fill="white" opacity="0.32"/>
-    <circle cx="25" cy="155" r="0.8" fill="white" opacity="0.4"/>
-    <circle cx="310" cy="200" r="0.9" fill="white" opacity="0.35"/>
-    <circle cx="178" cy="245" r="0.7" fill="white" opacity="0.38"/>
-    <circle cx="420" cy="280" r="0.8" fill="white" opacity="0.32"/>
-    <circle cx="128" cy="360" r="0.9" fill="white" opacity="0.4"/>
-    <circle cx="338" cy="395" r="0.7" fill="white" opacity="0.35"/>
-    <g filter="url(#glow2)" opacity="0.7"><line x1="185" y1="68" x2="185" y2="88" stroke="white" stroke-width="0.8"/><line x1="175" y1="78" x2="195" y2="78" stroke="white" stroke-width="0.8"/><circle cx="185" cy="78" r="1.8" fill="white"/></g>
-    <g filter="url(#glow2)" opacity="0.6"><line x1="358" y1="443" x2="358" y2="463" stroke="white" stroke-width="0.8"/><line x1="348" y1="453" x2="368" y2="453" stroke="white" stroke-width="0.8"/><circle cx="358" cy="453" r="1.8" fill="white"/></g>
-    <g filter="url(#glow2)" opacity="0.55"><line x1="72" y1="290" x2="72" y2="310" stroke="white" stroke-width="0.8"/><line x1="62" y1="300" x2="82" y2="300" stroke="white" stroke-width="0.8"/><circle cx="72" cy="300" r="1.5" fill="white"/></g>
-  </svg>
-</div>
-
-<!-- SPLASH SCREEN -->
-<div id="splash-screen" style="position:fixed;inset:0;background:linear-gradient(180deg,#1a3a6a 0%,#0d2245 50%,#081530 100%);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;">
-  <div style="position:absolute;top:10%;left:12%;opacity:.25;animation:bfL 5s ease-in-out infinite alternate;">🦋</div>
-  <div style="position:absolute;top:15%;right:10%;opacity:.2;animation:bfR 6s ease-in-out infinite alternate;">🦋</div>
-  <div style="position:absolute;bottom:20%;left:8%;opacity:.18;animation:bfL 7s ease-in-out infinite alternate-reverse;">🦋</div>
-  <div style="position:absolute;bottom:18%;right:9%;opacity:.2;animation:bfR 8s ease-in-out infinite alternate;">🦋</div>
-  <div style="text-align:center;padding:0 40px;">
-    <div style="font-size:11px;color:rgba(170,215,255,.6);letter-spacing:.35em;margin-bottom:20px;">W E L C O M E</div>
-    <div style="position:relative;width:110px;height:110px;margin:0 auto 28px;">
-      <div style="position:absolute;inset:-22px;border-radius:50%;border:1px solid rgba(100,180,255,.15);"></div>
-      <div style="position:absolute;inset:-11px;border-radius:50%;border:1px solid rgba(100,180,255,.25);"></div>
-      <div style="width:110px;height:110px;border-radius:50%;background:linear-gradient(180deg,rgba(80,150,255,.45) 0%,rgba(10,40,140,.65) 100%);border:1.5px solid rgba(100,180,255,.45);box-shadow:0 0 40px rgba(60,140,255,.35);display:flex;align-items:center;justify-content:center;">
-        <span style="font-size:46px;animation:sp-flutter 3s ease-in-out infinite alternate;display:inline-block;">🦋</span>
-      </div>
-      <span style="position:absolute;top:-40px;left:-44px;font-size:22px;opacity:.8;animation:sp-flutter 4s ease-in-out infinite alternate-reverse;">🦋</span>
-      <span style="position:absolute;bottom:-36px;right:-40px;font-size:18px;opacity:.7;animation:sp-flutter 5s ease-in-out infinite alternate;">🦋</span>
-    </div>
-    <div style="font-size:34px;font-weight:900;color:#fff;letter-spacing:.04em;margin-bottom:6px;text-shadow:0 2px 28px rgba(60,140,255,.5);">DCT 晉升地圖</div>
-    <div style="width:40px;height:2px;background:linear-gradient(90deg,transparent,rgba(100,180,255,.6),transparent);margin:10px auto 16px;"></div>
-    <div style="font-size:16px;letter-spacing:8px;margin-bottom:16px;opacity:.9;">🦋 ✦ 🌟 ✦ 🦋</div>
-    <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px;">晉升路上，每一步都算數</div>
-    <div style="font-size:12px;color:rgba(180,220,255,.8);line-height:1.8;margin-bottom:36px;">從愛用客到皇家，你的旅程從這裡開始</div>
-    <div style="width:220px;margin:0 auto;">
-      <div style="height:3px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;margin-bottom:10px;">
-        <div id="splash-bar" style="height:100%;width:0%;background:linear-gradient(90deg,rgba(80,160,255,.6),rgba(200,235,255,.95));border-radius:999px;transition:width .06s linear;"></div>
-      </div>
-      <div id="splash-txt" style="font-size:10px;color:rgba(170,215,255,.6);letter-spacing:.12em;">載入中…</div>
-    </div>
-  </div>
-</div>
-
-<!-- WELCOME SCREEN -->
-<div class="welcome" id="welcome">
-  <!-- 蝴蝶背景已移除 -->
-  <div style="display:none;">
-    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-      <defs><g id="bfly">
-        <path d="M0,-2 C-5,-15 -25,-38 -52,-32 C-68,-28 -66,-10 -50,-3 C-36,3 -16,0 0,-2Z" fill="white"/>
-        <path d="M0,-2 C5,-15 25,-38 52,-32 C68,-28 66,-10 50,-3 C36,3 16,0 0,-2Z" fill="white"/>
-        <path d="M0,2 C-6,10 -22,24 -30,38 C-36,50 -24,56 -14,46 C-6,38 -2,20 0,2Z" fill="white"/>
-        <path d="M0,2 C6,10 22,24 30,38 C36,50 24,56 14,46 C6,38 2,20 0,2Z" fill="white"/>
-        <ellipse cx="0" cy="14" rx="2" ry="14" fill="white"/>
-        <circle cx="0" cy="-1" r="3" fill="white"/>
-        <path d="M-1,-3 C-5,-12 -12,-20 -18,-26" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><circle cx="-18" cy="-26" r="2.2" fill="white"/>
-        <path d="M1,-3 C5,-12 12,-20 18,-26" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"/><circle cx="18" cy="-26" r="2.2" fill="white"/>
-      </g></defs>
-      <use href="#bfly" transform="translate(70,100) scale(1.6)" opacity="0.18"/>
-      <use href="#bfly" transform="translate(310,60) scale(1.2)" opacity="0.13"/>
-      <use href="#bfly" transform="translate(40,280) scale(1.9)" opacity="0.12"/>
-      <use href="#bfly" transform="translate(340,230) scale(1.4)" opacity="0.15"/>
-      <use href="#bfly" transform="translate(90,460) scale(1.3)" opacity="0.14"/>
-      <use href="#bfly" transform="translate(310,410) scale(1.1)" opacity="0.13"/>
-    </svg>
-  </div>
-  <div class="welcome-box" style="position:relative;z-index:1;">
-    <span class="wc-icon">🦋</span>
-    <div style="font-size:22px;font-weight:900;color:#1A5A80;margin-bottom:4px;">歡迎加入 DCT 🎉</div>
-    <div style="font-size:11px;color:#37A5E6;font-weight:700;letter-spacing:.1em;margin-bottom:14px;">✦ 星空輔導地圖 · 晉升加速系統 ✦</div>
-    <div style="margin-bottom:14px;padding:16px 18px;background:linear-gradient(180deg,#1A4A8A 0%,#0A1E40 100%);border:1px solid rgba(100,180,255,.25);border-radius:18px;text-align:center;">
-      <div style="font-size:15px;font-weight:900;color:#fff;margin-bottom:6px;">每一隻蝴蝶，都曾是毛毛蟲 🦋</div>
-      <div style="font-size:11px;color:rgba(180,220,255,.9);line-height:1.8;">你選擇踏上這條路的這一刻<br>就已經開始蛻變了</div>
-    </div>
-    <div style="background:linear-gradient(135deg,#EEF8FE,#DBF6FF);border-radius:16px;padding:12px 14px;margin-bottom:10px;text-align:left;">
-      <div style="font-size:11px;font-weight:900;color:#1A5A80;margin-bottom:6px;">🦋 什麼是 DCT 晉升地圖？</div>
-      <div style="font-size:11px;color:#3A6A8A;line-height:1.8;">專為 DCT 夥伴設計的經營加速系統，從愛用客到皇家每個階段都有清楚的課程、檢核表和行動指引。</div>
-      <div style="margin-top:8px;font-size:10px;color:#2290D4;line-height:1.85;">✦ 每個階段要做什麼、怎麼做<br>✦ 每日打卡，累積執行天數<br>✦ 累積星星，解鎖專屬認證</div>
-    </div>
-    <div class="wc-label">✦ 你的名字</div>
-    <input class="wc-input" id="wc-name" type="text" placeholder="例如：小安、Annie…" maxlength="10" oninput="onNameInput()" onkeydown="onNameKey(event)">
-    <div class="wc-label" style="margin-top:4px;">🎯 今年目標級別</div>
-    <select class="wc-input" id="wc-goal" style="margin-bottom:14px;cursor:pointer;">
-      <option value="">選擇目標級別</option>
-      <option value="實習加盟">🌿 實習加盟</option>
-      <option value="三級零售">⭐ 三級零售</option>
-      <option value="三級輔導">💫 三級輔導</option>
-      <option value="二級輔導">🌙 二級輔導</option>
-      <option value="一級輔導">🌟 一級輔導</option>
-      <option value="皇家">👑 皇家</option>
-    </select>
-    <div class="wc-label" style="margin-top:4px;">💰 月淨利目標（元）</div>
-    <input class="wc-input" id="wc-income" type="number" placeholder="例如：30000" style="margin-bottom:14px;">
-    <button class="wc-btn" id="wc-btn" onclick="startWithName()">🦋 開始我的晉升旅程！</button>
-    <button onclick="skipWelcome()" style="width:100%;padding:10px;border-radius:999px;background:transparent;border:none;color:#90C0E0;font-size:12px;cursor:pointer;font-family:inherit;margin-top:4px;">稍後再設定，先看看 →</button>
-    <div class="wc-note">以上設定儲存在你的裝置上，之後可以修改</div>
-  </div>
-</div>
-
-<div class="topbar">
-  <div class="tb-l">
-    <div class="tb-av">🌟</div>
-    <div>
-      <div class="tb-name" id="tb-name">我的晉升地圖</div>
-      <div style="display:flex;align-items:center;gap:5px;">
-        <div class="tb-sub" id="lv-tag">愛用客 · 階段 1</div>
-        <span onclick="editName()" style="font-size:10px;cursor:pointer;background:rgba(255,255,255,.15);border-radius:999px;padding:3px 8px;color:rgba(200,230,255,.9);font-weight:700;border:1px solid rgba(255,255,255,.2);">⚙️ 設定</span>
-      </div>
-    </div>
-  </div>
-  <div class="tb-r">
-    <div class="xp-pill">⭐ <span id="tot-xp">0</span> 星</div>
-  </div>
-</div>
-
-<div class="wrap" style="display:none;">
-  <div class="hero">
-    <div class="hero-badge">🍄 DCT 晉升闖關系統</div>
-    <div class="hero-title" id="hero-title">每一關都算數 ⭐<br>你比昨天更強了 🏰</div>
-    <div class="hero-desc">完成每個關卡，解鎖下一個階段<br>從愛用客到皇家，一步一步闖關！</div>
-    <div class="hero-stats">
-      <div class="hs"><div class="hs-n" id="s-done" style="font-size:13px;font-weight:900;">🌱</div><div class="hs-l">🎮 目前級別</div></div>
-      <div class="hs"><div class="hs-n" id="s-tot" style="font-size:13px;">--</div><div class="hs-l">💰 月目標</div></div>
-      <div class="hs"><div class="hs-n" id="s-pct" style="font-size:11px;">設定中</div><div class="hs-l">🎯 年度目標</div></div>
-    </div>
-  </div>
-  <div class="stage-box">
-    <div class="sb-title"><span>⭐ 闖關進度</span><span class="sb-sub" id="stage-sub">愛用客 → 皇家</span></div>
-    <div id="stage-prog-row" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;gap:4px;"></div>
-    <div class="xp-row">
-      <div class="xp-lbl">🍄 本關卡進度・<span id="cur-stage-name">愛用客</span></div>
-      <div class="xp-num"><span id="cx">0</span> / <span id="mx">0</span> 項</div>
-    </div>
-    <div class="xp-bar"><div class="xp-fill" id="xf" style="width:0%"></div></div>
-  </div>
-  <div class="sec-lbl"><div class="sl-line"></div><div class="sl-txt">🗺️ 選擇關卡</div><div class="sl-line r"></div></div>
-  <div id="daily-checkin"></div>
-  <div id="weekly-rate"></div>
-  <div class="lv-scroll" id="lv-scroll"></div>
-  <div id="stage-info-wrap"></div>
-</div>
-
-<div class="page-section active" id="page-inspire"><div class="page-top"><div class="page-top-title">💡 每日靈感</div><div class="page-top-sub">每日自動生成，一鍵複製或換一則</div>
-  <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
-    <button onclick="requestNotifyPermission()" id="notify-btn" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:20px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">🔔 開啟每日提醒</button>
-    <button onclick="showNotifySettings()" id="notify-settings-btn" style="display:none;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:20px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;">⚙️ 提醒設定</button>
-  </div>
-</div><div style="margin:0 14px 14px;padding:14px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:16px;">
-  <div style="font-size:11px;font-weight:700;color:rgba(200,230,255,.9);margin-bottom:8px;letter-spacing:.05em;">📋 每日發文建議</div>
-  <div style="font-size:11px;color:rgba(180,215,255,.85);line-height:2.1;">
-    ✦ 價值觀內容 &times; 1<br>
-    ✦ 產品動態 &times; 5<br>
-    ✦ 觀念動態 &times; 1<br>
-    ✦ 招商動態 &times; 2
-  </div>
-  <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);font-size:10px;color:rgba(160,200,255,.75);">
-    💬 發完後記得每天截圖傳給上家看 🦋
-  </div>
-</div>
-<div id="inspire-list" style="padding:0 14px;"></div></div>
-<div class="page-section" id="page-achievement">
-  <div class="page-top"><div class="page-top-title">🏆 我的成就</div><div class="page-top-sub">完成階段解鎖專屬徽章</div></div>
-  <div class="ms-display"><div class="ms-d-title">✦ 星星里程碑</div><div id="ms-display-list"></div></div>
-  <div class="ach-grid" id="ach-grid"></div>
-</div>
-<div class="page-section" id="page-course">
-  <div class="page-top"><div class="page-top-title">📖 新人必上課程</div><div class="page-top-sub">每一堂上完都要交作業給上家</div></div>
-  <div id="course-list"></div>
-</div>
-<div class="page-section" id="page-system">
-  <div class="page-top"><div class="page-top-title">🛠️ DCT 系統工具</div><div class="page-top-sub">專屬 DCT 夥伴的經營工具</div></div>
-  <div id="system-list"></div>
-</div>
-
-<div class="ovl" id="ovl" style="display:none"><div id="ovl-content"></div></div>
-
-<div class="bnt">
-  <div class="bni on" id="nav-inspire" onclick="switchPage('inspire')" on"><div class="bni-ic">💡</div><div class="bni-lb">靈感</div></div>
-  <div class="bni" id="nav-map" onclick="switchPage('map')"><div class="bni-ic">🎮</div><div class="bni-lb">闖關</div></div>
-  <div class="bni" id="nav-achievement" onclick="switchPage('achievement')"><div class="bni-ic">👑</div><div class="bni-lb">成就</div></div>
-  <div class="bni" id="nav-system" onclick="switchPage('system')"><div class="bni-ic">⚡</div><div class="bni-lb">系統</div></div>
-  <div class="bni" id="nav-course" onclick="switchPage('course')"><div class="bni-ic">🦋</div><div class="bni-lb">課程</div></div>
-</div>
-
+</script>
 
 <!-- 通知設定 Modal -->
 <div id="notify-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;">
