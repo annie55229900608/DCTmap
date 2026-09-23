@@ -1958,35 +1958,24 @@ function requestNotifyPermission() {
   });
 }
 
-function showNotifySettings() {
-  // 載入已儲存的設定
-  try {
-    var postTime = localStorage.getItem('notify_post_time') || '08:30';
-    var courseTime = localStorage.getItem('notify_course_time') || '20:00';
-    var courseEnable = localStorage.getItem('notify_course_enable') !== 'false';
-    var postDays = localStorage.getItem('notify_post_days') || 'daily';
-    document.getElementById('post-time').value = postTime;
-    document.getElementById('course-time').value = courseTime;
-    document.getElementById('course-enable').checked = courseEnable;
-    document.getElementById('post-days').value = postDays;
-  } catch(e) {}
-  document.getElementById('notify-modal').style.display = 'flex';
+function showNotifySettings(){
+  try{
+    document.getElementById('notify-time1').value=localStorage.getItem('notify_time1')||'08:30';
+    document.getElementById('notify-time2').value=localStorage.getItem('notify_time2')||'19:00';
+    document.getElementById('notify-enable2').checked=localStorage.getItem('notify_enable2')!=='false';
+  }catch(e){}
+  document.getElementById('notify-modal').style.display='flex';
 }
 
-function saveNotifySettings() {
-  try {
-    var postTime = document.getElementById('post-time').value;
-    var courseTime = document.getElementById('course-time').value;
-    var courseEnable = document.getElementById('course-enable').checked;
-    var postDays = document.getElementById('post-days').value;
-    localStorage.setItem('notify_post_time', postTime);
-    localStorage.setItem('notify_course_time', courseTime);
-    localStorage.setItem('notify_course_enable', courseEnable);
-    localStorage.setItem('notify_post_days', postDays);
-  } catch(e) {}
-  document.getElementById('notify-modal').style.display = 'none';
-  scheduleNotifications();
-  showMiniToast('✅ 提醒設定已儲存！');
+function saveNotifySettings(){
+  try{
+    localStorage.setItem('notify_time1',document.getElementById('notify-time1').value);
+    localStorage.setItem('notify_time2',document.getElementById('notify-time2').value);
+    localStorage.setItem('notify_enable2',document.getElementById('notify-enable2').checked);
+  }catch(e){}
+  document.getElementById('notify-modal').style.display='none';
+  scheduleTodayNotifications();
+  showMiniToast('✅ 提醒時間已設定！');
 }
 
 function scheduleNotifications() {
@@ -1999,96 +1988,94 @@ function scheduleNotifications() {
   scheduleTodayNotifications();
 }
 
-function scheduleTodayNotifications() {
-  try {
-    var postTime = localStorage.getItem('notify_post_time') || '08:30';
-    var courseTime = localStorage.getItem('notify_course_time') || '20:00';
-    var courseEnable = localStorage.getItem('notify_course_enable') !== 'false';
-
-    var now = new Date();
-
-    // 發文提醒
-    var postParts = postTime.split(':');
-    var postTrigger = new Date(now.getFullYear(), now.getMonth(), now.getDate(),
-      parseInt(postParts[0]), parseInt(postParts[1]), 0);
-    if (postTrigger > now) {
-      var postDelay = postTrigger - now;
-      setTimeout(function() {
-        if (Notification.permission === 'granted' && swReg) {
-          swReg.showNotification('☀️ 今日發文提醒', {
-            body: '今天記得發：價值觀×1、產品動態×5、觀念動態×1、招商動態×2\n點擊進入靈感頁面取得今日文案 💡',
-            icon: '/DCTmap/icon-192.png',
-            badge: '/DCTmap/icon-192.png',
-            vibrate: [200, 100, 200],
-            tag: 'daily-post',
-            data: { url: '/DCTmap/dct-quest.html' }
-          });
-        }
-      }, postDelay);
+var CHEERS=['你今天的每一篇分享，都在種下一顆改變的種子 🌱','堅持發文的人，終究會被對的人看見 👀','不完美的開始，也比完美的等待更有力量 💪','你分享的每一句話，都可能是某個人今天需要的 🤍','持續出現，就是你最強大的個人品牌 ✨','今天發的文，是三個月後收入的種子 🌿','你不是在賣東西，你是在幫助需要的人找到答案 💡','每一個按讚都是宇宙在說繼續走走對了 🌟','你今天的勇敢出現，讓明天的自己更有底氣 🔥','不要小看每天的小小積累，那是複利的力量 📈','你的真實故事，就是最有力量的文案 📝','發文這件事沒有完美的時機，只有現在 ⏰','每次按下發布你就比昨天的自己更勇敢一點 🦋','你願意每天出現，就已經贏過大多數人了 🏆','今天的你比昨天更靠近夢想的自己 🎯','你的堅持會讓觀望的人因為你而做出改變 💫','貼文不需要完美，真誠才是最打動人心的力量 ❤️','你選擇做自己事業的主人，這本身就很了不起 👑','每一天的努力都是給未來的自己最好的禮物 🎁','有人因為你今天的分享而改變，你不知道是誰 🌈','別怕發文，閉眼按發布，發完就好了 😄','你正在走一條很多人不敢走的路，繼續走 🛤️','發文就像澆水你不知道哪天花會開但要每天澆 🌸','你的影響力比你想像的還要大 🌊','今天多發一篇就多一個機會讓對的人找到你 🔍','不是每篇都爆紅但每篇都在累積信任資產 💎','你有故事你有產品你有心這三樣加起來就夠了 🙌','加油！今天的你很棒，明天的你會更棒 🌻','你的分享是光照亮了正在猶豫中的那個人 ☀️','每一步都算數即使今天只發了一篇 ✅'];
+function getCheer(){
+  var d=new Date();
+  var s=d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
+  var x=Math.sin(s*9301+77*49297+233)*233280;
+  return CHEERS[Math.floor((x-Math.floor(x))*CHEERS.length)];
+}
+function getTodayFocus(){
+  var t=[
+    {icon:'🌟',name:'價值觀',hint:'分享你的成長故事或人生觀'},
+    {icon:'📦',name:'產品動態',hint:'分享產品心得或客戶見證'},
+    {icon:'💡',name:'觀念動態',hint:'分享瘦身/保養/保健知識'},
+    {icon:'🤝',name:'招商動態',hint:'解答加入團隊的疑問'}
+  ];
+  var d=new Date();
+  var s=d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
+  var x=Math.sin(s*9301+55*49297+233)*233280;
+  return t[Math.floor((x-Math.floor(x))*t.length)];
+}
+function scheduleTodayNotifications(){
+  try{
+    var t1=localStorage.getItem('notify_time1')||'08:30';
+    var t2=localStorage.getItem('notify_time2')||'19:00';
+    var en2=localStorage.getItem('notify_enable2')!=='false';
+    var now=new Date();
+    function doNotify(ts,lbl){
+      var p=ts.split(':');
+      var tr=new Date(now.getFullYear(),now.getMonth(),now.getDate(),parseInt(p[0]),parseInt(p[1]),0);
+      tr=new Date(tr.getTime()-4*60*1000);
+      if(tr<=now)return;
+      setTimeout(function(){
+        if(Notification.permission!=='granted'||!swReg)return;
+        var cheer=getCheer();
+        var focus=getTodayFocus();
+        var isEve=parseInt(p[0])>=17;
+        var title=isEve?'🌙 晚上好！記得今天要發文喔':'☀️ 早安！今天的發文任務來了';
+        var body=cheer+'\n\n📋 今日重點：'+focus.icon+' '+focus.name+'\n'+focus.hint+'\n\n點我開啟，一鍵複製今日文案！';
+        swReg.showNotification(title,{
+          body:body,
+          icon:'/DCTmap/icon-192.png',
+          badge:'/DCTmap/icon-192.png',
+          vibrate:[200,100,200],
+          tag:'dct-'+lbl,
+          data:{url:'/DCTmap/dct-quest.html'},
+          actions:[{action:'open',title:'📋 開啟文案'}]
+        });
+      },tr-now);
     }
-
-    // 課程提醒
-    if (courseEnable) {
-      var courseParts = courseTime.split(':');
-      var courseTrigger = new Date(now.getFullYear(), now.getMonth(), now.getDate(),
-        parseInt(courseParts[0]), parseInt(courseParts[1]), 0);
-      if (courseTrigger > now) {
-        var courseDelay = courseTrigger - now;
-        setTimeout(function() {
-          if (Notification.permission === 'granted' && swReg) {
-            swReg.showNotification('📚 課程進度提醒', {
-              body: '今天的課程完成了嗎？記得進入系統確認今日學習進度 ✅',
-              icon: '/DCTmap/icon-192.png',
-              badge: '/DCTmap/icon-192.png',
-              vibrate: [200, 100, 200],
-              tag: 'daily-course',
-              data: { url: '/DCTmap/dct-quest.html' }
-            });
-          }
-        }, courseDelay);
-      }
-    }
-  } catch(e) {}
+    doNotify(t1,'morning');
+    if(en2)doNotify(t2,'evening');
+  }catch(e){}
 }
 
 </script>
 
 <!-- 通知設定 Modal -->
-<div id="notify-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;">
+<divid="notify-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;">
   <div style="background:#fff;border-radius:20px;padding:24px;margin:20px;max-width:360px;width:100%;">
     <div style="font-size:16px;font-weight:900;color:#1A3A8A;margin-bottom:4px;">🔔 每日提醒設定</div>
-    <div style="font-size:11px;color:#666;margin-bottom:20px;">設定後每天自動提醒你發文與上課</div>
-    
+    <div style="font-size:11px;color:#888;margin-bottom:20px;">設定後每天自動提醒，附上鼓勵語與今日發文建議 💌</div>
+
     <div style="margin-bottom:16px;">
-      <div style="font-size:12px;font-weight:700;color:#1A3A8A;margin-bottom:8px;">📋 發文提醒時間</div>
-      <div style="display:flex;gap:8px;align-items:center;">
-        <input type="time" id="post-time" value="08:30" style="flex:1;padding:8px 12px;border:1.5px solid #EEF3FF;border-radius:10px;font-size:14px;color:#1A3A8A;background:#F8FAFF;">
-        <select id="post-days" style="flex:1;padding:8px 12px;border:1.5px solid #EEF3FF;border-radius:10px;font-size:12px;color:#1A3A8A;background:#F8FAFF;">
-          <option value="daily">每天</option>
-          <option value="weekday">週一至五</option>
-          <option value="all">每天含週末</option>
-        </select>
-      </div>
-    </div>
-    
-    <div style="margin-bottom:16px;">
-      <div style="font-size:12px;font-weight:700;color:#1A3A8A;margin-bottom:8px;">📚 課程提醒時間</div>
-      <div style="display:flex;gap:8px;align-items:center;">
-        <input type="time" id="course-time" value="20:00" style="flex:1;padding:8px 12px;border:1.5px solid #EEF3FF;border-radius:10px;font-size:14px;color:#1A3A8A;background:#F8FAFF;">
-        <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:#1A3A8A;">
-          <input type="checkbox" id="course-enable" checked style="width:16px;height:16px;"> 啟用
-        </label>
-      </div>
+      <div style="font-size:12px;font-weight:700;color:#1A3A8A;margin-bottom:8px;">⏰ 第一輪提醒時間（早上）</div>
+      <input type="time" id="notify-time1" value="08:30" style="width:100%;padding:10px 12px;border:1.5px solid #EEF3FF;border-radius:10px;font-size:15px;color:#1A3A8A;background:#F8FAFF;box-sizing:border-box;">
     </div>
 
-    <div style="margin-bottom:20px;padding:12px;background:#EEF3FF;border-radius:10px;">
-      <div style="font-size:11px;font-weight:700;color:#1A3A8A;margin-bottom:4px;">📋 每日發文建議</div>
-      <div style="font-size:11px;color:#3A6AC8;line-height:1.8;">✦ 價值觀 ×1　✦ 產品動態 ×5<br>✦ 觀念動態 ×1　✦ 招商動態 ×2</div>
+    <div style="margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div style="font-size:12px;font-weight:700;color:#1A3A8A;">⏰ 第二輪提醒時間（晚上）</div>
+        <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:#666;cursor:pointer;">
+          <input type="checkbox" id="notify-enable2" checked style="width:15px;height:15px;"> 啟用
+        </label>
+      </div>
+      <input type="time" id="notify-time2" value="19:00" style="width:100%;padding:10px 12px;border:1.5px solid #EEF3FF;border-radius:10px;font-size:15px;color:#1A3A8A;background:#F8FAFF;box-sizing:border-box;">
+    </div>
+
+    <div style="margin-bottom:20px;padding:14px;background:#EEF3FF;border-radius:12px;">
+      <div style="font-size:11px;font-weight:700;color:#1A3A8A;margin-bottom:6px;">📋 通知內容包含</div>
+      <div style="font-size:11px;color:#3A6AC8;line-height:2;">
+        ✦ 每天不同鼓勵語（30種輪替）<br>
+        ✦ 今日發文重點建議<br>
+        ✦ 點擊直接開啟文案複製頁
+      </div>
     </div>
 
     <div style="display:flex;gap:10px;">
-      <button onclick="saveNotifySettings()" style="flex:1;background:#1A3A8A;color:#fff;border:none;border-radius:12px;padding:12px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">✅ 儲存設定</button>
-      <button onclick="document.getElementById('notify-modal').style.display='none'" style="flex:1;background:#EEF3FF;color:#1A3A8A;border:none;border-radius:12px;padding:12px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">取消</button>
+      <button onclick="saveNotifySettings()" style="flex:1;background:#1A3A8A;color:#fff;border:none;border-radius:12px;padding:13px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">✅ 儲存</button>
+      <button onclick="document.getElementById('notify-modal').style.display='none'" style="flex:1;background:#EEF3FF;color:#1A3A8A;border:none;border-radius:12px;padding:13px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">取消</button>
     </div>
   </div>
 </div>
