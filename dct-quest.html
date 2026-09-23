@@ -1922,16 +1922,20 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-function checkNotifyStatus() {
-  if (!('Notification' in window)) return;
-  var btn = document.getElementById('notify-btn');
-  var settingsBtn = document.getElementById('notify-settings-btn');
-  if (Notification.permission === 'granted') {
-    if (btn) btn.style.display = 'none';
-    if (settingsBtn) settingsBtn.style.display = 'block';
+function checkNotifyStatus(){
+  if(!('Notification' in window))return;
+  var btn=document.getElementById('notify-btn');
+  var sb=document.getElementById('notify-settings-btn');
+  if(Notification.permission==='granted'){
+    if(btn)btn.style.display='none';
+    if(sb)sb.style.display='inline-block';
     scheduleTodayNotifications();
-  } else if (Notification.permission === 'denied') {
-    if (btn) { btn.textContent = '🔕 通知已封鎖（請至設定開啟）'; btn.style.opacity = '0.6'; }
+  }else if(Notification.permission==='denied'){
+    if(btn){btn.textContent='🔕 通知已封鎖';btn.style.opacity='.6';}
+    if(sb)sb.style.display='inline-block';
+  }else{
+    // 未決定：顯示開啟按鈕，也顯示設定按鈕
+    if(sb)sb.style.display='inline-block';
   }
 }
 
@@ -1959,6 +1963,10 @@ function requestNotifyPermission() {
 }
 
 function showNotifySettings(){
+  if(Notification.permission!=='granted'){
+    requestNotifyPermission();
+    return;
+  }
   try{
     document.getElementById('notify-time1').value=localStorage.getItem('notify_time1')||'08:30';
     document.getElementById('notify-time2').value=localStorage.getItem('notify_time2')||'19:00';
