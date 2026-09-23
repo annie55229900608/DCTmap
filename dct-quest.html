@@ -1929,7 +1929,7 @@ function checkNotifyStatus() {
   if (Notification.permission === 'granted') {
     if (btn) btn.style.display = 'none';
     if (settingsBtn) settingsBtn.style.display = 'block';
-    scheduleNotifications();
+    scheduleTodayNotifications();
   } else if (Notification.permission === 'denied') {
     if (btn) { btn.textContent = '🔕 通知已封鎖（請至設定開啟）'; btn.style.opacity = '0.6'; }
   }
@@ -1973,7 +1973,7 @@ function saveNotifySettings(){
     localStorage.setItem('notify_time2',document.getElementById('notify-time2').value);
     localStorage.setItem('notify_enable2',document.getElementById('notify-enable2').checked);
   }catch(e){}
-  document.getElementById('notify-modal').style.display='none';
+  document.getElementById('notify-modal').style.display='flex';
   scheduleTodayNotifications();
   showMiniToast('✅ 提醒時間已設定！');
 }
